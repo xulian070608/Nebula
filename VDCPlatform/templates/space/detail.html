@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Information Table</title>
+    <link rel="stylesheet" href="{% static 'mms/css/mystyle.css' %}">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+          padding: 15px;
+          text-align: left;
+        }
+        table {
+          width: 100%;
+          background-color: #f1f1c1;
+        }
+    </style>
+
+    <style type="text/css">
+        canvas {
+            border: 1px solid black;
+        }
+        body {
+            margin: 0%;
+        }
+    </style>
+</head>
+<body>
+    <table style="width: 100%">
+        <tr>
+            <th>Level</th>
+            <th>Room Name</th>
+            <th>Room Number</th>
+            <th>Start (x)</th>
+            <th>Start (y)</th>
+            <th>End (x)</th>
+            <th>End (y)</th>
+
+        </tr>
+        {% for room_info in room_info_list %}
+            <tr>
+                <th>{{ room_info.level }}</th>
+                <th>{{ room_info.room_name }}</th>
+                <th>{{ room_info.room_number }}</th>
+                <th>{{ room_info.start_x }}</th>
+                <th>{{ room_info.start_y }}</th>
+                <th>{{ room_info.end_x }}</th>
+                <th>{{ room_info.end_y }}</th>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
