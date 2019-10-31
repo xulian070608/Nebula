@@ -1,1 +1,1 @@
-"# VDCPlatform_China" 
+# VDCPlatform_China
