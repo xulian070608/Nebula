@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Layout</title>
+</head>
+<body>
+    <h3>{{ project_name }}</h3>
+    <canvas id="level_layout" width="800" height="800">
+        <script type="text/javascript">
+            var canvas = document.getElementById('level_layout');
+            var c = canvas.getContext('2d');
+            c.scale(5,5);
+
+            {% for room_info in room_info_list %}
+                var str = "{{ room_info.outline }}";
+                var program_type = "{{ room_info.program_type }}"
+                console.log(program_type);
+                var arr = str.split("&#39;");
+                var arr = str.match(/-*\d+.\d+, -*\d+.\d+, -*\d+.\d+/g);
+                var outline = new Array();
+                console.log(arr);
+                for (var index in arr) {
+                    console.log(arr[index]);
+                    var corner = arr[index].split(", ");
+                    outline.push(corner);
+                }
+                console.log(str);
+                console.log(outline);
+                c.strokeStyle = 'red';
+                if (program_type == "WORK") {
+                    c.fillStyle = 'rgb(171, 221, 231)';
+                }
+                else if (program_type == "MEET") {
+                    c.fillStyle = 'rgb(183, 240, 217)';
+                }
+                else if (program_type == "OPERATE") {
+                    c.fillStyle = 'rgb(226, 226, 226)'
+                }
+                else if (program_type == "SERVE") {
+                    c.fillStyle = 'rgb(255, 210, 106)'
+                }
+                else if (program_type == "CIRCULATE") {
+                    c.fillStyle = 'rgb(255, 247, 223)'
+                }
+                else if (program_type == "WASH"){
+                    c.fillStyle = 'rgb(195, 195, 195)'
+                }
+                c.lineWidth = 1;
+                c.beginPath();
+                for (var i = 0, len = outline.length; i < len; i++ ){
+                    if (i > 0){
+                        c.lineTo(outline[i][0], outline[i][1]);
+                    }
+                    else {
+                        c.moveTo(outline[i][0], outline[i][1]);
+                    }
+                }
+                c.closePath();
+                c.stroke();
+                c.fill();
+            {% endfor %}
+        </script>
+    </canvas>
+</body>
+</html>
