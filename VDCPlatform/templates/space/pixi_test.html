@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebGL Sample</title>
+</head>
+<script src="{% static 'mms/js/pixi.min.js' %}"></script>
+<body>
+    <script>
+        const color_schema = {
+            "WORK": '0xabdde7',
+            "MEET": '0xb7f0d9',
+            "OPERATE": '0xe2e2e2',
+            "SERVE": '0xffd26a',
+            "WE": '0xffd26a',
+            "CIRCULATE": '0xfff7df',
+            "WASH": '0xc3c3c3',
+        };
+
+        class Room {
+            constructor(number, program_type, outline) {
+                this.roomNumber = number;
+                this.programType = program_type;
+                this.roomColor = color_schema[program_type];
+                this.roomBoundry = outline;
+
+            }
+
+            showNumber() {
+                alert(this.roomNumber);
+            }
+
+            addGraphic() {
+                var ext_path = this.roomBoundry.primary[0].split(", ").map(Number);
+                if (this.roomBoundry.hole.length > 0) {
+                    graphics.beginFill(this.roomColor, 1)
+                        .drawPolygon(ext_path)
+                        .endFill();
+                    for (var i = 0; i < this.roomBoundry.hole.length; i++){
+                        graphics.beginHole();
+                        var ini_path = this.roomBoundry.hole[i].split(", ").map(Number);
+                        graphics.drawPolygon(ini_path);
+                    }
+                    graphics.endHole();
+                } else {
+                    graphics.beginFill(this.roomColor, 1)
+                        .drawPolygon(ext_path)
+                        .endFill();
+                }
+                graphics.name = this.roomNumber;
+                graphics.scale.set(5,5);
+                app.stage.addChild(graphics);
+            }
+
+        }
+
+        const app = new PIXI.Application({
+            antialias: true,
+            backgroundColor: 0xffffff,
+        });
+        document.body.appendChild(app.view);
+        const graphics = new PIXI.Graphics();
+        graphics.interactive = true;
+        graphics.buttonMode = true;
+        graphics.on('click', onClick);
+
+        {% for room_info in room_info_list %}
+            var number = "{{ room_info.room_number }}";
+            var program_type = "{{ room_info.program_type }}";
+            var str = "{{ room_info.outline|safe }}";
+            str = str.replace(/'/g, "\"");
+            var obj = JSON.parse(str);
+
+            my_room = new Room(number, program_type, obj);
+            my_room.addGraphic();
+        {% endfor %}
+
+
+function onClick() {
+    console.log(this.name)
+}
+
+</script>
+</body>
+</html>
