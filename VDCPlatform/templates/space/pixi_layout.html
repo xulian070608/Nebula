@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebGL Sample</title>
+</head>
+<script src="{% static 'mms/js/pixi.min.js' %}"></script>
+<body>
+    <script>
+        const color_schema = {
+            "WORK": '0xabdde7',
+            "MEET": '0xb7f0d9',
+            "OPERATE": '0xe2e2e2',
+            "SERVE": '0xffd26a',
+            "WE": '0xffd26a',
+            "CIRCULATE": '0xfff7df',
+            "WASH": '0xc3c3c3',
+        };
+        const app = new PIXI.Application({
+            antialias: true,
+            backgroundColor: 0xffffff,
+        });
+        document.body.appendChild(app.view);
+        const graphics = new PIXI.Graphics();
+        graphics.interactive = true;
+        graphics.buttonMode = true;
+        graphics.on('pointerdown', onClick);
+
+        {% for room_info in room_info_list %}
+            var number = "{{ room_info.room_number }}";
+            var str = "{{ room_info.outline|safe }}";
+            str = str.replace(/'/g, "\"");
+            var obj = JSON.parse(str);
+
+            var ext_path = obj.primary[0].split(", ").map(Number);
+            var program_type = "{{ room_info.program_type }}";
+            var room_color = color_schema[program_type];
+            if (obj.hole.length > 0) {
+                graphics.beginFill(room_color, 1)
+                    .drawPolygon(ext_path)
+                    .endFill();
+                for (var i = 0; i < obj.hole.length; i++){
+                    graphics.beginHole();
+                    var ini_path = obj.hole[i].split(", ").map(Number);
+                    graphics.drawPolygon(ini_path);
+                }
+                graphics.endHole();
+            } else {
+                graphics.beginFill(room_color, 1)
+                    .drawPolygon(ext_path)
+                    .endFill();
+            }
+        {% endfor %}
+graphics.scale.set(5,5);
+app.stage.addChild(graphics);
+
+function onClick() {
+    alert("hello world");
+}
+
+</script>
+</body>
+</html>
