@@ -4,9 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <title>WebGL Sample</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <script src="{% static 'mms/js/pixi.min.js' %}"></script>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">ISpace</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <div id="roomNumber"></div>
     <script>
         const color_schema = {
             "WORK": '0xabdde7',
@@ -19,19 +56,24 @@
         };
 
         class Room {
-            constructor(number, program_type, outline) {
+            constructor(name, number, program_type, outline) {
+                this.name = name;
                 this.roomNumber = number;
                 this.programType = program_type;
                 this.roomColor = color_schema[program_type];
                 this.roomBoundry = outline;
-
-            }
-
-            showNumber() {
-                alert(this.roomNumber);
             }
 
             addGraphic() {
+                let graphics = new PIXI.Graphics();
+                graphics.interactive = true;
+                graphics.buttonMode = true;
+                graphics.name = this.name;
+                graphics.roomNumber = this.roomNumber;
+                graphics.on('click', function () {
+                    var roomNumber = document.getElementById("roomNumber")
+                    roomNumber.innerHTML = this.name + " " + this.roomNumber;
+                });
                 var ext_path = this.roomBoundry.primary[0].split(", ").map(Number);
                 if (this.roomBoundry.hole.length > 0) {
                     graphics.beginFill(this.roomColor, 1)
@@ -48,38 +90,49 @@
                         .drawPolygon(ext_path)
                         .endFill();
                 }
-                graphics.name = this.roomNumber;
-                graphics.scale.set(5,5);
-                app.stage.addChild(graphics);
+                if (this.programType == "WORK" || this.programType == "MEET") {
+                    let buttonText = new PIXI.Text(this.roomNumber,
+                    {
+                     fontFamily : 'Arial',
+                     fontSize: 10,
+                     fill : "red",
+                     align : 'center'
+                    });
+                    var bounds = graphics.getBounds();
+                    buttonText.anchor.set(0.5);
+                    buttonText.x = bounds.x + bounds.width/2;
+                    buttonText.y = bounds.y + bounds.height/2;
+                    buttonText.scale.set(0.2,0.2);
+                    graphics.addChild(buttonText);
+                    graphics.scale.set(5,5);
+                    app.stage.addChild(graphics);
+                } else {
+                    graphics.scale.set(5,5);
+                    app.stage.addChild(graphics);
+                }
             }
 
         }
+
 
         const app = new PIXI.Application({
             antialias: true,
             backgroundColor: 0xffffff,
         });
         document.body.appendChild(app.view);
-        const graphics = new PIXI.Graphics();
-        graphics.interactive = true;
-        graphics.buttonMode = true;
-        graphics.on('click', onClick);
+
 
         {% for room_info in room_info_list %}
+            var name = "{{ room_info.room_name }}";
             var number = "{{ room_info.room_number }}";
             var program_type = "{{ room_info.program_type }}";
             var str = "{{ room_info.outline|safe }}";
             str = str.replace(/'/g, "\"");
             var obj = JSON.parse(str);
 
-            my_room = new Room(number, program_type, obj);
+            my_room = new Room(name, number, program_type, obj);
             my_room.addGraphic();
         {% endfor %}
-
-
-function onClick() {
-    console.log(this.name)
-}
 
 </script>
 </body>
