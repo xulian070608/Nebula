@@ -9,5 +9,4 @@ verify_ssl = true
 django = "*"
 djangorestframework = "*"
 mysqlclient = "*"
-
-
+psycopg2 = "*"
