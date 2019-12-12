@@ -4,9 +4,14 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+black = "*"
+jupyter = "*"
 
 [packages]
 django = "*"
 djangorestframework = "*"
 mysqlclient = "*"
 psycopg2 = "*"
+
+[pipenv]
+allow_prereleases = true
