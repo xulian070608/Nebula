@@ -13,111 +13,74 @@ class PMRAPIWrapper:
     _URL_END_POINT = "https://pmr.weworkers.io/api/v1/"
     _TOKEN = os.getenv("PMR_ACCESS_TOKEN")
 
-    def __init__(self):
-        self._header = {"Authorization": f"Bearer {self._TOKEN}"}
+    def __init__(self, pmr_repo_id: str):
+        self.__header = {"Authorization": f"Bearer {self._TOKEN}"}
+        #
+        self._pmr_repo_id = pmr_repo_id
+
+        self._commit_id = self.get_commit_id()
+
+        if not self.commit_id:
+            self._blob_id = self.get_blob()  # try to get "full-harvest" bolb id
+        else:
+            self._blob_id = None  # if no commit, blob id is None
 
     @property
-    def project_name(self):
-        return self._project_name
+    def commit_id(self):
+        return self._commit_id
 
-    def get_blob(self, pmr_repo_id):
+    @property
+    def blob_id(self):
+        return self._blob_id
 
-        commit_id = self.get_commit_id(pmr_repo_id)
-        blob_id = self.get_blob_id(commit_id)
+    @property
+    def pmr_repo_id(self):
+        return self._pmr_repo_id
 
-        url = posixpath.join(
-            self._URL_END_POINT, "repositories", pmr_repo_id, "blobs", blob_id
-        )
-        headers = self._header
-        headers["Accept"] = "application/json"
+    def get_commit_id(self):
+        """Get the commits from given pmr_repo_id
+        """
+        url = posixpath.join(self._URL_END_POINT, "repositories", self.pmr_repo_id)
+        payload = {"include": "branches"}
+        response = requests.get(url, headers=self._header, params=payload)
 
-        response = requests.get(url, headers=headers)
-        if response.status_code == 200:
-            blob = response.json()
-            with open("./src/test.json", "w") as json_file:
-                json.dump(response.json(), json_file, indent=4)
+        if response.status_code == 200:  # if request succeed
+            result = response.json()
+            includes = result["included"]
+            project_name = result["data"]["attributes"]["name"]
 
-            return blob
+            if includes == 0:
+                return None  # if the length of includes is 0. There is no branches.
+            else:
+                for branch in includes:
+                    if (
+                        branch["attributes"]["name"] == "master"
+                    ):  # look for master branches
+                        try:
+                            commit_id = branch["relationships"]["head"]["data"]["id"]
+                            return commit_id
+                        except KeyError:
+                            print(f"{project_name} has not harvested!")
+                            return None
+                return None
         else:
             response.raise_for_status()
 
-    def get_blob_id(self, commit_id):
-        # "https://pmr.weworkers.io/api/v1/commits/{commit_uuid}"
-        url = posixpath.join(self._URL_END_POINT, "commits", commit_id)
+    def get_blob_id(self):
+
+        url = posixpath.join(self._URL_END_POINT, "commits", self.commit_id)
         headers = self._header
         payload = {"include": "blobs"}
-        # get request
         response = requests.get(url, headers=headers, params=payload)
-        if response.status_code == 200:  # if succeed
+        if response.status_code == 200:
             blob_list: list = response.json()["included"]
             for blob in blob_list:
                 if blob["attributes"]["name"] == "full_harvest":
                     return blob["id"]
-
-            return None  # if there is no "full_harvest", return None
-
         else:
             response.raise_for_status()
-
-    def get_commit_id(self, pmr_repo_id):
-        """
-        Return the commits id of the master branch of a project.
-        If this project has not been harvested, return None.
-        Else if http errors, raise the error.
-        """
-        # "https://pmr.weworkers.io/api/v1/repositories/{pmr_repo_uuid}"
-        url = posixpath.join(self._URL_END_POINT, "repositories", pmr_repo_id)
-        payload = {"include": "branches"}
-        response = requests.get(url, headers=self._header, params=payload)
-
-        if response.status_code == 200:  # if succeed
-            result = response.json()
-            includes = result["included"]
-
-            project_name = result["data"]["attributes"]["name"]
-            self._project_name = project_name
-
-            if includes == 0:
-                raise Exception("Get no branches from this project")
-            for branch in includes:
-                if branch["attributes"]["name"] == "master":  # look for master branches
-                    try:
-                        commit_id = branch["relationships"]["head"]["data"]["id"]
-                        return commit_id
-                    except KeyError:  # if no such a key, then it is not harvested yet
-                        return None
-
-        else:  # if the request not succeed
-            response.raise_for_status()
-
-
-def read_prject_ids():
-    """read 'chinaprojects.sqlite' to
-        get the all China region pmr_repo_id
-        [pmr_repository_uuid, uuid, country]
-        """
-    conn = sqlite3.connect(r".\src\chinaprojects.sqlite")
-    cur = conn.cursor()
-    cur.execute(
-        """
-            SELECT * FROM China_project_IDs
-            """
-    )
-    for row in cur:
-        result = row
-        yield result[0]
-    conn.close()
 
 
 if __name__ == "__main__":
-
-    pmr_repo_id_list = read_prject_ids()
-    for repo_id in pmr_repo_id_list:
-        print(f"Getting info of {repo_id}.............", end="")
-        reader = PMRAPIWrapper()
-        if reader.get_commit_id(repo_id) is not None:
-            with open("./src/test.txt", "a") as file:
-                print(f"get {reader.project_name}:{repo_id}")
-                file.write(f"{repo_id}\n")
-        else:
-            print("has not been harvested yet!")
+    wrapper = PMRAPIWrapper()
+    print(wrapper.__header)
