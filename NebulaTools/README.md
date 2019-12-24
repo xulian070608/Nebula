@@ -19,5 +19,5 @@
 3. Get blob raw json string
 
     ```python
-    wrapper.get_blob()
+    json_str = wrapper.get_blob()
     ```
