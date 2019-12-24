@@ -239,3 +239,4 @@ dist
 Pipfile.lock
 Pipfile
 data/chinaprojects.sqlite
+data/chinaproject.txt

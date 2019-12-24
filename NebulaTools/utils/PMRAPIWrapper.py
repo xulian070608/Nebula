@@ -1,7 +1,6 @@
 import os
 import posixpath
 import requests
-import sqlite3
 import json
 
 
@@ -14,14 +13,14 @@ class PMRAPIWrapper:
     _TOKEN = os.getenv("PMR_ACCESS_TOKEN")
 
     def __init__(self, pmr_repo_id: str):
-        self.__header = {"Authorization": f"Bearer {self._TOKEN}"}
+        self._header = {"Authorization": f"Bearer {self._TOKEN}"}
         #
         self._pmr_repo_id = pmr_repo_id
 
-        self._commit_id = self.get_commit_id()
+        self._commit_id = self._get_commit_id()
 
-        if not self.commit_id:
-            self._blob_id = self.get_blob()  # try to get "full-harvest" bolb id
+        if self.commit_id is not None:
+            self._blob_id = self._get_blob_id()  # try to get "full-harvest" bolb id
         else:
             self._blob_id = None  # if no commit, blob id is None
 
@@ -37,7 +36,7 @@ class PMRAPIWrapper:
     def pmr_repo_id(self):
         return self._pmr_repo_id
 
-    def get_commit_id(self):
+    def _get_commit_id(self):
         """Get the commits from given pmr_repo_id
         """
         url = posixpath.join(self._URL_END_POINT, "repositories", self.pmr_repo_id)
@@ -47,7 +46,7 @@ class PMRAPIWrapper:
         if response.status_code == 200:  # if request succeed
             result = response.json()
             includes = result["included"]
-            project_name = result["data"]["attributes"]["name"]
+            self._project_name = result["data"]["attributes"]["name"]
 
             if includes == 0:
                 return None  # if the length of includes is 0. There is no branches.
@@ -60,27 +59,53 @@ class PMRAPIWrapper:
                             commit_id = branch["relationships"]["head"]["data"]["id"]
                             return commit_id
                         except KeyError:
-                            print(f"{project_name} has not harvested!")
+                            # print(f"{project_name} has not harvested!")
                             return None
                 return None
         else:
             response.raise_for_status()
 
-    def get_blob_id(self):
+    def _get_blob_id(self):
 
         url = posixpath.join(self._URL_END_POINT, "commits", self.commit_id)
         headers = self._header
         payload = {"include": "blobs"}
         response = requests.get(url, headers=headers, params=payload)
+
         if response.status_code == 200:
             blob_list: list = response.json()["included"]
-            for blob in blob_list:
-                if blob["attributes"]["name"] == "full_harvest":
-                    return blob["id"]
+            if len(blob_list) == 0:
+                return None
+            else:
+                for blob in blob_list:
+                    if blob["attributes"]["name"] == "full_harvest":
+                        return blob["id"]
+        else:
+            response.raise_for_status()
+
+    def get_blob(self):
+
+        if self.commit_id or self.blob_id:
+            return None
+
+        url = posixpath.join(
+            self._URL_END_POINT, "repositories", self.pmr_repo_id, "blobs", self.blob_id
+        )
+
+        headers = self._header
+        headers["Accept"] = "application/json"
+
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            blob = response.json()
+            with open("./src/test.json", "w") as json_file:
+                json.dump(response.json(), json_file, indent=4)
+            return blob
         else:
             response.raise_for_status()
 
 
 if __name__ == "__main__":
-    wrapper = PMRAPIWrapper()
-    print(wrapper.__header)
+    wrapper = PMRAPIWrapper("0b846906-9d27-4e0e-8d66-ff9a9ef632c4")
+    json_str = wrapper.get_blob()
+    print(json_str)
