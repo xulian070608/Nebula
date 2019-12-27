@@ -1,7 +1,6 @@
 import os
 import posixpath
 import requests
-import json
 
 
 class PMRAPIWrapper:
@@ -11,6 +10,7 @@ class PMRAPIWrapper:
 
     _URL_END_POINT = "https://pmr.weworkers.io/api/v1/"
     _TOKEN = os.getenv("PMR_ACCESS_TOKEN")
+    print(_TOKEN)
 
     def __init__(self, pmr_repo_id: str):
         self._header = {"Authorization": f"Bearer {self._TOKEN}"}
@@ -35,6 +35,10 @@ class PMRAPIWrapper:
     @property
     def pmr_repo_id(self):
         return self._pmr_repo_id
+
+    @property
+    def project_name(self):
+        return self._project_name
 
     def _get_commit_id(self):
         """Get the commits from given pmr_repo_id
@@ -85,9 +89,6 @@ class PMRAPIWrapper:
 
     def get_blob(self):
 
-        if self.commit_id or self.blob_id:
-            return None
-
         url = posixpath.join(
             self._URL_END_POINT, "repositories", self.pmr_repo_id, "blobs", self.blob_id
         )
@@ -98,14 +99,12 @@ class PMRAPIWrapper:
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
             blob = response.json()
-            with open("./src/test.json", "w") as json_file:
-                json.dump(response.json(), json_file, indent=4)
             return blob
         else:
             response.raise_for_status()
 
 
 if __name__ == "__main__":
-    wrapper = PMRAPIWrapper("0b846906-9d27-4e0e-8d66-ff9a9ef632c4")
+    wrapper = PMRAPIWrapper("e86b9743-69ae-41a8-8e2c-2bf219ad4864")
     json_str = wrapper.get_blob()
     print(json_str)
