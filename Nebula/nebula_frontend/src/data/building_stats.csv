@@ -1,0 +1,14 @@
+ID,BuildingName,MarketingName,BuildingAddress,BuildingCity,BuildingState,BuildingPostalCode,BuildingCountry,BuildingRegion,BuildingTerritory,BuildingMarket,BuildingUUID,BuildingUSF,BuildingFloorCount,BuildingDeskCount,BuildingRoomCount
+1,168 Fuhua 3rd Road,Shenzhen ICC Tower,"168 Fuhua 3rd Road, Futian CBD",Shenzhen,,518033,China,China,South China,Shenzhen,4c9a9a57-5caa-11e8-9d13-0642b0acf810,"38,132",2,663,153
+2,"201 Century Avenue, Lujiazui, Pudong, Shanghai, China",Standard Chartered Bank Tower,201 Century Ave,Shanghai,Shanghai Shi,200120,China,China,East China,Shanghai,5881737c-44a1-11e9-b223-0626947414d8,"29,980",2,617,111
+3,293 Guangzhou Middle Avenue,293 Guangzhou Middle Avenue,"3/F, 293 Guangzhou Middle Avenue, Yuexiu District",Guangzhou,Guangdong,510623,China,China,South China,Guangzhou,d65523da-e32b-11e8-b223-0626947414d8,"27,970",1,554,88
+4,535 Jaffe,Tower 535,"535 Jaffe Road, Causeway Bay",Hong Kong,Hong Kong Island,N/A ,China,China,South China,Hong Kong,deb7d99c-0e12-11e6-9312-063c4950d72f,0,2,0,0
+5,EBA,EBA Center,398? Huo Shan Lu,Shanghai,Shanghai,200000,China,China,East China,Shanghai,dcc2778f-5512-11e8-9d13-0642b0acf810,"11,183",1,317,23
+6,Exchange Square 2,97 Songren Lu,"No. 97 & 101, Songren Road, Xinyi District",Taipei City,,110,Taiwan,China,South China,Taipei,b7a20d88-889a-11e8-9d13-0642b0acf810,"82,707",7,"1,846",201
+7,Hysan Place,Hysan Place,"500 Hennessy Road, Causeway Bay",Hong Kong,,,China,China,South China,Hong Kong,ace13376-8e3e-11e8-9d13-0642b0acf810,"32,480",2,671,213
+8,Mingzhu International Business Center,Mingzhu International Business Center,"No.198, Wuxing Road, Jianggan Qu",Hangzhou,,311029,China,China,East China,Hangzhou,1e51db25-b4e0-11e8-9d13-0642b0acf810,"37,280",2,722,84
+9,Octa Tower,Octa Tower,"8 Lam Chak Street, Kowloon Bay",Hong Kong,,,Hong Kong,China,South China,Hong Kong,06549e87-eeef-11e8-b223-0626947414d8,"37,420",2,816,92
+10,Sun Life Tower,Sun Life Tower,"Sun Life Tower, The Gateway, Harbour City, 15 Canton",Hong Kong,,,China,China,South China,Hong Kong,af57c266-8e3d-11e8-9d13-0642b0acf810,"128,820",6,"2,693",294
+11,The Quayside,The Quayside,"77 Hoi Bun Road, 5/F, Kwun Tong",Hong Kong,,999077,China,China,South China,Hong Kong,182595b0-648e-11e8-9d13-0642b0acf810,"126,684",3,"1,656",323
+12,The Springs Center ,The Springs Center,Jiang Wan Cheng Lu,Shanghai,Shanghai Shi,,China,China,East China,Shanghai,3497949e-db40-11e8-b223-0626947414d8,"37,660",2,776,129
+13,Xinmei Union Square,Shinmay Union Square,"32/F, Shinmay Union Square Building Phase 1, 999 Pudong Rd (S.). Pudong",Shanghai,,200000,China,China,East China,Shanghai,ff3f2a6e-52c4-11e8-9d13-0642b0acf810,"74,010",8,"1,475",161

@@ -1,0 +1,41 @@
+ID,Building Name,Project Type,Floor Name,Floor Sort Order,Floor Usf,Last Opening,Next Opening,Bim Lead Name,Last Harvest By,Current Deal Status,Current Deal Stage,Current Project Status,Building UUID,Floor UUID,Total Desks,Room Count
+1,Exchange Square 2,Standard New,13th Floor,12,"6,571",10/14/19,,Lee Zhang,lwang,Active,A,Active,b7a20d88-889a-11e8-9d13-0642b0acf810,6164bfe4-889b-11e8-9d13-0642b0acf810,143,18
+2,Exchange Square 2,Standard New,14th Floor,13,"11,228",10/14/19,,Lee Zhang,lwang,Active,A,Active,b7a20d88-889a-11e8-9d13-0642b0acf810,617323f4-889b-11e8-9d13-0642b0acf810,265,19
+3,Exchange Square 2,Standard New,15th Floor,14,"11,228",10/14/19,,Lee Zhang,lwang,Active,A,Active,b7a20d88-889a-11e8-9d13-0642b0acf810,61813628-889b-11e8-9d13-0642b0acf810,265,20
+4,Exchange Square 2,Standard New,16th Floor,15,"11,228",10/14/19,,Lee Zhang,lwang,Active,A,Active,b7a20d88-889a-11e8-9d13-0642b0acf810,618ec87b-889b-11e8-9d13-0642b0acf810,265,20
+5,Exchange Square 2,Standard New,17th Floor,16,"13,511",10/14/19,,Lee Zhang,lwang,Active,A,Active,b7a20d88-889a-11e8-9d13-0642b0acf810,619c666d-889b-11e8-9d13-0642b0acf810,258,50
+6,Exchange Square 2,Standard New,18th Floor,17,"13,511",10/14/19,,Lee Zhang,lwang,Active,A,Active,b7a20d88-889a-11e8-9d13-0642b0acf810,86232f14-889b-11e8-9d13-0642b0acf810,274,51
+7,Octa Tower,Standard New,20th Floor,20,"18,710",12/1/19,,Clio Guo,yli,Active,A,On Hold,06549e87-eeef-11e8-b223-0626947414d8,1c163375-eeef-11e8-b223-0626947414d8,370,66
+8,Octa Tower,Standard New,21st Floor,21,"18,710",12/1/19,,Clio Guo,yli,Active,A,On Hold,06549e87-eeef-11e8-b223-0626947414d8,189842ca-eeef-11e8-b223-0626947414d8,446,26
+9,Xinmei Union Square,Standard New,25th Floor,"95,950","9,510",10/30/19,,Bangyuan Xia,lzhang3,Active,A,Active,ff3f2a6e-52c4-11e8-9d13-0642b0acf810,4276ccb8-8782-11e8-9d13-0642b0acf810,202,12
+10,Sun Life Tower,Standard New,26 Th Floor,25,"21,470",11/28/19,,Clio Guo,lzhang3,Active,A,Active,af57c266-8e3d-11e8-9d13-0642b0acf810,d665556c-8e4b-11e8-9d13-0642b0acf810,444,58
+11,535 Jaffe,Standard New,26th Floor,,,10/30/19,,Clio Guo,,Active,A,Active,deb7d99c-0e12-11e6-9312-063c4950d72f,569a2469-aa41-11e7-9d13-0642b0acf810,0,0
+12,Xinmei Union Square,Standard New,26th Floor,"99,750","9,510",10/30/19,,Bangyuan Xia,lzhang3,Active,A,Active,ff3f2a6e-52c4-11e8-9d13-0642b0acf810,42849732-8782-11e8-9d13-0642b0acf810,202,12
+13,Sun Life Tower,Standard New,27 Th Floor,26,"21,470",11/28/19,,Clio Guo,ecao,Active,A,Active,af57c266-8e3d-11e8-9d13-0642b0acf810,d6863776-8e4b-11e8-9d13-0642b0acf810,444,59
+14,535 Jaffe,Standard New,27th Floor,,,10/30/19,,Clio Guo,,Active,A,Active,deb7d99c-0e12-11e6-9312-063c4950d72f,5b49a7bb-126d-11e9-b223-0626947414d8,0,0
+15,Sun Life Tower,Standard New,28 Th Floor,27,"21,470",11/28/19,,Clio Guo,lzhang3,Active,A,Active,af57c266-8e3d-11e8-9d13-0642b0acf810,d6a69220-8e4b-11e8-9d13-0642b0acf810,444,58
+16,Xinmei Union Square,Standard New,28th Floor,"107,350","9,510",10/30/19,,Bangyuan Xia,lzhang3,Active,A,Active,ff3f2a6e-52c4-11e8-9d13-0642b0acf810,b178357c-b741-11e8-9d13-0642b0acf810,197,28
+17,Sun Life Tower,Standard New,29 Th Floor,28,"21,470",11/28/19,,Clio Guo,lzhang3,Active,A,Active,af57c266-8e3d-11e8-9d13-0642b0acf810,d6cf7722-8e4b-11e8-9d13-0642b0acf810,393,59
+18,Xinmei Union Square,Standard New,29th Floor,"111,150","9,540",10/30/19,,Bangyuan Xia,lzhang3,Active,A,Active,ff3f2a6e-52c4-11e8-9d13-0642b0acf810,b307fcaa-b741-11e8-9d13-0642b0acf810,194,28
+19,EBA,Standard New,2nd Floor,2,"11,183",11/8/19,,Lee Zhang,syi,Active,A,Active,dcc2778f-5512-11e8-9d13-0642b0acf810,927efa8b-5513-11e8-9d13-0642b0acf810,317,23
+20,Sun Life Tower,Standard New,30 Th Floor,29,"21,470",11/28/19,,Clio Guo,ecao,Active,A,Active,af57c266-8e3d-11e8-9d13-0642b0acf810,20be99a5-cad0-11e8-b223-0626947414d8,484,30
+21,Sun Life Tower,Standard New,31 Th Floor,30,"21,470",11/28/19,,Clio Guo,ecao,Active,A,Active,af57c266-8e3d-11e8-9d13-0642b0acf810,20d66166-cad0-11e8-b223-0626947414d8,484,30
+22,Xinmei Union Square,Standard New,31st Floor,"118,750","9,540",10/30/19,,Bangyuan Xia,lzhang3,Active,A,Active,ff3f2a6e-52c4-11e8-9d13-0642b0acf810,46ad364c-8782-11e8-9d13-0642b0acf810,197,28
+23,Hysan Place,Standard New,31st Floor,31,"16,240",12/2/19,,Clio Guo,jguo,Active,A,On Hold,ace13376-8e3e-11e8-9d13-0642b0acf810,1f2b7516-8e44-11e8-9d13-0642b0acf810,313,103
+24,Xinmei Union Square,Standard New,32nd Floor,"122,550","7,320",10/30/19,,Bangyuan Xia,lzhang3,Active,A,Active,ff3f2a6e-52c4-11e8-9d13-0642b0acf810,480c5447-8782-11e8-9d13-0642b0acf810,79,29
+25,Hysan Place,Standard New,32st Floor,32,"16,240",12/2/19,,Clio Guo,jguo,Active,A,On Hold,ace13376-8e3e-11e8-9d13-0642b0acf810,1f3c734a-8e44-11e8-9d13-0642b0acf810,358,110
+26,Xinmei Union Square,Standard New,33rd Floor,"126,350","9,540",10/30/19,,Bangyuan Xia,lzhang3,Active,A,Active,ff3f2a6e-52c4-11e8-9d13-0642b0acf810,4819db1c-8782-11e8-9d13-0642b0acf810,202,12
+27,Xinmei Union Square,Standard New,34th Floor,"130,150","9,540",10/30/19,,Bangyuan Xia,lzhang3,Active,A,Active,ff3f2a6e-52c4-11e8-9d13-0642b0acf810,4827a15f-8782-11e8-9d13-0642b0acf810,202,12
+28,168 Fuhua 3rd Road,Standard New,35th Floor,35,"19,066",11/10/19,,Lee Zhang,jzhu,Active,A,Active,4c9a9a57-5caa-11e8-9d13-0642b0acf810,ea032583-5cab-11e8-9d13-0642b0acf810,333,79
+29,168 Fuhua 3rd Road,Standard New,36th Floor,36,"19,066",11/10/19,,Lee Zhang,jzhu,Active,A,Active,4c9a9a57-5caa-11e8-9d13-0642b0acf810,ebfa4c24-5cab-11e8-9d13-0642b0acf810,330,74
+30,293 Guangzhou Middle Avenue,Standard New,3rd Floor,3,"27,970",12/1/19,,Clio Guo,xzhang4,Active,A,Active,d65523da-e32b-11e8-b223-0626947414d8,9501b906-e32e-11e8-b223-0626947414d8,554,88
+31,Exchange Square 2,Standard New,4th Floor,3,"15,430",10/14/19,,Lee Zhang,lwang,Active,A,Active,b7a20d88-889a-11e8-9d13-0642b0acf810,3e8fab1a-bc9f-11e8-b223-0626947414d8,376,23
+32,The Quayside,Standard New,5th,5,"42,228",10/16/19,,Lee Zhang,vzhang2,Active,A,Active,182595b0-648e-11e8-9d13-0642b0acf810,604b05be-6499-11e8-9d13-0642b0acf810,810,110
+33,"201 Century Avenue, Lujiazui, Pudong, Shanghai, China",Standard New,5th Floor,4,"14,990",11/29/19,,Bangyuan Xia,alopez4,Active,A,Active,5881737c-44a1-11e9-b223-0626947414d8,125d62b7-7005-11e9-b223-0626947414d8,317,56
+34,The Springs Center ,Standard New,5th Floor,4,"18,830",10/13/19,,,jjiang3,Active,A,Active,3497949e-db40-11e8-b223-0626947414d8,2b94251a-dce5-11e8-b223-0626947414d8,388,64
+35,The Quayside,Standard New,6th,6,"42,228",10/16/19,,Lee Zhang,vzhang2,Active,A,Active,182595b0-648e-11e8-9d13-0642b0acf810,60583b9a-6499-11e8-9d13-0642b0acf810,846,107
+36,The Springs Center ,Standard New,6th Floor,5,"18,830",10/13/19,,,jjiang3,Active,A,Active,3497949e-db40-11e8-b223-0626947414d8,2ba67c46-dce5-11e8-b223-0626947414d8,388,65
+37,The Quayside,Standard New,7th Floor,7,"42,228",10/16/19,,Lee Zhang,vzhang2,Pencils Down,C,Active,182595b0-648e-11e8-9d13-0642b0acf810,fc21004a-198c-11e9-b223-0626947414d8,0,106
+38,"201 Century Avenue, Lujiazui, Pudong, Shanghai, China",Standard New,7th Floor,6,"14,990",11/29/19,,Bangyuan Xia,alopez4,Active,A,Active,5881737c-44a1-11e9-b223-0626947414d8,13a5fcfc-7005-11e9-b223-0626947414d8,300,55
+39,Mingzhu International Business Center,Standard New,8th Floor,8,"18,640",11/17/19,,Bo Gu,jzhu,Active,A,On Hold,1e51db25-b4e0-11e8-9d13-0642b0acf810,a4206a28-b4e2-11e8-9d13-0642b0acf810,361,26
+40,Mingzhu International Business Center,Standard New,9th Floor,9,"18,640",11/17/19,,Bo Gu,jzhu,Active,A,On Hold,1e51db25-b4e0-11e8-9d13-0642b0acf810,a4327be6-b4e2-11e8-9d13-0642b0acf810,361,58
