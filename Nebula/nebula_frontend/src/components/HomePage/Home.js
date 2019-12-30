@@ -1,6 +1,6 @@
 import React from 'react';
 import PropertyLi from './PropertyLi';
-import wwBuildings from "../data/building_stats"
+import wwBuildings from "../../data/building_stats"
 
 function Home () {
 

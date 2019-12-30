@@ -1,7 +1,7 @@
 import React, { Component, useState }from "react";
 import PropertySelectorOption from "./PropertySelectorOption"
-import PropertyInfo from "./PropertyInfo";
-import wwBuildings from "../data/building_stats"
+import PropertyInfoSummary from "./PropertyInfoSummary";
+import wwBuildings from "../../data/building_stats"
 import { Link, withRouter } from "react-router-dom";
 
 function PropertyInfoPanel(props) {
@@ -11,15 +11,7 @@ function PropertyInfoPanel(props) {
     console.log(currentProperty)
     
     const [selectedPropertyUUID, setSelectedPropertyUUID] = useState(currentProperty.BuildingUUID)
-    // const [buildingInfo, setBuildingInfo] = useState({
-    //     buildingName: "",
-    //     buildingAddress: "",
-    //     buildingTerritory: "",
-    //     buildingUUID: "",
-    //     buildingUSF: "",
-    //     buildingDeskCount: "",
-    //     buildingRoomCount: ""
-    // })
+    
 
     function updateProperty(propertyUUID, wwBuildings) {
         setCurrentProperty(wwBuildings.find(wwBuilding => wwBuilding.BuildingUUID === propertyUUID))
@@ -60,7 +52,7 @@ function PropertyInfoPanel(props) {
         Select Property to get start:
         <p></p>
         <Menu />
-        <PropertyInfo 
+        <PropertyInfoSummary 
             buildingName={currentProperty.BuildingName}
             buildingAddress={currentProperty.BuildingAddress}
             buildingTerritory={currentProperty.BuildingTerritory}
