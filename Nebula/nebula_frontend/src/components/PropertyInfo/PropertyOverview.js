@@ -10,20 +10,18 @@ function PropertyOverview(props) {
     let currentProperty = {}
     const [propertyUUID] = useState(props.propertyUUID)
 
-
-    function updateProperty(propertyUUID, wwBuildings) {
+    function getCurrentProperty(propertyUUID, wwBuildings) {
         currentProperty = wwBuildings.find(wwBuilding => wwBuilding.BuildingUUID === propertyUUID)
         // console.log(currentProperty)
     }
 
-    updateProperty(propertyUUID, wwBuildings)
+    getCurrentProperty(propertyUUID, wwBuildings)
 
     return (
         <div>
             <div className="row">
                 <div className="column-property">
                     <PropertyInfoPanel 
-                    selectedProperty = {propertyUUID}
                     currentProperty = {currentProperty}
                     />
                 </div>

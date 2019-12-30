@@ -1,43 +1,62 @@
-import React from 'react';
-import { Stage, Graphics, Polygon } from '@inlet/react-pixi';
-import wwBuildings from "../../data/building_stats";
-import wwFloors from "../../data/floor_stats"
-import HuaiHaiMall from "../../data/HuaiHaiMall_cleaned";
-import RoomLi from "./RoomLi"
-import FloorSelectorOption from "./FloorSelectorOption";
+import React, { Component, useState } from 'react';
+// import { Stage, Graphics, Polygon } from '@inlet/react-pixi';
+import { withRouter } from 'react-router-dom';
+import wwBuildings from '../../data/building_stats';
+import wwFloors from '../../data/floor_stats';
+import wwRooms from '../../data/room_stats';
+import Card from '../PropertyInfo/Card'
+import RoomLi from './RoomLi';
+import FloorSelectorOption from './FloorSelectorOption';
 
 
 function PropertyLayout(props) {
 
-    function getCurrentProperty(propertyUUID, wwBuildings) {
-        return wwBuildings.find(wwBuilding => wwBuilding.BuildingUUID === propertyUUID)
+    let currentFloor = {}
+    let currentProperty = {}
+
+    function getCurrentPropertyByFloor(floor, buildings) {
+        return buildings.find(building => building.BuildingUUID === floor['Building UUID'])
     }
 
-    function getFloorsByPropertyUUID(propertyUUID, wwFloors) {
-        return wwFloors.filter(wwFloor => wwFloor['Building UUID'] === propertyUUID)
+    function getCurrentFloor(floorUUID, floors) {
+        return floors.find(floor => floor['Floor UUID'] === floorUUID)
     }
 
-    const currentProperty = getCurrentProperty(props.propertyUUID, wwBuildings)
+    currentFloor = getCurrentFloor(props.floorUUID, wwFloors)
+    currentProperty = getCurrentPropertyByFloor(currentFloor, wwBuildings)
 
-    const allFloors = getFloorsByPropertyUUID(currentProperty.BuildingUUID, wwFloors)
-    console.log(allFloors)
+    function getAllFloors(buildingUUID, floors) {
+        return floors.filter(floor => floor['Building UUID'] === buildingUUID)
+    }
 
-    // // this is following the example from: https://codesandbox.io/s/falling-surf-33hfs
-    // class FloorDropDown extends Component {
-    //     onChange = e => {
-    //         updateFloor(e.target.value, allFloors)
-    //         setSelectedFloorUUID(e.target.value)
-    //         this.props.history.push(`/${e.target.value}/spaceInfo`)
-    //         };
+    // should be PropertyUUID and FloorUUID, which is not available yet, use Name for now
+    function getRoomsByPropertyAndFloor(propertyName, floorName, rooms) {
+        var allRoomsInProperty = rooms.filter(room => room['Building Name'] === propertyName)
+        return allRoomsInProperty.filter(roomInProperty => roomInProperty['Floor Name'] === floorName)
+    }
+
+    const allFloors = getAllFloors(currentProperty.BuildingUUID, wwFloors)
+    const allRooms = getRoomsByPropertyAndFloor(currentProperty.BuildingName, currentFloor['Floor Name'], wwRooms)
+    console.log(allRooms)
+
+    //set up selectedFloorUUID so that the selector item is aligned with the actual page
+    const [selectedFloorUUID, setSelectedFloorUUID] = useState(allFloors[0])
+
+    // this is following the example from: https://codesandbox.io/s/falling-surf-33hfs
+    class FloorDropDown extends Component {
+        onChange = e => {
+            setSelectedFloorUUID(e.target.value)
+            this.props.history.push(`/${e.target.value}/planview`)
+            };
         
-    //     render() {
-    //         return (
-    //             <select value={selectedPropertyUUID} onChange={this.onChange}>
-    //                 {allFloors.map(createFloorOption)}
-    //             </select>)}
-    // }
+        render() {
+            return (
+                <select value={selectedFloorUUID} onChange={this.onChange}>
+                    {allFloors.map(createFloorOption)}
+                </select>)}
+    }
 
-    // const Menu = withRouter(FloorDropDown)
+    const Menu = withRouter(FloorDropDown)
 
     function createFloorOption(floor) {
         return <FloorSelectorOption 
@@ -48,37 +67,30 @@ function PropertyLayout(props) {
         />
     }
 
-    // function CreateRooms(rooms) {
-    //     return <RoomLi 
-    //         category={rooms.category}
-    //         LevelId={rooms.LevelId}
-    //         Area={rooms.Area}
-    //         Number={rooms.Number}
-    //         Level={rooms.Level}
-    //         ProgramType={rooms.ProgramType}
-    //         InternalRoomCount={rooms.InternalRoomCount}
-    //         TotalOfficeNumberPercentage={rooms.TotalOfficeNumberPercentage}
-    //         Name={rooms.Name}
-    //         WorkUnit_Room={rooms.WorkUnit_Room}
-    //         PhysicalDeskCount_Room={rooms.PhysicalDeskCount_Room}
-    //         DeskCount_Room={rooms.DeskCount_Room}
-    //         HasWindow={rooms.HasWindow}
-    //         HasAV={rooms.HasAV}
-    //         outline={rooms.outline}
-    //     />
-    // }
+    function CreateRooms(rooms) {
+        return <RoomLi 
+            key={rooms['ID']}
+            id={rooms['ID']}
+            buildingName={rooms['Building Name']}
+            roomNumber={rooms['Room Number']}
+        />
+    }
 
     return (
-        <div className="card">
-            <div>
-                <h2>{props.propertyUUID} Placeholder</h2>
+        <div>
+            <div className="row">
+                <div className="column-property">
+                    <Card />
+                    <Menu />
+                </div>
+                <div className="column-data">
+                    <div>
+                        {allRooms.map(CreateRooms)}
+                    </div>
+                </div>
             </div>
-            <p>this is a {currentProperty.BuildingName}'s plan placeholder</p>
-            <select>
-                {allFloors.map(createFloorOption)}
-            </select>
         </div>
-    )  
+    ) 
 }
   
 

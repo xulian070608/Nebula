@@ -1,13 +1,28 @@
 import React from 'react';
-import HuaiHaiMall from '../../data/HuaiHaiMall_cleaned'
+import wwBuildings from '../../data/building_stats';
+import wwFloors from '../../data/floor_stats';
 
 function Room(props) {
 
-    function getSpaceInfo() {
-        // use props.spaceUUID to find the space and get the info.
+    let currentFloor = {}
+    let currentProperty = {}
+
+    // let currentRoom = {}
+    ////this is currently pending because we don't have UUID for room yet.
+
+
+    function getCurrentPropertyByFloor(floor, buildings) {
+        return buildings.find(building => building.BuildingUUID === floor['Building UUID'])
     }
 
-    const {RoomInfo : {LEVEL2 : level2_rooms}} = HuaiHaiMall
+    function getCurrentFloor(floorUUID, floors) {
+        return floors.find(floor => floor['Floor UUID'] === floorUUID)
+    }
+
+    currentFloor = getCurrentFloor(props.floorUUID, wwFloors)
+    currentProperty = getCurrentPropertyByFloor(currentFloor, wwBuildings)
+    console.log(currentProperty)
+
 
     return <div>
         <p>{props.category}</p>

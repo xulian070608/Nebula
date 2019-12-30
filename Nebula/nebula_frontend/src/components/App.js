@@ -24,11 +24,11 @@ function App() {
                                 .replace('/', '')
                     return(<PropertyOverview propertyUUID={pageID} />)
                 }}/>
-                <Route exact path="/:propertyID/planview" render={(props) => {
+                <Route exact path="/:floorID/planview" render={(props) => {
                     let pageID = props.location.pathname
                                 .replace('/planview','')
                                 .replace('/', '')
-                    return(<PropertyLayout propertyUUID={pageID} />)
+                    return(<PropertyLayout floorUUID={pageID} />)
                 }}/>
                 <Route exact path="/:roomID/spaceInfo" render={(props) => {
                     let pageID = props.location.pathname
