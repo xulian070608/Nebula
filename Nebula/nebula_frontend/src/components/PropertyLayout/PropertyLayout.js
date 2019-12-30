@@ -24,6 +24,8 @@ function PropertyLayout(props) {
 
     currentFloor = getCurrentFloor(props.floorUUID, wwFloors)
     currentProperty = getCurrentPropertyByFloor(currentFloor, wwBuildings)
+    console.log(currentProperty)
+    console.log(currentFloor)
 
     function getAllFloors(buildingUUID, floors) {
         return floors.filter(floor => floor['Building UUID'] === buildingUUID)
@@ -31,7 +33,7 @@ function PropertyLayout(props) {
 
     // should be PropertyUUID and FloorUUID, which is not available yet, use Name for now
     function getRoomsByPropertyAndFloor(propertyName, floorName, rooms) {
-        var allRoomsInProperty = rooms.filter(room => room['Building Name'] === propertyName)
+        let allRoomsInProperty = rooms.filter(room => room['Building Name'] === propertyName)
         return allRoomsInProperty.filter(roomInProperty => roomInProperty['Floor Name'] === floorName)
     }
 
@@ -69,7 +71,7 @@ function PropertyLayout(props) {
 
     function CreateRooms(rooms) {
         return <RoomLi 
-            key={rooms['ID']}
+            // key={rooms['ID']}
             id={rooms['ID']}
             buildingName={rooms['Building Name']}
             roomNumber={rooms['Room Number']}
@@ -80,6 +82,7 @@ function PropertyLayout(props) {
         <div>
             <div className="row">
                 <div className="column-property">
+                    <p> current property is {currentProperty.BuildingName} </p>
                     <Card />
                     <Menu />
                 </div>
