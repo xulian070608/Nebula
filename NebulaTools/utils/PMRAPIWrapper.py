@@ -10,7 +10,7 @@ class PMRAPIWrapper:
 
     _URL_END_POINT = "https://pmr.weworkers.io/api/v1/"
     _TOKEN = os.getenv("PMR_ACCESS_TOKEN")
-    print(_TOKEN)
+    # print(_TOKEN)
 
     def __init__(self, pmr_repo_id: str):
         self._header = {"Authorization": f"Bearer {self._TOKEN}"}
@@ -45,6 +45,7 @@ class PMRAPIWrapper:
         """
         url = posixpath.join(self._URL_END_POINT, "repositories", self.pmr_repo_id)
         payload = {"include": "branches"}
+        print("get the commit id..")
         response = requests.get(url, headers=self._header, params=payload)
 
         if response.status_code == 200:  # if request succeed
@@ -74,6 +75,7 @@ class PMRAPIWrapper:
         url = posixpath.join(self._URL_END_POINT, "commits", self.commit_id)
         headers = self._header
         payload = {"include": "blobs"}
+        print("Getting the blob id ...")
         response = requests.get(url, headers=headers, params=payload)
 
         if response.status_code == 200:
@@ -95,7 +97,7 @@ class PMRAPIWrapper:
 
         headers = self._header
         headers["Accept"] = "application/json"
-
+        print("Downloading blob json data ... ")
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
             blob = response.json()

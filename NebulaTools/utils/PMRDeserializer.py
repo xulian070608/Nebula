@@ -1,5 +1,5 @@
 import json
-from settings import revit2017
+from .settings import revit2017
 
 
 class PMRDeserializer:
@@ -101,7 +101,7 @@ class PMRDeserializer:
             return room_outline
 
     def get_ws_info(self):
-        # ws_elements = self.__get_revit_element("FamilyInstance", "FurnitureSystem")
+        #  ws_elements = self.__get_revit_element("FamilyInstance", "FurnitureSystem")
         pass
 
 
