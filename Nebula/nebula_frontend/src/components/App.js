@@ -5,7 +5,9 @@ import Footer from "./Footer";
 import Home from "./HomePage/Home";
 import PropertyOverview from "./PropertyInfo/PropertyOverview";
 import NotFount from "./NotFound";
-import PropertyPlan from "./PropertyPlan";
+import PropertyLayout from "./PropertyLayout/PropertyLayout";
+import Room from "./PropertyLayout/Room"
+
 
 
 function App() {
@@ -26,7 +28,13 @@ function App() {
                     let pageID = props.location.pathname
                                 .replace('/planview','')
                                 .replace('/', '')
-                    return(<PropertyPlan propertyUUID={pageID} />)
+                    return(<PropertyLayout propertyUUID={pageID} />)
+                }}/>
+                <Route exact path="/:roomID/spaceInfo" render={(props) => {
+                    let pageID = props.location.pathname
+                                .replace('/spaceInfo','')
+                                .replace('/', '')
+                    return(<Room number={pageID} />)
                 }}/>
                 <Route component={NotFount} />
             </Switch>

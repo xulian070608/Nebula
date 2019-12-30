@@ -17,6 +17,13 @@ function PropertyInfoPanel(props) {
         setCurrentProperty(wwBuildings.find(wwBuilding => wwBuilding.BuildingUUID === propertyUUID))
     }
 
+    // function handleSelect(event){
+    //     const {propertyUUID} = event.target;
+
+    //     setSelectedPropertyUUID(propertyUUID) 
+    //     updateProperty(propertyUUID, wwBuildings)
+    // }
+
     // this is following the example from: https://codesandbox.io/s/falling-surf-33hfs
     class DropDown extends Component {
         onChange = e => {
