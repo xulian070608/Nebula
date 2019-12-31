@@ -2,11 +2,23 @@ import React from 'react';
 import { Stage, Graphics } from '@inlet/react-pixi';
 import roomData from '../../data/LayoutSample';
 import DrawRoom from './DrawRoom'
+import AddGraphics from './DrawRoom';
 
 function DrawLayout() {
+
+  const testRoom = roomData[0]
+
   return (
     <Stage width={800} height={600} options={{ antialias: true, backgroundColor: 0xffffff }}>
-      {roomData.map(room => {
+      <Graphics 
+        draw={g => {
+          AddGraphics(g, testRoom)
+        }}
+        scale={{ x: 5, y: 5 }}
+            interactive={true}
+            buttonMode={true}
+      />
+      {/* {roomData.map(room => {
         var name = room.room_name;
         var number = room.room_number;
         var programType = room.program_type;
@@ -22,7 +34,7 @@ function DrawLayout() {
             buttonMode={true}
           />
         );
-      })}
+      })} */}
     </Stage>
   );
 }
