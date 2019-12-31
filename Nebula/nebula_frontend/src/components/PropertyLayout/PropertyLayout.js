@@ -24,8 +24,8 @@ function PropertyLayout(props) {
 
     currentFloor = getCurrentFloor(props.floorUUID, wwFloors)
     currentProperty = getCurrentPropertyByFloor(currentFloor, wwBuildings)
-    console.log(currentProperty)
-    console.log(currentFloor)
+    // console.log(currentProperty)
+    // console.log(currentFloor)
 
     function getAllFloors(buildingUUID, floors) {
         return floors.filter(floor => floor['Building UUID'] === buildingUUID)
@@ -39,7 +39,7 @@ function PropertyLayout(props) {
 
     const allFloors = getAllFloors(currentProperty.BuildingUUID, wwFloors)
     const allRooms = getRoomsByPropertyAndFloor(currentProperty.BuildingName, currentFloor['Floor Name'], wwRooms)
-    console.log(allRooms)
+    // console.log(allRooms)
 
     //set up selectedFloorUUID so that the selector item is aligned with the actual page
     const [selectedFloorUUID, setSelectedFloorUUID] = useState(allFloors[0])
@@ -71,7 +71,7 @@ function PropertyLayout(props) {
 
     function CreateRooms(rooms) {
         return <RoomLi 
-            // key={rooms['ID']}
+            key={rooms['ID']}
             id={rooms['ID']}
             buildingName={rooms['Building Name']}
             roomNumber={rooms['Room Number']}
