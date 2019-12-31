@@ -1,12 +1,12 @@
 import React, { Component, useState } from 'react';
-// import { Stage, Graphics, Polygon } from '@inlet/react-pixi';
 import { withRouter } from 'react-router-dom';
 import wwBuildings from '../../data/building_stats';
 import wwFloors from '../../data/floor_stats';
 import wwRooms from '../../data/room_stats';
 import Card from '../PropertyInfo/Card'
-import RoomLi from './RoomLi';
 import FloorSelectorOption from './FloorSelectorOption';
+import RoomLi from './RoomLi';
+import DrawLayout from './DrawLayout';
 
 
 function PropertyLayout(props) {
@@ -72,7 +72,8 @@ function PropertyLayout(props) {
     function CreateRooms(rooms) {
         return <RoomLi 
             key={rooms['ID']}
-            id={rooms['ID']}
+            // since we don't have roomUUID for now, here use "building name" + "room number" method:
+            id={rooms['Building Name'] + " - " + rooms['Room Number']}
             buildingName={rooms['Building Name']}
             roomNumber={rooms['Room Number']}
         />
@@ -85,10 +86,12 @@ function PropertyLayout(props) {
                     <p> current property is {currentProperty.BuildingName} </p>
                     <Card />
                     <Menu />
-                </div>
+                    <p>---------------------------</p>
+                    {allRooms.map(CreateRooms)}
+                </div>                 
                 <div className="column-data">
                     <div>
-                        {allRooms.map(CreateRooms)}
+                        <DrawLayout />
                     </div>
                 </div>
             </div>

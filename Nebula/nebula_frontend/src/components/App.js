@@ -34,7 +34,7 @@ function App() {
                     let pageID = props.location.pathname
                                 .replace('/spaceInfo','')
                                 .replace('/', '')
-                    return(<Room number={pageID} />)
+                    return(<Room buildingNameRoomNumber={pageID} />)
                 }}/>
                 <Route component={NotFount} />
             </Switch>

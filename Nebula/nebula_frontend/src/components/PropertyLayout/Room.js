@@ -1,45 +1,51 @@
 import React from 'react';
 import wwBuildings from '../../data/building_stats';
 import wwFloors from '../../data/floor_stats';
+import wwRooms from '../../data/room_stats';
 
 function Room(props) {
 
+    let currentRoom = {}
     let currentFloor = {}
     let currentProperty = {}
 
-    // let currentRoom = {}
-    ////this is currently pending because we don't have UUID for room yet.
+    // since we don't have roomUUID, here we use buildingName + roomNumber
+    let [currentBuildingName, currentRoomNumber] = props.buildingNameRoomNumber.split(" - ")
 
 
-    function getCurrentPropertyByFloor(floor, buildings) {
-        return buildings.find(building => building.BuildingUUID === floor['Building UUID'])
+    function getCurrentProperty(buildingName, buildings) {
+        return buildings.find(building => building.BuildingName === buildingName)
     }
 
-    function getCurrentFloor(floorUUID, floors) {
-        return floors.find(floor => floor['Floor UUID'] === floorUUID)
+    currentProperty = getCurrentProperty(currentBuildingName, wwBuildings)
+    // console.log(currentProperty)
+    
+    function getCurrentRoom(buildingName, roomNumber, rooms) {
+        let allRoomsInProperty = rooms.filter(room => room['Building Name'] === buildingName)
+        return allRoomsInProperty.find(room => room['Room Number'] === roomNumber)
     }
 
-    currentFloor = getCurrentFloor(props.floorUUID, wwFloors)
-    currentProperty = getCurrentPropertyByFloor(currentFloor, wwBuildings)
-    console.log(currentProperty)
+    currentRoom = getCurrentRoom(currentBuildingName, currentRoomNumber, wwRooms)
+    // console.log(currentRoom)
 
+    function getCurrentFloor(room, buildingName, floors) {
+        let allFloorsInProperty = floors.filter(floor => floor['Building Name'] === buildingName)
+        return allFloorsInProperty.find(floor => floor['Floor Name'] === room['Floor Name'])
+    }
+
+    currentFloor = getCurrentFloor(currentRoom, currentBuildingName, wwFloors)
+    // console.log(currentFloor)
 
     return <div>
-        <p>{props.category}</p>
-        <p>{props.levelId}</p>
-        <p>{props.area}</p>
-        <p>{props.number}</p>
-        <p>{props.level}</p>
-        <p>{props.programType}</p>
-        <p>{props.internalRoomCount}</p>
-        <p>{props.totalOfficeNumberPercentage}</p>
-        <p>{props.name}</p>
-        <p>{props.workUnit_Room}</p>
-        <p>{props.physicalDeskCount_Room}</p>
-        <p>{props.deskCount_Room}</p>
-        <p>{props.hasWindow}</p>
-        <p>{props.hasAV}</p>
-        <p>{props.outline}</p>
+        <p>Room Info</p>
+        <p>-----------------------</p>
+        <p>Building: {currentRoom['Building Name']}</p>
+        <p>Floor: {currentRoom['Floor Name']}</p>
+        <p>Program Type: {currentRoom['Current Program Type']}</p>
+        <p>Space Type: {currentRoom['Current Space Type']}</p>
+        <p>Room Number: {currentRoom['Room Number']}</p>
+        <p>Room Area (in SF): {currentRoom['Room Sf']}</p>
+        <p>Desk Count: {currentRoom['Room Desk Count']} </p>
     </div>
 }
 
