@@ -1,4 +1,4 @@
-// import { Component } from 'react';
+import React, { Component } from 'react';
 
 const colorSchema = {
   WORK: "0xabdde7",
@@ -10,24 +10,26 @@ const colorSchema = {
   WASH: "0xc3c3c3"
 };
 
-class RoomGraph {
-  constructor(name, number, programType, outline) {
-    this.name = name;
-    this.roomNumber = number;
-    this.programType = programType;
-    this.roomColor = colorSchema[programType];
-    this.roomOutline = outline;
-  }
-
-  // constructor(props) {
-  //   super(props)
-  //   this.name = props.name;
-  //   this.roomNumber = props.number;
-  //   this.programType = props.programType;
-  //   this.roomColor = colorSchema[props.programType];
-  //   this.roomOutline = props.outline
-  //   this.graphics = props.graphics
+class RoomGraph_react extends Component {
+  // constructor(name, number, programType, outline) {
+  //   this.name = name;
+  //   this.roomNumber = number;
+  //   this.programType = programType;
+  //   this.roomColor = colorSchema[programType];
+  //   this.roomOutline = outline;
   // }
+
+  constructor(props) {
+    super(props)
+    this.name = props.name;
+    this.roomNumber = props.number;
+    this.programType = props.programType;
+    this.roomColor = colorSchema[props.programType];
+    this.roomOutline = props.outline
+    this.graphics = props.graphics
+
+    this.addGraphics = this.addGraphics.bind(this)
+  }
 
   handleClick() {
     console.log("Clicked.");
@@ -68,7 +70,12 @@ class RoomGraph {
     console.log("Room Type: " + graphics.programType)
   }
 
+  render() {
+    return(
+      <div></div>
+    )
+  }
 
 }
 
-export default RoomGraph;
+export default RoomGraph_react;
