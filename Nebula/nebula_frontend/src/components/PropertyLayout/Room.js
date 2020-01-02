@@ -18,7 +18,7 @@ function Room(props) {
     }
 
     currentProperty = getCurrentProperty(currentBuildingName, wwBuildings)
-    // console.log(currentProperty)
+    console.log(currentProperty)
     
     function getCurrentRoom(buildingName, roomNumber, rooms) {
         let allRoomsInProperty = rooms.filter(room => room['Building Name'] === buildingName)
@@ -26,7 +26,7 @@ function Room(props) {
     }
 
     currentRoom = getCurrentRoom(currentBuildingName, currentRoomNumber, wwRooms)
-    // console.log(currentRoom)
+    console.log(currentRoom)
 
     function getCurrentFloor(room, buildingName, floors) {
         let allFloorsInProperty = floors.filter(floor => floor['Building Name'] === buildingName)
@@ -34,7 +34,7 @@ function Room(props) {
     }
 
     currentFloor = getCurrentFloor(currentRoom, currentBuildingName, wwFloors)
-    // console.log(currentFloor)
+    console.log(currentFloor)
 
     return <div>
         <p>Room Info</p>

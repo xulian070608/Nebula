@@ -11,32 +11,37 @@ const colorSchema = {
 };
 
 class RoomGraph {
+  
   constructor(name, number, programType, outline) {
+    // this.key = key;
     this.name = name;
     this.roomNumber = number;
     this.programType = programType;
     this.roomColor = colorSchema[programType];
     this.roomOutline = outline;
+
+    this.isClicked = false
+    this.isMouseMoveOver = false
   }
 
-  // constructor(props) {
-  //   super(props)
-  //   this.name = props.name;
-  //   this.roomNumber = props.number;
-  //   this.programType = props.programType;
-  //   this.roomColor = colorSchema[props.programType];
-  //   this.roomOutline = props.outline
-  //   this.graphics = props.graphics
+  // handleClick(e) {
+  //   this.isClicked = true
+  //   alert("state is: " + this.isClicked)
+  //   console.log(e.target.lineStyle)
+  //   e.target.setTransform(0,0,2,2,30,0,0,0,0)
   // }
 
-  handleClick() {
-    console.log("Clicked.");
-    alert("this is a test message.")
-  }
+  // handleMouseMoveOver() {
+  //   this.isMouseMoveOver = true
+  //   // console.log("Mouse moves over.")
+  //   // console.log("isMouseMoveOver: " + this.isMouseMoveOver)
+  // }
 
-  handleMouseMoveOver() {
-    console.log("Mouse move over.")
-  }
+  // handleMouseMoveOut() {
+  //   this.isMouseMoveOver = false
+  //   // console.log("Mouse moves out.")
+  //   // console.log("isMouseMoveOver: " + this.isMouseMoveOver)
+  // }
 
   addGraphics(graphics) {
     graphics.name = this.name;
@@ -44,6 +49,7 @@ class RoomGraph {
     graphics.programType = this.programType;
     graphics.on("click", this.handleClick);
     graphics.on("mouseover", this.handleMouseMoveOver)
+    graphics.on("mouseout", this.handleMouseMoveOut)
 
     var extPath = this.roomOutline.primary[0].split(", ").map(Number);
     var numberOfHoles = this.roomOutline.hole.length;
@@ -63,11 +69,7 @@ class RoomGraph {
         .drawPolygon(extPath)
         .endFill();
     }
-    console.log("Room Name: " + graphics.name)
-    console.log("Room Room#: " + graphics.roomNumber)
-    console.log("Room Type: " + graphics.programType)
   }
-
 
 }
 
