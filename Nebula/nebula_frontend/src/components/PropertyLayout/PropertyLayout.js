@@ -7,9 +7,15 @@ import Card from '../PropertyInfo/Card'
 import FloorSelectorOption from './FloorSelectorOption';
 import RoomLi from './RoomLi';
 import DrawLayout from './DrawLayout';
+import RoomInfoModal from './Modal/RoomInfoModal'
 
 
 function PropertyLayout(props) {
+
+    let [showState, setShowState] = useState(false)
+    function showModal () {
+        setShowState(true)
+    }
 
     let currentFloor = {}
     let currentProperty = {}
@@ -91,38 +97,17 @@ function PropertyLayout(props) {
                 </div>                 
                 <div className="column-data">
                     <div>
-                        <DrawLayout />
+                        {/* <DrawLayout 
+                            currentProperty={currentProperty}
+                            currentFloor={currentFloor}
+                        /> */}
+                        <RoomInfoModal show={showState}/>
+                        <button onClick={() => showModal()}>Show Modal</button>
                     </div>
                 </div>
             </div>
         </div>
     ) 
 }
-  
-
-    // const {RoomInfo : {LEVEL2 : level2_rooms}} = HuaiHaiMall
-    // const testPolygon = [
-    //     30.16732283464587, 54.051835963832076,
-    //     30.167322834645844, 39.61614173228355,
-    //     38.61548556430391, 39.61614173228352,
-    //     38.61548556430391, 40.9284776902887,
-    //     38.61548556430392, 43.684383202099795,
-    //     40.255905511806446, 43.68438320209979
-    // ]
-
-    // return (
-    //     <Stage width={900} height={900} options={{ antialias: true, backgroundColor: 0xeef1f5 }}>
-    //         <Graphics 
-    //             preventRedraw={true}
-    //             draw={ g => {
-
-    //                 g.lineStyle(2, 0xFEEB77, 1)
-    //                 g.beginFill(0x650A5A)
-    //                 g.drawPolygon(testPolygon)
-    //                 g.endFill()
-    //             }}
-    //         />      
-    //     </Stage>
-    // )
 
 export default PropertyLayout;

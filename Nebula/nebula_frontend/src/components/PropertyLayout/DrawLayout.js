@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
-import { Stage, Graphics, Container } from '@inlet/react-pixi';
+import React from 'react';
+import { Stage, Container} from '@inlet/react-pixi';
+import { BrowserRouter as Router, Link } from 'react-router-dom'
+import makeId from '../Utils/makeId'
 import roomData from '../../data/LayoutSample';
-import RoomGraph from './DrawRoom'
-import RoomGraph_react from './DrawRoom_react'
+// import RoomGraph from './DrawRoom'
+import RoomGraphReact from './DrawRoomReact'
 
-function DrawLayout() {
+function DrawLayout(props) {
+
+  // when we have realdata, we need these followings to determine what to draw
+  // let currentProperty = props.currentProperty
+  // let currentFloor = props.currentFloor
 
   function drawLayout(roomData) {
     return (
       roomData.map(room => {
         return (
-          <RoomGraph_react 
+          <RoomGraphReact 
+          key={makeId(8)}
           name={room.room_name}
           roomNumber={room.room_number}
           programType={room.program_type}

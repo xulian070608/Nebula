@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import {Graphics} from '@inlet/react-pixi'
 
 const colorSchema = {
@@ -11,7 +11,7 @@ const colorSchema = {
   WASH: "0xc3c3c3"
 };
 
-const RoomGraph_react = props => {
+const RoomGraphReact = props => {
   const [roomColor, setRoomColor] = useState(colorSchema[props.programType]);
   // const [currentHoverOver, setCurrentHoverOver] = useState(false)
 
@@ -26,6 +26,11 @@ const RoomGraph_react = props => {
       scale={{ x: 5, y: 5 }}
       pointerover={() => setRoomColor("0xff3333")}
       pointerout={() => setRoomColor(colorSchema[props.programType])}
+      //onChange = e => {
+      //   updateProperty(e.target.value, wwBuildings)
+      //   setSelectedPropertyUUID(e.target.value)
+      //   this.props.history.push(`/${e.target.value}/summary`)
+      // };
       draw={g => {
         if (numberOfHoles > 0) {
           g.beginFill(roomColor, 1)
@@ -46,4 +51,4 @@ const RoomGraph_react = props => {
   );
 };
 
-export default RoomGraph_react;
+export default RoomGraphReact;
