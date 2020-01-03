@@ -22,14 +22,14 @@ function RoomInfoModal (props) {
     // currentRoom = getCurrentRoom(currentBuildingName, currentRoomNumber, wwRooms)
     // console.log(currentRoom)
 
-    const [modal, setModal] = useState(props.show);
+    const [modal, setModal] = useState(props.showModal);
     const toggle = () => setModal(!modal);
 
     function onClose(e){
         return props.onClose && props.onClose(e);
     };
     
-    return props.show ? (
+    return props.showModal ? (
         <div>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}> Room Info </ModalHeader>
@@ -43,7 +43,6 @@ function RoomInfoModal (props) {
                 <ModalFooter> Modal </ModalFooter>
             </Modal>
         </div>
-
         ) : null 
     
 }

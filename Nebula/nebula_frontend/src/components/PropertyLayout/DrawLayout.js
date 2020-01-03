@@ -1,10 +1,8 @@
 import React from 'react';
 import { Stage, Container} from '@inlet/react-pixi';
-import { BrowserRouter as Router, Link } from 'react-router-dom'
 import makeId from '../Utils/makeId'
 import roomData from '../../data/LayoutSample';
-// import RoomGraph from './DrawRoom'
-import RoomGraphReact from './DrawRoomReact'
+import RoomGraph from './DrawRoom'
 
 function DrawLayout(props) {
 
@@ -16,12 +14,13 @@ function DrawLayout(props) {
     return (
       roomData.map(room => {
         return (
-          <RoomGraphReact 
+          <RoomGraph 
           key={makeId(8)}
           name={room.room_name}
           roomNumber={room.room_number}
           programType={room.program_type}
           roomOutline={JSON.parse(room.outline)}
+          toggleModalState={props.toggleModalState}
           />
         )}))
   }
@@ -33,7 +32,6 @@ function DrawLayout(props) {
           {drawLayout(roomData)}
         </Container>
       </Stage>
-      <button> Show Current Room </button>
     </div>
   );
 }

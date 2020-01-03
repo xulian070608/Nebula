@@ -14,9 +14,9 @@ import Room from './Room';
 
 function PropertyLayout(props) {
 
-    let [showState, setShowState] = useState(false)
-    function toggleShowState () {
-        setShowState(!showState)
+    let [modalState, setModalState] = useState(false)
+    function toggleModalState () {
+        setModalState(!modalState)
     }
 
     let currentFloor = {}
@@ -81,6 +81,7 @@ function PropertyLayout(props) {
         return <RoomLi 
             key={rooms['ID']}
             // since we don't have roomUUID for now, here use "building name" + "room number" method:
+            
             id={rooms['Building Name'] + " - " + rooms['Room Number']}
             buildingName={rooms['Building Name']}
             roomNumber={rooms['Room Number']}
@@ -99,19 +100,24 @@ function PropertyLayout(props) {
                 </Col>               
                 <Col>
                     <div className="App">
-                        {/* <DrawLayout 
+                        <DrawLayout 
                             currentProperty={currentProperty}
                             currentFloor={currentFloor}
-                        /> */}
-                        <button 
-                        className="toggle-button"
-                        onClick={() => toggleShowState()}
-                        >Show Modal</button>
-                        {showState ? 
+                            //passing this prop all the way to DrawRoom
+                            toggleModalState={toggleModalState}
+                        />
+                        {modalState ? 
                         <RoomInfoModal 
-                        show={showState} 
-                        onClose={toggleShowState}/> 
+                        showModal={modalState} /> 
                         : null}
+                        {/* <button 
+                        className="toggle-button"
+                        onClick={() => toggleModalState()}
+                        >Show Modal</button>
+                        <button 
+                        onClick={() => 
+                        console.log("modalState is: " + modalState)}
+                        > Show Modal State </button> */}
                     </div>
                 </Col>
             </Row>

@@ -1,4 +1,5 @@
-// import { Component } from 'react';
+import React, { useState } from 'react';
+import {Graphics} from '@inlet/react-pixi'
 
 const colorSchema = {
   WORK: "0xabdde7",
@@ -10,67 +11,43 @@ const colorSchema = {
   WASH: "0xc3c3c3"
 };
 
-class RoomGraph {
-  
-  constructor(name, number, programType, outline) {
-    // this.key = key;
-    this.name = name;
-    this.roomNumber = number;
-    this.programType = programType;
-    this.roomColor = colorSchema[programType];
-    this.roomOutline = outline;
+const RoomGraph = props => {
+  const [roomColor, setRoomColor] = useState(colorSchema[props.programType]);
+  const [modalState, setModalState] = useState(props.modalState)
+  // const [currentHoverOver, setCurrentHoverOver] = useState(false)
 
-    this.isClicked = false
-    this.isMouseMoveOver = false
-  }
+  const extPath = props.roomOutline.primary[0].split(", ").map(Number);
+  const numberOfHoles = props.roomOutline.hole.length;
 
-  // handleClick(e) {
-  //   this.isClicked = true
-  //   alert("state is: " + this.isClicked)
-  //   console.log(e.target.lineStyle)
-  //   e.target.setTransform(0,0,2,2,30,0,0,0,0)
-  // }
-
-  // handleMouseMoveOver() {
-  //   this.isMouseMoveOver = true
-  //   // console.log("Mouse moves over.")
-  //   // console.log("isMouseMoveOver: " + this.isMouseMoveOver)
-  // }
-
-  // handleMouseMoveOut() {
-  //   this.isMouseMoveOver = false
-  //   // console.log("Mouse moves out.")
-  //   // console.log("isMouseMoveOver: " + this.isMouseMoveOver)
-  // }
-
-  addGraphics(graphics) {
-    graphics.name = this.name;
-    graphics.roomNumber = this.roomNumber;
-    graphics.programType = this.programType;
-    graphics.on("click", this.handleClick);
-    graphics.on("mouseover", this.handleMouseMoveOver)
-    graphics.on("mouseout", this.handleMouseMoveOut)
-
-    var extPath = this.roomOutline.primary[0].split(", ").map(Number);
-    var numberOfHoles = this.roomOutline.hole.length;
-    if (numberOfHoles > 0) {
-      graphics
-        .beginFill(this.roomColor, 1)
-        .drawPolygon(extPath)
-        .endFill();
-      for (var i = 0; i < numberOfHoles; i++) {
-        graphics.beginHole();
-        var intPath = this.roomOutline.hole[i].split(", ").map(Number);
-        graphics.drawPolygon(intPath);
+  return (
+    <Graphics
+      {...props}
+      interactive={true}
+      buttonMode={true}
+      scale={{ x: 5, y: 5 }}
+      pointerover={() => setRoomColor("0xfe9801")}
+      pointerout={() => setRoomColor(colorSchema[props.programType])}
+      pointerdown={() => 
+        props.toggleModalState(true)
       }
-    } else {
-      graphics
-        .beginFill(this.roomColor, 1)
-        .drawPolygon(extPath)
-        .endFill();
-    }
-  }
-
-}
+      draw={g => {
+        if (numberOfHoles > 0) {
+          g.beginFill(roomColor, 1)
+            .drawPolygon(extPath)
+            .endFill();
+          for (var i = 0; i < numberOfHoles; i++) {
+            g.beginHole();
+            var intPath = props.roomOutline.hole[i].split(", ").map(Number);
+            g.drawPolygon(intPath);
+          }
+        } else {
+          g.beginFill(roomColor, 1)
+            .drawPolygon(extPath)
+            .endFill();
+        }
+      }}
+    />
+  );
+};
 
 export default RoomGraph;
