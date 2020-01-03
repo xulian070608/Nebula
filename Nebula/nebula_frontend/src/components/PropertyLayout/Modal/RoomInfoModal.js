@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 // import wwRooms from '../../../data/room_stats'
+import {
+    Button,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+  } from "reactstrap";
 
 function RoomInfoModal (props) {
 
@@ -15,30 +22,30 @@ function RoomInfoModal (props) {
     // currentRoom = getCurrentRoom(currentBuildingName, currentRoomNumber, wwRooms)
     // console.log(currentRoom)
 
-    function onClose() {
-      return props.show = false;
+    const [modal, setModal] = useState(props.show);
+    const toggle = () => setModal(!modal);
+
+    function onClose(e){
+        return props.onClose && props.onClose(e);
     };
     
-    if(!props.show) {
-        return null
-    } else {
-        return <div>
-            <p>Room Info</p>
-            <p>-----------------------</p>
-            {/* <p>Building: {currentRoom['Building Name']}</p>
-            <p>Floor: {currentRoom['Floor Name']}</p>
-            <p>Program Type: {currentRoom['Current Program Type']}</p>
-            <p>Space Type: {currentRoom['Current Space Type']}</p>
-            <p>Room Number: {currentRoom['Room Number']}</p>
-            <p>Room Area (in SF): {currentRoom['Room Sf']}</p>
-            <p>Desk Count: {currentRoom['Room Desk Count']} </p> */}
-            <div>
-                <button onClose={onClose}>
-                    Close
-                </button>
-            </div>
+    return props.show ? (
+        <div>
+            <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}> Room Info </ModalHeader>
+                <ModalBody>
+                    Lorem ipsum dolor sit amet, 
+                    consectetur adipisicing elit. Nobis deserunt corrupti, 
+                    ut fugit magni qui quasi nisi amet repellendus non fuga 
+                    omnis a sed impedit explicabo accusantium nihil doloremque 
+                    consequuntur.
+                </ModalBody>
+                <ModalFooter> Modal </ModalFooter>
+            </Modal>
         </div>
-    }
+
+        ) : null 
+    
 }
 
 export default RoomInfoModal

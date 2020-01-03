@@ -121,6 +121,7 @@ form button {
   width: 40%;
 }
 .column-data {
+  position: fixed;
   float: right;
   width: 60%;
 }

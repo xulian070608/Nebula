@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 // import axios from "axios";
+import { Container, Row, Col } from 'reactstrap';
 import Card from "./Card";
 import PropertyInfoPanel from "./PropertyInfoPanel";
 import wwBuildings from "../../data/building_stats"
@@ -18,14 +19,13 @@ function PropertyOverview(props) {
     getCurrentProperty(propertyUUID, wwBuildings)
 
     return (
-        <div>
-            <div className="row">
-                <div className="column-property">
+        <Container>
+            <Row>
+                <Col>
                     <PropertyInfoPanel 
-                    currentProperty = {currentProperty}
-                    />
-                </div>
-                <div className="column-data">
+                    currentProperty = {currentProperty}/>
+                </Col>
+                <Col>
                     {/* <button onClick={loadData}>Load Data</button>
                     <div>{JSON.stringify(data)}</div> */}
                     <div className="row">
@@ -39,9 +39,9 @@ function PropertyOverview(props) {
                     <Card />
                     <Card />
                     <Card />
-                </div>
-            </div>
-        </div>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

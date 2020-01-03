@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Row, Col } from 'reactstrap';
 import PropertyLi from './PropertyLi';
 import wwBuildings from "../../data/building_stats"
 
@@ -12,9 +13,16 @@ function Home () {
     }
 
     return (
-        <ul>
-            {wwBuildings.map(CreatePropertyLi)}
-        </ul>
+        <Container>
+            <Row>
+                <Col>
+                <ul>
+                    {wwBuildings.map(CreatePropertyLi)}
+                </ul>
+                </Col>
+            </Row>
+        </Container>
+        
     )
 }
 

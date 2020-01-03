@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react';
+import { Container, Row, Col } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import wwBuildings from '../../data/building_stats';
 import wwFloors from '../../data/floor_stats';
@@ -8,13 +9,14 @@ import FloorSelectorOption from './FloorSelectorOption';
 import RoomLi from './RoomLi';
 import DrawLayout from './DrawLayout';
 import RoomInfoModal from './Modal/RoomInfoModal'
+import Room from './Room';
 
 
 function PropertyLayout(props) {
 
     let [showState, setShowState] = useState(false)
-    function showModal () {
-        setShowState(true)
+    function toggleShowState () {
+        setShowState(!showState)
     }
 
     let currentFloor = {}
@@ -86,27 +88,34 @@ function PropertyLayout(props) {
     }
 
     return (
-        <div>
-            <div className="row">
-                <div className="column-property">
+        <Container>
+            <Row>
+                <Col>
                     <p> current property is {currentProperty.BuildingName} </p>
                     <Card />
                     <Menu />
                     <p>---------------------------</p>
                     {allRooms.map(CreateRooms)}
-                </div>                 
-                <div className="column-data">
-                    <div>
+                </Col>               
+                <Col>
+                    <div className="App">
                         {/* <DrawLayout 
                             currentProperty={currentProperty}
                             currentFloor={currentFloor}
                         /> */}
-                        <RoomInfoModal show={showState}/>
-                        <button onClick={() => showModal()}>Show Modal</button>
+                        <button 
+                        className="toggle-button"
+                        onClick={() => toggleShowState()}
+                        >Show Modal</button>
+                        {showState ? 
+                        <RoomInfoModal 
+                        show={showState} 
+                        onClose={toggleShowState}/> 
+                        : null}
                     </div>
-                </div>
-            </div>
-        </div>
+                </Col>
+            </Row>
+        </Container>
     ) 
 }
 
