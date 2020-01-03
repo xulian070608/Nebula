@@ -7,9 +7,6 @@ import PropertyOverview from "./PropertyInfo/PropertyOverview";
 import NotFount from "./NotFound";
 import PropertyLayout from "./PropertyLayout/PropertyLayout";
 import Room from "./PropertyLayout/Room"
-import RoomInfoModal from './PropertyLayout/Modal/RoomInfoModal'
-
-
 
 function App() {
 

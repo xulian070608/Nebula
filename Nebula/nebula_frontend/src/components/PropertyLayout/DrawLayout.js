@@ -1,11 +1,14 @@
 import React from 'react';
 import { Stage, Container} from '@inlet/react-pixi';
+import * as PIXI from 'pixi.js'
 import makeId from '../Utils/makeId'
 import roomData from '../../data/LayoutSample';
 import RoomGraph from './DrawRoom'
 
 function DrawLayout(props) {
 
+  PIXI.utils.skipHello()
+  
   // when we have realdata, we need these followings to determine what to draw
   // let currentProperty = props.currentProperty
   // let currentFloor = props.currentFloor

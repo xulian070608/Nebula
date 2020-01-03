@@ -12,8 +12,8 @@ const colorSchema = {
 };
 
 const RoomGraph = props => {
+
   const [roomColor, setRoomColor] = useState(colorSchema[props.programType]);
-  const [modalState, setModalState] = useState(props.modalState)
   // const [currentHoverOver, setCurrentHoverOver] = useState(false)
 
   const extPath = props.roomOutline.primary[0].split(", ").map(Number);
@@ -28,7 +28,7 @@ const RoomGraph = props => {
       pointerover={() => setRoomColor("0xfe9801")}
       pointerout={() => setRoomColor(colorSchema[props.programType])}
       pointerdown={() => 
-        props.toggleModalState(true)
+        props.toggleModalState()
       }
       draw={g => {
         if (numberOfHoles > 0) {

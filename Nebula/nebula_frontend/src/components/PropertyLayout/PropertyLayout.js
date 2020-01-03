@@ -9,15 +9,12 @@ import FloorSelectorOption from './FloorSelectorOption';
 import RoomLi from './RoomLi';
 import DrawLayout from './DrawLayout';
 import RoomInfoModal from './Modal/RoomInfoModal'
-import Room from './Room';
 
 
 function PropertyLayout(props) {
 
     let [modalState, setModalState] = useState(false)
-    function toggleModalState () {
-        setModalState(!modalState)
-    }
+    const toggleModalState = () => {setModalState(!modalState)}
 
     let currentFloor = {}
     let currentProperty = {}
@@ -81,10 +78,11 @@ function PropertyLayout(props) {
         return <RoomLi 
             key={rooms['ID']}
             // since we don't have roomUUID for now, here use "building name" + "room number" method:
-            
             id={rooms['Building Name'] + " - " + rooms['Room Number']}
             buildingName={rooms['Building Name']}
             roomNumber={rooms['Room Number']}
+            //passing this prop all the way to RoomLi
+            toggleModalState={toggleModalState}
         />
     }
 
@@ -112,7 +110,7 @@ function PropertyLayout(props) {
                         : null}
                         {/* <button 
                         className="toggle-button"
-                        onClick={() => toggleModalState()}
+                        onClick={toggleModalState}
                         >Show Modal</button>
                         <button 
                         onClick={() => 

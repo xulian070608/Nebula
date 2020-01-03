@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 // import wwRooms from '../../../data/room_stats'
 import {
-    Button,
     Modal,
     ModalHeader,
     ModalBody,
@@ -24,10 +23,6 @@ function RoomInfoModal (props) {
 
     const [modal, setModal] = useState(props.showModal);
     const toggle = () => setModal(!modal);
-
-    function onClose(e){
-        return props.onClose && props.onClose(e);
-    };
     
     return props.showModal ? (
         <div>

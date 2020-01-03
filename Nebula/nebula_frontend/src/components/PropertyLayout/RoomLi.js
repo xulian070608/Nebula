@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import { Link } from 'react-router-dom';
-import RoomInfoModal from './Modal/RoomInfoModal'
 
 function RoomLi(props) {
+
+    function showModal () {
+        return props.toggleModalState(true)
+    }
 
     // use props.Number as UUID for testing.
     return <div>
         {/* <Link to={`/${props.id}/spaceInfo`}>{props.buildingName} : {props.roomNumber}</Link> */}
-        <p>{props.roomNumber} : {props.buildingName}</p>
-        {/* <a onClick={setModalState(true)}>{props.buildingName} : {props.roomNumber}</a> */}
+        {/* <p>{props.roomNumber} : {props.buildingName}</p> */}
+        <p onClick={showModal}>{props.buildingName} : {props.roomNumber}</p>
     </div>
 }
 
