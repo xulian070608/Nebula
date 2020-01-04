@@ -17,12 +17,30 @@ class CreateMap extends Component {
     }
 
     componentDidMount() {
+
         const map = new mapboxgl.Map({
         container: this.mapContainer,
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [this.state.lng, this.state.lat],
         zoom: this.state.zoom
         });
+
+        //somehow this deconstruction is not working...
+        const {lng, lat, zoom} = this.props.newCoordinates
+        // const newCoordinates = [lng, lat, zoom]
+        // console.log(newCoordinates)
+            
+        // map.jumpTo({center: newCoordinates})
+
+        //This is a test to triger this.setState:
+        // map.on('click', () => {
+        //     this.setState({
+        //     lng: this.props.newCoordinates.lng,
+        //     lat: this.props.newCoordinates.lat,
+        //     zoom: this.props.newCoordinates.zoom
+        //     });
+        // });
+        
 
         map.on('move', () => {
             this.setState({
