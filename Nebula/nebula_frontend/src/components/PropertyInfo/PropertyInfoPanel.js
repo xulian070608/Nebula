@@ -4,6 +4,7 @@ import PropertyInfoSummary from './PropertyInfoSummary';
 import wwBuildings from '../../data/building_stats';
 import wwFloors from '../../data/floor_stats';
 import { Link, withRouter } from 'react-router-dom';
+import { Col } from 'reactstrap';
 
 function PropertyInfoPanel(props) {
 
@@ -39,7 +40,10 @@ function PropertyInfoPanel(props) {
         
         render() {
             return (
-                <select value={selectedPropertyUUID} onChange={this.onChange}>
+                <select 
+                value={selectedPropertyUUID} 
+                onChange={this.onChange}
+                style={{fontSize: "0.5rem"}}>
                     {wwBuildings.map(createOption)}
                 </select>)}
     }
@@ -55,22 +59,23 @@ function PropertyInfoPanel(props) {
     }
 
     return <div>
-        <h2>{currentProperty.BuildingName}</h2>
-        <img className="card" src="/img/img_001.jpg" alt="project quickview"/>
-        <Link to={`/${allFloor[0]['Floor UUID']}/planview`}>property Plan</Link>
-        <p></p>
-        Select Property to get start:
-        <p></p>
-        <Menu />
-        <PropertyInfoSummary 
-            buildingName={currentProperty.BuildingName}
-            buildingAddress={currentProperty.BuildingAddress}
-            buildingTerritory={currentProperty.BuildingTerritory}
-            buildingUUID={currentProperty.BuildingUUID}
-            buildingUSF={currentProperty.BuildingUSF}
-            buildingDeskCount={currentProperty.BuildingDeskCount}
-            buildingRoomCount={currentProperty.BuildingRoomCount}
-        />
+        <Col>
+            <h2>{currentProperty.BuildingName}</h2>
+            <img className="property-img" src="/img/img_001.jpg" alt="project quickview"/>  
+            <Link to={`/${allFloor[0]['Floor UUID']}/planview`}>property Plan</Link>
+            <p></p>
+            <Menu />
+            <p></p>
+            <PropertyInfoSummary 
+                //buildingName={currentProperty.BuildingName}
+                buildingAddress={currentProperty.BuildingAddress}
+                buildingTerritory={currentProperty.BuildingTerritory}
+                buildingUUID={currentProperty.BuildingUUID}
+                buildingUSF={currentProperty.BuildingUSF}
+                buildingDeskCount={currentProperty.BuildingDeskCount}
+                buildingRoomCount={currentProperty.BuildingRoomCount}
+            />
+        </Col>
     </div>
 }
 

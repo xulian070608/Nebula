@@ -25,7 +25,7 @@ function RoomInfoModal (props) {
     const toggle = () => setModal(!modal);
     
     return props.showModal ? (
-        <div>
+        <div style={{zIndex: "100"}}>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}> Room Info </ModalHeader>
                 <ModalBody>

@@ -89,14 +89,14 @@ function PropertyLayout(props) {
     return (
         <Container>
             <Row>
-                <Col>
+                <Col xs="4 content-offset" id="property-infopanel-left">
                     <p> current property is {currentProperty.BuildingName} </p>
                     <Card />
                     <Menu />
                     <p>---------------------------</p>
                     {allRooms.map(CreateRooms)}
                 </Col>               
-                <Col>
+                <Col xs="8 offset-4 content-offset" id="property-infopanel-right">
                     <div className="App">
                         <DrawLayout 
                             currentProperty={currentProperty}
@@ -108,14 +108,6 @@ function PropertyLayout(props) {
                         <RoomInfoModal 
                         showModal={modalState} /> 
                         : null}
-                        {/* <button 
-                        className="toggle-button"
-                        onClick={toggleModalState}
-                        >Show Modal</button>
-                        <button 
-                        onClick={() => 
-                        console.log("modalState is: " + modalState)}
-                        > Show Modal State </button> */}
                     </div>
                 </Col>
             </Row>

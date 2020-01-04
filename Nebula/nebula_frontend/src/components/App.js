@@ -11,9 +11,9 @@ import Room from "./PropertyLayout/Room"
 function App() {
 
     return <div>
-        <Header header="Nebula"/>
         <Router>
-            <Link to="/">Home</Link>
+            <Header header="Nebula"/>
+            <div className="content-offset"/>
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/:propertyID/summary" render={(props) => {

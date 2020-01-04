@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function PropertyLi (props) {
 
     return (
-        <Link to={`/${props.propertyID}/summary`}>
-            <li>{props.propertyName}</li>
-        </Link>     
+        <div>
+            <NavLink to={`/${props.propertyID}/summary`} activeStyle={{textDecoration: "none"}}>
+                <a>{props.propertyName}</a>
+            </NavLink> 
+        </div>    
     )
 }
 

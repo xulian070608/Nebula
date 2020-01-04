@@ -1,9 +1,12 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Header(props) {
   return (
     <header>
-      <h1>{props.header}</h1>
+      <NavLink to="/" activeStyle={{textDecoration: "none"}}>
+        <h1>{props.header}</h1>
+      </NavLink>
     </header>
   );
 }

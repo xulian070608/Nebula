@@ -19,26 +19,44 @@ function PropertyOverview(props) {
     getCurrentProperty(propertyUUID, wwBuildings)
 
     return (
-        <Container>
+        <Container id="property-overview">
             <Row>
-                <Col>
+                <Col xs="4 content-offset" id="property-infopanel-left">
                     <PropertyInfoPanel 
+                    style={{backgroundColor: "0xffd26a"}}
                     currentProperty = {currentProperty}/>
                 </Col>
-                <Col>
+                <Col xs="8 offset-4 content-offset" id="property-infopanel-right">
                     {/* <button onClick={loadData}>Load Data</button>
                     <div>{JSON.stringify(data)}</div> */}
                     <div className="row">
-                        <div className="column-50">
+                        <Col>
                             <Card />
-                        </div>
-                        <div className="column-50">
+                        </Col>
+                        <Col>
                             <Card />
-                        </div>
+                        </Col>
                     </div>
-                    <Card />
-                    <Card />
-                    <Card />
+                    <div className="row">
+                        <Col>
+                            <Card />
+                        </Col>
+                    </div>
+                    <div className="row">
+                        <Col>
+                            <Card />
+                        </Col>
+                    </div>
+                    <div className="row">
+                        <Col>
+                            <Card />
+                        </Col>
+                    </div>
+                    <div className="row">
+                        <Col>
+                            <Card />
+                        </Col>
+                    </div>
                 </Col>
             </Row>
         </Container>
