@@ -1,0 +1,70 @@
+{
+  "type": "FeatureCollection",
+  "features": [{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": "[-77.032, 38.913]"
+      },
+      "properties": {
+        "title": "Mapbox",
+        "description": "Washington, D.C."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": "[23.124661, 113.314624]"
+      },
+      "properties": {
+        "title": "Nebula",
+        "description": "293 Guangzhou Middle Avenue"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": "[30.235146, 120.20917]"
+      },
+      "properties": {
+        "title": "Mapbox",
+        "description": "Mingzhu International Business Center"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": "[22.28017, 114.183872]"
+      },
+      "properties": {
+        "title": "Nebula",
+        "description": "Hysan Place"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": "[22.298115, 114.168036]"
+      },
+      "properties": {
+        "title": "Nebula",
+        "description": "Sun Life Tower"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": "[22.315605, 114.21457]"
+      },
+      "properties": {
+        "title": "Nebula",
+        "description": "The Quayside"
+      }
+    }
+  ]
+}

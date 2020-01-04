@@ -90,7 +90,7 @@ function PropertyLayout(props) {
         <Container>
             <Row>
                 <Col xs="4 content-offset" id="property-infopanel-left">
-                    <p> current property is {currentProperty.BuildingName} </p>
+                    <p> current property is {currentProperty.MarketingName} </p>
                     <Card />
                     <Menu />
                     <p>---------------------------</p>

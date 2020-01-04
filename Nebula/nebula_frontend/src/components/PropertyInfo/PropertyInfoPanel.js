@@ -53,14 +53,14 @@ function PropertyInfoPanel(props) {
     function createOption(wwBuildings) {
         return <PropertySelectorOption 
         key={wwBuildings.BuildingUUID}
-        name={wwBuildings.BuildingName} 
+        name={wwBuildings.MarketingName} 
         value={wwBuildings.BuildingUUID}
         />
     }
 
     return <div>
         <Col>
-            <h2>{currentProperty.BuildingName}</h2>
+            <h2>{currentProperty.MarketingName}</h2>
             <img className="property-img" src="/img/img_001.jpg" alt="project quickview"/>  
             <Link to={`/${allFloor[0]['Floor UUID']}/planview`}>property Plan</Link>
             <p></p>

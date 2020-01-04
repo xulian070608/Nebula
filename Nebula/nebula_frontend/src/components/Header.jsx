@@ -5,7 +5,8 @@ function Header(props) {
   return (
     <header>
       <NavLink to="/" activeStyle={{textDecoration: "none"}}>
-        <h1>{props.header}</h1>
+        <img className="logo-img" src="/img/nebula_01_white_text.png" alt="project quickview" />
+        {/* <h1>{props.header}</h1> */}
       </NavLink>
     </header>
   );
