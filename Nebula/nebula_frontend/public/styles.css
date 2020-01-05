@@ -179,3 +179,18 @@ form button {
   clear: both;
 }
 
+.rangeslider{
+  width: 100%;
+  }
+
+.myslider {
+  -webkit-appearance: none;
+  background: #FCF3CF  ;
+  width: 50%;
+  height: 20px;
+  opacity: 2;
+  }
+
+.myslider:hover {
+  opacity: 1;
+}

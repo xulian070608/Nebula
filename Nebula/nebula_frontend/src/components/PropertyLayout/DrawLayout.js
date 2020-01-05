@@ -33,6 +33,8 @@ function DrawLayout(props) {
       <Stage width={800} height={600} options={{ antialias: true, backgroundColor: 0xffffff }}>
         <Container sortableChildren={true}>
           {drawLayout(roomData)}
+          {/* //only draw selected room:
+          {drawLayout([props.selectedRoom])} */}
         </Container>
       </Stage>
     </div>

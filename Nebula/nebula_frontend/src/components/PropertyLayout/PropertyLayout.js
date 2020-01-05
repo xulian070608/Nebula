@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import wwBuildings from '../../data/building_stats';
 import wwFloors from '../../data/floor_stats';
 import wwRooms from '../../data/room_stats';
+import roomData from '../../data/LayoutSample';
 import Card from '../PropertyInfo/Card'
 import FloorSelectorOption from './FloorSelectorOption';
 import RoomLi from './RoomLi';
@@ -86,12 +87,33 @@ function PropertyLayout(props) {
         />
     }
 
+    //this part is for debugging and improving the performance
+
+    let [selectedRoom, setSelectedRoom] = useState({room_number : "not selected yet"})
+
+    const handleRoomSelection = (e) => setSelectedRoom(roomData.find(room => room.room_number === e.target.value))
+
+    const createRoomOption = (room) => {
+        return <option value={room.room_number}>{room.room_number} - {room.room_name}</option>
+    }
+
+    function chooseRoom(rooms) {
+        return (
+            <select 
+                value={selectedRoom.room_number}
+                onChange={handleRoomSelection}>
+                    {rooms.map(createRoomOption)}
+                </select>
+    )}     
+
     return (
         <Container>
             <Row>
                 <Col xs="4 content-offset" id="property-infopanel-left">
                     <p> current property is {currentProperty.MarketingName} </p>
                     <Card />
+                    <button onClick={console.log({selectedRoom})}/>
+                    {chooseRoom(roomData)}
                     <Menu />
                     <p>---------------------------</p>
                     {allRooms.map(CreateRooms)}
@@ -101,6 +123,7 @@ function PropertyLayout(props) {
                         <DrawLayout 
                             currentProperty={currentProperty}
                             currentFloor={currentFloor}
+                            selectedRoom={selectedRoom}
                             //passing this prop all the way to DrawRoom
                             toggleModalState={toggleModalState}
                         />
