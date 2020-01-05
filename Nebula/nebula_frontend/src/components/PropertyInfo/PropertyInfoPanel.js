@@ -43,7 +43,7 @@ function PropertyInfoPanel(props) {
                 <select 
                 value={selectedPropertyUUID} 
                 onChange={this.onChange}
-                style={{fontSize: "0.5rem"}}>
+                style={{fontSize: "0.7rem"}}>
                     {wwBuildings.map(createOption)}
                 </select>)}
     }
