@@ -7,48 +7,27 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibXlub3ZtYnIiLCJhIjoiY2o4ZGN2cnZtMG44cTJ6bjh6a
 
 class CreateMap extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-        lng: 121.4835,
-        lat: 31.2291,
-        zoom: 12
-        };
-    }
-
     componentDidMount() {
+
+        const { lng, lat, zoom } = this.props.coordinates
 
         const map = new mapboxgl.Map({
         container: this.mapContainer,
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [this.state.lng, this.state.lat],
-        zoom: this.state.zoom
+        center: [lng, lat],
+        zoom: zoom
         });
 
-        //somehow this deconstruction is not working...
-        const {lng, lat, zoom} = this.props.newCoordinates
-        // const newCoordinates = [lng, lat, zoom]
-        // console.log(newCoordinates)
-            
-        // map.jumpTo({center: newCoordinates})
+        // since we remove state and instead using props to drive map,
+        // no need to record map's coordinates here.
 
-        //This is a test to triger this.setState:
-        // map.on('click', () => {
+        // map.on('move', () => {
         //     this.setState({
-        //     lng: this.props.newCoordinates.lng,
-        //     lat: this.props.newCoordinates.lat,
-        //     zoom: this.props.newCoordinates.zoom
+        //     lng: map.getCenter().lng.toFixed(4),
+        //     lat: map.getCenter().lat.toFixed(4),
+        //     zoom: map.getZoom().toFixed(2)
         //     });
-        // });
-        
-
-        map.on('move', () => {
-            this.setState({
-            lng: map.getCenter().lng.toFixed(4),
-            lat: map.getCenter().lat.toFixed(4),
-            zoom: map.getZoom().toFixed(2)
-            });
-            });
+        //     });
 
         GeoJSONTest.features.forEach(marker => {
             // create a HTML element for each feature
@@ -63,6 +42,22 @@ class CreateMap extends Component {
                 .addTo(map);
         })
     }
+
+    //re-render map upon receiving new props.coordinates; might not be an effecient way, but works.
+    componentDidUpdate(prevProps) {
+
+        const { lng, lat, zoom } = this.props.coordinates
+
+        if (this.props.coordinates !== prevProps.coordinates) {
+
+            new mapboxgl.Map({
+            container: this.mapContainer,
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [lng, lat],
+            zoom: zoom
+            });
+        }
+      }
 
     render() {
         return (

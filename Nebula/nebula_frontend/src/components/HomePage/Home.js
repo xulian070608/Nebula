@@ -6,7 +6,11 @@ import CreateMap from './Mapbox'
 
 function Home () {
 
-    let [newCoordinates, setNewCoordinates] = useState ({})
+    let [coordinates, setCoordinates] = useState ({
+        lng: 121.4835,
+        lat: 31.2291,
+        zoom: 12
+    })
 
     function CreatePropertyLi(wwBuildings) {
         return <PropertyLi 
@@ -16,10 +20,10 @@ function Home () {
     }
 
     function updateMapState(){
-        setNewCoordinates({
-            lng: 151.4835,
-            lat: 21.2291,
-            zoom: 6
+        setCoordinates({
+            lng: 114.0559,
+            lat: 22.5458,
+            zoom: 11
             })
     }
 
@@ -29,11 +33,11 @@ function Home () {
                 <Col>
                 <ul>
                     {wwBuildings.map(CreatePropertyLi)}
-                    <button onClick={updateMapState}>Update Map State</button>
+                    {/* <button onClick={updateMapState}>Jump To Shenzhen</button> */}
                 </ul>
                 </Col>
                 <Col>
-                    <CreateMap newCoordinates={newCoordinates}/>
+                    <CreateMap coordinates={coordinates}/>
                 </Col>
             </Row>
         </Container>

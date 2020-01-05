@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import GeoJSONTest from '../../data/GeoJSONTest'
+// import GeoJSONTest from '../../data/GeoJSONTest'
 
 function PropertyLi (props) {
 
