@@ -33,10 +33,10 @@ function Home () {
                 <Col>
                 <ul>
                     {wwBuildings.map(CreatePropertyLi)}
+                    <button onClick={updateMapState}>Test Jump Function</button>
                 </ul>
                 </Col>
                 <Col>
-                    <button onClick={updateMapState}>Jump To Shenzhen</button>
                     <CreateMap coordinates={coordinates}/>
                 </Col>
             </Row>

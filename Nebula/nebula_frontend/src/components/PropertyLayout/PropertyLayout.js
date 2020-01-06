@@ -89,9 +89,16 @@ function PropertyLayout(props) {
 
     //this part is for debugging and improving the performance
 
-    let [selectedRoom, setSelectedRoom] = useState({room_number : "not selected yet"})
+    // use 05-120 as the default selected room
+    let [selectedRoom, setSelectedRoom] = useState(roomData)
 
-    const handleRoomSelection = (e) => setSelectedRoom(roomData.find(room => room.room_number === e.target.value))
+    const handleRoomSelection = (e) => {
+        if(e.target.value === "All Rooms") {
+            setSelectedRoom(roomData)
+        } else {
+            setSelectedRoom([roomData.find(room => room.room_number === e.target.value)])
+        }
+    } 
 
     const createRoomOption = (room) => {
         return <option value={room.room_number}>{room.room_number} - {room.room_name}</option>
@@ -102,6 +109,7 @@ function PropertyLayout(props) {
             <select 
                 value={selectedRoom.room_number}
                 onChange={handleRoomSelection}>
+                    <option value="All Rooms">All Rooms</option>
                     {rooms.map(createRoomOption)}
                 </select>
     )}     
@@ -112,9 +120,10 @@ function PropertyLayout(props) {
                 <Col xs="4 content-offset" id="property-infopanel-left">
                     <p> current property is {currentProperty.MarketingName} </p>
                     <Card />
-                    <button onClick={console.log({selectedRoom})}/>
-                    {chooseRoom(roomData)}
+                    {/* <button onClick={console.log({selectedRoom})}/> */}
                     <Menu />
+                    <p></p>
+                    {chooseRoom(roomData)}
                     <p>---------------------------</p>
                     {allRooms.map(CreateRooms)}
                 </Col>               
