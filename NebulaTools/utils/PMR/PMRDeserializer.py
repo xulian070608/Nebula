@@ -1,5 +1,5 @@
 import json
-from .settings import revit2017
+from settings import revit2017
 
 
 class PMRDeserializer:
