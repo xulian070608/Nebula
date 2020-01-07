@@ -1,3 +1,7 @@
+"""
+This script is used to check if the project is harvested or not by the new harvester.
+"""
+
 from utils.PMRAPIWrapper import PMRAPIWrapper
 from utils.cn_repo_uuid_fetcher import get_china_pmr_id_list
 import json
