@@ -1,0 +1,501 @@
+ID,Building Name,Current Program Type,Original Program Type,Current Space Type,Original Space Type,Floor Name,Room Number,Room Sf,Room Desk Count,Internal Room Count,Has Window (Yes / No),Construction Completed Date,Open for Sale Date,Last Harvest Stage
+1,The Springs Center ,,MEET,,MICR RM (3 seats),6th Floor,06D,62.43068042,0,0,No,10/13/19,10/13/19,Design
+2,The Springs Center ,,WORK,,FOCUS,5th Floor,05W101E,29.14328745,1,0,No,10/13/19,10/13/19,Design
+3,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,6th Floor,06-437,12.28651575,0,0,No,10/13/19,10/13/19,Design
+4,The Springs Center ,,MEET,,MICR RM (3 seats),6th Floor,06J,65.08398433,0,0,No,10/13/19,10/13/19,Design
+5,The Springs Center ,WE,WE,Booth,BOOTH,6th Floor,06-407,21.13510088,0,0,No,10/13/19,10/13/19,Design
+6,The Springs Center ,WE,WE,Lounge,LOUNGE,6th Floor,06-302,"1,395.91",0,0,No,10/13/19,10/13/19,Design
+7,The Springs Center ,WORK,WORK,Private Office,PRIVATE OFFICE,5th Floor,05W101,"10,906.41",382,32,Yes,10/13/19,10/13/19,Design
+8,The Springs Center ,WASH,WASH,Restroom,UNISEX WC,5th Floor,05-742,23.43303323,0,0,No,10/13/19,10/13/19,Design
+9,The Springs Center ,,OPERATE,,LOCKER,5th Floor,05-887,200.6527479,0,0,No,10/13/19,10/13/19,Design
+10,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,6th Floor,06-436,12.25,0,0,No,10/13/19,10/13/19,Design
+11,The Springs Center ,,OPERATE,,LOCKER,6th Floor,05-889,202.025144,0,0,No,10/13/19,10/13/19,Design
+12,The Springs Center ,WE,WE,Lounge,LOUNGE,6th Floor,06-301,298.6581493,0,0,No,10/13/19,10/13/19,Design
+13,The Springs Center ,,MEET,,CONF RM  (10 seats),6th Floor,06A,207.4194702,0,0,No,10/13/19,10/13/19,Design
+14,The Springs Center ,OPERATE,OPERATE,F&B Storage,STOR,6th Floor,06E,124.8613608,0,0,No,10/13/19,10/13/19,Design
+15,The Springs Center ,WORK,WORK,Private Office,PRIVATE OFFICE,6th Floor,06W101,"10,593.42",382,32,Yes,10/13/19,10/13/19,Design
+16,The Springs Center ,WE,WE,Booth,BOOTH,5th Floor,05-401,21.27702172,0,0,No,10/13/19,10/13/19,Design
+17,The Springs Center ,,MEET,,CONF RM (6 seats),5th Floor,05M,137.0353445,0,0,No,10/13/19,10/13/19,Design
+18,The Springs Center ,,OPERATE,,COMMUNITY BAR / RECEPTION,6th Floor,05-890,99.11514039,0,0,No,10/13/19,10/13/19,Design
+19,The Springs Center ,WE,WE,Booth,BOOTH,5th Floor,05-404,21.27702172,0,0,No,10/13/19,10/13/19,Design
+20,The Springs Center ,WE,WE,Booth,BOOTH,5th Floor,05-403,21.05205599,0,0,No,10/13/19,10/13/19,Design
+21,The Springs Center ,WE,WE,Booth,BOOTH,6th Floor,06-406,21.13739412,0,0,No,10/13/19,10/13/19,Design
+22,The Springs Center ,WE,WE,Lounge,LOUNGE,5th Floor,05-302,"1,322.19",0,0,No,10/13/19,10/13/19,Design
+23,The Springs Center ,WE,WE,Booth,BOOTH,5th Floor,05-407,21.13510088,0,0,No,10/13/19,10/13/19,Design
+24,The Springs Center ,,WORK,,FOCUS,6th Floor,06W101D,29.14328745,1,0,No,10/13/19,10/13/19,Design
+25,The Springs Center ,OPERATE,OPERATE,F&B Storage,STOR,5th Floor,05W,126.3097527,0,0,No,10/13/19,10/13/19,Design
+26,The Springs Center ,,WORK,,FOCUS,5th Floor,05W101B,46.51085691,1,0,No,10/13/19,10/13/19,Design
+27,The Springs Center ,WASH,WASH,Restroom,WOMEN WC,6th Floor,06-747,220.5311424,0,0,No,10/13/19,10/13/19,Design
+28,The Springs Center ,,WORK,,FOCUS,5th Floor,05W101A,46.51085691,1,0,No,10/13/19,10/13/19,Design
+29,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,6th Floor,06-434,12.28651575,0,0,No,10/13/19,10/13/19,Design
+30,The Springs Center ,OPERATE,OPERATE,Cleaning Storage,STORAGE,5th Floor,05B,119.0173569,0,0,No,10/13/19,10/13/19,Design
+31,The Springs Center ,OPERATE,OPERATE,IT Closet,IT,6th Floor,06-806,92.4060181,0,0,No,10/13/19,10/13/19,Design
+32,The Springs Center ,WE,WE,Booth,BOOTH,6th Floor,06-401,21.27702172,0,0,No,10/13/19,10/13/19,Design
+33,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,5th Floor,05-431,12.28651575,0,0,No,10/13/19,10/13/19,Design
+34,The Springs Center ,,MEET,,MICR RM (3 seats),6th Floor,06T,63.52321752,0,0,No,10/13/19,10/13/19,Design
+35,The Springs Center ,OPERATE,OPERATE,Electrical Closet,ELEC,5th Floor,05-841,31.43061841,0,0,No,10/13/19,10/13/19,Design
+36,The Springs Center ,WE,WE,Wellness Room,MEDITATION,5th Floor,05-642,71.48375363,0,0,No,10/13/19,10/13/19,Design
+37,The Springs Center ,,MEET,,CONF RM (6 seats),5th Floor,05A,131.804896,0,0,No,10/13/19,10/13/19,Design
+38,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,5th Floor,05-435,12.25,0,0,No,10/13/19,10/13/19,Design
+39,The Springs Center ,WE,WE,Booth,BOOTH,5th Floor,05-402,21.05205599,0,0,No,10/13/19,10/13/19,Design
+40,The Springs Center ,,MEET,,BOARDROOM (16 seats),6th Floor,06N,427.8923488,0,0,No,10/13/19,10/13/19,Design
+41,The Springs Center ,,MEET,,MICR RM (3 seats),5th Floor,05X,69.14736052,0,0,No,10/13/19,10/13/19,Design
+42,The Springs Center ,,CIRCULATE,,ELEV FOYER,6th Floor,06-951,349.7731512,0,0,No,10/13/19,10/13/19,Design
+43,The Springs Center ,,MEET,,MICR RM (3 seats),5th Floor,05S,65.08398434,0,0,No,10/13/19,10/13/19,Design
+44,The Springs Center ,OPERATE,OPERATE,F&B Storage,STOR,6th Floor,06W,126.3097527,0,0,No,10/13/19,10/13/19,Design
+45,The Springs Center ,,MEET,,MICR RM (3 seats),5th Floor,05Q,65.08398434,0,0,No,10/13/19,10/13/19,Design
+46,The Springs Center ,WE,WE,Booth,BOOTH,5th Floor,05-408,21.13528079,0,0,No,10/13/19,10/13/19,Design
+47,The Springs Center ,WASH,WASH,Restroom,WOMEN WC,5th Floor,05-747,223.5773483,0,0,No,10/13/19,10/13/19,Design
+48,The Springs Center ,,WORK,,FOCUS,6th Floor,06W101F,29.09093427,1,0,No,10/13/19,10/13/19,Design
+49,The Springs Center ,WE,WE,Lounge,LOUNGE,5th Floor,05-301,298.6581493,0,0,No,10/13/19,10/13/19,Design
+50,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,5th Floor,05-433,12.2858328,0,0,No,10/13/19,10/13/19,Design
+51,The Springs Center ,,MEET,,MICR RM (3 seats),6th Floor,06K,65.08398434,0,0,No,10/13/19,10/13/19,Design
+52,The Springs Center ,,MEET,,MICR RM (3 seats),5th Floor,05U,63.52321752,0,0,No,10/13/19,10/13/19,Design
+53,The Springs Center ,,MEET,,MICR RM (3 seats),5th Floor,05L,68.67374846,0,0,No,10/13/19,10/13/19,Design
+54,The Springs Center ,,MEET,,CONF RM (6 seats),5th Floor,05F,123.3005938,0,0,No,10/13/19,10/13/19,Design
+55,The Springs Center ,OPERATE,OPERATE,IT Closet,IT,5th Floor,05-806,92.4060181,0,0,No,10/13/19,10/13/19,Design
+56,The Springs Center ,WE,WE,Kitchenette,TEA POINT,5th Floor,05-641,15.7874597,0,0,No,10/13/19,10/13/19,Design
+57,The Springs Center ,,MEET,,CONF RM (6 seats),6th Floor,06F,123.3005938,0,0,No,10/13/19,10/13/19,Design
+58,The Springs Center ,,MEET,,MICR RM (3 seats),5th Floor,05T,63.52321752,0,0,No,10/13/19,10/13/19,Design
+59,The Springs Center ,WE,WE,Booth,BOOTH,6th Floor,06-402,21.05205599,0,0,No,10/13/19,10/13/19,Design
+60,The Springs Center ,WASH,WASH,Restroom,ADA WC,6th Floor,06-746,46.35088008,0,0,No,10/13/19,10/13/19,Design
+61,The Springs Center ,WE,WE,Booth,BOOTH,5th Floor,05-405,21.08267717,0,0,No,10/13/19,10/13/19,Design
+62,The Springs Center ,,MEET,,MICR RM (3 seats),6th Floor,06H,65.08398434,0,0,No,10/13/19,10/13/19,Design
+63,The Springs Center ,OPERATE,OPERATE,Mop Closet,MOP,5th Floor,05-816,39.43895852,0,0,No,10/13/19,10/13/19,Design
+64,The Springs Center ,,OPERATE,,LOCKER,6th Floor,06B,119.0173569,0,0,No,10/13/19,10/13/19,Design
+65,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,5th Floor,05-434,12.28651575,0,0,No,10/13/19,10/13/19,Design
+66,The Springs Center ,WE,WE,Booth,BOOTH,6th Floor,06-405,21.08267717,0,0,No,10/13/19,10/13/19,Design
+67,The Springs Center ,,WORK,,FOCUS,5th Floor,05W101C,29.14328745,1,0,No,10/13/19,10/13/19,Design
+68,The Springs Center ,WASH,WASH,Restroom,MEN WC,6th Floor,06-744,189.3473428,0,0,No,10/13/19,10/13/19,Design
+69,The Springs Center ,WASH,WASH,Restroom,ADA WC,5th Floor,05-746,46.35088008,0,0,No,10/13/19,10/13/19,Design
+70,The Springs Center ,OPERATE,OPERATE,F&B Storage,F&B STOR,5th Floor,05-811,117.2324388,0,0,No,10/13/19,10/13/19,Design
+71,The Springs Center ,WASH,WASH,Restroom,UNISEX WC,6th Floor,06-742,23.43303323,0,0,No,10/13/19,10/13/19,Design
+72,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,5th Floor,05-438,12.28651575,0,0,No,10/13/19,10/13/19,Design
+73,The Springs Center ,,MEET,,MICR RM (3 seats),5th Floor,05H,65.08398434,0,0,No,10/13/19,10/13/19,Design
+74,The Springs Center ,,OPERATE,,LOCKER,5th Floor,05-888,161.8524862,0,0,No,10/13/19,10/13/19,Design
+75,The Springs Center ,,MEET,,MICR RM (3 seats),5th Floor,05G,68.67374846,0,0,No,10/13/19,10/13/19,Design
+76,The Springs Center ,,WORK,,FOCUS,6th Floor,06W101A,46.51085691,1,0,No,10/13/19,10/13/19,Design
+77,The Springs Center ,,WORK,,FOCUS,6th Floor,06W101E,29.14328745,1,0,No,10/13/19,10/13/19,Design
+78,The Springs Center ,,WE,,PANTRY  (Additional Teapoint),5th Floor,05-643,67.88576416,0,0,No,10/13/19,10/13/19,Design
+79,The Springs Center ,,WORK,,FOCUS,6th Floor,06W101B,46.51085691,1,0,No,10/13/19,10/13/19,Design
+80,The Springs Center ,,MEET,,CONF RM  (10 seats),6th Floor,06P,177.3031329,0,0,No,10/13/19,10/13/19,Design
+81,The Springs Center ,,MEET,,CONF RM  (10 seats),6th Floor,06V,162.3197711,0,0,No,10/13/19,10/13/19,Design
+82,The Springs Center ,,MEET,,MICR RM (3 seats),6th Floor,06S,65.08398434,0,0,No,10/13/19,10/13/19,Design
+83,The Springs Center ,,MEET,,MICR RM (3 seats),6th Floor,06U,63.52321752,0,0,No,10/13/19,10/13/19,Design
+84,The Springs Center ,,MEET,,CONF RM (6 seats),6th Floor,06M,137.0353442,0,0,No,10/13/19,10/13/19,Design
+85,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,6th Floor,06-431,12.28651575,0,0,No,10/13/19,10/13/19,Design
+86,The Springs Center ,,WORK,,FOCUS,5th Floor,05W101F,29.09093427,1,0,No,10/13/19,10/13/19,Design
+87,The Springs Center ,,MEET,,BOARDROOM (16 seats),5th Floor,05N,427.8923488,0,0,No,10/13/19,10/13/19,Design
+88,The Springs Center ,,MEET,,MICR RM (3 seats),6th Floor,06X,69.14736052,0,0,No,10/13/19,10/13/19,Design
+89,The Springs Center ,WE,WE,Booth,BOOTH,6th Floor,06-403,21.05205599,0,0,No,10/13/19,10/13/19,Design
+90,The Springs Center ,,MEET,,MICR RM (3 seats),5th Floor,05D,62.43068042,0,0,No,10/13/19,10/13/19,Design
+91,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,6th Floor,06-432,12.28651575,0,0,No,10/13/19,10/13/19,Design
+92,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,5th Floor,05-437,12.28651575,0,0,No,10/13/19,10/13/19,Design
+93,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,5th Floor,05-432,12.28651575,0,0,No,10/13/19,10/13/19,Design
+94,The Springs Center ,WE,WE,Booth,BOOTH,6th Floor,06-408,21.13528079,0,0,No,10/13/19,10/13/19,Design
+95,The Springs Center ,,OPERATE,,MAIL STOR,6th Floor,06-886,151.1231443,0,0,No,10/13/19,10/13/19,Design
+96,The Springs Center ,WE,WE,Booth,BOOTH,6th Floor,06-404,21.27702172,0,0,No,10/13/19,10/13/19,Design
+97,The Springs Center ,,OPERATE,,LOCKER,6th Floor,05-893,35.9019468,0,0,No,10/13/19,10/13/19,Design
+98,The Springs Center ,,MEET,,MICR RM (3 seats),6th Floor,06L,68.67374846,0,0,No,10/13/19,10/13/19,Design
+99,The Springs Center ,,MEET,,CONF RM (10 seats),5th Floor,05P,177.3031329,0,0,No,10/13/19,10/13/19,Design
+100,The Springs Center ,,MEET,,CONF RM (10 seats),5th Floor,05V,162.3197711,0,0,No,10/13/19,10/13/19,Design
+101,The Springs Center ,WASH,WASH,Restroom,MEN WC,5th Floor,05-744,190.8704391,0,0,No,10/13/19,10/13/19,Design
+102,The Springs Center ,,OPERATE,,LOCKER,5th Floor,05-892,35.9019468,0,0,No,10/13/19,10/13/19,Design
+103,The Springs Center ,WE,WE,Kitchenette,TEA POINT,6th Floor,06-641,15.7874597,0,0,No,10/13/19,10/13/19,Design
+104,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,6th Floor,06-438,12.28651575,0,0,No,10/13/19,10/13/19,Design
+105,The Springs Center ,,WORK,,FOCUS,5th Floor,05W101D,29.14328745,1,0,No,10/13/19,10/13/19,Design
+106,The Springs Center ,WE,WE,Booth,BOOTH,5th Floor,05-406,21.13739412,0,0,No,10/13/19,10/13/19,Design
+107,The Springs Center ,,MEET,,MICR RM (3 seats),5th Floor,05R,65.08398433,0,0,No,10/13/19,10/13/19,Design
+108,The Springs Center ,,MEET,,CONF RM  (10 seats),6th Floor,06C,162.9440759,0,0,No,10/13/19,10/13/19,Design
+109,The Springs Center ,WE,WE,Mothers Room,MOTHER RM,6th Floor,06-501,71.48375363,0,0,No,10/13/19,10/13/19,Design
+110,The Springs Center ,,MEET,,MICR RM (3 seats),6th Floor,06R,65.08398433,0,0,No,10/13/19,10/13/19,Design
+111,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,6th Floor,06-435,12.25,0,0,No,10/13/19,10/13/19,Design
+112,The Springs Center ,WE,WE,Printing Alcove,PRINTER,6th Floor,06-461,24.05949256,0,0,No,10/13/19,10/13/19,Design
+113,The Springs Center ,,OPERATE,,LOCKER,6th Floor,06-888,161.8363403,0,0,No,10/13/19,10/13/19,Design
+114,The Springs Center ,WE,WE,Printing Alcove,PRINTER,5th Floor,05-461,24.05949256,0,0,No,10/13/19,10/13/19,Design
+115,The Springs Center ,WE,WE,Printing Alcove,PRINTER,6th Floor,06-462,28.12945626,0,0,No,10/13/19,10/13/19,Design
+116,The Springs Center ,OPERATE,OPERATE,F&B Storage,STOR,5th Floor,05E,124.8613608,0,0,No,10/13/19,10/13/19,Design
+117,The Springs Center ,,MEET,,MICR RM (3 seats),6th Floor,06Q,65.08398434,0,0,No,10/13/19,10/13/19,Design
+118,The Springs Center ,,WORK,,FOCUS,6th Floor,06W101C,29.14328745,1,0,No,10/13/19,10/13/19,Design
+119,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,6th Floor,06-433,12.2858328,0,0,No,10/13/19,10/13/19,Design
+120,The Springs Center ,,MEET,,MICR RM (3 seats),5th Floor,05J,65.08398433,0,0,No,10/13/19,10/13/19,Design
+121,The Springs Center ,WE,WE,Printing Alcove,PRINTER,5th Floor,05-462,28.12945626,0,0,No,10/13/19,10/13/19,Design
+122,The Springs Center ,,WE,,PANTRY  (Additional Teapoint),6th Floor,06-642,61.30229969,0,0,No,10/13/19,10/13/19,Design
+123,The Springs Center ,,MEET,,MICR RM (3 seats),5th Floor,05K,65.08398434,0,0,No,10/13/19,10/13/19,Design
+124,The Springs Center ,,CIRCULATE,,ELEV FOYER,5th Floor,05-951,354.980396,0,0,No,10/13/19,10/13/19,Design
+125,The Springs Center ,OPERATE,OPERATE,Electrical Closet,ELEC,6th Floor,06-841,31.43061841,0,0,No,10/13/19,10/13/19,Design
+126,The Springs Center ,,MEET,,CONF RM (10 seats),5th Floor,05C,162.9440759,0,0,No,10/13/19,10/13/19,Design
+127,The Springs Center ,WE,WE,Phone Booth,PHONE BOOTH,5th Floor,05-436,12.25,0,0,No,10/13/19,10/13/19,Design
+128,The Springs Center ,OPERATE,OPERATE,Mop Closet,MOP,6th Floor,06-816,39.43895852,0,0,No,10/13/19,10/13/19,Design
+129,The Springs Center ,,MEET,,MICR RM (3 seats),6th Floor,06G,68.67374846,0,0,No,10/13/19,10/13/19,Design
+130,Exchange Square 2,CIRCULATE,CIRCULATE,Hallway,HALLWAY,18th Floor,18-953,771.2427496,0,0,No,10/14/19,10/14/19,Construction
+131,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,4th Floor,04-103,"2,182.75",74,4,Yes,10/14/19,10/14/19,Construction
+132,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,4th Floor,04-100,"1,989.56",64,3,Yes,10/14/19,10/14/19,Construction
+133,Exchange Square 2,WASH,WASH,Restroom,MEN WC,16th Floor,16-742,158.8408201,0,0,No,10/14/19,10/14/19,Construction
+134,Exchange Square 2,WE,WE,Phone Booth,PHONE BOOTH,18th Floor,18-431,12.25,0,0,No,10/14/19,10/14/19,Construction
+135,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,15th Floor,15-101,"1,585.12",48,2,Yes,10/14/19,10/14/19,Construction
+136,Exchange Square 2,WASH,WASH,Restroom,WOMEN WC,13th Floor,13-742,156.0381425,0,0,No,10/14/19,10/14/19,Construction
+137,Exchange Square 2,WASH,WASH,Restroom,WOMEN WC,16th Floor,16-743,156.6215464,0,0,No,10/14/19,10/14/19,Construction
+138,Exchange Square 2,WE,WE,Booth,BOOTH,4th Floor,04-401,19.89634047,0,0,No,10/14/19,10/14/19,Construction
+139,Exchange Square 2,MEET,MEET,Conference Room,CONFERENCE ROOM,18th Floor,18A,223.6874004,0,0,No,10/14/19,10/14/19,Construction
+140,Exchange Square 2,CIRCULATE,CIRCULATE,Hallway,HALLWAY,4th Floor,04-951,743.8399498,0,0,No,10/14/19,10/14/19,Construction
+141,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,4th Floor,04-101,"1,781.80",58,4,Yes,10/14/19,10/14/19,Construction
+142,Exchange Square 2,MEET,MEET,Conference Room,CONFERENCE ROOM,13th Floor,13A,152.0008254,0,0,No,10/14/19,10/14/19,Construction
+143,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-109,53.2584535,2,0,No,10/14/19,10/14/19,Construction
+144,Exchange Square 2,WE,WE,Pantry,PANTRY,17th Floor,17-306,204.1253105,0,0,No,10/14/19,10/14/19,Construction
+145,Exchange Square 2,WE,WE,Booth,BOOTH,15th Floor,15-401,21.08277108,0,0,No,10/14/19,10/14/19,Construction
+146,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,16th Floor,16-102,"2,211.40",65,3,Yes,10/14/19,10/14/19,Construction
+147,Exchange Square 2,WE,WE,Printing Alcove,PRINTER,13th Floor,13-461,24.11417375,0,0,No,10/14/19,10/14/19,Construction
+148,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-129,409.418448,14,0,Yes,10/14/19,10/14/19,Construction
+149,Exchange Square 2,OPERATE,OPERATE,F&B Storage,STOR,17th Floor,17-811,85.78066726,0,0,No,10/14/19,10/14/19,Construction
+150,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,4th Floor,04-102,"2,206.61",66,3,Yes,10/14/19,10/14/19,Construction
+151,Exchange Square 2,OPERATE,OPERATE,IT Closet,IT,17th Floor,17-806,55.05386481,0,0,No,10/14/19,10/14/19,Construction
+152,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-120,105.9370103,4,0,No,10/14/19,10/14/19,Construction
+153,Exchange Square 2,MEET,MEET,Conference Room,CONFERENCE ROOM,15th Floor,15A,153.7907703,0,0,No,10/14/19,10/14/19,Construction
+154,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,16th Floor,16-101,"1,590.20",48,2,Yes,10/14/19,10/14/19,Construction
+155,Exchange Square 2,WE,WE,Phone Booth,PHONE BOOTH,17th Floor,17-433,12.25,0,0,No,10/14/19,10/14/19,Construction
+156,Exchange Square 2,CIRCULATE,CIRCULATE,Hallway,HALLWAY,17th Floor,17-953,767.2431933,0,0,No,10/14/19,10/14/19,Construction
+157,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-128,362.383344,14,0,Yes,10/14/19,10/14/19,Construction
+158,Exchange Square 2,WASH,WASH,Restroom,MEN WC,17th Floor,17-741,141.3831365,0,0,No,10/14/19,10/14/19,Construction
+159,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-115,426.2812407,14,0,Yes,10/14/19,10/14/19,Construction
+160,Exchange Square 2,CIRCULATE,CIRCULATE,Hallway,HALLWAY,14th Floor,14-951,69.83819675,0,0,No,10/14/19,10/14/19,Construction
+161,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-122,259.6738972,8,0,Yes,10/14/19,10/14/19,Construction
+162,Exchange Square 2,WE,WE,Booth,BOOTH,4th Floor,04-402,19.89634047,0,0,No,10/14/19,10/14/19,Construction
+163,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-136,357.4669749,10,0,Yes,10/14/19,10/14/19,Construction
+164,Exchange Square 2,WE,WE,Lounge,LOUNGE,17th Floor,17-301,"1,849.11",0,0,No,10/14/19,10/14/19,Construction
+165,Exchange Square 2,WE,WE,Booth,BOOTH,18th Floor,18-401,18.75546807,0,0,No,10/14/19,10/14/19,Construction
+166,Exchange Square 2,WE,WE,Booth,BOOTH,16th Floor,16-402,21.08277056,0,0,No,10/14/19,10/14/19,Construction
+167,Exchange Square 2,OPERATE,OPERATE,Trash Room,TRASH,14th Floor,14-836,41.13211987,0,0,No,10/14/19,10/14/19,Construction
+168,Exchange Square 2,OPERATE,OPERATE,Mop Closet,MOP,16th Floor,16-816,20.34378628,0,0,No,10/14/19,10/14/19,Construction
+169,Exchange Square 2,WE,WE,Lounge,LOUNGE,4th Floor,04-301,"1,268.82",0,0,No,10/14/19,10/14/19,Construction
+170,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,14th Floor,14-102,"2,211.40",65,3,Yes,10/14/19,10/14/19,Construction
+171,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,16th Floor,16-105,"2,495.58",75,4,Yes,10/14/19,10/14/19,Construction
+172,Exchange Square 2,WE,WE,Phone Booth,PHONE BOOTH,18th Floor,18-432,12.25,0,0,No,10/14/19,10/14/19,Construction
+173,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-108,197.1895348,7,0,Yes,10/14/19,10/14/19,Construction
+174,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-108,122.7134674,6,0,Yes,10/14/19,10/14/19,Construction
+175,Exchange Square 2,OPERATE,OPERATE,Trash Room,TRASH,4th Floor,04-836,101.2860337,0,0,No,10/14/19,10/14/19,Construction
+176,Exchange Square 2,OPERATE,OPERATE,IT Closet,IT,14th Floor,14-806,99.31836355,0,0,No,10/14/19,10/14/19,Construction
+177,Exchange Square 2,WE,WE,Printing Alcove,PRINTER,4th Floor,04-461,25.52055993,0,0,No,10/14/19,10/14/19,Construction
+178,Exchange Square 2,WE,WE,Booth,BOOTH,13th Floor,13-402,21.34354269,0,0,No,10/14/19,10/14/19,Construction
+179,Exchange Square 2,WE,WE,Booth,BOOTH,16th Floor,16-403,21.08277374,0,0,No,10/14/19,10/14/19,Construction
+180,Exchange Square 2,OPERATE,OPERATE,IT Closet,IT,13th Floor,13-806,99.30349638,0,0,No,10/14/19,10/14/19,Construction
+181,Exchange Square 2,WE,WE,Pantry,PANTRY,15th Floor,15-306,62.43295949,0,0,No,10/14/19,10/14/19,Construction
+182,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-103,52.57620436,2,0,No,10/14/19,10/14/19,Construction
+183,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-117,83.26599164,4,0,No,10/14/19,10/14/19,Construction
+184,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,13th Floor,13-102,"2,208.60",63,3,Yes,10/14/19,10/14/19,Construction
+185,Exchange Square 2,WE,WE,Booth,BOOTH,13th Floor,13-401,21.21310833,0,0,No,10/14/19,10/14/19,Construction
+186,Exchange Square 2,WE,WE,Lounge,LOUNGE,13th Floor,13-301,"1,082.44",0,0,No,10/14/19,10/14/19,Construction
+187,Exchange Square 2,WE,WE,Booth,BOOTH,14th Floor,14-403,21.08277374,0,0,No,10/14/19,10/14/19,Construction
+188,Exchange Square 2,OPERATE,OPERATE,Community Bar,COMMUNITY BAR,17th Floor,17-881,131.1876958,0,0,No,10/14/19,10/14/19,Construction
+189,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-135,113.3782596,5,0,No,10/14/19,10/14/19,Construction
+190,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-111,370.0703801,14,0,Yes,10/14/19,10/14/19,Construction
+191,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-132,288.1350015,8,0,Yes,10/14/19,10/14/19,Construction
+192,Exchange Square 2,OPERATE,OPERATE,IT Closet,IT,15th Floor,15-806,99.31836355,0,0,No,10/14/19,10/14/19,Construction
+193,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-103,131.0518609,6,0,No,10/14/19,10/14/19,Construction
+194,Exchange Square 2,WE,WE,Booth,BOOTH,14th Floor,14-402,21.08277056,0,0,No,10/14/19,10/14/19,Construction
+195,Exchange Square 2,MEET,MEET,Conference Room,CONFERENCE ROOM,4th Floor,04B,109.768647,0,0,No,10/14/19,10/14/19,Construction
+196,Exchange Square 2,WE,WE,Pantry,PANTRY,14th Floor,14-306,62.43295949,0,0,No,10/14/19,10/14/19,Construction
+197,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-116,"2,205.25",73,3,Yes,10/14/19,10/14/19,Construction
+198,Exchange Square 2,CIRCULATE,CIRCULATE,Hallway,HALLWAY,15th Floor,15-951,69.83819675,0,0,No,10/14/19,10/14/19,Construction
+199,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,4th Floor,04-105,"3,316.34",114,6,Yes,10/14/19,10/14/19,Construction
+200,Exchange Square 2,OPERATE,OPERATE,Mop Closet,MOP,15th Floor,15-816,20.34378628,0,0,No,10/14/19,10/14/19,Construction
+201,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-123,377.9340535,11,0,Yes,10/14/19,10/14/19,Construction
+202,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-107,59.14794155,2,0,No,10/14/19,10/14/19,Construction
+203,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-101,258.3429817,8,0,Yes,10/14/19,10/14/19,Construction
+204,Exchange Square 2,OPERATE,OPERATE,Trash Room,TRASH,15th Floor,15-836,20.78833359,0,0,No,10/14/19,10/14/19,Construction
+205,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-106,282.8167526,9,0,Yes,10/14/19,10/14/19,Construction
+206,Exchange Square 2,WE,WE,Booth,BOOTH,4th Floor,04-404,30.04347412,0,0,No,10/14/19,10/14/19,Construction
+207,Exchange Square 2,WASH,WASH,Restroom,ADA WC,4th Floor,04-742,46.3601643,0,0,No,10/14/19,10/14/19,Construction
+208,Exchange Square 2,OPERATE,OPERATE,Mop Closet,MOP,13th Floor,13-816,20.34378628,0,0,No,10/14/19,10/14/19,Construction
+209,Exchange Square 2,OPERATE,OPERATE,IT Closet,IT,4th Floor,04-806,79.37691382,0,0,No,10/14/19,10/14/19,Construction
+210,Exchange Square 2,WE,WE,Phone Booth,PHONE BOOTH,18th Floor,18-433,12.25,0,0,No,10/14/19,10/14/19,Construction
+211,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-125,158.7108546,5,0,Yes,10/14/19,10/14/19,Construction
+212,Exchange Square 2,WE,WE,Pantry,PANTRY,13th Floor,13-306,62.4975429,0,0,No,10/14/19,10/14/19,Construction
+213,Exchange Square 2,OPERATE,OPERATE,Mop Closet,MOP,14th Floor,14-816,41.13210682,0,0,No,10/14/19,10/14/19,Construction
+214,Exchange Square 2,WE,WE,Printing Alcove,PRINTER,18th Floor,18-461,21.87226597,0,0,No,10/14/19,10/14/19,Construction
+215,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-110,63.48830808,2,0,No,10/14/19,10/14/19,Construction
+216,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-115,370.11892,14,0,Yes,10/14/19,10/14/19,Construction
+217,Exchange Square 2,WE,WE,Booth,BOOTH,18th Floor,18-402,18.75546807,0,0,No,10/14/19,10/14/19,Construction
+218,Exchange Square 2,WASH,WASH,Restroom,ADA WC,15th Floor,15-741,41.13210682,0,0,No,10/14/19,10/14/19,Construction
+219,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-119,61.90021841,2,0,No,10/14/19,10/14/19,Construction
+220,Exchange Square 2,WE,WE,Printing Alcove,PRINTER,15th Floor,15-461,24.8646336,0,0,No,10/14/19,10/14/19,Construction
+221,Exchange Square 2,OPERATE,OPERATE,IT Closet,IT,18th Floor,18-806,92.29527559,0,0,No,10/14/19,10/14/19,Construction
+222,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-127,314.8147508,11,0,Yes,10/14/19,10/14/19,Construction
+223,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,13th Floor,13-101,"1,585.12",48,2,Yes,10/14/19,10/14/19,Construction
+224,Exchange Square 2,OPERATE,OPERATE,Electrical Closet,ELEC,17th Floor,17-841,38.15099934,0,0,No,10/14/19,10/14/19,Construction
+225,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-131,96.99556983,3,0,No,10/14/19,10/14/19,Construction
+226,Exchange Square 2,MEET,MEET,Conference Room,CONFERENCE ROOM,18th Floor,18E,91.57018236,0,0,No,10/14/19,10/14/19,Construction
+227,Exchange Square 2,CIRCULATE,CIRCULATE,Hallway,HALLWAY,17th Floor,17-952,769.014263,0,0,No,10/14/19,10/14/19,Construction
+228,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-116,71.43844468,2,0,No,10/14/19,10/14/19,Construction
+229,Exchange Square 2,WE,WE,Honesty Market,HONESTY MARKET,17th Floor,17-316,16.79803194,0,0,No,10/14/19,10/14/19,Construction
+230,Exchange Square 2,WE,WE,Booth,BOOTH,16th Floor,16-401,21.08277108,0,0,No,10/14/19,10/14/19,Construction
+231,Exchange Square 2,OPERATE,OPERATE,F&B Storage,F&B,17th Floor,17-801,96.96711063,0,0,No,10/14/19,10/14/19,Construction
+232,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-105,282.6344129,9,0,Yes,10/14/19,10/14/19,Construction
+233,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-102,288.1664556,10,0,Yes,10/14/19,10/14/19,Construction
+234,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-127,325.8025506,10,0,Yes,10/14/19,10/14/19,Construction
+235,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,13th Floor,13-100,944.9931849,32,1,Yes,10/14/19,10/14/19,Construction
+236,Exchange Square 2,OPERATE,OPERATE,Mop Closet,MOP,18th Floor,18-816,21.97127031,0,0,No,10/14/19,10/14/19,Construction
+237,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-100,401.2911448,11,0,Yes,10/14/19,10/14/19,Construction
+238,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-126,257.8144521,8,0,Yes,10/14/19,10/14/19,Construction
+239,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-133,306.2724761,10,0,Yes,10/14/19,10/14/19,Construction
+240,Exchange Square 2,OPERATE,OPERATE,Mop Closet,MOP,4th Floor,04-816,47.88109602,0,0,No,10/14/19,10/14/19,Construction
+241,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-112,71.45778829,2,0,No,10/14/19,10/14/19,Construction
+242,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,15th Floor,15-100,944.9931849,32,1,Yes,10/14/19,10/14/19,Construction
+243,Exchange Square 2,WE,WE,Phone Booth,PHONE BOOTH,17th Floor,17-432,12.25,0,0,No,10/14/19,10/14/19,Construction
+244,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-119,"2,209.62",73,3,Yes,10/14/19,10/14/19,Construction
+245,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,14th Floor,14-103,"1,427.91",45,3,Yes,10/14/19,10/14/19,Construction
+246,Exchange Square 2,WE,WE,Booth,BOOTH,4th Floor,04-405,41.41828177,0,0,No,10/14/19,10/14/19,Construction
+247,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-107,76.24858078,4,0,No,10/14/19,10/14/19,Construction
+248,Exchange Square 2,MEET,MEET,Conference Room,CONFERENCE ROOM,14th Floor,14A,153.7907703,0,0,No,10/14/19,10/14/19,Construction
+249,Exchange Square 2,MEET,MEET,Conversation Room,BRAINSTORM ROOM,18th Floor,18C,128.8556111,0,0,No,10/14/19,10/14/19,Construction
+250,Exchange Square 2,CIRCULATE,CIRCULATE,Hallway,HALLWAY,18th Floor,18-952,868.3803889,0,0,No,10/14/19,10/14/19,Construction
+251,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-122,61.90021841,2,0,No,10/14/19,10/14/19,Construction
+252,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-121,264.7385785,8,0,Yes,10/14/19,10/14/19,Construction
+253,Exchange Square 2,OPERATE,OPERATE,IT Closet,IT,16th Floor,16-806,99.31836355,0,0,No,10/14/19,10/14/19,Construction
+254,Exchange Square 2,WE,WE,Phone Booth,PHONE BOOTH,17th Floor,17-431,12.25,0,0,No,10/14/19,10/14/19,Construction
+255,Exchange Square 2,MEET,MEET,Conference Room,CONFERENCE ROOM,17th Floor,17C,86.43420347,0,0,No,10/14/19,10/14/19,Construction
+256,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-126,109.5813473,4,0,Yes,10/14/19,10/14/19,Construction
+257,Exchange Square 2,WE,WE,Booth,BOOTH,4th Floor,04-406,29.97715298,0,0,No,10/14/19,10/14/19,Construction
+258,Exchange Square 2,MEET,MEET,Conference Room,CONFERENCE ROOM,16th Floor,16A,153.7907703,0,0,No,10/14/19,10/14/19,Construction
+259,Exchange Square 2,CIRCULATE,CIRCULATE,Hallway,HALLWAY,14th Floor,14-952,254.5056739,0,0,No,10/14/19,10/14/19,Construction
+260,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-111,122.8264956,6,0,Yes,10/14/19,10/14/19,Construction
+261,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,16th Floor,16-100,949.7724583,32,1,Yes,10/14/19,10/14/19,Construction
+262,Exchange Square 2,WE,WE,Phone Booth,PHONE BOOTH,18th Floor,18-434,12.25,0,0,No,10/14/19,10/14/19,Construction
+263,Exchange Square 2,OPERATE,OPERATE,Mop Closet,MOP,17th Floor,17-816,0,0,0,No,10/14/19,10/14/19,Construction
+264,Exchange Square 2,WASH,WASH,Restroom,MEN WC,4th Floor,04-741,153.7562928,0,0,No,10/14/19,10/14/19,Construction
+265,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,16th Floor,16-103,"1,427.91",45,3,Yes,10/14/19,10/14/19,Construction
+266,Exchange Square 2,WASH,WASH,Restroom,WOMEN WC,4th Floor,04-743,152.7864439,0,0,No,10/14/19,10/14/19,Construction
+267,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-106,197.1895348,6,0,Yes,10/14/19,10/14/19,Construction
+268,Exchange Square 2,WE,WE,Lounge,LOUNGE,15th Floor,15-301,"1,058.51",0,0,No,10/14/19,10/14/19,Construction
+269,Exchange Square 2,WE,WE,Mothers Room,MOTHER RM,16th Floor,16-741,41.13210682,0,0,No,10/14/19,10/14/19,Construction
+270,Exchange Square 2,WE,WE,Printing Alcove,PRINTER,14th Floor,14-461,24.8646336,0,0,No,10/14/19,10/14/19,Construction
+271,Exchange Square 2,CIRCULATE,CIRCULATE,Hallway,HALLWAY,16th Floor,16-951,69.83819675,0,0,No,10/14/19,10/14/19,Construction
+272,Exchange Square 2,MEET,MEET,Conference Room,CONFERENCE ROOM,18th Floor,18D,90.52179963,0,0,No,10/14/19,10/14/19,Construction
+273,Exchange Square 2,WE,WE,Lounge,LOUNGE,14th Floor,14-301,"1,095.53",0,0,No,10/14/19,10/14/19,Construction
+274,Exchange Square 2,WE,WE,Booth,BOOTH,14th Floor,14-401,21.08277108,0,0,No,10/14/19,10/14/19,Construction
+275,Exchange Square 2,CIRCULATE,CIRCULATE,Interior Staircase,INTERIOR STAIR,17th Floor,17-951,77.3262768,0,0,No,10/14/19,10/14/19,Construction
+276,Exchange Square 2,OPERATE,OPERATE,Trash Room,TRASH,16th Floor,16-836,20.78833359,0,0,No,10/14/19,10/14/19,Construction
+277,Exchange Square 2,WE,WE,Pantry,PANTRY,4th Floor,04-306,59.85813303,0,0,No,10/14/19,10/14/19,Construction
+278,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,14th Floor,14-105,"2,495.58",75,4,Yes,10/14/19,10/14/19,Construction
+279,Exchange Square 2,MEET,MEET,Conversation Room,CONVERSATION ROOM,17th Floor,17D,87.30201066,0,0,No,10/14/19,10/14/19,Construction
+280,Exchange Square 2,WE,WE,Lounge,LOUNGE,16th Floor,16-301,"1,023.79",0,0,No,10/14/19,10/14/19,Construction
+281,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-117,373.3856378,10,0,Yes,10/14/19,10/14/19,Construction
+282,Exchange Square 2,OPERATE,OPERATE,Trash Room,TRASH,13th Floor,13-836,20.78833359,0,0,No,10/14/19,10/14/19,Construction
+283,Exchange Square 2,OPERATE,OPERATE,Mail & Package Room,MAIL,17th Floor,17-821,122.7327195,0,0,No,10/14/19,10/14/19,Construction
+284,Exchange Square 2,WE,WE,Booth,BOOTH,4th Floor,04-403,19.89634047,0,0,No,10/14/19,10/14/19,Construction
+285,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,14th Floor,14-101,"1,590.20",48,2,Yes,10/14/19,10/14/19,Construction
+286,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-129,72.41698168,2,0,No,10/14/19,10/14/19,Construction
+287,Exchange Square 2,WE,EAT & DRINK,Pantry,PANTRY,13th Floor,15-104,0,0,0,No,10/14/19,10/14/19,Construction
+288,Exchange Square 2,MEET,MEET,Conference Room,CONFERENCE ROOM,18th Floor,18B,172.9112741,0,0,No,10/14/19,10/14/19,Construction
+289,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-130,216.8387585,7,0,Yes,10/14/19,10/14/19,Construction
+290,Exchange Square 2,OPERATE,OPERATE,Trash Room,TRASH,18th Floor,18-836,38.76025337,0,0,No,10/14/19,10/14/19,Construction
+291,Exchange Square 2,WE,WE,Printing Alcove,PRINTER,17th Floor,17-461,23.33333333,0,0,No,10/14/19,10/14/19,Construction
+292,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-112,334.3785815,10,0,Yes,10/14/19,10/14/19,Construction
+293,Exchange Square 2,MEET,MEET,Conference Room,CONFERENCE ROOM,17th Floor,17A,159.7314575,0,0,No,10/14/19,10/14/19,Construction
+294,Exchange Square 2,CIRCULATE,CIRCULATE,Hallway,HALLWAY,16th Floor,16-952,179.1125688,0,0,No,10/14/19,10/14/19,Construction
+295,Exchange Square 2,WE,WE,Booth,BOOTH,15th Floor,15-402,21.08277056,0,0,No,10/14/19,10/14/19,Construction
+296,Exchange Square 2,WASH,WASH,Restroom,MEN WC,13th Floor,13-741,158.6083196,0,0,No,10/14/19,10/14/19,Construction
+297,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-102,239.8586819,7,0,Yes,10/14/19,10/14/19,Construction
+298,Exchange Square 2,MEET,MEET,Conference Room,CONFERENCE ROOM,4th Floor,04A,182.5130901,0,0,No,10/14/19,10/14/19,Construction
+299,Exchange Square 2,CIRCULATE,CIRCULATE,Interior Staircase,INTERIOR STAIR,18th Floor,18-951,71.93788276,0,0,No,10/14/19,10/14/19,Construction
+300,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-128,224.0511947,8,0,Yes,10/14/19,10/14/19,Construction
+301,Exchange Square 2,WE,WE,Pantry,PANTRY,16th Floor,16-306,62.43295949,0,0,No,10/14/19,10/14/19,Construction
+302,Exchange Square 2,CIRCULATE,CIRCULATE,Hallway,HALLWAY,13th Floor,13-951,70.5886566,0,0,No,10/14/19,10/14/19,Construction
+303,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,15th Floor,15-102,"2,208.60",65,3,Yes,10/14/19,10/14/19,Construction
+304,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-118,270.7507015,9,0,Yes,10/14/19,10/14/19,Construction
+305,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-123,48.90102498,2,0,No,10/14/19,10/14/19,Construction
+306,Exchange Square 2,WASH,WASH,Restroom,WOMEN WC,17th Floor,17-742,149.6245466,0,0,No,10/14/19,10/14/19,Construction
+307,Exchange Square 2,WE,WE,Lounge,LOUNGE,18th Floor,18-301,"1,548.99",0,0,No,10/14/19,10/14/19,Construction
+308,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-109,59.42508088,2,0,No,10/14/19,10/14/19,Construction
+309,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-120,61.90021841,2,0,No,10/14/19,10/14/19,Construction
+310,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-121,212.424853,6,0,Yes,10/14/19,10/14/19,Construction
+311,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-105,288.1664556,10,0,Yes,10/14/19,10/14/19,Construction
+312,Exchange Square 2,OPERATE,OPERATE,Electrical Closet,ELEC,13th Floor,13-841,41.13210682,0,0,No,10/14/19,10/14/19,Construction
+313,Exchange Square 2,WE,WE,Booth,BOOTH,13th Floor,13-403,21.53719823,0,0,No,10/14/19,10/14/19,Construction
+314,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-101,131.0563486,6,0,No,10/14/19,10/14/19,Construction
+315,Exchange Square 2,CIRCULATE,CIRCULATE,Hallway,HALLWAY,15th Floor,15-952,222.2680439,0,0,No,10/14/19,10/14/19,Construction
+316,Exchange Square 2,WASH,WASH,Restroom,WOMEN WC,14th Floor,14-742,156.0381425,0,0,No,10/14/19,10/14/19,Construction
+317,Exchange Square 2,WASH,WASH,Restroom,WOMEN WC,15th Floor,15-743,156.0381425,0,0,No,10/14/19,10/14/19,Construction
+318,Exchange Square 2,WE,WE,Pantry,PANTRY,18th Floor,18-306,62.45296789,0,0,No,10/14/19,10/14/19,Construction
+319,Exchange Square 2,WASH,WASH,Restroom,MEN WC,15th Floor,15-742,158.6083196,0,0,No,10/14/19,10/14/19,Construction
+320,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,17th Floor,17-110,334.3752365,10,0,Yes,10/14/19,10/14/19,Construction
+321,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-125,94.22606724,4,0,No,10/14/19,10/14/19,Construction
+322,Exchange Square 2,OPERATE,OPERATE,Trash Room,TRASH,17th Floor,17-836,38.76025337,0,0,No,10/14/19,10/14/19,Construction
+323,Exchange Square 2,MEET,MEET,Conversation Room,BRAINSTORM ROOM,17th Floor,17B,125.7125465,0,0,No,10/14/19,10/14/19,Construction
+324,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,18th Floor,18-118,430.5617201,14,0,Yes,10/14/19,10/14/19,Construction
+325,Exchange Square 2,WE,WE,Booth,BOOTH,15th Floor,15-403,21.08277374,0,0,No,10/14/19,10/14/19,Construction
+326,Exchange Square 2,WE,WE,Printing Alcove,PRINTER,16th Floor,16-461,24.8646336,0,0,No,10/14/19,10/14/19,Construction
+327,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,15th Floor,15-105,"2,495.58",75,4,Yes,10/14/19,10/14/19,Construction
+328,Exchange Square 2,WASH,WASH,Restroom,MEN WC,14th Floor,14-741,158.6083196,0,0,No,10/14/19,10/14/19,Construction
+329,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,14th Floor,14-100,949.7724583,32,1,Yes,10/14/19,10/14/19,Construction
+330,Exchange Square 2,WORK,WORK,Private Office,PRIVATE OFFICE,15th Floor,15-103,"1,427.91",45,3,Yes,10/14/19,10/14/19,Construction
+331,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,7th Floor,07-433,12.77815923,0,0,Yes,10/16/19,,Design
+332,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-125,106.9678837,4,0,No,10/16/19,10/16/19,Construction
+333,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-110,173.8719207,7,0,No,10/16/19,10/16/19,Construction
+334,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-169,93.22166938,4,0,No,10/16/19,10/16/19,Construction
+335,The Quayside,OPERATE,OPERATE,IT Closet,IT,6th,06-807,107.0496223,0,0,No,10/16/19,10/16/19,Construction
+336,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-123,138.8364483,6,0,No,10/16/19,10/16/19,Construction
+337,The Quayside,CIRCULATE,CIRCULATE,Hallway,HALLWAY,5th,05-903,"1,085.26",0,0,No,10/16/19,10/16/19,Construction
+338,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-180,298.7021651,11,0,No,10/16/19,10/16/19,Construction
+339,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-117,267.1626921,0,0,Yes,10/16/19,,Design
+340,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-165,102.3415621,4,0,No,10/16/19,10/16/19,Construction
+341,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-108,427.8420275,0,0,Yes,10/16/19,,Design
+342,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-166,90.5244866,4,0,No,10/16/19,10/16/19,Construction
+343,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-187,109.5821441,4,0,No,10/16/19,10/16/19,Construction
+344,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,7th Floor,07-177,764.9879854,0,1,Yes,10/16/19,,Design
+345,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-120,124.4159879,6,0,No,10/16/19,10/16/19,Construction
+346,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-159,318.2610256,0,0,No,10/16/19,,Design
+347,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,5th,05F,93.7920093,0,0,No,10/16/19,10/16/19,Construction
+348,The Quayside,OPERATE,OPERATE,F&B Storage,STOR,5th,05-801,169.7536836,0,0,No,10/16/19,10/16/19,Construction
+349,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-189,"1,195.74",0,1,Yes,10/16/19,,Design
+350,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-173,253.497694,10,0,No,10/16/19,10/16/19,Construction
+351,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-175,200.815526,8,0,No,10/16/19,10/16/19,Construction
+352,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,7th Floor,07-439,13.40263825,0,0,Yes,10/16/19,,Design
+353,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-163,270.6388139,9,0,Yes,10/16/19,10/16/19,Construction
+354,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-119,250.8580058,8,0,Yes,10/16/19,10/16/19,Construction
+355,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-175,200.815526,0,0,No,10/16/19,,Design
+356,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-167,102.3415621,0,0,No,10/16/19,,Design
+357,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,7th Floor,07-176,703.6892436,0,1,Yes,10/16/19,,Design
+358,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,5th,06-809,12.82414698,0,0,No,10/16/19,10/16/19,Construction
+359,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-151,93.9133934,4,0,No,10/16/19,10/16/19,Construction
+360,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-118,118.4383202,6,0,No,10/16/19,10/16/19,Construction
+361,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,7th Floor,07-500,12.39583333,0,0,Yes,10/16/19,,Design
+362,The Quayside,WE,WE,Lounge,LOUNGE,5th,301,"4,771.40",0,0,No,10/16/19,10/16/19,Construction
+363,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,7th Floor,07-133,761.1150539,0,1,Yes,10/16/19,,Design
+364,The Quayside,CIRCULATE,CIRCULATE,Hallway,HALLWAY,6th,06-901,"5,471.52",0,0,Yes,10/16/19,10/16/19,Construction
+365,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,6th,06N,145.801833,0,0,No,10/16/19,10/16/19,Construction
+366,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,6th,281CC,12.65985763,0,0,No,10/16/19,10/16/19,Construction
+367,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-126,146.7724257,6,0,No,10/16/19,10/16/19,Construction
+368,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-128,499.4037332,17,0,Yes,10/16/19,10/16/19,Construction
+369,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-156,591.0101459,18,0,Yes,10/16/19,10/16/19,Construction
+370,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,7th Floor,07-179,916.4307476,0,1,Yes,10/16/19,,Design
+371,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,6th,06-186,"1,099.75",41,1,Yes,10/16/19,10/16/19,Construction
+372,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-168,105.3908354,4,0,No,10/16/19,10/16/19,Construction
+373,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-110,83.97160534,0,0,No,10/16/19,,Design
+374,The Quayside,OPERATE,OPERATE,F&B Storage,F&B,5th,05-802,181.4424727,0,0,Yes,10/16/19,10/16/19,Construction
+375,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,5th,05J,194.1726645,0,0,No,10/16/19,10/16/19,Construction
+376,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-155,133.8435462,5,0,No,10/16/19,10/16/19,Construction
+377,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-183,73.96329035,0,0,No,10/16/19,,Design
+378,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-128,421.5793154,15,0,Yes,10/16/19,10/16/19,Construction
+379,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,5th,05-127,702.7326555,26,1,Yes,10/16/19,10/16/19,Construction
+380,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-152,272.0874365,9,0,Yes,10/16/19,10/16/19,Construction
+381,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,5th,05P,150.8264125,0,0,No,10/16/19,10/16/19,Construction
+382,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-150,426.4930405,0,0,Yes,10/16/19,,Design
+383,The Quayside,OPERATE,OPERATE,IT Closet,IT,7th Floor,07-807,107.0496223,0,0,No,10/16/19,,Design
+384,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-173,53.25997333,0,0,No,10/16/19,,Design
+385,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-132,141.5139914,6,0,No,10/16/19,10/16/19,Construction
+386,The Quayside,WORK,WORK,Hot Desk,HOT DESK,5th,05-192,359.2998521,16,0,No,10/16/19,10/16/19,Construction
+387,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-103,102.1129214,4,0,No,10/16/19,10/16/19,Construction
+388,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,5th,05-183,"1,215.31",48,2,Yes,10/16/19,10/16/19,Construction
+389,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,7th Floor,07H,155.54331,0,0,No,10/16/19,,Design
+390,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-190,266.6902766,10,0,No,10/16/19,10/16/19,Construction
+391,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,5th,05-179,"1,605.75",57,1,Yes,10/16/19,10/16/19,Construction
+392,The Quayside,MEET,MEET,Conversation Room,CONVERSATION ROOM,7th Floor,07Q,106.5627131,0,0,No,10/16/19,,Design
+393,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-120,95.13701382,0,0,No,10/16/19,,Design
+394,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,5th,06-814,12.25,0,0,No,10/16/19,10/16/19,Construction
+395,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,6th,06Z,12.44424913,0,0,Yes,10/16/19,10/16/19,Construction
+396,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,7th Floor,07-127,715.4878893,0,1,Yes,10/16/19,,Design
+397,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-135,165.96963,6,0,No,10/16/19,10/16/19,Construction
+398,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-109,402.7308301,14,0,Yes,10/16/19,10/16/19,Construction
+399,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-168,90.5244866,4,0,No,10/16/19,10/16/19,Construction
+400,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,6th,06F,93.7920093,0,0,No,10/16/19,10/16/19,Construction
+401,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-122,91.59461305,0,0,No,10/16/19,,Design
+402,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-168,105.3908354,0,0,No,10/16/19,,Design
+403,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-110,427.8420275,14,0,Yes,10/16/19,10/16/19,Construction
+404,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-130,143.9907191,0,0,No,10/16/19,,Design
+405,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,5th,06-821,12.29454886,0,0,Yes,10/16/19,10/16/19,Construction
+406,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-108,281.2294948,9,0,Yes,10/16/19,10/16/19,Construction
+407,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,6th,06AA,12.37072414,0,0,Yes,10/16/19,10/16/19,Construction
+408,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-153,90.38713911,4,0,No,10/16/19,10/16/19,Construction
+409,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-112,83.97160534,3,0,No,10/16/19,10/16/19,Construction
+410,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-178,290.9609933,11,0,No,10/16/19,10/16/19,Construction
+411,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-131,424.0550148,15,0,Yes,10/16/19,10/16/19,Construction
+412,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-182,103.4921292,4,0,No,10/16/19,10/16/19,Construction
+413,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-128,499.4037332,0,0,Yes,10/16/19,,Design
+414,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-163,286.2769614,10,0,Yes,10/16/19,10/16/19,Construction
+415,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,5th,05-176,750.3873716,26,1,Yes,10/16/19,10/16/19,Construction
+416,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-153,93.9133934,4,0,No,10/16/19,10/16/19,Construction
+417,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,7th Floor,07T,168.4405063,0,0,No,10/16/19,,Design
+418,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-157,504.6238624,0,0,No,10/16/19,,Design
+419,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,5th,05A,397.2893421,0,0,No,10/16/19,10/16/19,Construction
+420,The Quayside,WE,WE,Printing Alcove,PRINTER,5th,06U,25.90253661,0,0,Yes,10/16/19,10/16/19,Construction
+421,The Quayside,WE,WE,Printing Alcove,PRINTER,6th,07I,26.81876446,0,0,Yes,10/16/19,10/16/19,Construction
+422,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,6th,06S,168.4405063,0,0,No,10/16/19,10/16/19,Construction
+423,The Quayside,OPERATE,OPERATE,Mail & Package Room,MAIL,5th,05-816,180.8419525,0,0,No,10/16/19,10/16/19,Construction
+424,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,6th,06FF,12.61286089,0,0,Yes,10/16/19,10/16/19,Construction
+425,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-158,238.0354239,0,0,No,10/16/19,,Design
+426,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-171,100.2611796,0,0,No,10/16/19,,Design
+427,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-150,426.4930405,14,0,Yes,10/16/19,10/16/19,Construction
+428,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-166,102.3415621,4,0,No,10/16/19,10/16/19,Construction
+429,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,5th,05-167,481.8397224,16,1,Yes,10/16/19,10/16/19,Construction
+430,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-111,277.2309711,0,0,Yes,10/16/19,,Design
+431,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-105,72.3898523,3,0,No,10/16/19,10/16/19,Construction
+432,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-139,90.38713911,0,0,No,10/16/19,,Design
+433,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,7th Floor,07B,150.6570721,0,0,No,10/16/19,,Design
+434,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,7th Floor,07-119,789.3978715,0,1,Yes,10/16/19,,Design
+435,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,7th Floor,07K,171.9013999,0,0,No,10/16/19,,Design
+436,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-155,133.8435462,0,0,No,10/16/19,,Design
+437,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-117,145.244978,6,0,Yes,10/16/19,10/16/19,Construction
+438,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-137,90.38713911,0,0,No,10/16/19,,Design
+439,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-161,496.6873614,19,0,Yes,10/16/19,10/16/19,Construction
+440,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-155,137.4360487,5,0,No,10/16/19,10/16/19,Construction
+441,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,5th,06V,13.70538906,0,0,Yes,10/16/19,10/16/19,Construction
+442,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,7th Floor,07R,95.26866841,0,0,No,10/16/19,,Design
+443,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-137,90.38713911,4,0,No,10/16/19,10/16/19,Construction
+444,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,6th,06-170,232.3615409,8,0,Yes,10/16/19,10/16/19,Construction
+445,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-181,113.8228934,0,0,No,10/16/19,,Design
+446,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,6th,06H,154.0889719,0,0,No,10/16/19,10/16/19,Construction
+447,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-159,317.9101835,11,0,No,10/16/19,10/16/19,Construction
+448,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-167,102.3415621,4,0,No,10/16/19,10/16/19,Construction
+449,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-182,103.763297,3,0,No,10/16/19,10/16/19,Construction
+450,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-165,90.5244866,4,0,No,10/16/19,10/16/19,Construction
+451,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-139,90.38713911,4,0,No,10/16/19,10/16/19,Construction
+452,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-171,100.2611796,4,0,No,10/16/19,10/16/19,Construction
+453,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,7th Floor,07-129,640.8657348,0,1,Yes,10/16/19,,Design
+454,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-185,202.4430712,0,0,No,10/16/19,,Design
+455,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-102,150.2048051,4,0,No,10/16/19,10/16/19,Construction
+456,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,6th,06G,276.7872223,0,0,No,10/16/19,10/16/19,Construction
+457,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-119,267.1626921,8,0,Yes,10/16/19,10/16/19,Construction
+458,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,7th Floor,07-437,12.61286089,0,0,Yes,10/16/19,,Design
+459,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,7th Floor,07-438,12.65985763,0,0,No,10/16/19,,Design
+460,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-136,309.8606892,0,0,Yes,10/16/19,,Design
+461,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,6th,06R,193.7129591,0,0,No,10/16/19,10/16/19,Construction
+462,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,6th,06Y,12.77815923,0,0,Yes,10/16/19,10/16/19,Construction
+463,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,5th,06-815,12.25,0,0,No,10/16/19,10/16/19,Construction
+464,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-102,72.3898523,0,0,No,10/16/19,,Design
+465,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,7th Floor,07-178,806.5300356,0,1,Yes,10/16/19,,Design
+466,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-111,118.3217471,6,0,No,10/16/19,10/16/19,Construction
+467,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,7th Floor,07-431,12.37072414,0,0,Yes,10/16/19,,Design
+468,The Quayside,OPERATE,OPERATE,IT Closet,IT,5th,05-806,135.1293491,0,0,No,10/16/19,10/16/19,Construction
+469,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-171,138.9160564,5,0,No,10/16/19,10/16/19,Construction
+470,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-106,281.2294948,0,0,Yes,10/16/19,,Design
+471,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,6th,06Q,95.26866841,0,0,No,10/16/19,10/16/19,Construction
+472,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,6th,06-156,564.0831133,19,1,Yes,10/16/19,10/16/19,Construction
+473,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,6th,06EE,12.39583333,0,0,Yes,10/16/19,10/16/19,Construction
+474,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,7th Floor,07P,145.801833,0,0,No,10/16/19,,Design
+475,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-101,449.5399916,16,0,Yes,10/16/19,10/16/19,Construction
+476,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,6th,06-169,497.3669688,16,1,Yes,10/16/19,10/16/19,Construction
+477,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,5th,05N,149.9652997,0,0,No,10/16/19,10/16/19,Construction
+478,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-157,504.6238624,20,0,No,10/16/19,10/16/19,Construction
+479,The Quayside,OPERATE,OPERATE,IT Closet,IT,6th,06-806,132.3719364,0,0,No,10/16/19,10/16/19,Construction
+480,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-132,141.5139914,6,0,No,10/16/19,10/16/19,Construction
+481,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,5th,05L,170.8612208,0,0,No,10/16/19,10/16/19,Construction
+482,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,5th,05-122,771.9240035,23,1,Yes,10/16/19,10/16/19,Construction
+483,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,7th Floor,07-169,497.3669688,0,1,Yes,10/16/19,,Design
+484,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,6th,06K,173.2174022,0,0,No,10/16/19,10/16/19,Construction
+485,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,7th Floor,07-172,787.1143779,0,1,Yes,10/16/19,,Design
+486,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,6th,06-181,"1,360.15",45,2,Yes,10/16/19,10/16/19,Construction
+487,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,6th,06CC,12.39658434,0,0,Yes,10/16/19,10/16/19,Construction
+488,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-159,56.95901735,2,0,No,10/16/19,10/16/19,Construction
+489,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,6th,06-158,199.514257,7,0,No,10/16/19,10/16/19,Construction
+490,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,7th Floor,07L,173.2174022,0,0,No,10/16/19,,Design
+491,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,6th,06-106,839.4922954,22,1,Yes,10/16/19,10/16/19,Construction
+492,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,7th Floor,07-131,424.0550148,0,0,Yes,10/16/19,,Design
+493,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,5th,432,13.70538906,0,0,No,10/16/19,10/16/19,Construction
+494,The Quayside,WORK,WORK,Private Office,PRIVATE OFFICE,5th,05-120,120.822514,6,0,No,10/16/19,10/16/19,Construction
+495,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,7th Floor,07F,168.5628371,0,0,No,10/16/19,,Design
+496,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,5th,05D,104.5980731,0,0,No,10/16/19,10/16/19,Construction
+497,The Quayside,MEET,MEET,Conference Room,CONFERENCE ROOM,6th,06B,92.13107227,0,0,No,10/16/19,10/16/19,Construction
+498,The Quayside,WORK,WORK,Large Office,LARGE OFFICE,6th,06-180,916.4307476,25,1,Yes,10/16/19,10/16/19,Construction
+499,The Quayside,WE,WE,Printing Alcove,PRINTER,6th,363,33.59228769,0,0,No,10/16/19,10/16/19,Construction
+500,The Quayside,WE,WE,Phone Booth,PHONE BOOTH,5th,06-813,12.82414698,0,0,No,10/16/19,10/16/19,Construction
