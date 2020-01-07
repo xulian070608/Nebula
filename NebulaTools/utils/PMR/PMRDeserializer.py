@@ -1,10 +1,12 @@
-import json
-from settings import revit2017
+from .settings import revit2017
+import uuid
+import collections
 
 
 class PMRDeserializer:
-    def __init__(self, json_file):
-        self.__json_data = json.load(json_file)["Data"]["Attributes"]["MainDocument"]
+    def __init__(self, json_data):
+        self.__json_data = json_data["Data"]["Attributes"]["MainDocument"]
+        self.level_id_dict = {}
 
     @property
     def json_data(self):
@@ -34,7 +36,7 @@ class PMRDeserializer:
             if param["Id"] in list(project_info_dict.keys()):
                 project_db_keys = project_info_dict[param["Id"]]
                 project_info[project_db_keys] = param["Value"]
-
+        self.project_uuid = project_info["building_uuid"]
         return project_info
 
     def get_level_info(self):
@@ -43,12 +45,21 @@ class PMRDeserializer:
         level_info_list = []
 
         for lvl in level_elements:
-            lvl_info = {"level_revit_id": lvl["Id"]}
+
+            lvl_info = {"level_revit_id": str(lvl["Id"])}
             for param in lvl["Parameters"]:
                 if param["Id"] in list(level_info_map.keys()):
                     lvl_db_keys = level_info_map[param["Id"]]
                     lvl_info[lvl_db_keys] = param["Value"]
-            level_info_list.append(lvl_info)
+                    lvl_info["level_uuid"] = str(uuid.uuid4())
+                    lvl_info["project"] = self.project_uuid
+            if lvl_info["level_name"] != "CONTAINER LEVEL":
+                self.level_id_dict[str(lvl_info["level_revit_id"])] = lvl_info[
+                    "level_uuid"
+                ]
+                lvl_info = collections.OrderedDict(sorted(lvl_info.items()))
+                level_info_list.append(lvl_info)
+
             lvl_info = None
 
         return level_info_list
@@ -67,8 +78,15 @@ class PMRDeserializer:
                     room_info[key] = param["Value"]
 
             # get room boundary data
-            room_info["outline"] = self.__get_room_boundary(room)
-            room_info_list.append(room_info)
+            room_info["outline"] = f"{self.__get_room_boundary(room)}"
+            # print(room_info["outline"])
+            room_info["level_id"] = self.level_id_dict.get(room_info["level_revit_id"])
+            room_info["room_uuid"] = str(uuid.uuid4())
+            # room_info["has_av"] = bool(room_info["has_av"])
+            # room_info["has_window"] = bool(room_info["has_window"])
+            if room_info["level_id"]:
+                room_info = collections.OrderedDict(sorted(room_info.items()))
+                room_info_list.append(room_info)
             room_info = {}
 
         return room_info_list
@@ -85,20 +103,20 @@ class PMRDeserializer:
                 if i == 0:
                     first_x = tessellate[0]["X"]
                     first_y = tessellate[0]["Y"]
-                    first_point = tuple((first_x, first_y))
+                    first_point = (first_x, first_y)
                     object_box.append(first_point)
                     second_x = tessellate[1]["X"]
                     second_y = tessellate[1]["Y"]
-                    second_point = tuple((second_x, second_y))
+                    second_point = (second_x, second_y)
                     object_box.append(second_point)
                 if i > 0:
                     point_x = tessellate[1]["X"]
                     point_y = tessellate[1]["Y"]
-                    n_point = tuple((point_x, point_y))
+                    n_point = (point_x, point_y)
                     object_box.append(n_point)
 
-            room_outline.append(object_box)
-            return room_outline
+            room_outline.append(tuple(object_box))
+            return tuple(object_box)
 
     def get_ws_info(self):
         #  ws_elements = self.__get_revit_element("FamilyInstance", "FurnitureSystem")
@@ -140,4 +158,4 @@ def test_room_info():
 
 
 if __name__ == "__main__":
-    test_room_info()
+    test_project_info()
