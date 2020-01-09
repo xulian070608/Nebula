@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
+    "nebula_backend.apis",
 ]
 
 MIDDLEWARE = [
@@ -74,10 +76,21 @@ WSGI_APPLICATION = "nebula_backend.wsgi.application"
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
+    "default": {},
+    "nebula_db": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "NebulaDB",
+        "USER": "chinavdc",
+        "HOST": "100.94.29.214",
+        "OPTIONS": {"options": "-c search_path=nebula_ww_china_projects"},
+    },
+    "auth_db": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "NebulaDB",
+        "USER": "chinavdc",
+        "HOST": "100.94.29.214",
+        "OPTIONS": {"options": "-c search_path=nebula_django"},
+    },
 }
 
 
@@ -112,3 +125,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
+
+# Pagination
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+}
+
+DATABASE_APP_MAPPING = {
+    "apis": "nebula_db",
+    "auth": "auth_db",
+    "contenttypes": "auth_db",
+    "sessions": "auth_db",
+}
+
+DATABASE_ROUTERS = ["nebula_backend.dbrouter.DatabaseAppsRouter"]
