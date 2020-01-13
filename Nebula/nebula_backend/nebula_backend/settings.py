@@ -12,6 +12,18 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+if os.name == "nt":
+    import platform
+
+    OSGEO4W = r"C:\OSGeo4W"
+    if "64" in platform.architecture()[0]:
+        OSGEO4W += "64"
+    assert os.path.isdir(OSGEO4W), "Directory does not exist: " + OSGEO4W
+    os.environ["OSGEO4W_ROOT"] = OSGEO4W
+    os.environ["GDAL_DATA"] = OSGEO4W + r"\share\gdal"
+    os.environ["PROJ_LIB"] = OSGEO4W + r"\share\proj"
+    os.environ["PATH"] = OSGEO4W + r"\bin;" + os.environ["PATH"]
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -40,6 +52,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "nebula_backend.apis",
+    "rest_framework_gis",
     # "rest_framework.authtoken",
 ]
 
@@ -80,7 +93,7 @@ WSGI_APPLICATION = "nebula_backend.wsgi.application"
 DATABASES = {
     "default": {},
     "nebula_db": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.contrib.gis.db.backends.postgis",
         "NAME": "NebulaDB",
         "USER": "chinavdc",
         "HOST": "100.94.29.214",
@@ -130,8 +143,8 @@ STATIC_URL = "/static/"
 
 # Pagination
 REST_FRAMEWORK = {
-    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 10,
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 20,
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     # "DEFAULT_AUTHENTICATION_CLASSES": [
     #     "rest_framework.authentication.BasicAuthentication",
@@ -149,3 +162,8 @@ DATABASE_APP_MAPPING = {
 }
 
 DATABASE_ROUTERS = ["nebula_backend.dbrouter.DatabaseAppsRouter"]
+
+
+GDAL_LIBRARY_PATH = r"C:\\OSGeo4W64\\bin\\gdal300.dll"
+GEOS_LIBRARY_PATH = r"C:\\OSGeo4W64\\bin\\geos_c.dll"
+print(GDAL_LIBRARY_PATH)

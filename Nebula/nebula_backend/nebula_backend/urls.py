@@ -17,6 +17,6 @@ router.register(r"levels", views.LevelViewSet, basename="level")
 urlpatterns = [
     path(r"api-auth/", include("rest_framework.urls")),
     path(r"apis/v1/", include(router.urls)),
-    path(r"apis/v1/listproject", views.ProjectList.as_view()),
-    path(r"room", views.RoomList.as_view()),
+    # path(r"apis/v1/listproject", views.ProjectList.as_view()),
+    # path(r"room", views.RoomList.as_view()),
 ]
