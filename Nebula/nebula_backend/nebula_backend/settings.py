@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     "django_filters",
     "nebula_backend.apis",
     'corsheaders',
-    # "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
@@ -154,3 +153,4 @@ DATABASE_ROUTERS = ["nebula_backend.dbrouter.DatabaseAppsRouter"]
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
+
