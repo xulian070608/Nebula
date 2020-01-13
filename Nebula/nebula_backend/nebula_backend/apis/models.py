@@ -30,6 +30,9 @@ class ProjectInfo(models.Model):
     template_version = models.CharField(max_length=10, blank=True, null=True)
     revit_file_path = models.CharField(max_length=255, blank=True, null=True)
 
+    def __repr__(self):
+        return f'<Project ({self.building_uuid}) "{self.building_name}">'
+
     class Meta:
         managed = False
         db_table = "project_info"
@@ -58,6 +61,9 @@ class Level(models.Model):
     lounge_percent_of_usf = models.FloatField(blank=True, null=True)
     physical_desk_count = models.FloatField(blank=True, null=True)
 
+    def __repr__(self):
+        return f'<Level ({self.level_uuid}) "{self.level_name}">'
+
     class Meta:
         managed = False
         db_table = "level"
@@ -65,7 +71,9 @@ class Level(models.Model):
 
 
 class Room(models.Model):
-    level = models.ForeignKey(Level, models.DO_NOTHING)
+    level_id = models.ForeignKey(
+        Level, related_name="rooms", db_column="level_id", on_delete=models.CASCADE
+    )
     room_revit_id = models.IntegerField()
     room_uuid = models.UUIDField(primary_key=True)
     room_number = models.CharField(max_length=10, blank=True, null=True)

@@ -1,4 +1,4 @@
-from .models import ProjectInfo, Level
+from .models import ProjectInfo, Level, Room
 from rest_framework import serializers
 
 
@@ -47,3 +47,22 @@ class ProjectSerializer(serializers.ModelSerializer):
             "levels",
         ]
 
+
+class RoomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Room
+        fields = [
+            "level_id",
+            "room_revit_id",
+            "room_uuid",
+            "room_name",
+            "area",
+            "has_window",
+            "deskcount",
+            "physical_deskcount",
+            "program_type",
+            "internal_room_count",
+            "has_av",
+            "outline",
+            "level_revit_id",
+        ]

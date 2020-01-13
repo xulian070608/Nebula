@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "django_filters",
     "nebula_backend.apis",
     'corsheaders',
 ]
@@ -133,6 +134,10 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    # "DEFAULT_AUTHENTICATION_CLASSES": [
+    #     "rest_framework.authentication.BasicAuthentication",
+    #     "rest_framework.authentication.SessionAuthentication",
+    # ],
 }
 
 DATABASE_APP_MAPPING = {
@@ -140,6 +145,8 @@ DATABASE_APP_MAPPING = {
     "auth": "auth_db",
     "contenttypes": "auth_db",
     "sessions": "auth_db",
+    "authtoken": "auth_db",
+    "admin": "auth_db",
 }
 
 DATABASE_ROUTERS = ["nebula_backend.dbrouter.DatabaseAppsRouter"]
@@ -147,4 +154,3 @@ DATABASE_ROUTERS = ["nebula_backend.dbrouter.DatabaseAppsRouter"]
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
 
-# CORS_ORIGIN_WHITELIST = ("https://100.94.21.68:3000",)
