@@ -3,7 +3,7 @@ from nebula_backend.settings import DATABASE_APP_MAPPING
 
 class DatabaseAppsRouter:
     def db_for_read(self, model, **hints):
-        print(model._meta.app_label)
+        # print(model._meta.app_label)
         return DATABASE_APP_MAPPING.get(model._meta.app_label, None)
 
     def db_for_write(self, model, **hints):
@@ -37,4 +37,3 @@ class DatabaseAppsRouter:
         elif app_label in DATABASE_APP_MAPPING:
             return False
         return None
-
