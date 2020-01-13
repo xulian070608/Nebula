@@ -56,6 +56,7 @@ class RoomSerializer(serializers.ModelSerializer):
             "room_revit_id",
             "room_uuid",
             "room_name",
+            "room_number",
             "area",
             "has_window",
             "deskcount",
