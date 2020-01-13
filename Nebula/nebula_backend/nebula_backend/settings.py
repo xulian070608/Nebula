@@ -25,7 +25,7 @@ SECRET_KEY = "so#ip8)*qtex8rl(8k*cyjcy&dawv15+-1&eig&q36&^4_q6h="
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "nebula_backend.apis",
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -81,14 +83,14 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "NebulaDB",
         "USER": "chinavdc",
-        "HOST": "100.94.29.214",
+        "HOST": "localhost",
         "OPTIONS": {"options": "-c search_path=nebula_ww_china_projects"},
     },
     "auth_db": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "NebulaDB",
         "USER": "chinavdc",
-        "HOST": "100.94.29.214",
+        "HOST": "localhost",
         "OPTIONS": {"options": "-c search_path=nebula_django"},
     },
 }
@@ -141,3 +143,8 @@ DATABASE_APP_MAPPING = {
 }
 
 DATABASE_ROUTERS = ["nebula_backend.dbrouter.DatabaseAppsRouter"]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = False
+
+# CORS_ORIGIN_WHITELIST = ("https://100.94.21.68:3000",)

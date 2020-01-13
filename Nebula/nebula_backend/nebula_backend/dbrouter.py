@@ -37,4 +37,3 @@ class DatabaseAppsRouter:
         elif app_label in DATABASE_APP_MAPPING:
             return False
         return None
-
