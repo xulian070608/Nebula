@@ -1,5 +1,7 @@
 from .models import ProjectInfo, Level, Room
-from rest_framework import serializers
+
+# from rest_framework import serializers
+from rest_framework_gis import serializers
 
 
 class SimpleLevelSerializer(serializers.ModelSerializer):
@@ -48,7 +50,7 @@ class ProjectSerializer(serializers.ModelSerializer):
         ]
 
 
-class RoomSerializer(serializers.ModelSerializer):
+class RoomSerializer(serializers.GeoModelSerializer):
     class Meta:
         model = Room
         fields = [
@@ -56,6 +58,7 @@ class RoomSerializer(serializers.ModelSerializer):
             "room_revit_id",
             "room_uuid",
             "room_name",
+            "room_number",
             "area",
             "has_window",
             "deskcount",
