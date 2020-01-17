@@ -25,7 +25,7 @@ SECRET_KEY = "so#ip8)*qtex8rl(8k*cyjcy&dawv15+-1&eig&q36&^4_q6h="
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,11 +37,16 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
+    "django_filters",
+    "nebula_backend.apis",
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -74,10 +79,21 @@ WSGI_APPLICATION = "nebula_backend.wsgi.application"
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
+    "default": {},
+    "nebula_db": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "NebulaDB",
+        "USER": "chinavdc",
+        "HOST": "localhost",
+        "OPTIONS": {"options": "-c search_path=nebula_ww_china_projects"},
+    },
+    "auth_db": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "NebulaDB",
+        "USER": "chinavdc",
+        "HOST": "localhost",
+        "OPTIONS": {"options": "-c search_path=nebula_django"},
+    },
 }
 
 
@@ -112,3 +128,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
+
+# Pagination
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    # "DEFAULT_AUTHENTICATION_CLASSES": [
+    #     "rest_framework.authentication.BasicAuthentication",
+    #     "rest_framework.authentication.SessionAuthentication",
+    # ],
+}
+
+DATABASE_APP_MAPPING = {
+    "apis": "nebula_db",
+    "auth": "auth_db",
+    "contenttypes": "auth_db",
+    "sessions": "auth_db",
+    "authtoken": "auth_db",
+    "admin": "auth_db",
+}
+
+DATABASE_ROUTERS = ["nebula_backend.dbrouter.DatabaseAppsRouter"]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = False
+
