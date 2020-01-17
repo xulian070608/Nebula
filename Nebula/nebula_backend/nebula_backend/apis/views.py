@@ -6,8 +6,8 @@ from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 
-from rest_framework import permissions
-from nebula_backend.apis.permissions import IsOwner
+# from rest_framework import permissions
+# from nebula_backend.apis.permissions import IsOwner
 
 from nebula_backend.apis.models import ProjectInfo, Level, Room
 from nebula_backend.apis.serializers import (
@@ -17,24 +17,15 @@ from nebula_backend.apis.serializers import (
 )
 
 
-class ProjectViewSet(viewsets.ViewSet):
+class ProjectViewSet(viewsets.ModelViewSet):
+    queryset = ProjectInfo.objects.all()
+    serializer_class = ProjectSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_backends = ("project_city",)
-    search_fields = ("project_address_en",)
-
-    def list(self, request):
-        queryset = ProjectInfo.objects.all()
-        serializer = ProjectSerializer(queryset, many=True)
-        return Response(serializer.data)
-
-    def retrieve(self, request, pk=None):
-        queryset = ProjectInfo.objects.all()
-        project = get_object_or_404(queryset, pk=pk)
-        serializer = ProjectSerializer(project)
-        return Response(serializer.data)
+    filterset_fields = ("project_city",)
+    search_fields = ("project_address_en", "project_name", "building_name")
 
 
-class LevelViewSet(viewsets.ViewSet):
+class LevelViewSet(viewsets.ModelViewSet):
     def retrieve(self, request, pk=None):
         queryset = Level.objects.all()
         level = get_object_or_404(queryset, pk=pk)
@@ -42,11 +33,12 @@ class LevelViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
 
-class RoomViewSet(viewsets.ViewSet):
-    def list(self, request):
-        queryset = Room.objects.all()
-        serializer = RoomSerializer(queryset, many=True)
-        return Response(serializer.data)
+class RoomViewSet(viewsets.ModelViewSet):
+
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
+    filter_backends = (DjangoFilterBackend, SearchFilter)
+    filterset_fields = ("level_id",)
 
 
 class RoomList(generics.ListAPIView):
@@ -59,6 +51,6 @@ class ProjectList(generics.ListAPIView):
     serializer_class = ProjectSerializer
     queryset = ProjectInfo.objects.all()
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    # filter_backends = ("project_city", "project_market")
+
     search_fields = ("project_address_en",)
 
