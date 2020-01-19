@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import { Container, Row, Col } from 'reactstrap';
 import PropertyLi from './PropertyLi';
-import wwBuildings from "../../data/building_stats"
 import CreateMap from './Mapbox'
 
 function Home () {
@@ -12,11 +12,21 @@ function Home () {
         zoom: 12
     })
 
+    const [properties, setProperties] = useState([])
+    const propertyURL = "http://127.0.0.1:8000/apis/v1/projects/";
+
+    function getProperties(url) {
+        axios
+          .get(url)
+          .then(res => setProperties(res.data.results))
+          .catch(err => console.log(err));
+    }
+
     function CreatePropertyLi(wwBuildings) {
         return <PropertyLi 
-        key={wwBuildings.BuildingUUID}
-        propertyID={wwBuildings.BuildingUUID}
-        propertyName={wwBuildings.MarketingName} />
+        key={wwBuildings.building_uuid}
+        propertyID={wwBuildings.building_uuid}
+        propertyName={wwBuildings.project_name} />
     }
 
     function updateMapState(){
@@ -27,12 +37,16 @@ function Home () {
             })
     }
 
+    // get and update property state once DOM is mounted.
+    useEffect(() => {getProperties(propertyURL)})
+
     return (
         <Container>
             <Row>
                 <Col>
                 <ul>
-                    {wwBuildings.map(CreatePropertyLi)}
+                    {/* {JSON.stringify(properties[0])} */}
+                    {properties.map(CreatePropertyLi)}
                     <button onClick={updateMapState}>Test Jump Function</button>
                 </ul>
                 </Col>
