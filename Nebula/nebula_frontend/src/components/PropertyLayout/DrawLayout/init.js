@@ -1,6 +1,6 @@
 // import from external packages
 import * as THREE from "three";
-import axios from "axios";
+// import axios from "axios";
 
 // import from internal packages
 import { DirectionalLight } from "./LightLib";
@@ -8,31 +8,31 @@ import RenderController from "./RenderController";
 import CameraController from "./CameraController";
 import Room from "./RoomGenerator";
 import OrbitController from "./OrbitManager";
+import roomData from "../../../data/LayoutSample";
 
 var controls, renderer, scene, camera, raycaster;
 var roomList = [];
 var mouse = new THREE.Vector2(),
   INTERSECTED;
 
-// function renderEngine() {
-//   axios.get("http://100.94.29.214:8000/apis/v1/rooms/").then(res => {
+function renderLocalData(localData) {
+  localData.map(data => roomList.push(new Room(data)));
+  console.log(roomList)
+  init(roomList);
+  animate();
+}
+
+// function renderEngine(url) {
+//   axios.get(url).then(res => {
 //     res.data.results.map(data => roomList.push(new Room(data)));
-//     init(roomList);
-//     animate();
+//     if (res.data.next !== null) {
+//       renderEngine(res.data.next);
+//     } else {
+//       init(roomList);
+//       animate();
+//     }
 //   });
 // }
-
-function renderEngine(url) {
-  axios.get(url).then(res => {
-    res.data.results.map(data => roomList.push(new Room(data)));
-    if (res.data.next !== null) {
-      renderEngine(res.data.next);
-    } else {
-      init(roomList);
-      animate();
-    }
-  });
-}
 
 function init(roomList) {
   //set up scene background
@@ -127,4 +127,4 @@ function onDocumentMouseDown(event) {
   }
 }
 
-export default renderEngine;
+export default renderLocalData;

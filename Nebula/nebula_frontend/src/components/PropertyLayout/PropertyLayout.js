@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import wwBuildings from '../../data/building_stats';
@@ -10,6 +10,10 @@ import FloorSelectorOption from './FloorSelectorOption';
 import RoomLi from './RoomLi';
 import DrawLayout from './DrawLayout';
 import RoomInfoModal from './Modal/RoomInfoModal'
+import renderLocalData from './DrawLayout/init'
+
+// import local data
+import HuaiHaiMallAPI from "../../data/HuaiHaiMallFromRESTfulAPI"
 
 
 function PropertyLayout(props) {
@@ -112,7 +116,9 @@ function PropertyLayout(props) {
                     <option value="All Rooms">All Rooms</option>
                     {rooms.map(createRoomOption)}
                 </select>
-    )}     
+    )}
+
+    console.log(HuaiHaiMallAPI.length)
 
     return (
         <Container>
@@ -129,13 +135,14 @@ function PropertyLayout(props) {
                 </Col>               
                 <Col xs="8 offset-4 content-offset" id="property-infopanel-right">
                     <div className="App">
-                        <DrawLayout 
+                        {/* <DrawLayout 
                             currentProperty={currentProperty}
                             currentFloor={currentFloor}
                             selectedRoom={selectedRoom}
                             //passing this prop all the way to DrawRoom
                             toggleModalState={toggleModalState}
-                        />
+                        /> */}
+                        <div>{renderLocalData(HuaiHaiMallAPI)}</div>
                         {modalState ? 
                         <RoomInfoModal 
                         showModal={modalState} /> 
