@@ -11,8 +11,8 @@ function Home () {
         lat: 31.2291,
         zoom: 12
     })
+    let [properties, setProperties] = useState([])
 
-    const [properties, setProperties] = useState([])
     const propertyURL = "http://127.0.0.1:8000/apis/v1/projects/";
 
     function getProperties(url) {
@@ -23,7 +23,7 @@ function Home () {
     }
 
     // get and update property state once DOM is mounted.
-    useEffect(() => {getProperties(propertyURL)})
+    useEffect(() => {getProperties(propertyURL)}, [])
 
     function CreatePropertyLi(wwBuildings) {
         return <PropertyLi 
@@ -40,18 +40,19 @@ function Home () {
             })
     }
 
+    console.log("home testing...")
+
     return (
         <Container>
             <Row>
                 <Col>
                 <ul>
-                    {/* {JSON.stringify(properties[0])} */}
                     {properties.map(CreatePropertyLi)}
                     <button onClick={updateMapState}>Test Jump Function</button>
                 </ul>
                 </Col>
                 <Col>
-                    {/* <CreateMap coordinates={coordinates}/> */}
+                    <CreateMap coordinates={coordinates}/>
                 </Col>
             </Row>
         </Container>

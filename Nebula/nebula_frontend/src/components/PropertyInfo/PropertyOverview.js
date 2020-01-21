@@ -7,41 +7,35 @@ import PropertyInfoPanel from "./PropertyInfoPanel";
 
 function PropertyOverview(props) {
 
-    const [currentProperty, setCurrentProperty] = useState({})
-    const propertyURL = "http://127.0.0.1:8000/apis/v1/projects/?building_uuid=" + props.propertyUUID;
 
-    function getCurrentProperties(url) {
+    // current API cannot return the specific property by it's UUID
+    // so here still get all property and then use find function
+    let [allProperties, setAllProperties] = useState([])
+    const allPropertiesURL = "http://127.0.0.1:8000/apis/v1/projects/"
+    // const propertyURL = "http://127.0.0.1:8000/apis/v1/projects/?building_uuid=" + props.propertyUUID;
+
+    function getAllProperties(url) {
         axios
           .get(url)
-          .then(res => setCurrentProperty(res.data))
+          .then(res => setAllProperties(res.data.results))
           .catch(err => console.log(err));
     }
 
-    // get and update property state once DOM is mounted.
-    useEffect(() => {getCurrentProperties(propertyURL)})
+    useEffect(() => {getAllProperties(allPropertiesURL)}, [])
 
-    // let currentProperty = {}
-    // const [propertyUUID] = useState(props.propertyUUID)
-
-    // function getCurrentProperty(propertyUUID, properties) {
-    //     currentProperty = properties.find(property => property.building_uuid === propertyUUID)
-    //     // console.log(currentProperty)
-    // }
-
-    // getCurrentProperty(propertyUUID, properties)
+    let currentProperty = allProperties.find(property => property.building_uuid === props.propertyUUID)
+    // console.log(currentProperty)
 
     return (
         <Container id="property-overview">
             <Row>
                 <Col xs="4 content-offset" id="property-infopanel-left">
-                    {/* <PropertyInfoPanel 
+                    <PropertyInfoPanel 
                     style={{backgroundColor: "0xffd26a"}}
-                    currentProperty = {currentProperty}/> */}
-                    {JSON.stringify(currentProperty)}
+                    currentProperty = {currentProperty}/>
+                    {/* {JSON.stringify(currentProperty)} */}
                 </Col>
                 <Col xs="8 offset-4 content-offset" id="property-infopanel-right">
-                    {/* <button onClick={loadData}>Load Data</button>
-                    <div>{JSON.stringify(data)}</div> */}
                     <div className="row">
                         <Col>
                             <Card />
