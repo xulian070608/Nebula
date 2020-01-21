@@ -1,30 +1,43 @@
-import React, { useState } from "react";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Container, Row, Col } from 'reactstrap';
 import Card from "./Card";
 import PropertyInfoPanel from "./PropertyInfoPanel";
-import wwBuildings from "../../data/building_stats"
 
 
 function PropertyOverview(props) {
 
-    let currentProperty = {}
-    const [propertyUUID] = useState(props.propertyUUID)
+    const [currentProperty, setCurrentProperty] = useState({})
+    const propertyURL = "http://127.0.0.1:8000/apis/v1/projects/?building_uuid=" + props.propertyUUID;
 
-    function getCurrentProperty(propertyUUID, wwBuildings) {
-        currentProperty = wwBuildings.find(wwBuilding => wwBuilding.BuildingUUID === propertyUUID)
-        // console.log(currentProperty)
+    function getCurrentProperties(url) {
+        axios
+          .get(url)
+          .then(res => setCurrentProperty(res.data))
+          .catch(err => console.log(err));
     }
 
-    getCurrentProperty(propertyUUID, wwBuildings)
+    // get and update property state once DOM is mounted.
+    useEffect(() => {getCurrentProperties(propertyURL)})
+
+    // let currentProperty = {}
+    // const [propertyUUID] = useState(props.propertyUUID)
+
+    // function getCurrentProperty(propertyUUID, properties) {
+    //     currentProperty = properties.find(property => property.building_uuid === propertyUUID)
+    //     // console.log(currentProperty)
+    // }
+
+    // getCurrentProperty(propertyUUID, properties)
 
     return (
         <Container id="property-overview">
             <Row>
                 <Col xs="4 content-offset" id="property-infopanel-left">
-                    <PropertyInfoPanel 
+                    {/* <PropertyInfoPanel 
                     style={{backgroundColor: "0xffd26a"}}
-                    currentProperty = {currentProperty}/>
+                    currentProperty = {currentProperty}/> */}
+                    {JSON.stringify(currentProperty)}
                 </Col>
                 <Col xs="8 offset-4 content-offset" id="property-infopanel-right">
                     {/* <button onClick={loadData}>Load Data</button>

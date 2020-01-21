@@ -22,6 +22,9 @@ function Home () {
           .catch(err => console.log(err));
     }
 
+    // get and update property state once DOM is mounted.
+    useEffect(() => {getProperties(propertyURL)})
+
     function CreatePropertyLi(wwBuildings) {
         return <PropertyLi 
         key={wwBuildings.building_uuid}
@@ -37,9 +40,6 @@ function Home () {
             })
     }
 
-    // get and update property state once DOM is mounted.
-    useEffect(() => {getProperties(propertyURL)})
-
     return (
         <Container>
             <Row>
@@ -51,7 +51,7 @@ function Home () {
                 </ul>
                 </Col>
                 <Col>
-                    <CreateMap coordinates={coordinates}/>
+                    {/* <CreateMap coordinates={coordinates}/> */}
                 </Col>
             </Row>
         </Container>
