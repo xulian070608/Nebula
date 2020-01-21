@@ -97,14 +97,16 @@ DATABASES = {
     "nebula_db": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
         "NAME": "NebulaDB",
-        "USER": "chinavdc",
+        "USER": "xzhang4",
         "HOST": "localhost",
+        "PASSWORD": "1711",
         "OPTIONS": {"options": "-c search_path=nebula_ww_china_projects"},
     },
     "auth_db": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "NebulaDB",
-        "USER": "chinavdc",
+        "USER": "xzhang4",
+        "PASSWORD": "1711",
         "HOST": "localhost",
         "OPTIONS": {"options": "-c search_path=nebula_django"},
     },
@@ -166,8 +168,8 @@ DATABASE_APP_MAPPING = {
 DATABASE_ROUTERS = ["nebula_backend.dbrouter.DatabaseAppsRouter"]
 
 
-# GDAL_LIBRARY_PATH = r"C:\\OSGeo4W64\\bin\\gdal300.dll"
-# GEOS_LIBRARY_PATH = r"C:\\OSGeo4W64\\bin\\geos_c.dll"
+GDAL_LIBRARY_PATH = r"C:\\OSGeo4W64\\bin\\gdal300.dll"
+GEOS_LIBRARY_PATH = r"C:\\OSGeo4W64\\bin\\geos_c.dll"
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
