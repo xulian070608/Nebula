@@ -89,6 +89,12 @@ footer p {
   height:auto
 }
 
+.icon {
+  height:30px;
+  position: relative;
+  margin: 10px;
+}
+
 .property-img {
   max-width: 100%;
   max-height: 100%;
@@ -96,15 +102,77 @@ footer p {
   position: relative;
   padding: 25px 0px;
 }
-.card {
-  border-radius: 25px;
+.n-card {
   position: relative;
-  padding: 25px 15px;
-  background-color: #ccc;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  padding: 10px 0px;
   margin: 25px 0px;
   height: 200px;
   box-shadow: 0 2px 5px #ccc;
   text-align: left;
+}
+
+.n-card-header {
+  padding: 0px 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.n-card-header-title {
+  margin: 0rem;
+  padding: 0rem;
+  display: flex;
+  align-content: flex-start;
+  align-items: center;
+}
+
+.n-card-header-btn {
+  margin: 0rem;
+  padding: 0rem;
+  display: flex;
+  margin-left: auto;
+}
+
+.n-card-hr {
+  margin: 0.25rem 0rem;
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.n-card-body {
+  padding: 0px 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.highlight {
+  border-radius: .25rem;
+  position: relative;
+  margin: 25px 0px;
+  background-color: #fff;
+  height: 50px;
+  box-shadow: 0 2px 5px #ccc;
+  border: 1px solid rgba(0,0,0,.125);
+  text-align: left;
+}
+
+.highlight-number {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  color: #6e6e6e;
+  font-size: 20px;
+  position: inherit;
+  float: right;
+  margin: 10px;
 }
 
 .marker {

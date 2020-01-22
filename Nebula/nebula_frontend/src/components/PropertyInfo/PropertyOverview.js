@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import axios from "axios";
 import { Container, Row, Col } from 'reactstrap';
-import Card from "./Card";
+import Card from "../Utils/Card";
 import PropertyInfoPanel from "./PropertyInfoPanel";
 import wwBuildings from "../../data/building_stats"
 

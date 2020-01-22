@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import PropertyLi from './PropertyLi';
 import wwBuildings from "../../data/building_stats"
 import CreateMap from './Mapbox'
+import Highlight from './Highlight'
 
 function Home () {
 
@@ -30,14 +31,32 @@ function Home () {
     return (
         <Container>
             <Row>
-                <Col>
+                <Col xs="8">
+                    <Row>
+                    <Col>
+                        <Highlight />
+                    </Col>
+                    <Col>
+                        <Highlight />
+                    </Col>
+                    <Col>
+                        <Highlight />
+                    </Col>
+                    <Col>
+                        <Highlight />
+                    </Col>
+                    </Row>
+                </Col>
+            </Row>
+            <Row>
+                <Col xs="8">
+                    <CreateMap coordinates={coordinates}/>
+                </Col>
+                <Col xs="4">
                 <ul>
                     {wwBuildings.map(CreatePropertyLi)}
                     <button onClick={updateMapState}>Test Jump Function</button>
                 </ul>
-                </Col>
-                <Col>
-                    <CreateMap coordinates={coordinates}/>
                 </Col>
             </Row>
         </Container>

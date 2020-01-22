@@ -5,7 +5,7 @@ import wwBuildings from '../../data/building_stats';
 import wwFloors from '../../data/floor_stats';
 import wwRooms from '../../data/room_stats';
 import roomData from '../../data/LayoutSample';
-import Card from '../PropertyInfo/Card'
+import Card from '../Utils/Card'
 import FloorSelectorOption from './FloorSelectorOption';
 import RoomLi from './RoomLi';
 import DrawLayout from './DrawLayout';
@@ -135,14 +135,14 @@ function PropertyLayout(props) {
                 </Col>               
                 <Col xs="8 offset-4 content-offset" id="property-infopanel-right">
                     <div className="App">
-                        {/* <DrawLayout 
+                        <DrawLayout 
                             currentProperty={currentProperty}
                             currentFloor={currentFloor}
                             selectedRoom={selectedRoom}
                             //passing this prop all the way to DrawRoom
                             toggleModalState={toggleModalState}
-                        /> */}
-                        <div>{renderLocalData(HuaiHaiMallAPI)}</div>
+                        />
+                        {/* <div>{renderLocalData(HuaiHaiMallAPI)}</div> */}
                         {modalState ? 
                         <RoomInfoModal 
                         showModal={modalState} /> 
