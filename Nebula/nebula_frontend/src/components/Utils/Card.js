@@ -9,7 +9,7 @@ function Card(props){
         </div>
         <hr className="n-card-hr"/>
         <div className="n-card-body overflow-auto">
-            <p>this is a card placeholder</p>
+            {props.content}
         </div>
 </div>
 }
@@ -17,6 +17,7 @@ function Card(props){
 
 Card.defaultProps = {
     title: 'Name',
+    content: 'this is a card placeholder'
   };
 
 export default Card;
