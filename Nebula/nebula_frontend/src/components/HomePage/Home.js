@@ -4,6 +4,7 @@ import PropertyLi from './PropertyLi';
 import wwBuildings from "../../data/building_stats"
 import CreateMap from './Mapbox'
 import Highlight from './Highlight'
+import DropdownBtn from '../Utils/DropdownBtn'
 
 function Home () {
 
@@ -34,29 +35,38 @@ function Home () {
                 <Col xs="8">
                     <Row>
                     <Col>
-                        <Highlight />
+                        <Highlight icon="/icon/icon_reminder.svg"/>
                     </Col>
                     <Col>
-                        <Highlight />
+                        <Highlight icon="/icon/icon_fix.svg"/>
                     </Col>
                     <Col>
-                        <Highlight />
+                        <Highlight icon="/icon/icon_notes.svg"/>
                     </Col>
                     <Col>
-                        <Highlight />
+                        <Highlight icon="/icon/icon_inbox.svg"/>
                     </Col>
                     </Row>
                 </Col>
             </Row>
             <Row>
-                <Col xs="8">
+                <Col xs="8" cal>
                     <CreateMap coordinates={coordinates}/>
                 </Col>
                 <Col xs="4">
-                <ul>
-                    {wwBuildings.map(CreatePropertyLi)}
-                    <button onClick={updateMapState}>Test Jump Function</button>
-                </ul>
+                    <div className="n-card-home">
+                        <div className="n-card-header">
+                            <h4 className="n-card-header-title">Buildings</h4>
+                            <DropdownBtn />
+                        </div>
+                        <hr className="n-card-hr"/>
+                        <div className="n-card-body overflow-auto">
+                            <ul>
+                                {wwBuildings.map(CreatePropertyLi)}
+                            </ul>
+                            {/* <button onClick={updateMapState}>Test Jump Function</button> */}
+                        </div>
+                    </div>
                 </Col>
             </Row>
         </Container>

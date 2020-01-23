@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DropdownMenu } from "reactstrap";
+import DropdownMenu from "./DropdownMenu";
 
 const DropdownBtn = () => {
 
@@ -11,14 +11,13 @@ const DropdownBtn = () => {
   
     return (
         <div className="n-card-header-btn">
-            <div className="more">
+            <div className="more show-more-menu">
                 <button id="more-btn" className="more-btn" onClick={toggleMenuState}>
                     <span className="more-dot"></span>
                     <span className="more-dot"></span>
                     <span className="more-dot"></span>
                 </button>
-                {/* {menuState && <DropdownMenu /> } */}
-                <DropdownMenu/>
+                {menuState && <DropdownMenu /> }
             </div>
         </div>
   );

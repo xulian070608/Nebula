@@ -1,9 +1,9 @@
 import React from "react";
 
-function Highlight(){
+function Highlight(props){
     return <div className="highlight">
         <img className="icon" 
-             src="/icon/icon_reminder.svg" 
+             src={props.icon} 
              alt="project quickview" 
              height="20%"/>
         <p className="highlight-number">123</p>

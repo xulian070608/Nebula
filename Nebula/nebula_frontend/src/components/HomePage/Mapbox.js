@@ -61,8 +61,8 @@ class CreateMap extends Component {
 
     render() {
         return (
-        <div>
-            <div ref={el => this.mapContainer = el} className="mapContainer" />
+        <div className="n-card-home">
+            <div ref={el => this.mapContainer = el} className="map-container" />
         </div>
         )
     }
