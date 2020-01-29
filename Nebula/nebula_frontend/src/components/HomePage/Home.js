@@ -43,8 +43,6 @@ function Home () {
             })
     }
 
-    console.log("home testing...")
-
     return (
         <Container>
             <Row>
