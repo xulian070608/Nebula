@@ -1,6 +1,6 @@
 // import from external packages
 import * as THREE from "three";
-// import axios from "axios";
+import axios from "axios";
 
 // import from internal packages
 import { DirectionalLight } from "./LightLib";
@@ -8,31 +8,34 @@ import RenderController from "./RenderController";
 import CameraController from "./CameraController";
 import Room from "./RoomGenerator";
 import OrbitController from "./OrbitManager";
-import roomData from "../../../data/LayoutSample";
+import { RectAreaLight } from "three";
 
 var controls, renderer, scene, camera, raycaster;
 var roomList = [];
 var mouse = new THREE.Vector2(),
   INTERSECTED;
 
-function renderLocalData(localData) {
-  localData.map(data => roomList.push(new Room(data)));
-  console.log(roomList)
-  init(roomList);
-  animate();
-}
-
-// function renderEngine(url) {
-//   axios.get(url).then(res => {
+// function renderEngine() {
+//   axios.get("http://100.94.29.214:8000/apis/v1/rooms/").then(res => {
 //     res.data.results.map(data => roomList.push(new Room(data)));
-//     if (res.data.next !== null) {
-//       renderEngine(res.data.next);
-//     } else {
-//       init(roomList);
-//       animate();
-//     }
+//     init(roomList);
+//     animate();
 //   });
 // }
+
+function renderEngine(url) {
+  axios
+  .get(url)
+  .then(res => {
+    res.data.results.map(data => roomList.push(new Room(data)));
+    if (res.data.next !== null) {
+      renderEngine(res.data.next);
+    } else {
+      init(roomList);
+      animate();
+    }
+  });
+}
 
 function init(roomList) {
   //set up scene background
@@ -66,7 +69,7 @@ function render() {
     material;
 
   if (intersects.length > 0) {
-    if (INTERSECTED != intersects[0].object) {
+    if (INTERSECTED !== intersects[0].object) {
       if (INTERSECTED) {
         material = INTERSECTED.material;
         if (material.emissive) {
@@ -108,15 +111,28 @@ function render() {
 function onDocumentMouseMove(event) {
   event.preventDefault();
 
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  //get "layout_render" location coordinates to correct raycasting
+  var rect = document.getElementById("layout_render").getBoundingClientRect();
+  var container_style = document.getElementById("layout_render").style
+
+  // mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  // mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  mouse.x = ((event.clientX-rect.left) / parseInt(container_style.width)) * 2 - 1;
+  mouse.y = -((event.clientY-rect.top) / parseInt(container_style.height)) * 2 + 1;
+
 }
 
 function onDocumentMouseDown(event) {
   event.preventDefault();
 
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  //get "layout_render" location coordinates to correct raycasting
+  var rect = document.getElementById("layout_render").getBoundingClientRect();
+  var container_style = document.getElementById("layout_render").style
+
+  // mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  // mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  mouse.x = ((event.clientX-rect.left) / parseInt(container_style.width)) * 2 - 1;
+  mouse.y = -((event.clientY-rect.top) / parseInt(container_style.height)) * 2 + 1;
 
   raycaster.setFromCamera(mouse, camera);
 
@@ -127,4 +143,4 @@ function onDocumentMouseDown(event) {
   }
 }
 
-export default renderLocalData;
+export default renderEngine;

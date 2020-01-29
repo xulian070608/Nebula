@@ -11,12 +11,17 @@ import RoomLi from './RoomLi';
 import DrawLayout from './DrawLayout';
 import RoomInfoModal from './Modal/RoomInfoModal'
 import renderLocalData from './DrawLayout/init'
+import renderEngine from './DrawLayout/init'
 
 // import local data
 import HuaiHaiMallAPI from "../../data/HuaiHaiMallFromRESTfulAPI"
 
 
 function PropertyLayout(props) {
+
+    const base_api = "http://127.0.0.1:8000/apis/v1/rooms/?level_id=";
+    const level_uuid = "864bfe52-157d-4667-98a1-279b552e64d6";
+    const url = base_api + level_uuid;
 
     let [modalState, setModalState] = useState(false)
     const toggleModalState = () => {setModalState(!modalState)}
@@ -118,7 +123,7 @@ function PropertyLayout(props) {
                 </select>
     )}
 
-    console.log(HuaiHaiMallAPI.length)
+    // console.log(HuaiHaiMallAPI.length)
 
     return (
         <Container>
@@ -134,15 +139,16 @@ function PropertyLayout(props) {
                     {allRooms.map(CreateRooms)}
                 </Col>               
                 <Col xs="8 offset-4 content-offset" id="property-infopanel-right">
-                    <div className="App">
-                        <DrawLayout 
+                    <div id="layout_render" style={{ width: '800px', height: '600px' }}>
+                        {/* <DrawLayout 
                             currentProperty={currentProperty}
                             currentFloor={currentFloor}
                             selectedRoom={selectedRoom}
                             //passing this prop all the way to DrawRoom
                             toggleModalState={toggleModalState}
-                        />
+                        /> */}
                         {/* <div>{renderLocalData(HuaiHaiMallAPI)}</div> */}
+                        {useEffect(() => renderEngine(url))}
                         {modalState ? 
                         <RoomInfoModal 
                         showModal={modalState} /> 
