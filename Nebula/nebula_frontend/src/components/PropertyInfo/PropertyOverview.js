@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Row, Col } from 'reactstrap';
-import Card from "./Card";
+import Card from "../Utils/Card";
 import PropertyInfoPanel from "./PropertyInfoPanel";
+import wwBuildings from "../../data/building_stats"
+import DoughnutChart from "../Utils/DoughnutChart"
+import BarChart from "../Utils/BarChart"
 
 
 function PropertyOverview(props) {
@@ -41,12 +44,12 @@ function PropertyOverview(props) {
                             <Card />
                         </Col>
                         <Col>
-                            <Card />
+                            <Card content={<DoughnutChart/>}/>
                         </Col>
                     </div>
                     <div className="row">
                         <Col>
-                            <Card />
+                            <Card content={<BarChart />}/>
                         </Col>
                     </div>
                     <div className="row">
