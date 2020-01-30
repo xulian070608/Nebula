@@ -28,11 +28,11 @@ function Home () {
     // get and update property state once DOM is mounted.
     useEffect(() => {getProperties(propertyURL)}, [])
 
-    function CreatePropertyLi(wwBuildings) {
+    function CreatePropertyLi(properties) {
         return <PropertyLi 
-        key={wwBuildings.building_uuid}
-        propertyID={wwBuildings.building_uuid}
-        propertyName={wwBuildings.project_name} />
+        key={properties.building_uuid}
+        propertyID={properties.building_uuid}
+        propertyName={properties.project_name} />
     }
 
     function updateMapState(){
@@ -76,7 +76,7 @@ function Home () {
                         <hr className="n-card-hr"/>
                         <div className="n-card-body overflow-auto">
                             <ul>
-                                {wwBuildings.map(CreatePropertyLi)}
+                                {properties.map(CreatePropertyLi)}
                             </ul>
                             {/* <button onClick={updateMapState}>Test Jump Function</button> */}
                         </div>
