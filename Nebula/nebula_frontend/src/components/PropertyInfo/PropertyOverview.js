@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+// import axios from "axios";
 import { Container, Row, Col } from 'reactstrap';
 import Card from "../Utils/Card";
 import PropertyInfoPanel from "./PropertyInfoPanel";
@@ -10,24 +10,15 @@ import BarChart from "../Utils/BarChart"
 
 function PropertyOverview(props) {
 
+    let currentProperty = {}
+    const [propertyUUID] = useState(props.propertyUUID)
 
-    // current API cannot return the specific property by it's UUID
-    // so here still get all property and then use find function
-    let [allProperties, setAllProperties] = useState([])
-    const allPropertiesURL = "http://127.0.0.1:8000/apis/v1/projects/"
-    // const propertyURL = "http://127.0.0.1:8000/apis/v1/projects/?building_uuid=" + props.propertyUUID;
-
-    function getAllProperties(url) {
-        axios
-          .get(url)
-          .then(res => setAllProperties(res.data.results))
-          .catch(err => console.log(err));
+    function getCurrentProperty(propertyUUID, wwBuildings) {
+        currentProperty = wwBuildings.find(wwBuilding => wwBuilding.BuildingUUID === propertyUUID)
+        // console.log(currentProperty)
     }
 
-    useEffect(() => {getAllProperties(allPropertiesURL)}, [])
-
-    let currentProperty = allProperties.find(property => property.building_uuid === props.propertyUUID)
-    // console.log(currentProperty)
+    getCurrentProperty(propertyUUID, wwBuildings)
 
     return (
         <Container id="property-overview">
@@ -36,9 +27,10 @@ function PropertyOverview(props) {
                     <PropertyInfoPanel 
                     style={{backgroundColor: "0xffd26a"}}
                     currentProperty = {currentProperty}/>
-                    {/* {JSON.stringify(currentProperty)} */}
                 </Col>
                 <Col xs="8 offset-4 content-offset" id="property-infopanel-right">
+                    {/* <button onClick={loadData}>Load Data</button>
+                    <div>{JSON.stringify(data)}</div> */}
                     <div className="row">
                         <Col>
                             <Card />

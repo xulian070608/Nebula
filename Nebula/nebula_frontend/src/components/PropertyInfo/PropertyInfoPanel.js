@@ -13,15 +13,15 @@ function PropertyInfoPanel(props) {
     console.log(currentProperty)
     
     //selector is using UUID, so here we need to transfer property to propertyUUID
-    const [selectedPropertyUUID, setSelectedPropertyUUID] = useState(currentProperty.building_uuid)
+    const [selectedPropertyUUID, setSelectedPropertyUUID] = useState(currentProperty.BuildingUUID)
     
     //get Property based on UUID, so that via selector, we can update the "global" current property
     function updateProperty(propertyUUID, wwBuildings) {
-        setCurrentProperty(wwBuildings.find(wwBuilding => wwBuilding.building_uuid === propertyUUID))
+        setCurrentProperty(wwBuildings.find(wwBuilding => wwBuilding.BuildingUUID === propertyUUID))
     }
 
     //get all floors in current property, this is for hyperlink to planview, so we have a default plan to show
-    const allFloor = wwFloors.filter(wwFloor => wwFloor['Building UUID'] === currentProperty.building_uuid)
+    const allFloor = wwFloors.filter(wwFloor => wwFloor['Building UUID'] === currentProperty.BuildingUUID)
 
     // function handleSelect(event){
     //     const {propertyUUID} = event.target;
@@ -52,28 +52,28 @@ function PropertyInfoPanel(props) {
 
     function createOption(wwBuildings) {
         return <PropertySelectorOption 
-        key={wwBuildings.building_uuid}
-        name={wwBuildings.project_name} 
-        value={wwBuildings.building_uuid}
+        key={wwBuildings.BuildingUUID}
+        name={wwBuildings.MarketingName} 
+        value={wwBuildings.BuildingUUID}
         />
     }
 
     return <div>
         <Col>
-            <h2>{currentProperty.project_name}</h2>
+            <h2>{currentProperty.MarketingName}</h2>
             <img className="property-img" src="/img/img_001.jpg" alt="project quickview"/>  
             <Link to={`/${allFloor[0]['Floor UUID']}/planview`}>property Plan</Link>
             <p></p>
             <Menu />
             <p></p>
             <PropertyInfoSummary 
-                //buildingName={currentProperty.project_name}
-                buildingAddress={currentProperty.project_address_en}
-                buildingMarket={currentProperty.project_market}
-                buildingUUID={currentProperty.building_uuid}
-                buildingCity={currentProperty.project_city}
-                // buildingDeskCount={currentProperty.BuildingDeskCount}
-                // buildingRoomCount={currentProperty.BuildingRoomCount}
+                //buildingName={currentProperty.BuildingName}
+                buildingAddress={currentProperty.BuildingAddress}
+                buildingTerritory={currentProperty.BuildingTerritory}
+                buildingUUID={currentProperty.BuildingUUID}
+                buildingUSF={currentProperty.BuildingUSF}
+                buildingDeskCount={currentProperty.BuildingDeskCount}
+                buildingRoomCount={currentProperty.BuildingRoomCount}
             />
         </Col>
     </div>
