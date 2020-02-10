@@ -43,7 +43,7 @@ function init(roomList) {
   scene.background = new THREE.Color(0xf0f0f0);
 
   // set up light source
-  var directionalLight = new DirectionalLight();
+  let directionalLight = new DirectionalLight();
 
   roomList.forEach(element => scene.add(element));
   scene.add(directionalLight);
@@ -53,8 +53,8 @@ function init(roomList) {
   controls = new OrbitController(camera, renderer);
   raycaster = new THREE.Raycaster();
 
-  document.addEventListener("mousemove", onDocumentMouseMove, false);
-  document.addEventListener("click", onDocumentMouseDown, false);
+  document.getElementById("layout_render").addEventListener("mousemove", onDocumentMouseMove, false);
+  document.getElementById("layout_render").addEventListener("click", onDocumentMouseDown, false);
 }
 
 function animate() {
