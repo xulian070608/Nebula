@@ -13,6 +13,9 @@ import RoomInfoModal from './Modal/RoomInfoModal'
 import renderLocalData from './DrawLayout/init'
 import renderEngine from './DrawLayout/init'
 
+//using floormap.gl
+import FloorMap from '../Utils/FloorMap/FloorMap'
+
 // import local data
 import HuaiHaiMallAPI from "../../data/HuaiHaiMallFromRESTfulAPI"
 
@@ -139,7 +142,8 @@ function PropertyLayout(props) {
                     {allRooms.map(CreateRooms)}
                 </Col>               
                 <Col xs="8 offset-4 content-offset" id="property-infopanel-right">
-                    <div id="layout_render" style={{ width: '800px', height: '600px' }}>
+                    <FloorMap level_uuid="c141a331-3bd1-42a0-891b-6a6409bc0c9e" />
+                    {/* <div id="layout_render" style={{ width: '800px', height: '600px' }}> */}
                         {/* <DrawLayout 
                             currentProperty={currentProperty}
                             currentFloor={currentFloor}
@@ -153,7 +157,7 @@ function PropertyLayout(props) {
                         <RoomInfoModal 
                         showModal={modalState} /> 
                         : null}
-                    </div>
+                    {/* </div> */}
                 </Col>
             </Row>
         </Container>

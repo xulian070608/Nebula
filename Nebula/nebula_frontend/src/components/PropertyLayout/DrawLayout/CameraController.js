@@ -1,11 +1,11 @@
 import * as THREE from "three";
 
 function CameraController() {
-  // var width = window.innerWidth;
-  // var height = window.innerHeight;
-  var container_style = document.getElementById("layout_render").style
-  var width = parseInt(container_style.width);
-  var height = parseInt(container_style.height);
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  // var container_style = document.getElementById("layout_render").style
+  // var width = parseInt(container_style.width);
+  // var height = parseInt(container_style.height);
   var near = -100;
   var far = 100;
   var zoomScale = 4;

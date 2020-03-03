@@ -53,8 +53,8 @@ function init(roomList) {
   controls = new OrbitController(camera, renderer);
   raycaster = new THREE.Raycaster();
 
-  document.getElementById("layout_render").addEventListener("mousemove", onDocumentMouseMove, false);
-  document.getElementById("layout_render").addEventListener("click", onDocumentMouseDown, false);
+  // document.getElementById("layout_render").addEventListener("mousemove", onDocumentMouseMove, false);
+  // document.getElementById("layout_render").addEventListener("click", onDocumentMouseDown, false);
 }
 
 function animate() {
