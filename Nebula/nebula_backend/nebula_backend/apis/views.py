@@ -26,15 +26,13 @@ class ProjectViewSet(viewsets.ModelViewSet):
 
 
 class LevelViewSet(viewsets.ModelViewSet):
-    def retrieve(self, request, pk=None):
-        queryset = Level.objects.all()
-        level = get_object_or_404(queryset, pk=pk)
-        serializer = LevelSerializer(level)
-        return Response(serializer.data)
+    queryset = Level.objects.all()
+    serializer_class = LevelSerializer
+    filter_backends = (DjangoFilterBackend, SearchFilter)
+    filterset_fields = ("project",)
 
 
 class RoomViewSet(viewsets.ModelViewSet):
-
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
@@ -51,6 +49,5 @@ class ProjectList(generics.ListAPIView):
     serializer_class = ProjectSerializer
     queryset = ProjectInfo.objects.all()
     filter_backends = (DjangoFilterBackend, SearchFilter)
-
     search_fields = ("project_address_en",)
-
+    
