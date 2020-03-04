@@ -1,24 +1,35 @@
 import React, { useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 import { Container, Row, Col } from 'reactstrap';
 import Card from "../Utils/Card";
 import PropertyInfoPanel from "./PropertyInfoPanel";
-import wwBuildings from "../../data/building_stats"
 import DoughnutChart from "../Utils/DoughnutChart"
 import BarChart from "../Utils/BarChart"
+
+//using local JSON data
+import wwBuildings from "../../data/building_stats"
 
 
 function PropertyOverview(props) {
 
-    let currentProperty = {}
     const [propertyUUID] = useState(props.propertyUUID)
 
-    function getCurrentProperty(propertyUUID, wwBuildings) {
-        currentProperty = wwBuildings.find(wwBuilding => wwBuilding.BuildingUUID === propertyUUID)
-        // console.log(currentProperty)
+    let currentProperty = {}
+    let [allProperties, setAllProperties] = useState([])
+
+    useEffect(() => {
+        axios
+          .get("http://100.94.22.242:8000/apis/v1/projects/")
+          .then(res => setAllProperties(res.data.results))
+          .catch(err => console.log(err));
+    });
+
+    function getCurrentProperty(propertyUUID, allProperties) {
+        currentProperty = allProperties.find(property => property.building_uuid === propertyUUID)
+        console.log(currentProperty)
     }
 
-    getCurrentProperty(propertyUUID, wwBuildings)
+    getCurrentProperty(propertyUUID, allProperties)
 
     return (
         <Container id="property-overview">

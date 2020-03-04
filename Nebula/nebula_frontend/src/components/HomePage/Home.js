@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Container, Row, Col } from 'reactstrap';
 import PropertyLi from './PropertyLi';
-import wwBuildings from "../../data/building_stats"
 import CreateMap from './Mapbox'
 import Highlight from './Highlight'
 import DropdownBtn from '../Utils/DropdownBtn'
+
+//using local JSON data
+import wwBuildings from "../../data/building_stats"
 
 function Home () {
 
@@ -14,11 +17,20 @@ function Home () {
         zoom: 12
     })
 
+    let [allProperties, setAllProperties] = useState([])
+
+    useEffect(() => {
+        axios
+          .get("http://100.94.22.242:8000/apis/v1/projects/")
+          .then(res => setAllProperties(res.data.results))
+          .catch(err => console.log(err));
+    });
+
     function CreatePropertyLi(wwBuildings) {
         return <PropertyLi 
-        key={wwBuildings.BuildingUUID}
-        propertyID={wwBuildings.BuildingUUID}
-        propertyName={wwBuildings.MarketingName} />
+        key={wwBuildings.building_uuid}
+        propertyID={wwBuildings.building_uuid}
+        propertyName={wwBuildings.project_name} />
     }
 
     function updateMapState(){
@@ -62,7 +74,7 @@ function Home () {
                         <hr className="n-card-hr"/>
                         <div className="n-card-body overflow-auto">
                             <ul>
-                                {wwBuildings.map(CreatePropertyLi)}
+                                {allProperties.map(CreatePropertyLi)}
                             </ul>
                             {/* <button onClick={updateMapState}>Test Jump Function</button> */}
                         </div>
