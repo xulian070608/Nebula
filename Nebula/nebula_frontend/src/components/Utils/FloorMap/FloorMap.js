@@ -19,7 +19,7 @@ class FloorMap extends Component {
       WASH: "rgb(195,195,195)"
     };
     this.roomInfoList = []; // collection of all rooms from restful api
-    this.base_api = "http://100.94.22.242:8000/apis/v1/rooms/?level_id=";
+    this.base_api = "http://127.0.0.1:8000/apis/v1/rooms/?level_id=";
     this.url = this.base_api + this.props.level_uuid;
   }
 
