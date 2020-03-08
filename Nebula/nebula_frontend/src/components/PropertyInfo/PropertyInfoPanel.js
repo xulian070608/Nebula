@@ -12,11 +12,11 @@ function PropertyInfoPanel(props) {
     let [isLoading, setIsLoading] = useState(true)
 
     // this Property Name is coming from it's parent level: Property Overview
-    const [currentProperty, setCurrentProperty] = useState(props.currentProperty)
+    let [currentProperty, setCurrentProperty] = useState(props.currentProperty)
     // console.log(currentProperty)
     
     //selector is using UUID, so here we need to transfer property to propertyUUID
-    const [selectedPropertyUUID, setSelectedPropertyUUID] = useState(currentProperty.building_uuid)
+    let [selectedPropertyUUID, setSelectedPropertyUUID] = useState(currentProperty.building_uuid)
 
     const allProperties = props.allProperties
     
@@ -26,7 +26,7 @@ function PropertyInfoPanel(props) {
     }
 
     //get all floors in current property, this is for hyperlink to planview, so we have a default plan to show
-    const [allfloors, setAllFloors] = useState([])
+    let [allFloors, setAllFloors] = useState([])
     // const allFloor = wwFloors.filter(wwFloor => wwFloor['Building UUID'] === currentProperty.building_uuid)
 
     useEffect(() => {
@@ -37,26 +37,19 @@ function PropertyInfoPanel(props) {
     async function fetchFloorData() {      
         axios
             //   .get("http://100.94.22.242:8000/apis/v1/levels/")
-            .get("http://127.0.0.1:8000/apis/v1/levels/")
+            .get("http://127.0.0.1:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
             .then(res => {
-                setAllFloors(res.data.results.filter(res => res.project === currentProperty.building_uuid))
-                console.log(res.data.results)
+                setAllFloors(res.data.results)
+                // console.log(res.data.results)
                 setIsLoading(false)
             })
             .catch(err => console.log(err));
     }
 
-    function handleSelect(event){
-        const {propertyUUID} = event.target;
-
-        setSelectedPropertyUUID(propertyUUID) 
-        updateProperty(propertyUUID, wwBuildings)
-    }
-
     // this is following the example from: https://codesandbox.io/s/falling-surf-33hfs
     class DropDown extends Component {
         onChange = e => {
-            updateProperty(e.target.value, wwBuildings)
+            updateProperty(e.target.value, allProperties)
             setSelectedPropertyUUID(e.target.value)
             this.props.history.push(`/${e.target.value}/summary`)
           };
@@ -89,7 +82,8 @@ function PropertyInfoPanel(props) {
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
-                <Link to={`/${allfloors[0].level_uuid}/planview`}>property Plan</Link>
+                <Link to={`/${allFloors[0].level_uuid}/planview`}>property Plan</Link>
+                // <div>{console.log(allFloors)}</div>
             )}
             <p></p>
             <Menu />
