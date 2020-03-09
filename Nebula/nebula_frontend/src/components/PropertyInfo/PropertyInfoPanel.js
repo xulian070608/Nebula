@@ -36,8 +36,8 @@ function PropertyInfoPanel(props) {
 
     async function fetchFloorData() {      
         axios
-            //   .get("http://100.94.22.242:8000/apis/v1/levels/")
-            .get("http://127.0.0.1:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
+            .get("http://100.94.29.214:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
+            // .get("http://127.0.0.1:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
             .then(res => {
                 setAllFloors(res.data.results)
                 // console.log(res.data.results)
