@@ -28,8 +28,8 @@ class FloorMap extends Component {
     this.renderer = new FloorMapGL({
       target: target,
       size: {
-        width: window.innerWidth,
-        height: window.innerHeight
+        width: 900,
+        height: 600
       },
       backgroundColor: "rgb(248,248,248)",
       antialias: true,
@@ -143,7 +143,7 @@ class FloorMap extends Component {
       this.renderer.draw({
         id: pointId,
         style: {
-          color: "rgb(255,0,0)"
+          color: "rgb(255,255,255)"
         }
       });
     }
