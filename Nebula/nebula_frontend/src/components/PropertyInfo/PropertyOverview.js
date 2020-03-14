@@ -6,6 +6,7 @@ import PropertyInfoPanel from "./PropertyInfoPanel";
 import DoughnutChart from "../Utils/DoughnutChart"
 import BarChart from "../Utils/BarChart"
 import PropertyCapEx from "./PropertyCapEx";
+import ms_stats from "../../data/ms_stats";
 
 function PropertyOverview(props) {
 
@@ -14,6 +15,30 @@ function PropertyOverview(props) {
     let [currentProperty, setCurrentProperty] = useState({})
     let [allProperties, setAllProperties] = useState([])
     let [isLoading, setIsLoading] = useState(true)
+    let [isDevelopmentMode, setBusinessMode] = useState(true)
+
+    const logisticData = {
+        datasets: [{
+            data: [
+                ms_stats.filter(item => item['PO Status'] === 'PO Issued').length, 
+                ms_stats.filter(item => item['PO Status'] === 'Ordered').length,
+                ms_stats.filter(item => item['PO Status'] === 'Shipped').length,
+                ms_stats.filter(item => item['PO Status'] === 'Order Cancelled').length,
+                ms_stats.filter(item => item['PO Status'] === 'Requires Respec').length
+            ]
+        }],
+    
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: [
+            'PO Issued',
+            'Ordered',
+            'Shipped',
+            'Cancelled',
+            'Requires Respec'
+        ]
+    };
+
+    const toggleBusinessMode = () => setBusinessMode(!isDevelopmentMode)
 
     useEffect(() => {
          
@@ -48,14 +73,20 @@ function PropertyOverview(props) {
                     )}   
                 </Col>
                 <Col xs="8 offset-4 content-offset" id="property-infopanel-right">
-                    {/* <button onClick={loadData}>Load Data</button>
-                    <div>{JSON.stringify(data)}</div> */}
+                    <button onClick={toggleBusinessMode}>
+                    {
+                        isDevelopmentMode ? 
+                        "Development" :
+                        "Management"
+                    }
+                    </button>
+
                     <div className="row">
                         <Col>
                             <Card title='CapEx'content={<PropertyCapEx />}/>
                         </Col>
                         <Col>
-                            <Card title='Logistics' content={<DoughnutChart/>}/>
+                            <Card title='Logistics' content={<DoughnutChart logisticData={logisticData} />}/>
                         </Col>
                     </div>
                     <div className="row">
