@@ -3,8 +3,8 @@ import axios from "axios";
 import { Container, Row, Col } from 'reactstrap';
 import Card from "../Utils/Card";
 import PropertyInfoPanel from "./PropertyInfoPanel";
-import DoughnutChart from "../Utils/DoughnutChart"
-import BarChart from "../Utils/BarChart"
+import LogisticChart from "./LogisticChart";
+import MSSKUChart from "./MSSKUChart";
 import PropertyCapEx from "./PropertyCapEx";
 import ms_stats from "../../data/ms_stats";
 
@@ -25,6 +25,20 @@ function PropertyOverview(props) {
                 ms_stats.filter(item => item['PO Status'] === 'Shipped').length,
                 ms_stats.filter(item => item['PO Status'] === 'Order Cancelled').length,
                 ms_stats.filter(item => item['PO Status'] === 'Requires Respec').length
+            ],
+            backgroundColor: [
+                "#F7464A", 
+                "#46BFBD", 
+                "#FDB45C", 
+                "#949FB1", 
+                "#4D5360"
+            ],
+            hoverBackgroundColor: [
+                "#FF5A5E",
+                "#5AD3D1",
+                "#FFC870",
+                "#A8B3C5",
+                "#616774"
             ]
         }],
     
@@ -86,12 +100,12 @@ function PropertyOverview(props) {
                             <Card title='CapEx'content={<PropertyCapEx />}/>
                         </Col>
                         <Col>
-                            <Card title='Logistics' content={<DoughnutChart logisticData={logisticData} />}/>
+                            <Card title='Logistics' content={<LogisticChart logisticData={logisticData} />}/>
                         </Col>
                     </div>
                     <div className="row">
                         <Col>
-                            <Card content={<BarChart />}/>
+                            <Card title='Loose Furniture (by SKU)' content={<MSSKUChart />}/>
                         </Col>
                     </div>
                     <div className="row">
