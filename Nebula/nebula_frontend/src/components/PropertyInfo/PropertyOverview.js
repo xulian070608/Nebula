@@ -95,35 +95,52 @@ function PropertyOverview(props) {
                     }
                     </button>
 
-                    <div className="row">
-                        <Col>
-                            <Card title='CapEx'content={<PropertyCapEx />}/>
-                        </Col>
-                        <Col>
-                            <Card title='Logistics' content={<LogisticChart logisticData={logisticData} />}/>
-                        </Col>
+                    {isDevelopmentMode ? 
+                    <div>
+                        <div className="row">
+                            <Col>
+                                <Card title='CapEx'content={<PropertyCapEx />}/>
+                            </Col>
+                            <Col>
+                                <Card title='Logistics' content={<LogisticChart logisticData={logisticData} />}/>
+                            </Col>
+                        </div>
+                        <div className="row">
+                            <Col>
+                                <Card title='Loose Furniture (by SKU)' content={<MSSKUChart />}/>
+                            </Col>
+                        </div>
+                        <div className="row">
+                            <Col>
+                                <Card />
+                            </Col>
+                        </div>
+                        <div className="row">
+                            <Col>
+                                <Card />
+                            </Col>
+                        </div>
+                        <div className="row">
+                            <Col>
+                                <Card />
+                            </Col>
+                        </div>
+                    </div> :
+                    <div>
+                        <div className="row">
+                            <Col>
+                                <Card />
+                            </Col>
+                        </div>
+                        <div className="row">
+                            <Col>
+                                <Card />
+                            </Col>
+                        </div>
                     </div>
-                    <div className="row">
-                        <Col>
-                            <Card title='Loose Furniture (by SKU)' content={<MSSKUChart />}/>
-                        </Col>
-                    </div>
-                    <div className="row">
-                        <Col>
-                            <Card />
-                        </Col>
-                    </div>
-                    <div className="row">
-                        <Col>
-                            <Card />
-                        </Col>
-                    </div>
-                    <div className="row">
-                        <Col>
-                            <Card />
-                        </Col>
-                    </div>
-                </Col>
+                    }
+                </Col>   
+                }
             </Row>
         </Container>
     )
