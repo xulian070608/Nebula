@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import CapExModal from './Modal/CapExModal';
+import CapExModal from '../Modal/CapExModal';
 
 function PropertyCapEx(props) {
 

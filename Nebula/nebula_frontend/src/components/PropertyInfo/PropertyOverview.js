@@ -3,9 +3,11 @@ import axios from "axios";
 import { Container, Row, Col } from 'reactstrap';
 import Card from "../Utils/Card";
 import PropertyInfoPanel from "./PropertyInfoPanel";
-import LogisticChart from "./LogisticChart";
-import MSSKUChart from "./MSSKUChart";
-import PropertyCapEx from "./PropertyCapEx";
+import LogisticChart from "./DevelopmentInsights/LogisticChart";
+import MSSKUChart from "./DevelopmentInsights/MSSKUChart";
+import PropertyCapEx from "./DevelopmentInsights/PropertyCapEx";
+import OccupancyTable from "./ManagementInsights/OccupancyTable";
+import ServiceRecTable from "./ManagementInsights/ServiceRevTable";
 import ms_stats from "../../data/ms_stats";
 
 function PropertyOverview(props) {
@@ -96,6 +98,7 @@ function PropertyOverview(props) {
                     </button>
 
                     {isDevelopmentMode ? 
+                    //Showing project developement related data:
                     <div>
                         <div className="row">
                             <Col>
@@ -126,15 +129,21 @@ function PropertyOverview(props) {
                             </Col>
                         </div>
                     </div> :
+                    // Showing space management related data
                     <div>
                         <div className="row">
                             <Col>
-                                <Card />
+                                <Card title='Occupancy Metrics' content={<OccupancyTable />} />
                             </Col>
                         </div>
                         <div className="row">
                             <Col>
-                                <Card />
+                                <Card title='Events Insights' content={<ServiceRecTable />} />
+                            </Col>
+                        </div>
+                        <div className="row">
+                            <Col>
+                                <Card title='Revenue Insights' content={<OccupancyTable />} />
                             </Col>
                         </div>
                     </div>

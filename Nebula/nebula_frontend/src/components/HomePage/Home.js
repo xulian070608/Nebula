@@ -75,7 +75,7 @@ function Home () {
                                 {allProperties.map(CreatePropertyLi)}
                             </ul>
                         </div>
-                        <button onClick={updateMapState}>Test Jump Function</button>
+                        {/* <button onClick={updateMapState}>Test Jump Function</button> */}
                     </div>
                 </Col>
             </Row>

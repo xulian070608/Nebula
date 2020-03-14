@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Container } from 'reactstrap';
-import LogisticModal from "./Modal/LogisticModal";
+import LogisticModal from "../Modal/LogisticModal";
 
 function LogisticChart(props) {
 
