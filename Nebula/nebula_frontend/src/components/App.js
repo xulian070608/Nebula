@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./Header";
-import Footer from "./Footer";
 import Home from "./HomePage/Home";
 import PropertyOverview from "./PropertyInfo/PropertyOverview";
 import NotFount from "./NotFound";

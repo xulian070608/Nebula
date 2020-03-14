@@ -2,20 +2,13 @@ import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Row, Col } from "reactstrap";
 import { withRouter } from "react-router-dom";
-import wwBuildings from "../../data/building_stats";
-import wwFloors from "../../data/floor_stats";
-import wwRooms from "../../data/room_stats";
-import roomData from "../../data/LayoutSample";
 import Card from "../Utils/Card";
 import FloorSelectorOption from "./FloorSelectorOption";
-import RoomLi from "./RoomLi";
 import RoomInfoModal from "./Modal/RoomInfoModal";
 
 //using floormap.gl
 import FloorMap from "../Utils/FloorMap/FloorMap";
 
-// import local data
-import HuaiHaiMallAPI from "../../data/HuaiHaiMallFromRESTfulAPI";
 
 function PropertyLayout(props) {
   let [modalState, setModalState] = useState(false);
@@ -40,7 +33,8 @@ function PropertyLayout(props) {
 
   function fetchAllFloorData() {
     axios
-      .get("http://100.94.29.214:8000/apis/v1/levels/")
+      // .get("http://100.94.29.214:8000/apis/v1/levels/")
+      .get("http://127.0.0.1:8000/apis/v1/levels/")
       // for future study how to get this work, re: react component lifecycle...
       // .get("http://127.0.0.1:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
       .then(res => {
@@ -53,8 +47,8 @@ function PropertyLayout(props) {
 
   function fetchCurrentFloorData() {
     axios
-      .get("http://100.94.29.214:8000/apis/v1/levels/")
-      // .get("http://127.0.0.1:8000/apis/v1/levels/")
+      // .get("http://100.94.29.214:8000/apis/v1/levels/")
+      .get("http://127.0.0.1:8000/apis/v1/levels/")
       .then(res => {
         setCurrentFloor(
           res.data.results.find(res => res.level_uuid === props.floorUUID)
@@ -67,8 +61,8 @@ function PropertyLayout(props) {
 
   function fetchLocationData() {
     axios
-      .get("http://100.94.29.214:8000/apis/v1/projects/")
-      // .get("http://127.0.0.1:8000/apis/v1/projects/")
+      // .get("http://100.94.29.214:8000/apis/v1/projects/")
+      .get("http://127.0.0.1:8000/apis/v1/projects/")
       .then(res => {
         res.data.results.forEach(property => {
           if (
@@ -121,18 +115,6 @@ function PropertyLayout(props) {
     );
   }
 
-  // function CreateRooms(rooms) {
-  //     return <RoomLi
-  //         key={rooms['ID']}
-  //         // since we don't have roomUUID for now, here use "building name" + "room number" method:
-  //         id={rooms['Building Name'] + " - " + rooms['Room Number']}
-  //         buildingName={rooms['Building Name']}
-  //         roomNumber={rooms['Room Number']}
-  //         //passing this prop all the way to RoomLi
-  //         toggleModalState={toggleModalState}
-  //     />
-  // }
-
   return (
     <Container>
       <Row>
@@ -149,9 +131,6 @@ function PropertyLayout(props) {
             <Menu />
           )}
           <p></p>
-          {/* {chooseRoom(roomData)}
-                    <p>---------------------------</p>
-                    {allRooms.map(CreateRooms)} */}
         </Col>
         <Col xs="8 offset-4 content-offset" id="property-infopanel-right">
           {isCurrentFloorLoading || isLoacaionLoading ? (

@@ -6,9 +6,6 @@ import CreateMap from './Mapbox'
 import Highlight from './Highlight'
 import DropdownBtn from '../Utils/DropdownBtn'
 
-//using local JSON data
-import wwBuildings from "../../data/building_stats"
-
 function Home () {
 
     let [coordinates, setCoordinates] = useState ({
@@ -21,8 +18,8 @@ function Home () {
 
     useEffect(() => {
         axios
-          .get("http://100.94.29.214:8000/apis/v1/projects/")
-        //   .get("http://127.0.0.1:8000/apis/v1/projects/")
+        //   .get("http://100.94.29.214:8000/apis/v1/projects/")
+          .get("http://127.0.0.1:8000/apis/v1/projects/")
           .then(res => setAllProperties(res.data.results))
           .catch(err => console.log(err));
     });
@@ -77,8 +74,8 @@ function Home () {
                             <ul>
                                 {allProperties.map(CreatePropertyLi)}
                             </ul>
-                            {/* <button onClick={updateMapState}>Test Jump Function</button> */}
                         </div>
+                        <button onClick={updateMapState}>Test Jump Function</button>
                     </div>
                 </Col>
             </Row>

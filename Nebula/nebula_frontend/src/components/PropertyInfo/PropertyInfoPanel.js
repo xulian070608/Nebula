@@ -2,8 +2,6 @@ import React, { Component, useState, useEffect }from 'react';
 import axios from 'axios';
 import PropertySelectorOption from './PropertySelectorOption'
 import PropertyInfoSummary from './PropertyInfoSummary';
-import wwBuildings from '../../data/building_stats';
-import wwFloors from '../../data/floor_stats';
 import { Link, withRouter } from 'react-router-dom';
 import { Col } from 'reactstrap';
 
@@ -36,8 +34,8 @@ function PropertyInfoPanel(props) {
 
     async function fetchFloorData() {      
         axios
-            .get("http://100.94.29.214:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
-            // .get("http://127.0.0.1:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
+            // .get("http://100.94.29.214:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
+            .get("http://127.0.0.1:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
             .then(res => {
                 setAllFloors(res.data.results)
                 // console.log(res.data.results)

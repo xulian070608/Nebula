@@ -5,9 +5,7 @@ import Card from "../Utils/Card";
 import PropertyInfoPanel from "./PropertyInfoPanel";
 import DoughnutChart from "../Utils/DoughnutChart"
 import BarChart from "../Utils/BarChart"
-
-//using local JSON data
-import wwBuildings from "../../data/building_stats"
+import PropertyCapEx from "./PropertyCapEx";
 
 function PropertyOverview(props) {
 
@@ -25,8 +23,8 @@ function PropertyOverview(props) {
 
     async function fetchLocationData() {      
         axios
-              .get("http://100.94.29.214:8000/apis/v1/projects/")
-            // .get("http://127.0.0.1:8000/apis/v1/projects/")
+            //   .get("http://100.94.29.214:8000/apis/v1/projects/")
+            .get("http://127.0.0.1:8000/apis/v1/projects/")
             .then(res => {
                 setAllProperties(res.data.results)
                 setCurrentProperty(res.data.results.find(res => res.building_uuid === propertyUUID))
@@ -54,10 +52,10 @@ function PropertyOverview(props) {
                     <div>{JSON.stringify(data)}</div> */}
                     <div className="row">
                         <Col>
-                            <Card />
+                            <Card title='CapEx'content={<PropertyCapEx />}/>
                         </Col>
                         <Col>
-                            <Card content={<DoughnutChart/>}/>
+                            <Card title='Logistics' content={<DoughnutChart/>}/>
                         </Col>
                     </div>
                     <div className="row">
