@@ -8,7 +8,7 @@ class SimpleLevelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Level
         fields = (
-            "level_uuid",
+            "floor_id",
             "level_name",
             "elevation",
             "physical_desk_count",
@@ -19,10 +19,10 @@ class LevelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Level
         fields = (
-            "project",
-            "level_uuid",
+            "project_id",
+            "floor_id",
             "level_revit_id",
-            "level_name",
+            "floor_name",
             "elevation",
             "deskcount",
             "physical_desk_count",
@@ -31,12 +31,12 @@ class LevelSerializer(serializers.ModelSerializer):
 
 class ProjectSerializer(serializers.ModelSerializer):
     # levels_uuid = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    levels = SimpleLevelSerializer(many=True, read_only=True)
+    floors = SimpleLevelSerializer(many=True, read_only=True)
 
     class Meta:
         model = ProjectInfo
         fields = [
-            "building_uuid",
+            "project_id",
             "pmr_repository_id",
             "building_name",
             "project_name",
@@ -46,7 +46,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             "project_address_en",
             "project_market",
             "project_city",
-            "levels",
+            "floors",
         ]
 
 
@@ -54,9 +54,9 @@ class RoomSerializer(serializers.GeoModelSerializer):
     class Meta:
         model = Room
         fields = [
-            "level_id",
+            "floor_id",
             "room_revit_id",
-            "room_uuid",
+            "room_id",
             "room_name",
             "room_number",
             "area",

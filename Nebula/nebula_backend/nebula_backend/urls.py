@@ -7,9 +7,9 @@ from rest_framework import routers
 from nebula_backend.apis import views
 
 router = routers.DefaultRouter()
-router.register(r"rooms", views.RoomViewSet, basename="room")
-router.register(r"projects", views.ProjectViewSet, basename="project")
-router.register(r"levels", views.LevelViewSet, basename="level")
+router.register(r"room", views.RoomViewSet, basename="room")
+router.register(r"project", views.ProjectViewSet, basename="project")
+router.register(r"floor", views.LevelViewSet, basename="floor")
 
 
 # Wire up our API using automatic URL routing.

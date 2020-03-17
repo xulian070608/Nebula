@@ -2,7 +2,7 @@ from utils.PMR.PMRDeserializer import PMRDeserializer
 import json
 from utils.DBWrite import DBWrite
 
-with open(r"data\\696 Weihai - P2.json") as json_file:
+with open(r"data//Hanking Center.json") as json_file:
     json_data = json.load(json_file)
     json_file.close()
 

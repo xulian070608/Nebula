@@ -1,7 +1,5 @@
 from rest_framework import viewsets
 from rest_framework import generics
-from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
@@ -29,14 +27,14 @@ class LevelViewSet(viewsets.ModelViewSet):
     queryset = Level.objects.all()
     serializer_class = LevelSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filterset_fields = ("project",)
+    filterset_fields = ("project_id",)
 
 
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filterset_fields = ("level_id",)
+    filterset_fields = ("floor_id",)
 
 
 class RoomList(generics.ListAPIView):
@@ -50,4 +48,3 @@ class ProjectList(generics.ListAPIView):
     queryset = ProjectInfo.objects.all()
     filter_backends = (DjangoFilterBackend, SearchFilter)
     search_fields = ("project_address_en",)
-    

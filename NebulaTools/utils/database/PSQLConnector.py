@@ -12,6 +12,7 @@ def config(
     parser.read(filename)
     # get section, default to postgresql
     db = {}
+    # print(parser['postgresql'])
     if parser.has_section(section):
         params = parser.items(section)
         for param in params:
