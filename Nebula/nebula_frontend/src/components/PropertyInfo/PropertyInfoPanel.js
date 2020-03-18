@@ -1,39 +1,53 @@
-import React, { Component, useState }from 'react';
+import React, { Component, useState, useEffect }from 'react';
+import axios from 'axios';
 import PropertySelectorOption from './PropertySelectorOption'
 import PropertyInfoSummary from './PropertyInfoSummary';
-import wwBuildings from '../../data/building_stats';
-import wwFloors from '../../data/floor_stats';
 import { Link, withRouter } from 'react-router-dom';
 import { Col } from 'reactstrap';
 
 function PropertyInfoPanel(props) {
 
+    let [isLoading, setIsLoading] = useState(true)
+
     // this Property Name is coming from it's parent level: Property Overview
-    const [currentProperty, setCurrentProperty] = useState(props.currentProperty)
-    console.log(currentProperty)
+    let [currentProperty, setCurrentProperty] = useState(props.currentProperty)
+    // console.log(currentProperty)
     
     //selector is using UUID, so here we need to transfer property to propertyUUID
-    const [selectedPropertyUUID, setSelectedPropertyUUID] = useState(currentProperty.BuildingUUID)
+    let [selectedPropertyUUID, setSelectedPropertyUUID] = useState(currentProperty.building_uuid)
+
+    const allProperties = props.allProperties
     
     //get Property based on UUID, so that via selector, we can update the "global" current property
-    function updateProperty(propertyUUID, wwBuildings) {
-        setCurrentProperty(wwBuildings.find(wwBuilding => wwBuilding.BuildingUUID === propertyUUID))
+    function updateProperty(propertyUUID, allProperties) {
+        setCurrentProperty(allProperties.find(property => property.building_uuid === propertyUUID))
     }
 
     //get all floors in current property, this is for hyperlink to planview, so we have a default plan to show
-    const allFloor = wwFloors.filter(wwFloor => wwFloor['Building UUID'] === currentProperty.BuildingUUID)
+    let [allFloors, setAllFloors] = useState([])
+    // const allFloor = wwFloors.filter(wwFloor => wwFloor['Building UUID'] === currentProperty.building_uuid)
 
-    // function handleSelect(event){
-    //     const {propertyUUID} = event.target;
+    useEffect(() => {
+         
+        fetchFloorData();
+    }, [0]);
 
-    //     setSelectedPropertyUUID(propertyUUID) 
-    //     updateProperty(propertyUUID, wwBuildings)
-    // }
+    async function fetchFloorData() {      
+        axios
+            .get("http://100.94.29.214:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
+            // .get("http://127.0.0.1:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
+            .then(res => {
+                setAllFloors(res.data.results)
+                // console.log(res.data.results)
+                setIsLoading(false)
+            })
+            .catch(err => console.log(err));
+    }
 
     // this is following the example from: https://codesandbox.io/s/falling-surf-33hfs
     class DropDown extends Component {
         onChange = e => {
-            updateProperty(e.target.value, wwBuildings)
+            updateProperty(e.target.value, allProperties)
             setSelectedPropertyUUID(e.target.value)
             this.props.history.push(`/${e.target.value}/summary`)
           };
@@ -44,36 +58,42 @@ function PropertyInfoPanel(props) {
                 value={selectedPropertyUUID} 
                 onChange={this.onChange}
                 style={{fontSize: "0.7rem"}}>
-                    {wwBuildings.map(createOption)}
+                    {allProperties.map(createOption)}
                 </select>)}
     }
 
     const Menu = withRouter(DropDown)
 
-    function createOption(wwBuildings) {
+    function createOption(property) {
         return <PropertySelectorOption 
-        key={wwBuildings.BuildingUUID}
-        name={wwBuildings.MarketingName} 
-        value={wwBuildings.BuildingUUID}
+        key={property.building_uuid}
+        name={property.project_name} 
+        value={property.building_uuid}
         />
     }
 
     return <div>
         <Col>
-            <h2>{currentProperty.MarketingName}</h2>
+            <h2>{currentProperty.project_name}</h2>
             <img className="property-img" src="/img/img_001.jpg" alt="project quickview"/>  
-            <Link to={`/${allFloor[0]['Floor UUID']}/planview`}>property Plan</Link>
+            {/* <button onClick={fetchFloorData}>Loading...</button> */}
+            {isLoading ? (
+                <p>Loading...</p>
+            ) : (
+                <Link to={`/${allFloors[0].level_uuid}/planview`}>property Plan</Link>
+                // <div>{console.log(allFloors)}</div>
+            )}
             <p></p>
             <Menu />
             <p></p>
             <PropertyInfoSummary 
                 //buildingName={currentProperty.BuildingName}
-                buildingAddress={currentProperty.BuildingAddress}
-                buildingTerritory={currentProperty.BuildingTerritory}
-                buildingUUID={currentProperty.BuildingUUID}
-                buildingUSF={currentProperty.BuildingUSF}
-                buildingDeskCount={currentProperty.BuildingDeskCount}
-                buildingRoomCount={currentProperty.BuildingRoomCount}
+                buildingAddress={currentProperty.project_address_en}
+                buildingTerritory={currentProperty.project_market}
+                buildingUUID={currentProperty.building_uuid}
+                // buildingUSF={currentProperty.BuildingUSF}
+                // buildingDeskCount={currentProperty.BuildingDeskCount}
+                // buildingRoomCount={currentProperty.BuildingRoomCount}
             />
         </Col>
     </div>

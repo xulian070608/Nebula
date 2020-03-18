@@ -25,8 +25,12 @@ const RoomGraph = props => {
       interactive={true}
       buttonMode={true}
       scale={{ x: 5, y: 5 }}
-      pointerover={() => setRoomColor("0xfe9801")}
-      pointerout={() => setRoomColor(colorSchema[props.programType])}
+      pointerover={() => {
+        setRoomColor("0xeb4d55")
+        console.log("pointerover and current state is: RED")}}
+      pointerout={() => {
+        setRoomColor(colorSchema[props.programType])
+        console.log("pointerout and current state is: Normal")}}
       pointerdown={() => 
         props.toggleModalState()
       }

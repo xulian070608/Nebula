@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Container, Row, Col } from 'reactstrap';
 import PropertyLi from './PropertyLi';
-import wwBuildings from "../../data/building_stats"
 import CreateMap from './Mapbox'
+import Highlight from './Highlight'
+import DropdownBtn from '../Utils/DropdownBtn'
 
 function Home () {
 
@@ -12,11 +14,21 @@ function Home () {
         zoom: 12
     })
 
+    let [allProperties, setAllProperties] = useState([])
+
+    useEffect(() => {
+        axios
+          .get("http://100.94.29.214:8000/apis/v1/projects/")
+        //   .get("http://127.0.0.1:8000/apis/v1/projects/")
+          .then(res => setAllProperties(res.data.results))
+          .catch(err => console.log(err));
+    });
+
     function CreatePropertyLi(wwBuildings) {
         return <PropertyLi 
-        key={wwBuildings.BuildingUUID}
-        propertyID={wwBuildings.BuildingUUID}
-        propertyName={wwBuildings.MarketingName} />
+        key={wwBuildings.building_uuid}
+        propertyID={wwBuildings.building_uuid}
+        propertyName={wwBuildings.project_name} />
     }
 
     function updateMapState(){
@@ -30,14 +42,41 @@ function Home () {
     return (
         <Container>
             <Row>
-                <Col>
-                <ul>
-                    {wwBuildings.map(CreatePropertyLi)}
-                    {/* <button onClick={updateMapState}>Jump To Shenzhen</button> */}
-                </ul>
+                <Col xs="8">
+                    <Row>
+                    <Col>
+                        <Highlight icon="/icon/icon_reminder.svg"/>
+                    </Col>
+                    <Col>
+                        <Highlight icon="/icon/icon_fix.svg"/>
+                    </Col>
+                    <Col>
+                        <Highlight icon="/icon/icon_notes.svg"/>
+                    </Col>
+                    <Col>
+                        <Highlight icon="/icon/icon_inbox.svg"/>
+                    </Col>
+                    </Row>
                 </Col>
-                <Col>
+            </Row>
+            <Row>
+                <Col xs="8" cal>
                     <CreateMap coordinates={coordinates}/>
+                </Col>
+                <Col xs="4">
+                    <div className="n-card-home">
+                        <div className="n-card-header">
+                            <h4 className="n-card-header-title">Buildings</h4>
+                            <DropdownBtn />
+                        </div>
+                        <hr className="n-card-hr"/>
+                        <div className="n-card-body overflow-auto">
+                            <ul>
+                                {allProperties.map(CreatePropertyLi)}
+                            </ul>
+                        </div>
+                        {/* <button onClick={updateMapState}>Test Jump Function</button> */}
+                    </div>
                 </Col>
             </Row>
         </Container>

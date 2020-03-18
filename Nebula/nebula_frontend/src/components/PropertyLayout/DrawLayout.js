@@ -28,11 +28,15 @@ function DrawLayout(props) {
         )}))
   }
 
+  console.log([props.selectedRoom])
+
   return (
     <div>
       <Stage width={800} height={600} options={{ antialias: true, backgroundColor: 0xffffff }}>
         <Container sortableChildren={true}>
-          {drawLayout(roomData)}
+          {/* {drawLayout(roomData)} */}
+          {/* only draw selected room: */}
+          {drawLayout(props.selectedRoom)}
         </Container>
       </Stage>
     </div>
