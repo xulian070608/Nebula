@@ -69,7 +69,8 @@ function MSSKUChart(props) {
                 />
                 {modalState ? 
                 <SKUDetails 
-                showModal={modalState} 
+                showModal={modalState}
+                toggleModalState={toggleModalState} 
                 sku={selectedSKU}
                 /> 
                 : null}

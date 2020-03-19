@@ -30,7 +30,8 @@ function PropertyCapEx(props) {
                 {console.log(modalState)}
                 {modalState ? 
                 <CapExModal 
-                showModal={modalState} /> 
+                showModal={modalState}
+                toggleModalState={toggleModalState} /> 
                 : null}
             </Col>
         </Row>

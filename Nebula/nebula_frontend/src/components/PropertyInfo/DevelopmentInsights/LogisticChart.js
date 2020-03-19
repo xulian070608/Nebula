@@ -27,7 +27,9 @@ function LogisticChart(props) {
       />
       {modalState ? 
       <LogisticModal 
-      showModal={modalState} selectedPOStatus={selectedPOStatus}/> 
+      showModal={modalState} 
+      toggleModalState={toggleModalState}
+      selectedPOStatus={selectedPOStatus}/> 
       : null}
     </Container>
     

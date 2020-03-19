@@ -17,9 +17,11 @@ function CapExModal(props) {
     const [modal, setModal] = useState(props.showModal);
     const toggle = () => setModal(!modal);
 
+    const { toggleModalState } = props
+
     return props.showModal ? (
         <div style={{zIndex: "100"}}>
-            <Modal isOpen={modal} toggle={toggle}>
+            <Modal isOpen={modal} toggle={toggle} onClosed={toggleModalState}>
                 <ModalHeader toggle={toggle}> CapEx </ModalHeader>
                 <ModalBody>
                     Lorem ipsum dolor sit amet, 
