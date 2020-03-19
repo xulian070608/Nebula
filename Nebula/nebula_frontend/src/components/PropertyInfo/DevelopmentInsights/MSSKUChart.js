@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { HorizontalBar } from "react-chartjs-2";
 import { Container, Row, Col } from 'reactstrap';
-import LogisticModal from './../Modal/LogisticModal';
+import SKUDetails from '../Modal/SKUDetails';
 
 import ms_stats from "../../../data/ms_stats";
 
@@ -9,6 +9,8 @@ function MSSKUChart(props) {
 
     let [modalState, setModalState] = useState(false)
     const toggleModalState = () => {setModalState(!modalState)}
+
+    let [selectedSKU, setSelectedSKU] = useState()
 
     // to count by the usage of SKU
     let countBySKU = ms_stats.reduce((map, sku) => {
@@ -61,13 +63,15 @@ function MSSKUChart(props) {
                 }}]}}} 
                 onElementsClick={elems => {
                     toggleModalState()
-                    console.log(elems[0]._datasetIndex + ', ' + elems[0]._index);
+                    // console.log(sortBySKU[elems[0]._index][0]);
+                    setSelectedSKU(sortBySKU[elems[0]._index][0])
                 }}
                 />
-                {console.log(Object.keys(SKUObjSorted))}
                 {modalState ? 
-                <LogisticModal 
-                showModal={modalState} /> 
+                <SKUDetails 
+                showModal={modalState} 
+                sku={selectedSKU}
+                /> 
                 : null}
             </Col>
             <Col>

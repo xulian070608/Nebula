@@ -49,7 +49,7 @@ function PropertyOverview(props) {
             'PO Issued',
             'Ordered',
             'Shipped',
-            'Cancelled',
+            'Order Cancelled',
             'Requires Respec'
         ]
     };
