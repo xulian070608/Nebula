@@ -33,8 +33,8 @@ function PropertyLayout(props) {
 
   function fetchAllFloorData() {
     axios
-      .get("http://100.94.29.214:8000/apis/v1/levels/")
-      // .get("http://127.0.0.1:8000/apis/v1/levels/")
+      // .get("http://100.94.29.214/apis/v1/levels/")
+      .get("http://127.0.0.1:8000/apis/v1/levels/")
       // for future study how to get this work, re: react component lifecycle...
       // .get("http://127.0.0.1:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
       .then(res => {
@@ -47,8 +47,8 @@ function PropertyLayout(props) {
 
   function fetchCurrentFloorData() {
     axios
-      .get("http://100.94.29.214:8000/apis/v1/levels/")
-      // .get("http://127.0.0.1:8000/apis/v1/levels/")
+      // .get("http://100.94.29.214/apis/v1/levels/")
+      .get("http://127.0.0.1:8000/apis/v1/levels/")
       .then(res => {
         setCurrentFloor(
           res.data.results.find(res => res.level_uuid === props.floorUUID)
@@ -61,8 +61,8 @@ function PropertyLayout(props) {
 
   function fetchLocationData() {
     axios
-      .get("http://100.94.29.214:8000/apis/v1/projects/")
-      // .get("http://127.0.0.1:8000/apis/v1/projects/")
+      // .get("http://100.94.29.214/apis/v1/projects/")
+      .get("http://127.0.0.1:8000/apis/v1/projects/")
       .then(res => {
         res.data.results.forEach(property => {
           if (

@@ -64,8 +64,8 @@ function PropertyOverview(props) {
 
     async function fetchLocationData() {      
         axios
-              .get("http://100.94.29.214:8000/apis/v1/projects/")
-            // .get("http://127.0.0.1:8000/apis/v1/projects/")
+            //   .get("http://100.94.29.214/apis/v1/projects/")
+            .get("http://127.0.0.1:8000/apis/v1/projects/")
             .then(res => {
                 setAllProperties(res.data.results)
                 setCurrentProperty(res.data.results.find(res => res.building_uuid === propertyUUID))
