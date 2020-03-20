@@ -27,7 +27,7 @@ function PropertyCapEx(props) {
                     <li>item 04</li>
                 </ul>
                 <button onClick={toggleModalState}>View Details</button>
-                {console.log(modalState)}
+                {/* {console.log(modalState)} */}
                 {modalState ? 
                 <CapExModal 
                 showModal={modalState}

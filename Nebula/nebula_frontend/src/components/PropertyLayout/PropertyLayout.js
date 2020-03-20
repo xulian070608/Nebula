@@ -4,17 +4,16 @@ import { Container, Row, Col } from "reactstrap";
 import { withRouter } from "react-router-dom";
 import Card from "../Utils/Card";
 import FloorSelectorOption from "./FloorSelectorOption";
-import RoomInfoModal from "./Modal/RoomInfoModal";
 
 //using floormap.gl
 import FloorMap from "../Utils/FloorMap/FloorMap";
 
 
 function PropertyLayout(props) {
-  let [modalState, setModalState] = useState(false);
-  const toggleModalState = () => {
-    setModalState(!modalState);
-  };
+  // let [modalState, setModalState] = useState(false);
+  // const toggleModalState = () => {
+  //   setModalState(!modalState);
+  // };
 
   let [isCurrentFloorLoading, setIsCurrentFloorLoading] = useState(true);
   let [isAllFloorLoading, setIsAllFloorLoading] = useState(true);

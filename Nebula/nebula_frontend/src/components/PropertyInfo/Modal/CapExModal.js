@@ -9,11 +9,6 @@ import {
 
 function CapExModal(props) {
 
-    const {
-        buttonLabel,
-        className
-    } = props;
-
     const [modal, setModal] = useState(props.showModal);
     const toggle = () => setModal(!modal);
 

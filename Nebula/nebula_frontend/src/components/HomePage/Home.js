@@ -8,7 +8,9 @@ import DropdownBtn from '../Utils/DropdownBtn'
 
 function Home () {
 
-    let [coordinates, setCoordinates] = useState ({
+    let [coordinates
+        // , setCoordinates
+    ] = useState ({
         lng: 121.4835,
         lat: 31.2291,
         zoom: 12
@@ -22,7 +24,7 @@ function Home () {
           .get("http://127.0.0.1:8000/apis/v1/projects/")
           .then(res => setAllProperties(res.data.results))
           .catch(err => console.log(err));
-    });
+    }, [0]);
 
     function CreatePropertyLi(wwBuildings) {
         return <PropertyLi 
@@ -31,13 +33,13 @@ function Home () {
         propertyName={wwBuildings.project_name} />
     }
 
-    function updateMapState(){
-        setCoordinates({
-            lng: 114.0559,
-            lat: 22.5458,
-            zoom: 11
-            })
-    }
+    // function updateMapState(){
+    //     setCoordinates({
+    //         lng: 114.0559,
+    //         lat: 22.5458,
+    //         zoom: 11
+    //         })
+    // }
 
     return (
         <Container>
