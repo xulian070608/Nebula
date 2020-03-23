@@ -67,21 +67,37 @@ function Viz(props) {
     renderer.setSize(targetWidth, targetHeight);
 
     // add objects into scene
-    var groupA = new THREE.Group();
+    var primaryGroup = new THREE.Group();
+    primaryGroup.name = "primary";
+    var secondaryWork = new THREE.Group();
+    secondaryWork.name = "secondary_work";
+    var secondaryExtra = new THREE.Group();
+    secondaryExtra.name = "secondary_extra";
+
     meshArray.forEach(mesh => {
-      groupA.add(mesh);
+      if (mesh.programType) {
+        if (mesh.programType === "WORK" || mesh.programType === "MEET") {
+          secondaryWork.add(mesh);
+        } else {
+          secondaryExtra.add(mesh);
+        }
+      } else {
+        secondaryExtra.add(mesh);
+      }
     });
+    primaryGroup.add(secondaryWork);
+    primaryGroup.add(secondaryExtra);
 
     // center mesh group based on (0,0,0) using boundingBox
     GroupBB3 = new THREE.Box3();
-    GroupBB3.setFromObject(groupA)
-      .getCenter(groupA.position)
+    GroupBB3.setFromObject(primaryGroup)
+      .getCenter(primaryGroup.position)
       .multiplyScalar(-1);
 
     // var b3helper = new THREE.Box3Helper(GroupBB3, 0x000000);
     // scene.add(b3helper);
 
-    scene.add(groupA);
+    scene.add(primaryGroup);
 
     // add environment lights on the scene
     const environmentLight = new EnvironmentLight();
@@ -159,7 +175,10 @@ function Viz(props) {
   function onButtonClick(event) {
     event.preventDefault();
     isButtonOn = !isButtonOn;
-    var roomObjects = scene.children[0].children;
+    const rooms = scene.getObjectByName("secondary_work");
+    if (rooms) {
+      var roomObjects = rooms.children;
+    }
     if (isButtonOn) {
       roomObjects.forEach(room => {
         let programType = room.programType;
@@ -211,8 +230,12 @@ function Viz(props) {
     // update the picking ray with the camera and mouse position
     raycaster.setFromCamera(mouse, camera);
 
+    const rooms = scene.getObjectByName("secondary_work");
+
     // calculate objects intersecting the picking ray
-    var intersects = raycaster.intersectObjects(scene.children[0].children);
+    if (rooms) {
+      var intersects = raycaster.intersectObjects(rooms.children);
+    }
 
     // if there is one (or more) intersections
     if (intersects.length > 0) {
@@ -255,8 +278,12 @@ function Viz(props) {
     // update the picking ray with the camera and mouse position
     raycaster.setFromCamera(mouse, camera);
 
+    const rooms = scene.getObjectByName("secondary_work");
+
     // calculate objects intersecting the picking ray
-    var intersects = raycaster.intersectObjects(scene.children[0].children);
+    if (rooms) {
+      var intersects = raycaster.intersectObjects(rooms.children);
+    }
 
     if (!isDrag) {
       clearTimeout(timmerHandle);
