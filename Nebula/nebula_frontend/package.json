@@ -26,7 +26,8 @@
     "react-scripts": "^3.4.0",
     "reactstrap": "^8.2.0",
     "three": "^0.112.1",
-    "three.interaction": "^0.2.2"
+    "three.interaction": "^0.2.2",
+    "three.texttexture": "^19.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
