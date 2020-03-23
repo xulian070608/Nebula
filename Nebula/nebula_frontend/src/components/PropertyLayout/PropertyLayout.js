@@ -6,8 +6,8 @@ import Card from "../Utils/Card";
 import FloorSelectorOption from "./FloorSelectorOption";
 
 //using floormap.gl
-import FloorMap from "../Utils/FloorMap/FloorMap";
-
+// import FloorMap from "../Utils/Floormap.gl/FloorMap";
+import Viz from "../Utils/Floormap/Viz";
 
 function PropertyLayout(props) {
   // let [modalState, setModalState] = useState(false);
@@ -28,7 +28,8 @@ function PropertyLayout(props) {
     fetchLocationData();
     fetchCurrentFloorData();
     fetchAllFloorData();
-  }, [0]);
+  }, []);
+  // empty array will run an effect and clean it up only once
 
   function fetchAllFloorData() {
     axios
@@ -135,7 +136,7 @@ function PropertyLayout(props) {
           {isCurrentFloorLoading || isLoacaionLoading ? (
             <p>Loading...</p>
           ) : (
-            <FloorMap level_uuid={currentFloor.level_uuid} />
+            <Viz floor_uuid = {currentFloor.level_uuid} />
           )}
         </Col>
       </Row>
