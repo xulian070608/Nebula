@@ -39,10 +39,10 @@ class ProjectInfo(models.Model):
         unique_together = (("stargate_id", "pmr_repository_id", "pmr_branch_id"),)
 
 
-class Level(models.Model):
+class Floor(models.Model):
     project_id = models.ForeignKey(
         ProjectInfo,
-        related_name="levels",
+        related_name="floors",
         db_column="project_id",
         on_delete=models.CASCADE,
     )
@@ -59,10 +59,10 @@ class Level(models.Model):
     average_office_deskcount = models.FloatField(blank=True, null=True)
     geometric_level = models.IntegerField(blank=True, null=True)
     lounge_percent_of_usf = models.FloatField(blank=True, null=True)
-    physical_desk_count = models.FloatField(blank=True, null=True)
+    physical_desk_count = models.IntegerField(blank=True, null=True)
 
     def __repr__(self):
-        return f'<Level ({self.level_uuid}) "{self.level_name}">'
+        return f'<Floor ({self.level_uuid}) "{self.level_name}">'
 
     class Meta:
         managed = False
@@ -72,7 +72,7 @@ class Level(models.Model):
 
 class Room(models.Model):
     floor_id = models.ForeignKey(
-        Level, related_name="rooms", db_column="floor_id", on_delete=models.CASCADE
+        Floor, related_name="rooms", db_column="floor_id", on_delete=models.CASCADE
     )
     room_revit_id = models.IntegerField()
     room_id = models.UUIDField(primary_key=True)

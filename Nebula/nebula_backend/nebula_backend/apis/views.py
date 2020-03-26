@@ -1,16 +1,17 @@
 from rest_framework import viewsets
+from rest_framework import mixins
 from rest_framework import generics
+from rest_framework.filters import SearchFilter
+from rest_framework.response import Response
 
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter
 
-# from rest_framework import permissions
-# from nebula_backend.apis.permissions import IsOwner
+from drf_yasg.utils import swagger_auto_schema
 
-from nebula_backend.apis.models import ProjectInfo, Level, Room
+from nebula_backend.apis.models import ProjectInfo, Floor, Room
 from nebula_backend.apis.serializers import (
     ProjectSerializer,
-    LevelSerializer,
+    FloorSerializer,
     RoomSerializer,
 )
 
@@ -23,9 +24,9 @@ class ProjectViewSet(viewsets.ModelViewSet):
     search_fields = ("project_address_en", "project_name", "building_name")
 
 
-class LevelViewSet(viewsets.ModelViewSet):
-    queryset = Level.objects.all()
-    serializer_class = LevelSerializer
+class FloorViewSet(viewsets.ModelViewSet):
+    queryset = Floor.objects.all()
+    serializer_class = FloorSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filterset_fields = ("project_id",)
 
@@ -37,14 +38,29 @@ class RoomViewSet(viewsets.ModelViewSet):
     filterset_fields = ("floor_id",)
 
 
-class RoomList(generics.ListAPIView):
-    serializer_class = RoomSerializer
-    queryset = Room.objects.all()
-
-
-class ProjectList(generics.ListAPIView):
-    # permission_classes = [permissions.IsAuthenticated, IsOwner]
-    serializer_class = ProjectSerializer
+class ProjectInfoViewSet(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    generics.GenericAPIView,
+):
+    """
+    Get:
+    Put:
+    Patch:
+    Delete:
+    """
     queryset = ProjectInfo.objects.all()
-    filter_backends = (DjangoFilterBackend, SearchFilter)
-    search_fields = ("project_address_en",)
+    serializer_class = ProjectSerializer
+
+    def get(self, request, *args, **kwargs):
+        pk = kwargs.get("pk", None)
+        if pk is not None:
+            return self.retrieve(request, pk)
+        return self.list(request)
+
+    def put(self, request, *args, **kwargs):
+        return self.put(request, *args, **kwargs)
+
+

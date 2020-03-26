@@ -1,24 +1,13 @@
-from .models import ProjectInfo, Level, Room
+from .models import ProjectInfo, Floor, Room
+from rest_framework import serializers
+from rest_framework_gis import serializers as gs
 
-# from rest_framework import serializers
-from rest_framework_gis import serializers
 
-
-class SimpleLevelSerializer(serializers.ModelSerializer):
+class FloorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Level
+        model = Floor
         fields = (
-            "floor_id",
-            "level_name",
-            "elevation",
-            "physical_desk_count",
-        )
-
-
-class LevelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Level
-        fields = (
+            "url",
             "project_id",
             "floor_id",
             "level_revit_id",
@@ -30,8 +19,7 @@ class LevelSerializer(serializers.ModelSerializer):
 
 
 class ProjectSerializer(serializers.ModelSerializer):
-    # levels_uuid = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    floors = SimpleLevelSerializer(many=True, read_only=True)
+    floors = FloorSerializer(many=True)
 
     class Meta:
         model = ProjectInfo
@@ -49,8 +37,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             "floors",
         ]
 
-
-class RoomSerializer(serializers.GeoModelSerializer):
+class RoomSerializer(gs.GeoModelSerializer):
     class Meta:
         model = Room
         fields = [
