@@ -16,8 +16,8 @@ if os.name == "nt":
     import platform
 
     OSGEO4W = r"C:\OSGeo4W"
-    if "64" in platform.architecture()[0]:
-        OSGEO4W += "64"
+    # if "64" in platform.architecture()[0]:
+    #     OSGEO4W += "64"
     assert os.path.isdir(OSGEO4W), "Directory does not exist: " + OSGEO4W
     os.environ["OSGEO4W_ROOT"] = OSGEO4W
     os.environ["GDAL_DATA"] = OSGEO4W + r"\share\gdal"
@@ -97,14 +97,16 @@ DATABASES = {
     "nebula_db": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
         "NAME": "NebulaDB",
-        "USER": "chinavdc",
+        "USER": "bxia",
         "HOST": "localhost",
+        "PASSWORD": "xby1995620",
         "OPTIONS": {"options": "-c search_path=nebula_ww_china_projects"},
     },
     "auth_db": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "NebulaDB",
-        "USER": "chinavdc",
+        "USER": "bxia",
+        "PASSWORD": "xby1995620",
         "HOST": "localhost",
         "OPTIONS": {"options": "-c search_path=nebula_django"},
     },
@@ -161,6 +163,7 @@ DATABASE_APP_MAPPING = {
 }
 
 DATABASE_ROUTERS = ["nebula_backend.dbrouter.DatabaseAppsRouter"]
+
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
