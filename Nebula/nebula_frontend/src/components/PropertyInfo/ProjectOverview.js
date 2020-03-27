@@ -66,7 +66,7 @@ function ProjectOverview(props) {
 
   async function fetchLocationData() {
     axios
-      .get(serverAPI.getAllProjects)
+      .get(serverAPI.getProject)
       .then(res => {
         setAllProjects(res.data.results);
         setCurrentProject(
@@ -159,7 +159,6 @@ function ProjectOverview(props) {
             </div>
           )}
         </Col>
-        }
       </Row>
     </Container>
   );

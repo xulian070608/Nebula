@@ -32,7 +32,7 @@ function App() {
               let pageID = props.location.pathname
                 .replace("/planview", "")
                 .replace("/", "");
-              return <PropertyLayout floorID={pageID} />;
+              return <PropertyLayout projectID={pageID} />;
             }}
           />
           <Route
