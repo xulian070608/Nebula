@@ -9,15 +9,15 @@ export const colorSchema = {
 };
 
 export const serverAPI = {
-  getAllProjects: "http://100.94.29.214/api/v1/project/",
+  getProject: "http://100.94.29.214/api/v1/project/",
   getFloorsByProject: "http://100.94.29.214/api/v1/floor/?project_id=",
   getAllFloors: "http://100.94.29.214/api/v1/floor/",
   getRoomsByFloor: "http://100.94.29.214/api/v1/room/?floor_id="
 };
 
 export const localAPI = {
-  getAllProjects: "http://127.0.0.1/api/v1/project/",
-  getFloorsByProject: "http://127.0.0.1/api/v1/floor/?project_id=",
-  getAllFloors: "http://127.0.0.1/api/v1/floor/",
-  getRoomsByFloor: "http://127.0.0.1/api/v1/room/?floor_id="
+  getProject: "http://127.0.0.1:8000/api/v1/project/",
+  getFloorsByProject: "http://127.0.0.1:8000/api/v1/floor/?project_id=",
+  getAllFloors: "http://127.0.0.1:8000/api/v1/floor/",
+  getRoomsByFloor: "http://127.0.0.1:8000/api/v1/room/?floor_id="
 };

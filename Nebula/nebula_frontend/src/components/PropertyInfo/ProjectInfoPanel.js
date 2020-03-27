@@ -1,14 +1,10 @@
-import React, { Component, useState, useEffect } from "react";
-import axios from "axios";
+import React, { Component, useState } from "react";
 import ProjectSelectorOption from "./ProjectSelectorOption";
 import ProjectInfoSummary from "./ProjectInfoSummary";
 import { Link, withRouter } from "react-router-dom";
 import { Col } from "reactstrap";
-import { serverAPI, localAPI } from "../Utils/Constant";
 
 function ProjectInfoPanel(props) {
-  let [isLoading, setIsLoading] = useState(true);
-
   // this Property Name is coming from it's parent level: Property Overview
   let [currentProject, setCurrentProject] = useState(props.currentProject);
   // console.log(currentProject)
@@ -25,26 +21,6 @@ function ProjectInfoPanel(props) {
     setCurrentProject(
       allProjects.find(property => property.project_id === projectID)
     );
-  }
-
-  //get all floors in current property, this is for hyperlink to planview, so we have a default plan to show
-  let [allFloors, setAllFloors] = useState([]);
-  // const allFloor = wwFloors.filter(wwFloor => wwFloor['Building UUID'] === currentProject.project_id)
-
-  useEffect(() => {
-    fetchFloorData();
-  }, [0]);
-
-  async function fetchFloorData() {
-    axios
-      .get(serverAPI.getFloorsByProject + currentProject.project_id)
-      .then(res => {
-        console.log(res);
-        setAllFloors(res.data.results);
-        // console.log(res.data.results)
-        setIsLoading(false);
-      })
-      .catch(err => console.log(err));
   }
 
   // this is following the example from: https://codesandbox.io/s/falling-surf-33hfs
@@ -89,13 +65,7 @@ function ProjectInfoPanel(props) {
           src="/img/img_001.jpg"
           alt="project quickview"
         />
-        {/* <button onClick={fetchFloorData}>Loading...</button> */}
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <Link to={`/${allFloors[0].floor_id}/planview`}>Project Plan</Link>
-          // <div>{console.log(allFloors)}</div>
-        )}
+        <Link to={`/${currentProject.project_id}/planview`}>Project Plan</Link>
         <p></p>
         <Menu />
         <p></p>
