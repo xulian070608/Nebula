@@ -95,4 +95,3 @@ class FloorView(
         assert project_id, "Must provide project_id"
         room = Room.objects.filter(project_id=project_id)
         return room
-

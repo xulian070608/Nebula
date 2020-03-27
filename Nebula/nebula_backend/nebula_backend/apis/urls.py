@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ProjectView,FloorView
+from .views import ProjectView, FloorView
 
 urlpatterns = [
     path(r"project/", ProjectView.as_view()),

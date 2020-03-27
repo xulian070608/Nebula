@@ -3,9 +3,6 @@ from rest_framework import serializers
 from rest_framework_gis import serializers as gs
 
 
-class HostProjectSerializer()
-
-
 class FloorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Floor
