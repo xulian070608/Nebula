@@ -4,12 +4,13 @@ import { Container, Row, Col } from "reactstrap";
 import { withRouter } from "react-router-dom";
 import Card from "../Utils/Card";
 import FloorSelectorOption from "./FloorSelectorOption";
+import { serverAPI, localAPI } from "../Utils/Constant";
 
 //using floormap.gl
 // import FloorMap from "../Utils/Floormap.gl/FloorMap";
 import Viz from "../Utils/Floormap/Viz";
 
-function PropertyLayout(props) {
+function ProjectLayout(props) {
   // let [modalState, setModalState] = useState(false);
   // const toggleModalState = () => {
   //   setModalState(!modalState);
@@ -20,7 +21,7 @@ function PropertyLayout(props) {
   let [isLoacaionLoading, setIsLocationLoading] = useState(true);
 
   let [currentFloor, setCurrentFloor] = useState({});
-  let [currentProperty, setCurrentProperty] = useState({});
+  let [currentProject, setCurrentProject] = useState({});
 
   let [allFloors, setAllFloors] = useState([]);
 
@@ -33,10 +34,8 @@ function PropertyLayout(props) {
 
   function fetchAllFloorData() {
     axios
-      // .get("http://100.94.29.214/apis/v1/levels/")
-      .get("http://127.0.0.1:8000/apis/v1/levels/")
+      .get(serverAPI.getAllFloors)
       // for future study how to get this work, re: react component lifecycle...
-      // .get("http://127.0.0.1:8000/apis/v1/levels/?project=" + currentProperty.building_uuid)
       .then(res => {
         setAllFloors(res.data.results);
         // console.log(res.data.results)
@@ -47,11 +46,10 @@ function PropertyLayout(props) {
 
   function fetchCurrentFloorData() {
     axios
-      // .get("http://100.94.29.214/apis/v1/levels/")
-      .get("http://127.0.0.1:8000/apis/v1/levels/")
+      .get(serverAPI.getAllFloors)
       .then(res => {
         setCurrentFloor(
-          res.data.results.find(res => res.level_uuid === props.floorUUID)
+          res.data.results.find(res => res.floor_id === props.floorID)
         );
         // console.log(res.data.results)
         setIsCurrentFloorLoading(false);
@@ -61,14 +59,11 @@ function PropertyLayout(props) {
 
   function fetchLocationData() {
     axios
-      // .get("http://100.94.29.214/apis/v1/projects/")
-      .get("http://127.0.0.1:8000/apis/v1/projects/")
+      .get(serverAPI.getAllProjects)
       .then(res => {
-        res.data.results.forEach(property => {
-          if (
-            property.levels.find(level => level.level_uuid === props.floorUUID)
-          ) {
-            setCurrentProperty(property);
+        res.data.results.forEach(project => {
+          if (project.floors.find(floor => floor.floor_id === props.floorID)) {
+            setCurrentProject(project);
           }
         });
         setIsLocationLoading(false);
@@ -76,11 +71,11 @@ function PropertyLayout(props) {
       .catch(err => console.log(err));
   }
 
-  // set up selectedFloorUUID so that the selector item is aligned with the actual page
-  let [selectedFloorUUID, setSelectedFloorUUID] = useState(allFloors[0]);
+  // set up selectedFloorID so that the selector item is aligned with the actual page
+  let [selectedFloorID, setSelectedFloorID] = useState(allFloors[0]);
 
-  function updateFloor(propertyUUID, allFloors) {
-    setCurrentFloor(allFloors.find(floor => floor.level_uuid === propertyUUID));
+  function updateFloor(projectID, allFloors) {
+    setCurrentFloor(allFloors.find(floor => floor.floor_id === projectID));
     console.log("current floor is reset.");
     console.log(currentFloor);
   }
@@ -89,13 +84,13 @@ function PropertyLayout(props) {
   class FloorDropDown extends Component {
     onChange = e => {
       updateFloor(e.target.value, allFloors);
-      setSelectedFloorUUID(e.target.value);
+      setSelectedFloorID(e.target.value);
       this.props.history.push(`/${e.target.value}/planview`);
     };
 
     render() {
       return (
-        <select value={selectedFloorUUID} onChange={this.onChange}>
+        <select value={selectedFloorID} onChange={this.onChange}>
           {allFloors.map(createFloorOption)}
         </select>
       );
@@ -107,10 +102,10 @@ function PropertyLayout(props) {
   function createFloorOption(floor) {
     return (
       <FloorSelectorOption
-        // floorUUID is not ready yet, use floor.Name for now
-        key={floor.level_uuid}
-        name={floor.level_name}
-        value={floor.level_uuid}
+        // floorID is not ready yet, use floor.Name for now
+        key={floor.floor_id}
+        name={floor.floor_name}
+        value={floor.floor_id}
       />
     );
   }
@@ -118,11 +113,11 @@ function PropertyLayout(props) {
   return (
     <Container>
       <Row>
-        <Col xs="4 content-offset" id="property-infopanel-left">
+        <Col xs="4 content-offset" id="project-infopanel-left">
           {isCurrentFloorLoading || isLoacaionLoading ? (
             <p>Loading...</p>
           ) : (
-            <p> current property is {currentProperty.project_name} </p>
+            <p> current project is {currentProject.project_name} </p>
           )}
           <Card />
           {isAllFloorLoading || isLoacaionLoading ? (
@@ -132,11 +127,11 @@ function PropertyLayout(props) {
           )}
           <p></p>
         </Col>
-        <Col xs="8 offset-4 content-offset" id="property-infopanel-right">
+        <Col xs="8 offset-4 content-offset" id="project-infopanel-right">
           {isCurrentFloorLoading || isLoacaionLoading ? (
             <p>Loading...</p>
           ) : (
-            <Viz floor_uuid = {currentFloor.level_uuid} />
+            <Viz floor_uuid={currentFloor.floor_id} />
           )}
         </Col>
       </Row>
@@ -144,4 +139,4 @@ function PropertyLayout(props) {
   );
 }
 
-export default PropertyLayout;
+export default ProjectLayout;

@@ -13,7 +13,8 @@ body {
   padding: 0 16px;
 }
 
-a, a:hover {
+a,
+a:hover {
   text-decoration: none !important;
 }
 
@@ -56,7 +57,7 @@ footer p {
   padding-top: 80px;
 }
 
-#property-infopanel-left {
+#project-infopanel-left {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -66,7 +67,7 @@ footer p {
   /* overflow-y: scroll; */
 }
 
-#property-infopanel-right {
+#project-infopanel-right {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -85,20 +86,20 @@ footer p {
 }
 
 .logo-img {
-  max-width:100%;
-  height:auto
+  max-width: 100%;
+  height: auto;
 }
 
 .icon {
-  height:25px;
+  height: 25px;
   position: relative;
   margin: 12.5px;
 }
 
-.property-img {
+.project-img {
   max-width: 100%;
   max-height: 100%;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   position: relative;
   padding: 25px 0px;
 }
@@ -111,8 +112,8 @@ footer p {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: .25rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
   padding: 10px 0px;
   margin: 25px 0px;
   height: 300px;
@@ -128,8 +129,8 @@ footer p {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: .25rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
   padding: 10px 0px;
   margin: 25px 0px;
   height: 400px;
@@ -174,18 +175,18 @@ footer p {
 }
 
 .highlight {
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   position: relative;
   margin: 15px 0px;
   background-color: #fff;
   height: 50px;
   box-shadow: 0 2px 5px #ccc;
-  border: 1px solid rgba(0,0,0,.125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
   text-align: left;
 }
 
 .highlight-number {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   color: #6e6e6e;
   font-size: 20px;
@@ -195,7 +196,7 @@ footer p {
 }
 
 .marker {
-  background-image: url('./img/mapbox-icon.png');
+  background-image: url("./img/mapbox-icon.png");
   background-size: cover;
   width: 50px;
   height: 50px;
@@ -209,7 +210,7 @@ footer p {
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 form {
@@ -249,7 +250,7 @@ form button {
   float: left;
   width: 50%;
 }
-.column-property {
+.column-project {
   position: fixed;
   float: left;
   width: 40%;
@@ -266,17 +267,17 @@ form button {
   clear: both;
 }
 
-.rangeslider{
+.rangeslider {
   width: 100%;
-  }
+}
 
 .myslider {
   -webkit-appearance: none;
-  background: #FCF3CF  ;
+  background: #fcf3cf;
   width: 50%;
   height: 20px;
   opacity: 2;
-  }
+}
 
 .myslider:hover {
   opacity: 1;
@@ -325,9 +326,9 @@ form button {
   background-color: #fff;
   border: 1px solid #ccd8e0;
   border-radius: 4px;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.25);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
   opacity: 0;
-  transform: translate(0, 15px) scale(.95);
+  transform: translate(0, 15px) scale(0.95);
   transition: transform 0.1s ease-out, opacity 0.1s ease-out;
   pointer-events: none;
 }
@@ -358,7 +359,7 @@ form button {
   height: auto;
   left: 0;
   top: 0;
-  width: auto;    
+  width: auto;
 }
 
 .more-menu-caret-inner {
