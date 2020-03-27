@@ -74,8 +74,8 @@ function ProjectLayout(props) {
   // set up selectedFloorID so that the selector item is aligned with the actual page
   let [selectedFloorID, setSelectedFloorID] = useState(allFloors[0]);
 
-  function updateFloor(projectID, allFloors) {
-    setCurrentFloor(allFloors.find(floor => floor.floor_id === projectID));
+  function updateFloor(floorID, allFloors) {
+    setCurrentFloor(allFloors.find(floor => floor.floor_id === floorID));
     console.log("current floor is reset.");
     console.log(currentFloor);
   }
