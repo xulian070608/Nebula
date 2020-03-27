@@ -15,7 +15,7 @@ class ProjectInfo(models.Model):
     building_name = models.CharField(max_length=50, blank=True, null=True)
     business_line = models.CharField(max_length=50, blank=True, null=True)
     landlord_id = models.UUIDField(blank=True, null=True)
-    project_adress_point = models.TextField(
+    project_address_point = models.TextField(
         blank=True, null=True
     )  # This field type is a guess.
     project_address_en = models.CharField(max_length=50, blank=True, null=True)

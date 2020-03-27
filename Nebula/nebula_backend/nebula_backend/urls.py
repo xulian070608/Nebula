@@ -30,11 +30,6 @@ schema_view = get_schema_view(
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path(r"api/v1/", include(router.urls)),
-    path(
-        r"api/v1.1/",
-        include("nebula_backend.apis.urls"),
-    ),
-    re_path(
-        r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
-    ),
+    path(r"api/v1.1/", include("nebula_backend.apis.urls"), name="api"),
+    re_path(r"^redoc/$", schema_view.with_ui("redoc")),
 ]

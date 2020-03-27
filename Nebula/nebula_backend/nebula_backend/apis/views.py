@@ -2,11 +2,8 @@ from rest_framework import viewsets
 from rest_framework import mixins
 from rest_framework import generics
 from rest_framework.filters import SearchFilter
-from rest_framework.response import Response
 
 from django_filters.rest_framework import DjangoFilterBackend
-
-from drf_yasg.utils import swagger_auto_schema
 
 from nebula_backend.apis.models import ProjectInfo, Floor, Room
 from nebula_backend.apis.serializers import (
@@ -38,7 +35,7 @@ class RoomViewSet(viewsets.ModelViewSet):
     filterset_fields = ("floor_id",)
 
 
-class ProjectInfoViewSet(
+class ProjectView(
     mixins.ListModelMixin,
     mixins.RetrieveModelMixin,
     mixins.UpdateModelMixin,
@@ -47,10 +44,17 @@ class ProjectInfoViewSet(
 ):
     """
     Get:
+        uri: api/v1.1/project
+            list projects
+        uri api/v1.1/project/<project_id>
+            retrive project
+
     Put:
+
     Patch:
     Delete:
     """
+
     queryset = ProjectInfo.objects.all()
     serializer_class = ProjectSerializer
 
@@ -61,6 +65,34 @@ class ProjectInfoViewSet(
         return self.list(request)
 
     def put(self, request, *args, **kwargs):
-        return self.put(request, *args, **kwargs)
+        return self.update(request, *args, **kwargs)
 
+    def patch(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
+
+
+class FloorView(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    generics.GenericAPIView,
+):
+    """
+    List:
+        uri: /api/v1.1/<project_id>/floor
+
+    Get:
+        uri: /api/v1.1/<project_id>/floor/<floor_id>
+
+    Put:
+    Path:
+    """
+
+    serializer_class = FloorSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        project_id = kwargs.pop("project", None)
+        assert project_id, "Must provide project_id"
+        room = Room.objects.filter(project_id=project_id)
+        return room
 

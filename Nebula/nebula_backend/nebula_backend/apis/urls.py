@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import ProjectInfoViewSet
+from .views import ProjectView,FloorView
 
 urlpatterns = [
-    path(r"project/", ProjectInfoViewSet.as_view()),
-    path(r"project/<uuid:pk>", ProjectInfoViewSet.as_view()),
+    path(r"project/", ProjectView.as_view()),
+    path(r"project/<uuid:pk>/", ProjectView.as_view()),
+    path(r"project/<uuid:project>/floor", FloorView.as_view()),
 ]

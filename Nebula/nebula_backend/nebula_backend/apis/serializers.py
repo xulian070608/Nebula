@@ -3,6 +3,9 @@ from rest_framework import serializers
 from rest_framework_gis import serializers as gs
 
 
+class HostProjectSerializer()
+
+
 class FloorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Floor
@@ -17,9 +20,11 @@ class FloorSerializer(serializers.ModelSerializer):
             "physical_desk_count",
         )
 
+        read_only_fields = ("project_id", "floor_id", "level_revit_id")
+
 
 class ProjectSerializer(serializers.ModelSerializer):
-    floors = FloorSerializer(many=True)
+    floors = FloorSerializer(many=True, read_only=True)
 
     class Meta:
         model = ProjectInfo
@@ -30,12 +35,17 @@ class ProjectSerializer(serializers.ModelSerializer):
             "project_name",
             "revit_file_path",
             "business_line",
-            "project_adress_point",
+            "project_address_point",
             "project_address_en",
             "project_market",
             "project_city",
             "floors",
         ]
+        read_only_fields = (
+            "project_id",
+            "pmr_repository_id",
+        )
+
 
 class RoomSerializer(gs.GeoModelSerializer):
     class Meta:
