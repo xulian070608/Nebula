@@ -1,62 +1,59 @@
-from .models import ProjectInfo, Level, Room
+from .models import ProjectInfo, Floor, Room
+from rest_framework import serializers
+from rest_framework_gis import serializers as gs
 
-# from rest_framework import serializers
-from rest_framework_gis import serializers
+
+class HostProjectSerializer()
 
 
-class SimpleLevelSerializer(serializers.ModelSerializer):
+class FloorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Level
+        model = Floor
         fields = (
-            "level_uuid",
-            "level_name",
-            "elevation",
-            "physical_desk_count",
-        )
-
-
-class LevelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Level
-        fields = (
-            "project",
-            "level_uuid",
+            "url",
+            "project_id",
+            "floor_id",
             "level_revit_id",
-            "level_name",
+            "floor_name",
             "elevation",
             "deskcount",
             "physical_desk_count",
         )
 
+        read_only_fields = ("project_id", "floor_id", "level_revit_id")
+
 
 class ProjectSerializer(serializers.ModelSerializer):
-    # levels_uuid = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    levels = SimpleLevelSerializer(many=True, read_only=True)
+    floors = FloorSerializer(many=True, read_only=True)
 
     class Meta:
         model = ProjectInfo
         fields = [
-            "building_uuid",
+            "project_id",
             "pmr_repository_id",
             "building_name",
             "project_name",
             "revit_file_path",
             "business_line",
-            "project_adress_point",
+            "project_address_point",
             "project_address_en",
             "project_market",
             "project_city",
-            "levels",
+            "floors",
         ]
+        read_only_fields = (
+            "project_id",
+            "pmr_repository_id",
+        )
 
 
-class RoomSerializer(serializers.GeoModelSerializer):
+class RoomSerializer(gs.GeoModelSerializer):
     class Meta:
         model = Room
         fields = [
-            "level_id",
+            "floor_id",
             "room_revit_id",
-            "room_uuid",
+            "room_id",
             "room_name",
             "room_number",
             "area",

@@ -1,18 +1,14 @@
 from rest_framework import viewsets
+from rest_framework import mixins
 from rest_framework import generics
-from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
-
-from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 
-# from rest_framework import permissions
-# from nebula_backend.apis.permissions import IsOwner
+from django_filters.rest_framework import DjangoFilterBackend
 
-from nebula_backend.apis.models import ProjectInfo, Level, Room
+from nebula_backend.apis.models import ProjectInfo, Floor, Room
 from nebula_backend.apis.serializers import (
     ProjectSerializer,
-    LevelSerializer,
+    FloorSerializer,
     RoomSerializer,
 )
 
@@ -25,29 +21,78 @@ class ProjectViewSet(viewsets.ModelViewSet):
     search_fields = ("project_address_en", "project_name", "building_name")
 
 
-class LevelViewSet(viewsets.ModelViewSet):
-    queryset = Level.objects.all()
-    serializer_class = LevelSerializer
+class FloorViewSet(viewsets.ModelViewSet):
+    queryset = Floor.objects.all()
+    serializer_class = FloorSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filterset_fields = ("project",)
+    filterset_fields = ("project_id",)
 
 
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filterset_fields = ("level_id",)
+    filterset_fields = ("floor_id",)
 
 
-class RoomList(generics.ListAPIView):
-    serializer_class = RoomSerializer
-    queryset = Room.objects.all()
+class ProjectView(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    generics.GenericAPIView,
+):
+    """
+    Get:
+        uri: api/v1.1/project
+            list projects
+        uri api/v1.1/project/<project_id>
+            retrive project
 
+    Put:
 
-class ProjectList(generics.ListAPIView):
-    # permission_classes = [permissions.IsAuthenticated, IsOwner]
-    serializer_class = ProjectSerializer
+    Patch:
+    Delete:
+    """
+
     queryset = ProjectInfo.objects.all()
-    filter_backends = (DjangoFilterBackend, SearchFilter)
-    search_fields = ("project_address_en",)
-    
+    serializer_class = ProjectSerializer
+
+    def get(self, request, *args, **kwargs):
+        pk = kwargs.get("pk", None)
+        if pk is not None:
+            return self.retrieve(request, pk)
+        return self.list(request)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def patch(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
+
+
+class FloorView(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    generics.GenericAPIView,
+):
+    """
+    List:
+        uri: /api/v1.1/<project_id>/floor
+
+    Get:
+        uri: /api/v1.1/<project_id>/floor/<floor_id>
+
+    Put:
+    Path:
+    """
+
+    serializer_class = FloorSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        project_id = kwargs.pop("project", None)
+        assert project_id, "Must provide project_id"
+        room = Room.objects.filter(project_id=project_id)
+        return room
+

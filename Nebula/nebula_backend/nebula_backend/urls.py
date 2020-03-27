@@ -1,22 +1,35 @@
-from django.urls import include, path
+from django.urls import include, path, re_path
 
 from rest_framework import routers
-
-# from nebula_backend.quickstart import views
+from rest_framework import permissions
 
 from nebula_backend.apis import views
 
-router = routers.DefaultRouter()
-router.register(r"rooms", views.RoomViewSet, basename="room")
-router.register(r"projects", views.ProjectViewSet, basename="project")
-router.register(r"levels", views.LevelViewSet, basename="level")
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
+router = routers.DefaultRouter()
+router.register(r"room", views.RoomViewSet, basename="room")
+router.register(r"project", views.ProjectViewSet, basename="project")
+router.register(r"floor", views.FloorViewSet, basename="floor")
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Nebula API",
+        default_version="v1",
+        description="Nebula API documentation",
+        terms_of_service="None",
+        contact=openapi.Contact(email="china-vdc@wework.com"),
+        license=openapi.License(name="MIT License"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path(r"api-auth/", include("rest_framework.urls")),
-    path(r"apis/v1/", include(router.urls)),
-    # path(r"apis/v1/listproject", views.ProjectList.as_view()),
-    # path(r"room", views.RoomList.as_view()),
+    path(r"api/v1/", include(router.urls)),
+    path(r"api/v1.1/", include("nebula_backend.apis.urls"), name="api"),
+    re_path(r"^redoc/$", schema_view.with_ui("redoc")),
 ]
