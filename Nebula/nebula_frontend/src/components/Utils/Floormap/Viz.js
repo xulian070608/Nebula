@@ -1,7 +1,8 @@
 import * as THREE from "three";
 import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
+import { serverAPI, localAPI } from "../../Utils/Constant";
 
 import EnvironmentLight from "./lights";
 import RoomGenerator from "./Mesh";
@@ -12,14 +13,11 @@ import PopperX from "./PopperControl";
 import HelperMode from "./helpers";
 import styles from "./styles";
 
-import { withStyles } from "@material-ui/core/styles";
-
 function Viz(props) {
   const { useRef, useEffect, useState } = React;
   const mount = useRef(null);
   const floor_uuid = props.floor_uuid;
-  // const base_api = "http://100.94.29.214:8000/apis/v1/rooms/?level_id=";
-  const base_api = "http://127.0.0.1:8000/apis/v1/rooms/?level_id=";
+  const base_api = serverAPI.getRoomsByFloor;
   const url = base_api + floor_uuid;
   var meshArray = [];
   var GroupBB3, camera, scene;
