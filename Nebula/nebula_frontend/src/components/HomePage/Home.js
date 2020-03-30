@@ -5,7 +5,7 @@ import ProjectLi from "./ProjectLi";
 import CreateMap from "./Mapbox";
 import Highlight from "./Highlight";
 import DropdownBtn from "../Utils/DropdownBtn";
-import { serverAPI, localAPI } from "../Utils/Constant";
+import { localAPI } from "../Utils/Constant";
 
 function Home() {
   let [
@@ -24,7 +24,7 @@ function Home() {
       .get(localAPI.getProject)
       .then(res => setAllProjects(res.data.results))
       .catch(err => console.log(err));
-  }, [0]);
+  }, []);
 
   function CreateProjectLi(wwProjects) {
     return (
@@ -65,7 +65,7 @@ function Home() {
         </Col>
       </Row>
       <Row>
-        <Col xs="8" cal>
+        <Col xs="8">
           <CreateMap coordinates={coordinates} />
         </Col>
         <Col xs="4">

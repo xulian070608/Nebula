@@ -1,13 +1,13 @@
 import * as THREE from "three";
 import TextGenerator from "./Text";
-import SignGenerator from "./Sign";
+// import SignGenerator from "./Sign";
 import { colorSchema } from "../Constant";
 
 function RoomGenerator(roomInfo) {
   const {
-    level_id,
-    room_revit_id,
-    room_uuid,
+    // level_id,
+    // room_revit_id,
+    // room_uuid,
     room_name,
     room_number,
     area,
@@ -17,8 +17,8 @@ function RoomGenerator(roomInfo) {
     program_type,
     internal_room_count,
     has_av,
-    outline,
-    level_revit_id
+    outline
+    // level_revit_id
   } = roomInfo;
 
   var mesh;

@@ -2,7 +2,7 @@ import * as THREE from "three";
 import axios from "axios";
 import React from "react";
 import Button from "@material-ui/core/Button";
-import { serverAPI, localAPI } from "../../Utils/Constant";
+import { localAPI } from "../../Utils/Constant";
 
 import EnvironmentLight from "./lights";
 import RoomGenerator from "./Mesh";

@@ -1,10 +1,10 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Row, Col } from "reactstrap";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 import Card from "../Utils/Card";
-import FloorSelectorOption from "./FloorSelectorOption";
-import { serverAPI, localAPI } from "../Utils/Constant";
+// import FloorSelectorOption from "./FloorSelectorOption";
+import { localAPI } from "../Utils/Constant";
 import { makeStyles } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -42,7 +42,7 @@ function ProjectLayout(props) {
 
   let [allFloors, setAllFloors] = useState([]);
   // set up selectedFloorID so that the selector item is aligned with the actual page
-  let [selectedFloorID, setSelectedFloorID] = useState();
+  // let [selectedFloorID, setSelectedFloorID] = useState();
   const classes = useStyles();
 
   useEffect(() => {
@@ -203,12 +203,6 @@ function ProjectLayout(props) {
       </Row>
     </Container>
   );
-}
-
-function H2Text(props) {
-  var htmlText = props.name;
-
-  return <h2>{htmlText}</h2>;
 }
 
 export default ProjectLayout;
