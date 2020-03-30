@@ -13,9 +13,9 @@ class ProjectInfo(models.Model):
     pmr_repository_id = models.UUIDField()
     project_name = models.CharField(max_length=20, blank=True, null=True)
     building_name = models.CharField(max_length=50, blank=True, null=True)
-    business_line = models.UUIDField(blank=True, null=True)
-    landlord = models.UUIDField(blank=True, null=True)
-    project_adress_point = models.TextField(
+    business_line = models.CharField(max_length=50, blank=True, null=True)
+    landlord_id = models.UUIDField(blank=True, null=True)
+    project_address_point = models.TextField(
         blank=True, null=True
     )  # This field type is a guess.
     project_address_en = models.CharField(max_length=50, blank=True, null=True)
@@ -24,31 +24,31 @@ class ProjectInfo(models.Model):
     project_city = models.CharField(max_length=50, blank=True, null=True)
     project_status = models.CharField(max_length=50, blank=True, null=True)
     usf_per_desk = models.FloatField(blank=True, null=True)
-    building_uuid = models.UUIDField(primary_key=True)
+    project_id = models.UUIDField(primary_key=True)
     pmr_branch_id = models.UUIDField(blank=True, null=True)
     average_office_desk_count = models.FloatField(blank=True, null=True)
     template_version = models.CharField(max_length=10, blank=True, null=True)
     revit_file_path = models.CharField(max_length=255, blank=True, null=True)
 
     def __repr__(self):
-        return f'<Project ({self.building_uuid}) "{self.building_name}">'
+        return f'<Project ({self.project_id}) "{self.project_name}">'
 
     class Meta:
         managed = False
-        db_table = "project_info"
+        db_table = "nebula_project_info"
         unique_together = (("stargate_id", "pmr_repository_id", "pmr_branch_id"),)
 
 
-class Level(models.Model):
-    project = models.ForeignKey(
+class Floor(models.Model):
+    project_id = models.ForeignKey(
         ProjectInfo,
-        related_name="levels",
-        db_column="project",
+        related_name="floors",
+        db_column="project_id",
         on_delete=models.CASCADE,
     )
-    level_uuid = models.UUIDField(primary_key=True)
+    floor_id = models.UUIDField(primary_key=True)
     level_revit_id = models.IntegerField(blank=True, null=True)
-    level_name = models.CharField(max_length=50, blank=True, null=True)
+    floor_name = models.CharField(max_length=50, blank=True, null=True)
     elevation = models.FloatField(blank=True, null=True)
     notes = models.FloatField(blank=True, null=True)
     gsf = models.FloatField(blank=True, null=True)
@@ -59,23 +59,23 @@ class Level(models.Model):
     average_office_deskcount = models.FloatField(blank=True, null=True)
     geometric_level = models.IntegerField(blank=True, null=True)
     lounge_percent_of_usf = models.FloatField(blank=True, null=True)
-    physical_desk_count = models.FloatField(blank=True, null=True)
+    physical_desk_count = models.IntegerField(blank=True, null=True)
 
     def __repr__(self):
-        return f'<Level ({self.level_uuid}) "{self.level_name}">'
+        return f'<Floor ({self.level_uuid}) "{self.level_name}">'
 
     class Meta:
         managed = False
-        db_table = "level"
-        unique_together = (("project", "level_revit_id"),)
+        db_table = "nebula_project_floors"
+        unique_together = (("project_id", "level_revit_id"),)
 
 
 class Room(models.Model):
-    level_id = models.ForeignKey(
-        Level, related_name="rooms", db_column="level_id", on_delete=models.CASCADE
+    floor_id = models.ForeignKey(
+        Floor, related_name="rooms", db_column="floor_id", on_delete=models.CASCADE
     )
     room_revit_id = models.IntegerField()
-    room_uuid = models.UUIDField(primary_key=True)
+    room_id = models.UUIDField(primary_key=True)
     room_number = models.CharField(max_length=10, blank=True, null=True)
     room_name = models.CharField(max_length=50, blank=True, null=True)
     area = models.FloatField(blank=True, null=True)
@@ -91,7 +91,7 @@ class Room(models.Model):
 
     class Meta:
         managed = False
-        db_table = "room"
+        db_table = "nebula_project_rooms"
 
 
 class ProjectLooseFurniture(models.Model):
