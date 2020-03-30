@@ -55,7 +55,7 @@ function ProjectLayout(props) {
 
   function fetchProjectData() {
     axios
-      .get(serverAPI.getProject + currentProjectID)
+      .get(localAPI.getProject + currentProjectID)
       .then(res => {
         setCurrentProject(res.data);
         setAllFloors(res.data.floors);

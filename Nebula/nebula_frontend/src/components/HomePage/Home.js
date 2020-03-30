@@ -21,7 +21,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get(serverAPI.getProject)
+      .get(localAPI.getProject)
       .then(res => setAllProjects(res.data.results))
       .catch(err => console.log(err));
   }, [0]);

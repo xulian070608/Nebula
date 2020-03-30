@@ -66,7 +66,7 @@ function ProjectOverview(props) {
 
   async function fetchLocationData() {
     axios
-      .get(serverAPI.getProject)
+      .get(localAPI.getProject)
       .then(res => {
         setAllProjects(res.data.results);
         setCurrentProject(

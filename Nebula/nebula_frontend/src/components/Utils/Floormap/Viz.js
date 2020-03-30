@@ -17,7 +17,7 @@ function Viz(props) {
   const { useRef, useEffect, useState } = React;
   const mount = useRef(null);
   const floor_uuid = props.floor_uuid;
-  const base_api = serverAPI.getRoomsByFloor;
+  const base_api = localAPI.getRoomsByFloor;
   const url = base_api + floor_uuid;
   var meshArray = [];
   var GroupBB3, camera, scene;
