@@ -46,88 +46,25 @@ function ProjectLayout(props) {
   const classes = useStyles();
 
   useEffect(() => {
-    // fetchLocationData();
-    // fetchCurrentFloorData();
-    // fetchAllFloorData();
+    
+    function fetchProjectData() {
+      axios
+        .get(localAPI.getProject + currentProjectID)
+        .then(res => {
+          setCurrentProject(res.data);
+          setAllFloors(res.data.floors);
+          setCurrentFloor(res.data.floors[0]);
+          setIsAllFloorLoading(false);
+          setIsLocationLoading(false);
+          setIsCurrentFloorLoading(false);
+        })
+        .catch(err => console.log(err));
+    }
+
     fetchProjectData();
-  }, []);
+  });
   // empty array will run an effect and clean it up only once
 
-  function fetchProjectData() {
-    axios
-      .get(localAPI.getProject + currentProjectID)
-      .then(res => {
-        setCurrentProject(res.data);
-        setAllFloors(res.data.floors);
-        setCurrentFloor(res.data.floors[0]);
-        setIsAllFloorLoading(false);
-        setIsLocationLoading(false);
-        setIsCurrentFloorLoading(false);
-      })
-      .catch(err => console.log(err));
-  }
-
-  // function fetchAllFloorData() {
-  //   axios
-  //     .get(serverAPI.getAllFloors)
-  //     // for future study how to get this work, re: react component lifecycle...
-  //     .then(res => {
-  //       setAllFloors(res.data.results);
-  //       // console.log(res.data.results)
-  //       setIsAllFloorLoading(false);
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-
-  // function fetchCurrentFloorData() {
-  //   axios
-  //     .get(serverAPI.getAllFloors)
-  //     .then(res => {
-  //       setCurrentFloor(
-  //         res.data.results.find(res => res.floor_id === props.floorID)
-  //       );
-  //       // console.log(res.data.results)
-  //       setIsCurrentFloorLoading(false);
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-
-  // function fetchLocationData() {
-  //   axios
-  //     .get(serverAPI.getProject)
-  //     .then(res => {
-  //       res.data.results.forEach(project => {
-  //         if (project.floors.find(floor => floor.floor_id === props.floorID)) {
-  //           setCurrentProject(project);
-  //         }
-  //       });
-  //       setIsLocationLoading(false);
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-
-  // function updateFloor(floorID, allFloors) {
-  //   setCurrentFloor(allFloors.find(floor => floor.floor_id === floorID));
-  //   console.log("current floor is reset.");
-  //   console.log(currentFloor);
-  // }
-
-  // // this is following the example from: https://codesandbox.io/s/falling-surf-33hfs
-  // class FloorDropDown extends Component {
-  //   onChange = e => {
-  //     updateFloor(e.target.value, allFloors);
-  //     setSelectedFloorID(e.target.value);
-  //     // this.props.history.push(`/${e.target.value}/planview`);
-  //   };
-
-  //   render() {
-  //     return (
-  //       <select value={selectedFloorID} onChange={this.onChange}>
-  //         {allFloors.map(createFloorOption)}
-  //       </select>
-  //     );
-  //   }
-  // }
 
   function FloorDropDown() {
     function onChange(e) {
@@ -135,7 +72,6 @@ function ProjectLayout(props) {
       setCurrentFloor(
         allFloors.find(floor => floor.floor_id === optionFloorID)
       );
-      console.log(currentFloor.floor_name);
     }
 
     return (
@@ -189,7 +125,10 @@ function ProjectLayout(props) {
           {isAllFloorLoading || isLoacaionLoading ? (
             <p>Loading...</p>
           ) : (
-            <FloorDropDown />
+            <div>
+              <FloorDropDown />
+              <h3>current floor is: {currentFloor.floor_name}</h3>
+            </div>
           )}
           <p></p>
         </Col>

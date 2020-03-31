@@ -16,9 +16,9 @@ import styles from "./styles";
 function Viz(props) {
   const { useRef, useEffect, useState } = React;
   const mount = useRef(null);
-  const floor_uuid = props.floor_uuid;
   const base_api = localAPI.getRoomsByFloor;
-  const url = base_api + floor_uuid;
+  let [floor_uuid, setFloorUUID] = useState(props.floor_uuid);
+  let [url, setUrl] = useState(base_api + floor_uuid);
   var meshArray = [];
   var GroupBB3, camera, scene;
   var targetWidth, targetHeight;
@@ -36,20 +36,26 @@ function Viz(props) {
   });
 
   useEffect(() => {
+    
+    function retriveData(url) {
+      axios.get(url).then(res => {
+        // console.log(res);
+        res.data.results.map(data => meshArray.push(new RoomGenerator(data)));
+        if (res.data.next !== null) {
+          retriveData(res.data.next);
+        } else {
+          showView(meshArray);
+        }
+      });
+    }
+
     retriveData(url);
   }, []);
 
-  function retriveData(url) {
-    axios.get(url).then(res => {
-      // console.log(res);
-      res.data.results.map(data => meshArray.push(new RoomGenerator(data)));
-      if (res.data.next !== null) {
-        retriveData(res.data.next);
-      } else {
-        showView(meshArray);
-      }
-    });
-  }
+  useEffect(() => {
+    setFloorUUID(props.floor_uuid)
+    setUrl(base_api + props.floor_uuid)
+  }, [])
 
   function showView(meshArray) {
     targetWidth = mount.current.clientWidth;

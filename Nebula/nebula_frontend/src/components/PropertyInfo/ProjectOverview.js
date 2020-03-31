@@ -65,9 +65,6 @@ function ProjectOverview(props) {
     // move [projectID] & fetchLocationData into useEffect to avoid "missing dependency" warning
     // https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
 
-    // const [projectID] = useState(props.projectID);
-    // useState cannot be used inside of useEffect
-
     const fetchLocationData = () => {
       axios
         .get(localAPI.getProject)
@@ -84,7 +81,7 @@ function ProjectOverview(props) {
 
 
     fetchLocationData();
-  }, []);
+  }, [props.projectID]);
 
   // async function fetchLocationData() {
   //   axios
