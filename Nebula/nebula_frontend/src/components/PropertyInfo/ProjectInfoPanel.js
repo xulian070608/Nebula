@@ -38,27 +38,6 @@ function ProjectInfoPanel(props) {
     );
   }
 
-  // this is following the example from: https://codesandbox.io/s/falling-surf-33hfs
-  // class DropDown extends Component {
-  //   onChange = e => {
-  //     updateProject(e.target.value, allProjects);
-  //     setSelectProjectID(e.target.value);
-  //     this.props.history.push(`/${e.target.value}/summary`);
-  //   };
-
-  //   render() {
-  //     return (
-  //       <select
-  //         value={selectProjectID}
-  //         onChange={this.onChange}
-  //         style={{ fontSize: "0.7rem" }}
-  //       >
-  //         {allProjects.map(createOption)}
-  //       </select>
-  //     );
-  //   }
-  // }
-
   const DropDown = () => {
 
     const history = useHistory()
