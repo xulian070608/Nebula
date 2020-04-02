@@ -62,7 +62,7 @@ function ProjectLayout(props) {
     }
 
     fetchProjectData();
-  });
+  }, [currentProjectID]);
   // empty array will run an effect and clean it up only once
 
 
@@ -127,7 +127,6 @@ function ProjectLayout(props) {
           ) : (
             <div>
               <FloorDropDown />
-              <h3>current floor is: {currentFloor.floor_name}</h3>
             </div>
           )}
           <p></p>

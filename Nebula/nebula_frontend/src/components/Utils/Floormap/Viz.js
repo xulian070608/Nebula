@@ -50,12 +50,12 @@ function Viz(props) {
     }
 
     retriveData(url);
-  }, []);
+  }, [url]);
 
   useEffect(() => {
     setFloorUUID(props.floor_uuid)
     setUrl(base_api + props.floor_uuid)
-  }, [])
+  }, [base_api, props.floor_uuid])
 
   function showView(meshArray) {
     targetWidth = mount.current.clientWidth;
