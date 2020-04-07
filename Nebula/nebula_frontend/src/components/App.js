@@ -27,7 +27,7 @@ function App() {
           />
           <Route
             exact
-            path="/:floorID/planview"
+            path="/:projectID/planview"
             render={props => {
               let pageID = props.location.pathname
                 .replace("/planview", "")

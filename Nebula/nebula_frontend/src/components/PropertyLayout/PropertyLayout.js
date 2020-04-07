@@ -46,14 +46,14 @@ function ProjectLayout(props) {
   const classes = useStyles();
 
   useEffect(() => {
-    
     function fetchProjectData() {
+      // console.log(currentProjectID);
       axios
-        .get(localAPI.getProject + currentProjectID)
+        .get("http://100.94.29.214/api/v1/projects/" + currentProjectID)
         .then(res => {
-          setCurrentProject(res.data);
-          setAllFloors(res.data.floors);
-          setCurrentFloor(res.data.floors[0]);
+          setCurrentProject(res.data.data);
+          setAllFloors(res.data.data.relationships.floors.data);
+          setCurrentFloor(res.data.data.relationships.floors.data[0]);
           setIsAllFloorLoading(false);
           setIsLocationLoading(false);
           setIsCurrentFloorLoading(false);
@@ -65,13 +65,10 @@ function ProjectLayout(props) {
   }, [currentProjectID]);
   // empty array will run an effect and clean it up only once
 
-
   function FloorDropDown() {
     function onChange(e) {
       var optionFloorID = e.target.value;
-      setCurrentFloor(
-        allFloors.find(floor => floor.floor_id === optionFloorID)
-      );
+      setCurrentFloor(allFloors.find(floor => floor.id === optionFloorID));
     }
 
     return (
@@ -80,7 +77,7 @@ function ProjectLayout(props) {
         <Select
           labelId="current-floor-label"
           id="current-floor"
-          value={currentFloor.floor_id}
+          value={currentFloor.id}
           onChange={onChange}
         >
           {allFloors.map(createFloorOption)}
@@ -106,8 +103,8 @@ function ProjectLayout(props) {
 
   function createFloorOption(floor) {
     return (
-      <MenuItem key={floor.floor_id} value={floor.floor_id}>
-        {floor.floor_name}
+      <MenuItem key={floor.id} value={floor.id}>
+        {floor.id}
       </MenuItem>
     );
   }
@@ -119,7 +116,7 @@ function ProjectLayout(props) {
           {isCurrentFloorLoading || isLoacaionLoading ? (
             <p>Loading...</p>
           ) : (
-            <p> current project is {currentProject.project_name} </p>
+            <p> current project is {currentProject.attributes.project_name} </p>
           )}
           <Card />
           {isAllFloorLoading || isLoacaionLoading ? (
@@ -135,7 +132,11 @@ function ProjectLayout(props) {
           {isCurrentFloorLoading || isLoacaionLoading ? (
             <p>Loading...</p>
           ) : (
-            <Viz id="viz" floor_uuid={currentFloor.floor_id} />
+            <Viz
+              id="viz"
+              currentProjectID={currentProjectID}
+              floorID={currentFloor.id}
+            />
           )}
         </Col>
       </Row>
