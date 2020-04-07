@@ -16,9 +16,15 @@ import styles from "./styles";
 function Viz(props) {
   const { useRef, useEffect, useState } = React;
   const mount = useRef(null);
-  const base_api = localAPI.getRoomsByFloor;
-  let [floor_uuid, setFloorUUID] = useState(props.floor_uuid);
-  let [url, setUrl] = useState(base_api + floor_uuid);
+  const base_api = "http://100.94.29.214/api/v1/projects/";
+  // let [floorID, setFloorID] = useState(props.floorID);
+  // const currentProjectID = useState(props.currentProjectID);
+  // let [url, setUrl] = useState(
+  //   base_api + currentProjectID + "/floors/" + floorID + "/rooms/"
+  // );
+  const floorID = props.floorID;
+  const currentProjectID = props.currentProjectID;
+  const url = base_api + currentProjectID + "/floors/" + floorID + "/rooms/";
   var meshArray = [];
   var GroupBB3, camera, scene;
   var targetWidth, targetHeight;
@@ -36,26 +42,29 @@ function Viz(props) {
   });
 
   useEffect(() => {
-    
-    function retriveData(url) {
+    function receiveData(url) {
       axios.get(url).then(res => {
-        // console.log(res);
-        res.data.results.map(data => meshArray.push(new RoomGenerator(data)));
-        if (res.data.next !== null) {
-          retriveData(res.data.next);
+        console.log(res);
+        res.data.data.map(data =>
+          meshArray.push(new RoomGenerator(data.attributes))
+        );
+        if (res.data.links.next !== null) {
+          receiveData(res.data.links.next);
         } else {
           showView(meshArray);
         }
       });
     }
 
-    retriveData(url);
+    receiveData(url);
   }, [url]);
 
-  useEffect(() => {
-    setFloorUUID(props.floor_uuid)
-    setUrl(base_api + props.floor_uuid)
-  }, [base_api, props.floor_uuid])
+  // useEffect(() => {
+  //   setFloorID(props.floorID);
+  //   setUrl(
+  //     base_api + props.currentProjectID + "/floors/" + props.floorID + "/rooms/"
+  //   );
+  // }, [base_api, props.currentProjectID, props.floorID]);
 
   function showView(meshArray) {
     targetWidth = mount.current.clientWidth;

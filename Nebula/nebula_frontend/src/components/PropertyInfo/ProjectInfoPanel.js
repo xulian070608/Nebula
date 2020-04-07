@@ -24,23 +24,18 @@ function ProjectInfoPanel(props) {
   // console.log(currentProject)
 
   //selector is using UUID, so here we need to transfer property to projectID
-  let [selectProjectID, setSelectProjectID] = useState(
-    currentProject.project_id
-  );
+  let [selectProjectID, setSelectProjectID] = useState(currentProject.id);
 
   const allProjects = props.allProjects;
   const classes = useStyles();
 
   //get Property based on UUID, so that via selector, we can update the "global" current property
   function updateProject(projectID, allProjects) {
-    setCurrentProject(
-      allProjects.find(property => property.project_id === projectID)
-    );
+    setCurrentProject(allProjects.find(project => project.id === projectID));
   }
 
   const DropDown = () => {
-
-    const history = useHistory()
+    const history = useHistory();
     function onChange(e) {
       updateProject(e.target.value, allProjects);
       setSelectProjectID(e.target.value);
@@ -48,7 +43,7 @@ function ProjectInfoPanel(props) {
       // console.log(history)
     }
     return (
-        <FormControl className={classes.formControl}>
+      <FormControl className={classes.formControl}>
         <InputLabel htmlFor="current-floor-label">Current Project</InputLabel>
         <Select
           labelId="current-floor-label"
@@ -60,17 +55,14 @@ function ProjectInfoPanel(props) {
         </Select>
       </FormControl>
     );
-  }
+  };
 
   const Menu = withRouter(DropDown);
 
   function createOption(project) {
     return (
-      <MenuItem 
-        key={project.project_id} 
-        value={project.project_id}
-      >
-        {project.project_name}
+      <MenuItem key={project.id} value={project.id}>
+        {project.attributes.project_name}
       </MenuItem>
     );
   }
@@ -78,21 +70,21 @@ function ProjectInfoPanel(props) {
   return (
     <div>
       <Col>
-        <h2>{currentProject.project_name}</h2>
+        <h2>{currentProject.attributes.project_name}</h2>
         <img
           className="project-img"
           src="/img/img_001.jpg"
           alt="project quickview"
         />
-        <Link to={`/${currentProject.project_id}/planview`}>Project Plan</Link>
+        <Link to={`/${currentProject.id}/planview`}>Project Plan</Link>
         <p></p>
         <Menu />
         <p></p>
         <ProjectInfoSummary
           //buildingName={currentProject.BuildingName}
-          buildingAddress={currentProject.project_address_en}
-          buildingTerritory={currentProject.project_market}
-          buildingUUID={currentProject.project_id}
+          buildingAddress={currentProject.attributes.project_address_en}
+          buildingTerritory={currentProject.attributes.project_market}
+          buildingUUID={currentProject.id}
           // buildingUSF={currentProject.BuildingUSF}
           // buildingDeskCount={currentProject.BuildingDeskCount}
           // buildingRoomCount={currentProject.BuildingRoomCount}

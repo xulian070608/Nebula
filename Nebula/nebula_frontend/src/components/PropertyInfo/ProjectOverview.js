@@ -61,24 +61,22 @@ function ProjectOverview(props) {
   const toggleBusinessMode = () => setBusinessMode(!isDevelopmentMode);
 
   useEffect(() => {
-
     // move [projectID] & fetchLocationData into useEffect to avoid "missing dependency" warning
     // https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
 
     const fetchLocationData = () => {
       axios
-        .get(localAPI.getProject)
+        .get("http://100.94.29.214/api/v1/projects/")
         .then(res => {
-          setAllProjects(res.data.results);
+          setAllProjects(res.data.data);
           setCurrentProject(
-            res.data.results.find(res => res.project_id === props.projectID)
+            res.data.data.find(res => res.id === props.projectID)
           );
           // console.log(res.data.results);
           setIsLoading(false);
         })
         .catch(err => console.log(err));
-    }
-
+    };
 
     fetchLocationData();
   }, [props.projectID]);
