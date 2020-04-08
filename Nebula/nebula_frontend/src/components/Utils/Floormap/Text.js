@@ -29,7 +29,7 @@ function TextGenerator(mesh) {
   let sprite = new THREE.Sprite(material);
 
   // deal with text with multiple lines
-  const scalar = 3;
+  let scalar = 3;
   const breaklines = text.split("\n").length;
   if (breaklines > 1) {
     scalar = breaklines * (scalar - 0.26);

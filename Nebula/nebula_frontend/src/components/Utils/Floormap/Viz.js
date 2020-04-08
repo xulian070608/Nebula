@@ -2,7 +2,6 @@ import * as THREE from "three";
 import axios from "axios";
 import React from "react";
 import Button from "@material-ui/core/Button";
-import { serverAPI, localAPI } from "../../Utils/Constant";
 
 import EnvironmentLight from "./lights";
 import RoomGenerator from "./Mesh";
@@ -12,13 +11,20 @@ import PopperX from "./PopperControl";
 
 import HelperMode from "./helpers";
 import styles from "./styles";
+import { useFetch, useFetchList } from "../useFetch";
 
 function Viz(props) {
   const { useRef, useEffect, useState } = React;
   const mount = useRef(null);
-  const floor_uuid = props.floor_uuid;
-  const base_api = serverAPI.getRoomsByFloor;
-  const url = base_api + floor_uuid;
+  const base_api = "http://100.94.29.214/api/v1/projects/";
+  // let [floorID, setFloorID] = useState(props.floorID);
+  // const currentProjectID = useState(props.currentProjectID);
+  // let [url, setUrl] = useState(
+  //   base_api + currentProjectID + "/floors/" + floorID + "/rooms/"
+  // );
+  const floorID = props.floorID;
+  const currentProjectID = props.currentProjectID;
+  const url = base_api + currentProjectID + "/floors/" + floorID + "/rooms/";
   var meshArray = [];
   var GroupBB3, camera, scene;
   var targetWidth, targetHeight;
@@ -32,31 +38,18 @@ function Viz(props) {
     roomName: String,
     roomNumber: String,
     deskCount: Number,
-    physicalDeskCount: Number
+    physicalDeskCount: Number,
   });
 
+  const { data, loaded } = useFetchList(url);
+  console.log(data);
+
   useEffect(() => {
-    retriveData(url);
-  }, []);
-
-  function retriveData(url) {
-    axios.get(url).then(res => {
-      // console.log(res);
-      res.data.results.map(data => meshArray.push(new RoomGenerator(data)));
-      if (res.data.next !== null) {
-        retriveData(res.data.next);
-      } else {
-        showView(meshArray);
-      }
-    });
-  }
-
-  function showView(meshArray) {
-    targetWidth = mount.current.clientWidth;
-    targetHeight = mount.current.clientHeight;
+    let targetWidth = mount.current.clientWidth;
+    let targetHeight = mount.current.clientHeight;
 
     // scene settings
-    scene = new THREE.Scene();
+    const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf0f0f0);
 
     // renderer settings
@@ -72,7 +65,12 @@ function Viz(props) {
     var secondaryExtra = new THREE.Group();
     secondaryExtra.name = "secondary_extra";
 
-    meshArray.forEach(mesh => {
+    // create meshes based on returned data
+    let meshArray = [];
+    data.forEach((data) => meshArray.push(new RoomGenerator(data.attributes)));
+
+    // seperate meshes into several groups
+    meshArray.forEach((mesh) => {
       if (mesh.programType) {
         if (mesh.programType === "WORK" || mesh.programType === "MEET") {
           secondaryWork.add(mesh);
@@ -85,9 +83,8 @@ function Viz(props) {
     });
     primaryGroup.add(secondaryWork);
     primaryGroup.add(secondaryExtra);
-
     // center mesh group based on (0,0,0) using boundingBox
-    GroupBB3 = new THREE.Box3();
+    let GroupBB3 = new THREE.Box3();
     GroupBB3.setFromObject(primaryGroup)
       .getCenter(primaryGroup.position)
       .multiplyScalar(-1);
@@ -102,23 +99,23 @@ function Viz(props) {
     scene.add(environmentLight);
 
     // add camera into scene
-    camera = new Camera({
+    let camera = new Camera({
       bb3: GroupBB3,
       targetWidth: targetWidth,
-      targetHeight: targetHeight
+      targetHeight: targetHeight,
     });
     scene.add(camera);
 
     const controls = new CameraControl({
       camera: camera,
-      renderer: renderer
+      renderer: renderer,
     });
 
     // show helpers for devlopment mode
     const helpers = new HelperMode({
       mode: "off", // 'on' or 'off'
       // envLights: environmentLight,
-      showAxes: true
+      showAxes: true,
       // camera: camera,
     });
     scene.add(helpers);
@@ -134,7 +131,7 @@ function Viz(props) {
       const { width, height } = calculateRegion({
         bb3: GroupBB3,
         targetWidth: targetWidth,
-        targetHeight: targetHeight
+        targetHeight: targetHeight,
       });
       camera.left = -width / 2;
       camera.right = width / 2;
@@ -142,6 +139,128 @@ function Viz(props) {
       camera.bottom = -height / 2;
       camera.updateProjectionMatrix();
       renderScene();
+    };
+
+    const onButtonClick = (event) => {
+      event.preventDefault();
+      isButtonOn = !isButtonOn;
+      const rooms = scene.getObjectByName("secondary_work");
+      if (rooms) {
+        var roomObjects = rooms.children;
+      }
+      if (isButtonOn) {
+        roomObjects.forEach((room) => {
+          let programType = room.programType;
+          if (programType === "WORK") {
+            let deskCount = room.deskCount;
+            if (deskCount > 10) {
+              room.material.color.setHex(0xfc03f0);
+            } else {
+              room.material.color.setHex(0x646464);
+            }
+          }
+        });
+      } else {
+        roomObjects.forEach((room) => {
+          let programType = room.programType;
+          if (programType === "WORK") {
+            let hasWindow = room.hasWindow;
+            if (hasWindow) {
+              room.material.color.setHex(0xe4f3f7);
+            } else {
+              room.material.color.setHex(0xabdde7);
+            }
+          }
+        });
+      }
+    };
+
+    const onMouseDown = () => {
+      // console.log("mouse down");
+      isDrag = false;
+      timmerHandle = setTimeout(() => {
+        // console.log("draging");
+        isDrag = true;
+      }, 200);
+    };
+
+    const updateMousePos = (x, y) => {
+      mouse.x = (x / targetWidth) * 2 - 1;
+      mouse.y = -(y / targetHeight) * 2 + 1;
+      // console.log(mouse.x, mouse.y);
+    };
+
+    const onMouseMove = (event) => {
+      event.preventDefault();
+      updateMousePos(event.offsetX, event.offsetY);
+
+      // update the picking ray with the camera and mouse position
+      raycaster.setFromCamera(mouse, camera);
+
+      const rooms = scene.getObjectByName("secondary_work");
+
+      // calculate objects intersecting the picking ray
+      if (rooms) {
+        var intersects = raycaster.intersectObjects(rooms.children);
+      }
+
+      // if there is one (or more) intersections
+      if (intersects.length > 0) {
+        // if the closest object intersected is not the currently stored intersection object
+        if (intersects[0].object !== INTERSECTED) {
+          // restore previous intersection object (if is exists) to its original color
+          if (INTERSECTED) {
+            INTERSECTED.material.color.setHex(INTERSECTED.currentHex);
+          }
+          // store reference to closest object as current intersection object
+          INTERSECTED = intersects[0].object;
+          setRoomInfo({
+            roomName: INTERSECTED.roomName,
+            roomNumber: INTERSECTED.roomNumber,
+            deskCount: INTERSECTED.deskCount,
+            physicalDeskCount: INTERSECTED.physicalDeskCount,
+          });
+          setIsTouched(true);
+          // store color of closest object (for later restoration)
+          INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
+          // set a new color for closest object
+          INTERSECTED.material.color.setHex(0xffffff);
+        }
+      } // there are no intersections
+      else {
+        // restore previous intersection object (if it exists) to its orginal color
+        if (INTERSECTED) {
+          INTERSECTED.material.color.setHex(INTERSECTED.currentHex);
+        }
+        // remove previous intersection object reference to "nothing"
+        INTERSECTED = null;
+        setIsTouched(false);
+      }
+    };
+
+    const onMouseUp = (event) => {
+      event.preventDefault();
+      updateMousePos(event.offsetX, event.offsetY);
+
+      // update the picking ray with the camera and mouse position
+      raycaster.setFromCamera(mouse, camera);
+
+      const rooms = scene.getObjectByName("secondary_work");
+
+      // calculate objects intersecting the picking ray
+      if (rooms) {
+        var intersects = raycaster.intersectObjects(rooms.children);
+      }
+
+      if (!isDrag) {
+        clearTimeout(timmerHandle);
+        if (intersects.length > 0) {
+          intersects[0].object.callback();
+        }
+      } else {
+        isDrag = false;
+        // console.log("draging over");
+      }
     };
 
     const animate = () => {
@@ -161,142 +280,23 @@ function Viz(props) {
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      mount.current.removeEventListener("mousemove", onMouseMove);
+      mount.current.removeEventListener("mousedown", onMouseDown);
+      mount.current.removeEventListener("mouseup", onMouseUp);
+      button.removeEventListener("click", onButtonClick);
       mount.current.removeChild(renderer.domElement);
-      meshArray.forEach(mesh => {
+      meshArray.forEach((mesh) => {
         scene.remove(mesh);
         mesh.geometry.dispose();
         mesh.material.dispose();
       });
     };
-  }
-
-  function onButtonClick(event) {
-    event.preventDefault();
-    isButtonOn = !isButtonOn;
-    const rooms = scene.getObjectByName("secondary_work");
-    if (rooms) {
-      var roomObjects = rooms.children;
-    }
-    if (isButtonOn) {
-      roomObjects.forEach(room => {
-        let programType = room.programType;
-        if (programType === "WORK") {
-          let deskCount = room.deskCount;
-          if (deskCount > 10) {
-            room.material.color.setHex(0xfc03f0);
-          } else {
-            room.material.color.setHex(0x646464);
-          }
-        }
-      });
-    } else {
-      roomObjects.forEach(room => {
-        let programType = room.programType;
-        if (programType === "WORK") {
-          let hasWindow = room.hasWindow;
-          if (hasWindow) {
-            room.material.color.setHex(0xe4f3f7);
-          } else {
-            room.material.color.setHex(0xabdde7);
-          }
-        }
-      });
-    }
-
-    // console.log(scene.children);
-  }
-
-  function onMouseDown() {
-    // console.log("mouse down");
-    isDrag = false;
-    timmerHandle = setTimeout(() => {
-      // console.log("draging");
-      isDrag = true;
-    }, 200);
-  }
-
-  function updateMousePos(x, y) {
-    mouse.x = (x / targetWidth) * 2 - 1;
-    mouse.y = -(y / targetHeight) * 2 + 1;
-    // console.log(mouse.x, mouse.y);
-  }
-
-  function onMouseMove(event) {
-    event.preventDefault();
-    updateMousePos(event.offsetX, event.offsetY);
-
-    // update the picking ray with the camera and mouse position
-    raycaster.setFromCamera(mouse, camera);
-
-    const rooms = scene.getObjectByName("secondary_work");
-
-    // calculate objects intersecting the picking ray
-    if (rooms) {
-      var intersects = raycaster.intersectObjects(rooms.children);
-    }
-
-    // if there is one (or more) intersections
-    if (intersects.length > 0) {
-      // if the closest object intersected is not the currently stored intersection object
-      if (intersects[0].object !== INTERSECTED) {
-        // restore previous intersection object (if is exists) to its original color
-        if (INTERSECTED) {
-          INTERSECTED.material.color.setHex(INTERSECTED.currentHex);
-        }
-        // store reference to closest object as current intersection object
-        INTERSECTED = intersects[0].object;
-        setRoomInfo({
-          roomName: INTERSECTED.roomName,
-          roomNumber: INTERSECTED.roomNumber,
-          deskCount: INTERSECTED.deskCount,
-          physicalDeskCount: INTERSECTED.physicalDeskCount
-        });
-        setIsTouched(true);
-        // store color of closest object (for later restoration)
-        INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
-        // set a new color for closest object
-        INTERSECTED.material.color.setHex(0xffffff);
-      }
-    } // there are no intersections
-    else {
-      // restore previous intersection object (if it exists) to its orginal color
-      if (INTERSECTED) {
-        INTERSECTED.material.color.setHex(INTERSECTED.currentHex);
-      }
-      // remove previous intersection object reference to "nothing"
-      INTERSECTED = null;
-      setIsTouched(false);
-    }
-  }
-
-  function onMouseUp(event) {
-    event.preventDefault();
-    updateMousePos(event.offsetX, event.offsetY);
-
-    // update the picking ray with the camera and mouse position
-    raycaster.setFromCamera(mouse, camera);
-
-    const rooms = scene.getObjectByName("secondary_work");
-
-    // calculate objects intersecting the picking ray
-    if (rooms) {
-      var intersects = raycaster.intersectObjects(rooms.children);
-    }
-
-    if (!isDrag) {
-      clearTimeout(timmerHandle);
-      if (intersects.length > 0) {
-        intersects[0].object.callback();
-      }
-    } else {
-      isDrag = false;
-      // console.log("draging over");
-    }
-  }
+  }, [loaded]);
 
   const classes = styles();
   return (
     <div>
+      <div>{loaded ? JSON.stringify(data) : "loading"}</div>
       <div className={classes.root} ref={mount}></div>
       <Button id="button" className={classes.button} variant="outlined">
         Show
