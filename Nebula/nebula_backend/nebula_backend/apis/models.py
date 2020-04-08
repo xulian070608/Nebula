@@ -8,7 +8,7 @@
 from django.contrib.gis.db import models
 
 
-class ProjectInfo(models.Model):
+class Project(models.Model):
     stargate_id = models.UUIDField()
     pmr_repository_id = models.UUIDField()
     project_name = models.CharField(max_length=20, blank=True, null=True)
@@ -41,7 +41,7 @@ class ProjectInfo(models.Model):
 
 class Floor(models.Model):
     project_id = models.ForeignKey(
-        ProjectInfo,
+        Project,
         related_name="floors",
         db_column="project_id",
         on_delete=models.CASCADE,
@@ -62,7 +62,7 @@ class Floor(models.Model):
     physical_desk_count = models.IntegerField(blank=True, null=True)
 
     def __repr__(self):
-        return f'<Floor ({self.level_uuid}) "{self.level_name}">'
+        return f'<Floor ({self.floor_id}) "{self.floor_name}">'
 
     class Meta:
         managed = False

@@ -1,65 +1,45 @@
-from .models import ProjectInfo, Floor, Room
-from rest_framework import serializers
+from .models import Project, Floor, Room
+from rest_framework import serializers as drf_serializers
+from rest_framework_extensions.fields import ResourceUriField
+from rest_framework_json_api import serializers, relations
 from rest_framework_gis import serializers as gs
 
 
+class RoomSerializer(serializers.ModelSerializer, gs.GeoModelSerializer):
+    class Meta:
+        model = Room
+        fields = "__all__"
+
+
 class FloorSerializer(serializers.ModelSerializer):
+    floor_uri = relations
     class Meta:
         model = Floor
-        fields = (
-            "url",
-            "project_id",
-            "floor_id",
-            "level_revit_id",
-            "floor_name",
-            "elevation",
-            "deskcount",
-            "physical_desk_count",
-        )
+        fields = ("floor_name", "elevation", "project_id")
+        extra_kwargs = {
+            "project_id": {
+                "view_name": "apis:project-detail",
+            },
+        }
 
-        read_only_fields = ("project_id", "floor_id", "level_revit_id")
+
+class NestFloorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Floor
+        exclude = ["project_id"]
 
 
 class ProjectSerializer(serializers.ModelSerializer):
-    floors = FloorSerializer(many=True, read_only=True)
+    project = relations.ResourceRelatedField(
+        read_only=True
+    )
+    project_hyperlinked = relations.HyperlinkedRelatedField(
+        related_link_view_name = "apis:project-detail",
+        related_link_url_kwarg = "pk",
+        self_link_view_name = "project-relationships"
+    )
 
     class Meta:
-        model = ProjectInfo
-        fields = [
-            "project_id",
-            "pmr_repository_id",
-            "building_name",
-            "project_name",
-            "revit_file_path",
-            "business_line",
-            "project_address_point",
-            "project_address_en",
-            "project_market",
-            "project_city",
-            "floors",
-        ]
-        read_only_fields = (
-            "project_id",
-            "pmr_repository_id",
-        )
-
-
-class RoomSerializer(gs.GeoModelSerializer):
-    class Meta:
-        model = Room
-        fields = [
-            "floor_id",
-            "room_revit_id",
-            "room_id",
-            "room_name",
-            "room_number",
-            "area",
-            "has_window",
-            "deskcount",
-            "physical_deskcount",
-            "program_type",
-            "internal_room_count",
-            "has_av",
-            "outline",
-            "level_revit_id",
-        ]
+        model = Project
+        fields = "__all__"
+        
