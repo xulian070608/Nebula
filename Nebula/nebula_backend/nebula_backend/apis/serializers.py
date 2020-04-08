@@ -1,7 +1,5 @@
 from .models import Project, Floor, Room
-from rest_framework import serializers as drf_serializers
-from rest_framework_extensions.fields import ResourceUriField
-from rest_framework_json_api import serializers, relations
+from rest_framework_json_api import serializers
 from rest_framework_gis import serializers as gs
 
 
