@@ -1,65 +1,74 @@
-from .models import ProjectInfo, Floor, Room
-from rest_framework import serializers
+from .models import Project, Floor, Room
+from rest_framework_json_api import serializers
 from rest_framework_gis import serializers as gs
 
 
-class FloorSerializer(serializers.ModelSerializer):
+class RoomSerializer(serializers.ModelSerializer, gs.GeoModelSerializer):
     class Meta:
-        model = Floor
-        fields = (
-            "url",
-            "project_id",
+        model = Room
+        fields = "__all__"
+        read_only_fields = (
+            "room_id",
+            "room_revit_id",
             "floor_id",
-            "level_revit_id",
-            "floor_name",
-            "elevation",
-            "deskcount",
-            "physical_desk_count",
+            "level_revit_id"
         )
 
-        read_only_fields = ("project_id", "floor_id", "level_revit_id")
+
+class FloorSerializer(serializers.ModelSerializer):
+    included_serializers = {
+        "rooms":"nebula_backend.apis.serializers.RoomSerializer"
+    }
+    class Meta:
+        model = Floor
+        fields = "__all__"
+        read_only_fields = (
+            "project_id",
+            "level_revit_id",
+            "floor_id"
+        )
+
+
+class NestFloorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Floor
+        exclude = ["project_id"]
 
 
 class ProjectSerializer(serializers.ModelSerializer):
-    floors = FloorSerializer(many=True, read_only=True)
+
+    included_serializers = {
+        "floors":"nebula_backend.apis.serializers.NestFloorSerializer"
+    }
 
     class Meta:
-        model = ProjectInfo
+        model = Project
         fields = [
-            "project_id",
+            "stargate_id",
             "pmr_repository_id",
-            "building_name",
             "project_name",
-            "revit_file_path",
+            "building_name",
             "business_line",
+            "landlord_id",
             "project_address_point",
             "project_address_en",
+            "project_address_local",
             "project_market",
             "project_city",
-            "floors",
+            "project_status",
+            "usf_per_desk",
+            "pmr_branch_id",
+            "average_office_desk_count",
+            "template_version",
+            "revit_file_path",
+            "floors"
+
         ]
         read_only_fields = (
+            "floors",
             "project_id",
+            "pmr_branch_id",
             "pmr_repository_id",
+            "stargate_id"
         )
 
-
-class RoomSerializer(gs.GeoModelSerializer):
-    class Meta:
-        model = Room
-        fields = [
-            "floor_id",
-            "room_revit_id",
-            "room_id",
-            "room_name",
-            "room_number",
-            "area",
-            "has_window",
-            "deskcount",
-            "physical_deskcount",
-            "program_type",
-            "internal_room_count",
-            "has_av",
-            "outline",
-            "level_revit_id",
-        ]
