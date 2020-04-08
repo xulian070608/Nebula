@@ -12,15 +12,9 @@ class RoomSerializer(serializers.ModelSerializer, gs.GeoModelSerializer):
 
 
 class FloorSerializer(serializers.ModelSerializer):
-    floor_uri = relations
     class Meta:
         model = Floor
         fields = ("floor_name", "elevation", "project_id")
-        extra_kwargs = {
-            "project_id": {
-                "view_name": "apis:project-detail",
-            },
-        }
 
 
 class NestFloorSerializer(serializers.ModelSerializer):
@@ -30,16 +24,6 @@ class NestFloorSerializer(serializers.ModelSerializer):
 
 
 class ProjectSerializer(serializers.ModelSerializer):
-    project = relations.ResourceRelatedField(
-        read_only=True
-    )
-    project_hyperlinked = relations.HyperlinkedRelatedField(
-        related_link_view_name = "apis:project-detail",
-        related_link_url_kwarg = "pk",
-        self_link_view_name = "project-relationships"
-    )
-
     class Meta:
         model = Project
         fields = "__all__"
-        
