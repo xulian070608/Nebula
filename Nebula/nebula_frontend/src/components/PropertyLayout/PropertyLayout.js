@@ -4,7 +4,6 @@ import { Container, Row, Col } from "reactstrap";
 // import { withRouter } from "react-router-dom";
 import Card from "../Utils/Card";
 // import FloorSelectorOption from "./FloorSelectorOption";
-import { localAPI } from "../Utils/Constant";
 import { makeStyles } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -15,14 +14,14 @@ import MenuItem from "@material-ui/core/MenuItem";
 // import FloorMap from "../Utils/Floormap.gl/FloorMap";
 import Viz from "../Utils/Floormap/Viz";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120
+    minWidth: 120,
   },
   selectEmpty: {
-    marginTop: theme.spacing(2)
-  }
+    marginTop: theme.spacing(2),
+  },
 }));
 
 function ProjectLayout(props) {
@@ -50,7 +49,7 @@ function ProjectLayout(props) {
       // console.log(currentProjectID);
       axios
         .get("http://100.94.29.214/api/v1/projects/" + currentProjectID)
-        .then(res => {
+        .then((res) => {
           setCurrentProject(res.data.data);
           setAllFloors(res.data.data.relationships.floors.data);
           setCurrentFloor(res.data.data.relationships.floors.data[0]);
@@ -58,7 +57,7 @@ function ProjectLayout(props) {
           setIsLocationLoading(false);
           setIsCurrentFloorLoading(false);
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     }
 
     fetchProjectData();
@@ -68,7 +67,7 @@ function ProjectLayout(props) {
   function FloorDropDown() {
     function onChange(e) {
       var optionFloorID = e.target.value;
-      setCurrentFloor(allFloors.find(floor => floor.id === optionFloorID));
+      setCurrentFloor(allFloors.find((floor) => floor.id === optionFloorID));
     }
 
     return (
