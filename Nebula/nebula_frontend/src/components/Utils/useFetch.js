@@ -18,10 +18,10 @@ export const useFetch = (url) => {
 };
 
 export const useFetchList = (url) => {
-  const [state, setState] = useState({ response: [], loaded: false });
+  const [state, setState] = useState({ data: [], loaded: false });
 
   useEffect(() => {
-    setState({ response: [], loaded: false });
+    setState({ data: [], loaded: false });
 
     const fetchDataList = (url) => {
       axios
@@ -29,7 +29,7 @@ export const useFetchList = (url) => {
         .then((res) => {
           setState((currentState) => ({
             ...currentState,
-            response: currentState.response.concat(res.data.data),
+            data: currentState.data.concat(res.data.data),
           }));
           if (res.data.links.next !== null) {
             fetchDataList(res.data.links.next);

@@ -33,7 +33,7 @@ function Viz(props) {
     physicalDeskCount: Number,
   });
 
-  const { response, loaded } = useFetchList(url);
+  const { data: rooms, loaded } = useFetchList(url);
 
   useEffect(() => {
     let targetWidth = mount.current.clientWidth;
@@ -58,9 +58,7 @@ function Viz(props) {
 
     // create meshes based on returned data
     let meshArray = [];
-    response.forEach((res) =>
-      meshArray.push(new RoomGenerator(res.attributes))
-    );
+    rooms.forEach((res) => meshArray.push(new RoomGenerator(res.attributes)));
 
     // seperate meshes into several groups
     meshArray.forEach((mesh) => {

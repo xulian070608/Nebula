@@ -55,7 +55,7 @@ function ProjectOverview(props) {
 
   const toggleBusinessMode = () => setBusinessMode(!isDevelopmentMode);
 
-  const { response, loaded } = useFetchList(
+  const { data: projects, loaded } = useFetchList(
     "http://100.94.29.214/api/v1/projects/"
   );
 
@@ -66,10 +66,10 @@ function ProjectOverview(props) {
           {loaded ? (
             <ProjectInfoPanel
               style={{ backgroundColor: "0xffd26a" }}
-              currentProject={response.find(
-                (res) => res.id === props.projectID
+              currentProject={projects.find(
+                (project) => project.id === props.projectID
               )}
-              allProjects={response}
+              allProjects={projects}
             />
           ) : (
             <h5>loading...</h5>

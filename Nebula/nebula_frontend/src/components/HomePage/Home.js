@@ -16,7 +16,7 @@ function Home() {
     zoom: 12,
   });
 
-  const { response, loaded } = useFetchList(
+  const { data: projects, loaded } = useFetchList(
     "http://100.94.29.214/api/v1/projects/"
   );
 
@@ -70,7 +70,7 @@ function Home() {
             </div>
             <hr className="n-card-hr" />
             <div className="n-card-body overflow-auto">
-              <ul>{loaded ? response.map(CreateProjectLi) : "loading..."}</ul>
+              <ul>{loaded ? projects.map(CreateProjectLi) : "loading..."}</ul>
             </div>
             {/* <button onClick={updateMapState}>Test Jump Function</button> */}
           </div>
