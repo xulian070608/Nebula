@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
@@ -95,11 +96,13 @@ DATABASES = {
         "USER": "chinavdc",
         "HOST": "localhost",
         "PASSWORD": "chinavdc",
+
         "OPTIONS": {"options": "-c search_path=nebula_ww_china_projects"},
     },
     "auth_db": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "NebulaDB",
+
         "USER": "chinavdc",
         "PASSWORD": "chinavdc",
         "HOST": "localhost",
@@ -181,6 +184,8 @@ DATABASE_APP_MAPPING = {
 
 DATABASE_ROUTERS = ["nebula_backend.dbrouter.DatabaseAppsRouter"]
 
+GDAL_LIBRARY_PATH = r"C:\\OSGeo4W64\\bin\\gdal300.dll"
+GEOS_LIBRARY_PATH = r"C:\\OSGeo4W64\\bin\\geos_c.dll"
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False

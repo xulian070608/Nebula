@@ -9,10 +9,10 @@ import PropertyCapEx from "./DevelopmentInsights/PropertyCapEx";
 import OccupancyTable from "./ManagementInsights/OccupancyTable";
 import ServiceRecTable from "./ManagementInsights/ServiceRevTable";
 import ms_stats from "../../data/ms_stats";
-import { serverAPI, localAPI } from "../Utils/Constant";
+import { localAPI } from "../Utils/Constant";
 
 function ProjectOverview(props) {
-  const [projectID] = useState(props.projectID);
+  // const [projectID] = useState(props.projectID);
 
   let [currentProject, setCurrentProject] = useState({});
   let [allProjects, setAllProjects] = useState([]);
@@ -61,22 +61,39 @@ function ProjectOverview(props) {
   const toggleBusinessMode = () => setBusinessMode(!isDevelopmentMode);
 
   useEffect(() => {
-    fetchLocationData();
-  }, [0]);
+    // move [projectID] & fetchLocationData into useEffect to avoid "missing dependency" warning
+    // https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
 
-  async function fetchLocationData() {
-    axios
-      .get(serverAPI.getAllProjects)
-      .then(res => {
-        setAllProjects(res.data.results);
-        setCurrentProject(
-          res.data.results.find(res => res.project_id === projectID)
-        );
-        // console.log(res.data.results);
-        setIsLoading(false);
-      })
-      .catch(err => console.log(err));
-  }
+    const fetchLocationData = () => {
+      axios
+        .get("http://100.94.29.214/api/v1/projects/")
+        .then(res => {
+          setAllProjects(res.data.data);
+          setCurrentProject(
+            res.data.data.find(res => res.id === props.projectID)
+          );
+          // console.log(res.data.results);
+          setIsLoading(false);
+        })
+        .catch(err => console.log(err));
+    };
+
+    fetchLocationData();
+  }, [props.projectID]);
+
+  // async function fetchLocationData() {
+  //   axios
+  //     .get(localAPI.getProject)
+  //     .then(res => {
+  //       setAllProjects(res.data.results);
+  //       setCurrentProject(
+  //         res.data.results.find(res => res.project_id === projectID)
+  //       );
+  //       // console.log(res.data.results);
+  //       setIsLoading(false);
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
   return (
     <Container id="project-overview">
@@ -159,7 +176,6 @@ function ProjectOverview(props) {
             </div>
           )}
         </Col>
-        }
       </Row>
     </Container>
   );

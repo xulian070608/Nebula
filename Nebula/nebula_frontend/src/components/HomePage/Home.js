@@ -5,7 +5,6 @@ import ProjectLi from "./ProjectLi";
 import CreateMap from "./Mapbox";
 import Highlight from "./Highlight";
 import DropdownBtn from "../Utils/DropdownBtn";
-import { serverAPI, localAPI } from "../Utils/Constant";
 
 function Home() {
   let [
@@ -21,17 +20,17 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get(serverAPI.getAllProjects)
-      .then(res => setAllProjects(res.data.results))
+      .get("http://100.94.29.214/api/v1/projects/")
+      .then(res => setAllProjects(res.data.data))
       .catch(err => console.log(err));
-  }, [0]);
+  }, []);
 
   function CreateProjectLi(wwProjects) {
     return (
       <ProjectLi
-        key={wwProjects.project_id}
-        projectID={wwProjects.project_id}
-        projectName={wwProjects.project_name}
+        key={wwProjects.id}
+        projectID={wwProjects.id}
+        projectName={wwProjects.attributes.project_name}
       />
     );
   }
@@ -65,7 +64,7 @@ function Home() {
         </Col>
       </Row>
       <Row>
-        <Col xs="8" cal>
+        <Col xs="8">
           <CreateMap coordinates={coordinates} />
         </Col>
         <Col xs="4">
