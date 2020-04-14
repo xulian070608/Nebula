@@ -80,7 +80,15 @@ WSGI_APPLICATION = "nebula_backend.wsgi.application"
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {},
+
+    "default": {
+        "ENGINE": "django.contrib.gis.db.backends.postgis",
+        "NAME": "NebulaDB",
+        "USER": "chinavdc",
+        "HOST": "localhost",
+        "PASSWORD": "chinavdc",
+        "OPTIONS": {"options": "-c search_path=nebula_dajango_default"},
+    },
     "nebula_db": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
         "NAME": "NebulaDB",
@@ -95,8 +103,11 @@ DATABASES = {
         "USER": "chinavdc",
         "PASSWORD": "chinavdc",
         "HOST": "localhost",
-        "OPTIONS": {"options": "-c search_path=nebula_django"},
+        "OPTIONS": {"options": "-c search_path=nebula_auth"},
     },
+    "img_db": {
+        
+    }
 }
 
 

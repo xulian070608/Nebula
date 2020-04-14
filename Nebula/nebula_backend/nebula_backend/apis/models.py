@@ -50,7 +50,7 @@ class Floor(models.Model):
     level_revit_id = models.IntegerField(blank=True, null=True)
     floor_name = models.CharField(max_length=50, blank=True, null=True)
     elevation = models.FloatField(blank=True, null=True)
-    notes = models.FloatField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
     gsf = models.FloatField(blank=True, null=True)
     usf = models.FloatField(blank=True, null=True)
     rsf = models.FloatField(blank=True, null=True)

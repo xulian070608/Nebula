@@ -32,7 +32,6 @@ class FloorViewSet(
 
     def get_queryset(self):
         project_id = self.kwargs["parent_lookup_project_id"]
-        print(project_id)
         return models.Floor.objects.filter(project_id=project_id)
 
 
