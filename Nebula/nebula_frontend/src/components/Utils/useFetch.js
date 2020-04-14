@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const useFetch = (url) => {
-  const [state, setState] = useState({ response: null, loaded: false });
+  const [state, setState] = useState({ data: null, loaded: false });
 
   useEffect(() => {
-    setState({ response: null, loaded: false });
+    setState({ data: null, loaded: false });
     axios
       .get(url)
       .then((res) => {
-        setState({ response: res.data, loaded: true });
+        setState({ data: res.data.data, loaded: true });
       })
       .catch((err) => console.log(err));
   }, [url]);
