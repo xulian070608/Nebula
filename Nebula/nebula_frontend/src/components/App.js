@@ -18,7 +18,7 @@ function App() {
           <Route
             exact
             path="/:projectID/summary"
-            render={props => {
+            render={(props) => {
               let pageID = props.location.pathname
                 .replace("/summary", "")
                 .replace("/", "");
@@ -28,7 +28,7 @@ function App() {
           <Route
             exact
             path="/:projectID/planview"
-            render={props => {
+            render={(props) => {
               let pageID = props.location.pathname
                 .replace("/planview", "")
                 .replace("/", "");
@@ -38,7 +38,7 @@ function App() {
           <Route
             exact
             path="/:roomID/spaceInfo"
-            render={props => {
+            render={(props) => {
               let pageID = props.location.pathname
                 .replace("/spaceInfo", "")
                 .replace("/", "");

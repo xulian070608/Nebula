@@ -1,29 +1,24 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import ProjectLi from "./ProjectLi";
 import CreateMap from "./Mapbox";
 import Highlight from "./Highlight";
 import DropdownBtn from "../Utils/DropdownBtn";
+import { useFetchList } from "../Utils/useFetch";
 
 function Home() {
   let [
-    coordinates
+    coordinates,
     // , setCoordinates
   ] = useState({
     lng: 121.4835,
     lat: 31.2291,
-    zoom: 12
+    zoom: 12,
   });
 
-  let [allProjects, setAllProjects] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://100.94.29.214/api/v1/projects/")
-      .then(res => setAllProjects(res.data.data))
-      .catch(err => console.log(err));
-  }, []);
+  const { data: projects, loaded } = useFetchList(
+    "http://100.94.29.214/api/v1/projects/"
+  );
 
   function CreateProjectLi(wwProjects) {
     return (
@@ -75,7 +70,7 @@ function Home() {
             </div>
             <hr className="n-card-hr" />
             <div className="n-card-body overflow-auto">
-              <ul>{allProjects.map(CreateProjectLi)}</ul>
+              <ul>{loaded ? projects.map(CreateProjectLi) : "loading..."}</ul>
             </div>
             {/* <button onClick={updateMapState}>Test Jump Function</button> */}
           </div>
