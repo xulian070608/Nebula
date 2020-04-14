@@ -1,5 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as THREE from "three";
-import axios from "axios";
 import React from "react";
 import Button from "@material-ui/core/Button";
 
@@ -11,23 +11,15 @@ import PopperX from "./PopperControl";
 
 import HelperMode from "./helpers";
 import styles from "./styles";
-import { useFetch, useFetchList } from "../useFetch";
+import { useFetchList } from "../useFetch";
 
 function Viz(props) {
   const { useRef, useEffect, useState } = React;
   const mount = useRef(null);
   const base_api = "http://100.94.29.214/api/v1/projects/";
-  // let [floorID, setFloorID] = useState(props.floorID);
-  // const currentProjectID = useState(props.currentProjectID);
-  // let [url, setUrl] = useState(
-  //   base_api + currentProjectID + "/floors/" + floorID + "/rooms/"
-  // );
   const floorID = props.floorID;
   const currentProjectID = props.currentProjectID;
   const url = base_api + currentProjectID + "/floors/" + floorID + "/rooms/";
-  var meshArray = [];
-  var GroupBB3, camera, scene;
-  var targetWidth, targetHeight;
   var isButtonOn = false;
   var isDrag = false;
   var mouse = new THREE.Vector2();
@@ -41,8 +33,7 @@ function Viz(props) {
     physicalDeskCount: Number,
   });
 
-  const { data, loaded } = useFetchList(url);
-  console.log(data);
+  const { data: rooms, loaded } = useFetchList(url);
 
   useEffect(() => {
     let targetWidth = mount.current.clientWidth;
@@ -67,7 +58,7 @@ function Viz(props) {
 
     // create meshes based on returned data
     let meshArray = [];
-    data.forEach((data) => meshArray.push(new RoomGenerator(data.attributes)));
+    rooms.forEach((res) => meshArray.push(new RoomGenerator(res.attributes)));
 
     // seperate meshes into several groups
     meshArray.forEach((mesh) => {
@@ -283,8 +274,8 @@ function Viz(props) {
       mount.current.removeEventListener("mousemove", onMouseMove);
       mount.current.removeEventListener("mousedown", onMouseDown);
       mount.current.removeEventListener("mouseup", onMouseUp);
-      button.removeEventListener("click", onButtonClick);
       mount.current.removeChild(renderer.domElement);
+      button.removeEventListener("click", onButtonClick);
       meshArray.forEach((mesh) => {
         scene.remove(mesh);
         mesh.geometry.dispose();
@@ -296,7 +287,6 @@ function Viz(props) {
   const classes = styles();
   return (
     <div>
-      <div>{loaded ? JSON.stringify(data) : "loading"}</div>
       <div className={classes.root} ref={mount}></div>
       <Button id="button" className={classes.button} variant="outlined">
         Show
