@@ -7,15 +7,23 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
+import Modal from "@material-ui/core/Modal";
 
-const useStyles = makeStyles(theme => ({
+import ProjectInfoModal from "./Modal/ProjectInfoModal";
+
+const useStyles = makeStyles((theme) => ({
   formControl: {
     // margin: theme.spacing(1),
-    minWidth: 120
+    minWidth: 120,
   },
   selectEmpty: {
-    marginTop: theme.spacing(2)
-  }
+    marginTop: theme.spacing(2),
+  },
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }));
 
 function ProjectInfoPanel(props) {
@@ -26,12 +34,13 @@ function ProjectInfoPanel(props) {
   //selector is using UUID, so here we need to transfer property to projectID
   let [selectProjectID, setSelectProjectID] = useState(currentProject.id);
 
+  const [open, setOpen] = useState(false);
   const allProjects = props.allProjects;
   const classes = useStyles();
 
   //get Property based on UUID, so that via selector, we can update the "global" current property
   function updateProject(projectID, allProjects) {
-    setCurrentProject(allProjects.find(project => project.id === projectID));
+    setCurrentProject(allProjects.find((project) => project.id === projectID));
   }
 
   const DropDown = () => {
@@ -84,11 +93,21 @@ function ProjectInfoPanel(props) {
           //buildingName={currentProject.BuildingName}
           buildingAddress={currentProject.attributes.project_address_en}
           buildingTerritory={currentProject.attributes.project_market}
-          buildingUUID={currentProject.id}
+          // buildingUUID={currentProject.id}
           // buildingUSF={currentProject.BuildingUSF}
           // buildingDeskCount={currentProject.BuildingDeskCount}
           // buildingRoomCount={currentProject.BuildingRoomCount}
         />
+        <button onClick={() => setOpen(true)}>More Info</button>
+        <Modal
+          className={classes.modal}
+          open={open}
+          onClose={() => setOpen(false)}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          <ProjectInfoModal projectID={currentProject.id} />
+        </Modal>
       </Col>
     </div>
   );
