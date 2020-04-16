@@ -6,6 +6,8 @@ import Highlight from "./Highlight";
 import DropdownBtn from "../Utils/DropdownBtn";
 import { useFetchList } from "../Utils/useFetch";
 
+import { Link } from "react-router-dom";
+
 function Home() {
   let [
     coordinates,
@@ -40,6 +42,9 @@ function Home() {
 
   return (
     <Container>
+      <Row>
+        <Link to="/protected">Protected</Link>
+      </Row>
       <Row>
         <Col xs="8">
           <Row>
