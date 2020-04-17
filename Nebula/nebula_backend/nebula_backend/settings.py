@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "nebula_backend.apis.apps.ApisConfig",
+    # "nebula_backend.imgDB.apps.ImgdbConfig",
     "rest_framework_gis",
     "drf_yasg",
     "corsheaders",
@@ -184,8 +185,6 @@ DATABASE_APP_MAPPING = {
 
 DATABASE_ROUTERS = ["nebula_backend.dbrouter.DatabaseAppsRouter"]
 
-GDAL_LIBRARY_PATH = r"C:\\OSGeo4W64\\bin\\gdal300.dll"
-GEOS_LIBRARY_PATH = r"C:\\OSGeo4W64\\bin\\geos_c.dll"
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False

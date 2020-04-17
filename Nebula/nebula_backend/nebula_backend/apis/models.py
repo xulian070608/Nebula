@@ -29,6 +29,8 @@ class Project(models.Model):
     average_office_desk_count = models.FloatField(blank=True, null=True)
     template_version = models.CharField(max_length=10, blank=True, null=True)
     revit_file_path = models.CharField(max_length=255, blank=True, null=True)
+    note = models.TextField(blank=True, null=True)
+
 
     def __repr__(self):
         return f'<Project ({self.project_id}) "{self.project_name}">'
@@ -88,6 +90,8 @@ class Room(models.Model):
     has_av = models.BooleanField(blank=True, null=True)
     outline = models.PolygonField(blank=True, null=True)  # This field type is a guess.
     level_revit_id = models.IntegerField()
+    note = models.TextField(blank=True, null=True)
+
 
     class Meta:
         managed = False

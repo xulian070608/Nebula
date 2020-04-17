@@ -61,7 +61,8 @@ class ProjectSerializer(serializers.ModelSerializer):
             "average_office_desk_count",
             "template_version",
             "revit_file_path",
-            "floors"
+            "floors",
+            "note"
 
         ]
         read_only_fields = (
