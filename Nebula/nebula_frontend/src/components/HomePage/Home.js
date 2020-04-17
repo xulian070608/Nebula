@@ -6,7 +6,8 @@ import Highlight from "./Highlight";
 import DropdownBtn from "../Utils/DropdownBtn";
 import { useFetchList } from "../Utils/useFetch";
 
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { useOktaAuth } from "@okta/okta-react";
 
 function Home() {
   let [
@@ -40,11 +41,16 @@ function Home() {
   //         })
   // }
 
-  return (
+  // const { authService } = useOktaAuth();
+  // console.log(authService.getUser());
+
+  const { authState } = useOktaAuth();
+
+  return authState.isAuthenticated ? (
     <Container>
-      <Row>
+      {/* <Row>
         <Link to="/protected">Protected</Link>
-      </Row>
+      </Row> */}
       <Row>
         <Col xs="8">
           <Row>
@@ -82,6 +88,8 @@ function Home() {
         </Col>
       </Row>
     </Container>
+  ) : (
+    <Redirect to={{ pathname: "/login" }} />
   );
 }
 
