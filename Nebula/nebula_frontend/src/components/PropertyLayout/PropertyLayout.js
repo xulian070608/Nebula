@@ -4,6 +4,9 @@ import Viz from "../Utils/Floormap/Viz";
 
 import FloorInfoPanel from "./FloorInfoPanel";
 
+import { useOktaAuth } from "@okta/okta-react";
+import { Redirect } from "react-router-dom";
+
 export const CurrentFloorStateContext = React.createContext(null);
 
 function ProjectLayout(props) {
@@ -20,7 +23,9 @@ function ProjectLayout(props) {
     setCurrentFloorState,
   ]);
 
-  return (
+  const { authState } = useOktaAuth();
+
+  return authState.isAuthenticated ? (
     <CurrentFloorStateContext.Provider value={value}>
       <Container>
         <Row>
@@ -40,6 +45,8 @@ function ProjectLayout(props) {
         </Row>
       </Container>
     </CurrentFloorStateContext.Provider>
+  ) : (
+    <Redirect to={{ pathname: "/login" }} />
   );
 }
 

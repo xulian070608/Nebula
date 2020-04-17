@@ -34,8 +34,8 @@ const AppWithRouterAccess = () => {
       <div className="content-offset" />
       <Switch>
         <Route path="/" exact component={Home} />
-        <SecureRoute path="/protected" component={Protected} />
-        <SecureRoute
+        <Route path="/protected" component={Protected} />
+        <Route
           exact
           path="/:projectID/summary"
           render={(props) => {
@@ -45,7 +45,7 @@ const AppWithRouterAccess = () => {
             return <ProjectOverview projectID={pageID} />;
           }}
         />
-        <SecureRoute
+        <Route
           exact
           path="/:projectID/planview"
           render={(props) => {
@@ -55,7 +55,7 @@ const AppWithRouterAccess = () => {
             return <PropertyLayout projectID={pageID} />;
           }}
         />
-        <SecureRoute
+        <Route
           exact
           path="/:roomID/spaceInfo"
           render={(props) => {
