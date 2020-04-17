@@ -15,7 +15,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "nebula_backend.apis.apps.ApisConfig",
+    "nebula_backend.imgDB.apps.ImgdbConfig",
     "rest_framework_gis",
     "drf_yasg",
     "corsheaders",
@@ -109,7 +111,12 @@ DATABASES = {
         "OPTIONS": {"options": "-c search_path=nebula_auth"},
     },
     "img_db": {
-        
+        "ENGINE": "django.contrib.gis.db.backends.postgis",
+        "NAME": "NebulaDB",
+        "USER": "chinavdc",
+        "HOST": "localhost",
+        "PASSWORD": "chinavdc",
+        "OPTIONS": {"options": "-c search_path=nebula_photo"},
     }
 }
 
@@ -154,7 +161,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework_json_api.parsers.JSONParser',
         'rest_framework.parsers.FormParser',
-        'rest_framework.parsers.MultiPartParser'
+        'rest_framework.parsers.MultiPartParser',
     ),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework_json_api.renderers.JSONRenderer',
@@ -177,15 +184,13 @@ DATABASE_APP_MAPPING = {
     "apis": "nebula_db",
     "auth": "auth_db",
     "contenttypes": "auth_db",
-    "sessions": "auth_db",
+    "sessions": "default",
     "authtoken": "auth_db",
     "admin": "auth_db",
+    "imgDB": "img_db"
 }
 
 DATABASE_ROUTERS = ["nebula_backend.dbrouter.DatabaseAppsRouter"]
-
-GDAL_LIBRARY_PATH = r"C:\\OSGeo4W64\\bin\\gdal300.dll"
-GEOS_LIBRARY_PATH = r"C:\\OSGeo4W64\\bin\\geos_c.dll"
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False

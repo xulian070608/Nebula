@@ -3,13 +3,15 @@ from nebula_backend.settings import DATABASE_APP_MAPPING
 
 class DatabaseAppsRouter:
     def db_for_read(self, model, **hints):
-        # print(model._meta.app_label)
+        print(model._meta.app_label)
         return DATABASE_APP_MAPPING.get(model._meta.app_label, None)
 
     def db_for_write(self, model, **hints):
         """
         Attempts to write auth and contenttypes models go to auth_db.
         """
+        print("*"*20)
+        print(model._meta.app_label)
         return DATABASE_APP_MAPPING.get(model._meta.app_label, None)
 
     def allow_relation(self, obj1, obj2, **hints):
