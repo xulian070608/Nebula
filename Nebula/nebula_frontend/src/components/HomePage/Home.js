@@ -6,7 +6,7 @@ import Highlight from "./Highlight";
 import DropdownBtn from "../Utils/DropdownBtn";
 import { useFetchList } from "../Utils/useFetch";
 
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useOktaAuth } from "@okta/okta-react";
 
 function Home() {
