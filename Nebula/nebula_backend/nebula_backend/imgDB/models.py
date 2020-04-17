@@ -2,16 +2,6 @@ from django.db import models
 
 import hashlib
 
-<<<<<<< HEAD
-class Album(models.ModeL):
-    id = models.BigAutoField(primary_key=True)
-    title = models.CharField(max_length=100)
-    description = models.TextField(max_length=65535, blank=True)
-    owner_id = models.UUIDField(blank=True)
-    created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    updated_at = models.DateTimeField(auto_now=True, editable=False)
-=======
->>>>>>> 7ce5cfe4c8bb9fc26412b6fed10df79fd31ede91
 
 def nameFile(instance, filename):
     return '/'.join(['images', filename])
@@ -30,9 +20,6 @@ class Photo(models.Model):
     checksum = models.CharField(max_length=40, blank=True, unique=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-<<<<<<< HEAD
-    album_id = models.ForeignKey("Album", on_delete=models.CASCADE, related_name="id")
-=======
     # album_id = models.ForeignKey(
     #     "Album", on_delete=models.CASCADE, db_column="album_id"
     # )
@@ -51,4 +38,3 @@ class Photo(models.Model):
                 md5.update(chunk)
             self.checksum = md5.hexdigest()
         super().save(*args, **kwargs)
->>>>>>> 7ce5cfe4c8bb9fc26412b6fed10df79fd31ede91

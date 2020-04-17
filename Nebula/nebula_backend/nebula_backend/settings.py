@@ -41,11 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "nebula_backend.apis.apps.ApisConfig",
-<<<<<<< HEAD
-    # "nebula_backend.imgDB.apps.ImgdbConfig",
-=======
     "nebula_backend.imgDB.apps.ImgdbConfig",
->>>>>>> 7ce5cfe4c8bb9fc26412b6fed10df79fd31ede91
     "rest_framework_gis",
     "drf_yasg",
     "corsheaders",
