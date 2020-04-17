@@ -10,6 +10,8 @@ class DatabaseAppsRouter:
         """
         Attempts to write auth and contenttypes models go to auth_db.
         """
+        print("*"*20)
+        print(model._meta.app_label)
         return DATABASE_APP_MAPPING.get(model._meta.app_label, None)
 
     def allow_relation(self, obj1, obj2, **hints):

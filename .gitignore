@@ -240,3 +240,4 @@ Pipfile.lock
 Pipfile
 data/*.json
 Nebula/nebula_backend/nebula_backend/quickstart
+Nebula/nebula_backend/media

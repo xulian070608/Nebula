@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class ImgdbConfig(AppConfig):
-    name = 'imgDB'
+    name = 'nebula_backend.imgDB'
