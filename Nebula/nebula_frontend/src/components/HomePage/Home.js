@@ -41,8 +41,8 @@ function Home() {
   //         })
   // }
 
-  // const { authService } = useOktaAuth();
-  // console.log(authService.getUser());
+  const { authService } = useOktaAuth();
+  console.log(authService.getUser());
 
   const { authState } = useOktaAuth();
 

@@ -10,6 +10,9 @@ import ServiceRecTable from "./ManagementInsights/ServiceRevTable";
 import ms_stats from "../../data/ms_stats";
 import { useFetchList } from "../Utils/useFetch";
 
+import { useOktaAuth } from "@okta/okta-react";
+import { Redirect } from "react-router-dom";
+
 function ProjectOverview(props) {
   // const [projectID] = useState(props.projectID);
   let [isDevelopmentMode, setBusinessMode] = useState(true);
@@ -59,7 +62,9 @@ function ProjectOverview(props) {
     "http://100.94.29.214/api/v1/projects/"
   );
 
-  return (
+  const { authState } = useOktaAuth();
+
+  return authState.isAuthenticated ? (
     <Container id="project-overview">
       <Row>
         <Col xs="4 content-offset" id="project-infopanel-left">
@@ -144,6 +149,8 @@ function ProjectOverview(props) {
         </Col>
       </Row>
     </Container>
+  ) : (
+    <Redirect to={{ pathname: "/login" }} />
   );
 }
 

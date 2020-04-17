@@ -7,7 +7,7 @@ export const Login = ({ issuer }) => {
   const { authState } = useOktaAuth();
 
   if (authState.isPending) {
-    return <div>Loading...</div>;
+    return <div />;
   }
   return authState.isAuthenticated ? (
     <Redirect to={{ pathname: "/" }} />
