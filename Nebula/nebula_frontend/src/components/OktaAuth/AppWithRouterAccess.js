@@ -1,6 +1,11 @@
 import React from "react";
 import { Route, useHistory, Switch } from "react-router-dom";
-import { Security, SecureRoute, LoginCallback } from "@okta/okta-react";
+import {
+  Security,
+  SecureRoute,
+  LoginCallback,
+  AuthService,
+} from "@okta/okta-react";
 import Home from "../HomePage/Home";
 import { Login } from "./Login";
 import Protected from "./Protected";
@@ -15,14 +20,16 @@ const AppWithRouterAccess = () => {
     history.push("/login");
   };
 
+  const authService = new AuthService({
+    issuer: "https://dev-717659.okta.com/oauth2/default",
+    clientId: "0oa95v4l4EThrEGaA4x6",
+    redirectUri: window.location.origin + "/implicit/callback",
+    onAuthRequired: onAuthRequired,
+    pkce: true,
+  });
+
   return (
-    <Security
-      issuer="https://dev-717659.okta.com/oauth2/default"
-      clientId="0oa95v4l4EThrEGaA4x6"
-      redirectUri={window.location.origin + "/implicit/callback"}
-      onAuthRequired={onAuthRequired}
-      pkce={true}
-    >
+    <Security authService={authService}>
       <Header header="Nebula" />
       <div className="content-offset" />
       <Switch>
