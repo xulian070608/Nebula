@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/Nebula/static/js/main.b3352e19.chunk.js",
+    "main.js.map": "/Nebula/static/js/main.b3352e19.chunk.js.map",
+    "runtime-main.js": "/Nebula/static/js/runtime-main.cc061bb7.js",
+    "runtime-main.js.map": "/Nebula/static/js/runtime-main.cc061bb7.js.map",
+    "static/css/2.de424728.chunk.css": "/Nebula/static/css/2.de424728.chunk.css",
+    "static/js/2.091bfbf0.chunk.js": "/Nebula/static/js/2.091bfbf0.chunk.js",
+    "static/js/2.091bfbf0.chunk.js.map": "/Nebula/static/js/2.091bfbf0.chunk.js.map",
+    "index.html": "/Nebula/index.html",
+    "precache-manifest.8b4c330266881b01f5e5715368613e1c.js": "/Nebula/precache-manifest.8b4c330266881b01f5e5715368613e1c.js",
+    "service-worker.js": "/Nebula/service-worker.js",
+    "static/css/2.de424728.chunk.css.map": "/Nebula/static/css/2.de424728.chunk.css.map",
+    "static/js/2.091bfbf0.chunk.js.LICENSE.txt": "/Nebula/static/js/2.091bfbf0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cc061bb7.js",
+    "static/css/2.de424728.chunk.css",
+    "static/js/2.091bfbf0.chunk.js",
+    "static/js/main.b3352e19.chunk.js"
+  ]
+}
