@@ -22,10 +22,11 @@ const AppWithRouterAccess = () => {
 
   const authService = new AuthService({
     issuer: "https://dev-717659.okta.com/oauth2/default",
-    clientId: "0oa95v4l4EThrEGaA4x6",
+    clientId: "0oaagwt0lG8jUJqix4x6",
     redirectUri: window.location.origin + "/implicit/callback",
     onAuthRequired: onAuthRequired,
     pkce: true,
+    scope: ["openid", "email", "profile", "phone", "address", "groups"],
   });
 
   return (
