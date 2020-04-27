@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProjectInfoModal(props) {
   const classes = useStyles();
   const projectID = props.projectID;
-  const url = "http://100.94.29.214/api/v1/projects/" + projectID;
+  const url = "http://100.94.29.214/api/v1/projects/" + projectID + "/";
 
   const config = { headers: { "Content-Type": "application/vnd.api+json" } };
 
@@ -32,7 +32,7 @@ export default function ProjectInfoModal(props) {
   const [projectAddreeLocal, setProjectAddreeLocal] = useState(String);
   const [projectAddressEn, setProjectAddressEn] = useState(String);
   const [notes, setNotes] = useState({});
-  // const [deskcount, setDeskcount] = useState(0);
+  // const [deskcount, setDeskcount] = useState(0);2
   // const [usf, setUsf] = useState(0.0);
   const [usfPerDesk, setUsfPerDesk] = useState();
   const [averageOfficeDeskcount, setAverageOfficeDeskcount] = useState();
