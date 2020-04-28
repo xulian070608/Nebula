@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import { useOktaAuth } from "@okta/okta-react";
 
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@material-ui/core/Link";
 import HomeIcon from "@material-ui/icons/Home";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
-import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
+
+import UserProfile from "./HomePage/UserProfile";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,39 +80,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Header(props) {
   const classes = useStyles();
-  const { authState, authService } = useOktaAuth();
-  const [userInfo, setUserInfo] = useState(null);
-
-  useEffect(() => {
-    if (!authState.isAuthenticated) {
-      // When user isn't authenticated, forget any user info
-      setUserInfo(null);
-    } else {
-      authService.getUser().then((info) => {
-        setUserInfo(info);
-      });
-    }
-  }, [authState, authService]); // Update if authState changes
-
-  const button = authState.isAuthenticated ? (
-    <Button
-      onClick={() => {
-        authService.logout();
-      }}
-      color="inherit"
-    >
-      Logout
-    </Button>
-  ) : (
-    <Button
-      onClick={() => {
-        authService.login();
-      }}
-      color="inherit"
-    >
-      Login
-    </Button>
-  );
 
   return (
     <div className={classes.root}>
@@ -158,12 +124,7 @@ function Header(props) {
               />
             </div>
           </Box>
-          <Box>
-            {userInfo ? (
-              <Typography color="inherit">{userInfo.given_name}</Typography>
-            ) : null}
-          </Box>
-          <Box>{button}</Box>
+          <UserProfile />
         </Toolbar>
       </AppBar>
     </div>
