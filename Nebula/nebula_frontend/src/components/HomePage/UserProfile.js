@@ -76,75 +76,67 @@ export default function SimplePopover() {
   const id = open ? "simple-popover" : undefined;
   console.log(userInfo);
 
-  return (
+  return userInfo ? (
     <div>
-      {userInfo ? (
-        <div>
-          <IconButton
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleClick}
-            color="inherit"
-          >
-            <Avatar className={classes.avatarSmall}>
-              {userInfo.given_name.charAt(0).toUpperCase()}
-            </Avatar>
-          </IconButton>
-          <Popover
-            id={id}
-            open={open}
-            className={classes.popOver}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "center",
+      <IconButton
+        aria-label="account of current user"
+        aria-controls="menu-appbar"
+        aria-haspopup="true"
+        onClick={handleClick}
+        color="inherit"
+      >
+        <Avatar className={classes.avatarSmall}>
+          {userInfo.given_name.charAt(0).toUpperCase()}
+        </Avatar>
+      </IconButton>
+      <Popover
+        id={id}
+        open={open}
+        className={classes.popOver}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+      >
+        <Avatar className={classes.avatarBig}>
+          {userInfo.given_name.charAt(0).toUpperCase()}
+        </Avatar>
+        <Typography align="center" variant="body1" className={classes.userName}>
+          {userInfo.name}
+        </Typography>
+        <Typography
+          align="center"
+          variant="body2"
+          className={classes.userEmail}
+        >
+          {userInfo.email}
+        </Typography>
+        <List
+          component="nav"
+          className={classes.list}
+          aria-label="mailbox folders"
+        >
+          <Divider />
+          <ListItem button onClick={() => console.log("clicked")}>
+            <ListItemText primary="Profile" />
+          </ListItem>
+          <Divider />
+          <ListItem
+            button
+            onClick={() => {
+              authService.logout();
             }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "center",
-            }}
           >
-            <Avatar className={classes.avatarBig}>
-              {userInfo.given_name.charAt(0).toUpperCase()}
-            </Avatar>
-            <Typography
-              align="center"
-              variant="body1"
-              className={classes.userName}
-            >
-              {userInfo.name}
-            </Typography>
-            <Typography
-              align="center"
-              variant="body2"
-              className={classes.userEmail}
-            >
-              {userInfo.email}
-            </Typography>
-            <List
-              component="nav"
-              className={classes.list}
-              aria-label="mailbox folders"
-            >
-              <Divider />
-              <ListItem button onClick={() => console.log("clicked")}>
-                <ListItemText primary="Profile" />
-              </ListItem>
-              <Divider />
-              <ListItem
-                button
-                onClick={() => {
-                  authService.logout();
-                }}
-              >
-                <ListItemText primary="Log out" />
-              </ListItem>
-            </List>
-          </Popover>
-        </div>
-      ) : null}
+            <ListItemText primary="Log out" />
+          </ListItem>
+        </List>
+      </Popover>
     </div>
-  );
+  ) : null;
 }
