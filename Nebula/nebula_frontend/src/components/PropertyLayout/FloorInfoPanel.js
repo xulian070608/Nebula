@@ -23,14 +23,14 @@ function FloorInfoPanel(props) {
 
   // fetch project info data
   const projectInfoAPI =
-    "http://100.94.29.214/api/v1/projects/" + currentProjectID;
+    "http://api.c3plus.top/nebula/v1/projects/" + currentProjectID;
   const { data: currentProject, loaded: projectLoaded } = useFetch(
     projectInfoAPI
   );
 
   // fetch project level list
   const floorListAPI =
-    "http://100.94.29.214/api/v1/projects/" + currentProjectID + "/floors/";
+    "http://api.c3plus.top/nebula/v1/projects/" + currentProjectID + "/floors/";
   const { data: floors, loaded: floorLoaded } = useFetchList(floorListAPI);
 
   return (

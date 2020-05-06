@@ -99,7 +99,7 @@ function Header() {
             />
           </NavLink>
           <Box className={classes.box}>
-            <Breadcrumbs aria-label="breadcrumb">
+            <Breadcrumbs>
               <Link color="inherit" href="/" className={classes.link}>
                 <HomeIcon className={classes.icon} />
                 Home
@@ -125,7 +125,9 @@ function Header() {
               />
             </div>
           </Box>
-          <UserProfile />
+          <Box>
+            <UserProfile />
+          </Box>
         </Toolbar>
       </AppBar>
     </div>
