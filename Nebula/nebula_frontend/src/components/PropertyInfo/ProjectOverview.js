@@ -9,6 +9,7 @@ import OccupancyTable from "./ManagementInsights/OccupancyTable";
 import ServiceRecTable from "./ManagementInsights/ServiceRevTable";
 import ms_stats from "../../data/ms_stats";
 import { useFetchList } from "../Utils/useFetch";
+import { ProjectsURL } from "../Utils/Constant";
 
 import { useOktaAuth } from "@okta/okta-react";
 import { Redirect } from "react-router-dom";
@@ -58,11 +59,13 @@ function ProjectOverview(props) {
 
   const toggleBusinessMode = () => setBusinessMode(!isDevelopmentMode);
 
-  const { data: projects, loaded } = useFetchList(
-    "http://api.c3plus.top/nebula/v1/projects/"
-  );
+  const { data: projects, loaded } = useFetchList(ProjectsURL);
 
   const { authState } = useOktaAuth();
+
+  if (authState.isPending) {
+    return <div />;
+  }
 
   return authState.isAuthenticated ? (
     <Container id="project-overview">

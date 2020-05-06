@@ -12,19 +12,13 @@ html {
 }
 
 body {
-  background: #eee;
+  background: #eeeeee;
   padding: 0 16px;
 }
 
 a,
 a:hover {
   text-decoration: none !important;
-}
-
-header h1 {
-  color: #fff;
-  font-family: "McLaren", cursive;
-  font-weight: 200;
 }
 
 footer {

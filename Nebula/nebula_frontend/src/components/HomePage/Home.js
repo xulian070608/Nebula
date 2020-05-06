@@ -5,11 +5,10 @@ import CreateMap from "./Mapbox";
 import Highlight from "./Highlight";
 import DropdownBtn from "../Utils/DropdownBtn";
 import { useFetchList } from "../Utils/useFetch";
+import { ProjectsURL } from "../Utils/Constant";
 
 import { Redirect } from "react-router-dom";
 import { useOktaAuth } from "@okta/okta-react";
-
-import Button from "@material-ui/core/Button";
 
 function Home() {
   let [
@@ -21,9 +20,7 @@ function Home() {
     zoom: 12,
   });
 
-  const { data: projects, loaded } = useFetchList(
-    "http://api.c3plus.top/nebula/v1/projects/"
-  );
+  const { data: projects, loaded } = useFetchList(ProjectsURL);
 
   function CreateProjectLi(wwProjects) {
     return (

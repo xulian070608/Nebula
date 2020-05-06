@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProjectInfoModal(props) {
   const classes = useStyles();
   const projectID = props.projectID;
-  const url = "http://100.94.29.214/api/v1/projects/" + projectID + "/";
+  const url = "https://api.c3plus.top/nebula/v1/projects/" + projectID + "/";
 
   const config = { headers: { "Content-Type": "application/vnd.api+json" } };
 
