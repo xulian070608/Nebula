@@ -59,7 +59,7 @@ function ProjectOverview(props) {
   const toggleBusinessMode = () => setBusinessMode(!isDevelopmentMode);
 
   const { data: projects, loaded } = useFetchList(
-    "http://100.94.29.214/api/v1/projects/"
+    "http://api.c3plus.top/nebula/v1/projects/"
   );
 
   const { authState } = useOktaAuth();

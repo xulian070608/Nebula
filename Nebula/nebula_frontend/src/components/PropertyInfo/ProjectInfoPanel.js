@@ -11,6 +11,8 @@ import Modal from "@material-ui/core/Modal";
 
 import ProjectInfoModal from "./Modal/ProjectInfoModal";
 
+import Button from "@material-ui/core/Button";
+
 const useStyles = makeStyles((theme) => ({
   formControl: {
     // margin: theme.spacing(1),
@@ -98,7 +100,9 @@ function ProjectInfoPanel(props) {
           // buildingDeskCount={currentProject.BuildingDeskCount}
           // buildingRoomCount={currentProject.BuildingRoomCount}
         />
-        <button onClick={() => setOpen(true)}>More Info</button>
+        <Button variant="contained" onClick={() => setOpen(true)}>
+          More Info
+        </Button>
         <Modal
           className={classes.modal}
           open={open}

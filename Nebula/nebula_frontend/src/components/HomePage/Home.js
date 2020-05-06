@@ -9,6 +9,8 @@ import { useFetchList } from "../Utils/useFetch";
 import { Redirect } from "react-router-dom";
 import { useOktaAuth } from "@okta/okta-react";
 
+import Button from "@material-ui/core/Button";
+
 function Home() {
   let [
     coordinates,
@@ -20,7 +22,7 @@ function Home() {
   });
 
   const { data: projects, loaded } = useFetchList(
-    "http://100.94.29.214/api/v1/projects/"
+    "http://api.c3plus.top/nebula/v1/projects/"
   );
 
   function CreateProjectLi(wwProjects) {
@@ -40,9 +42,6 @@ function Home() {
   //         zoom: 11
   //         })
   // }
-
-  const { authService } = useOktaAuth();
-  console.log(authService.getUser());
 
   const { authState } = useOktaAuth();
 
