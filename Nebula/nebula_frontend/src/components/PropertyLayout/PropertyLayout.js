@@ -25,6 +25,10 @@ function ProjectLayout(props) {
 
   const { authState } = useOktaAuth();
 
+  if (authState.isPending) {
+    return <div />;
+  }
+
   return authState.isAuthenticated ? (
     <CurrentFloorStateContext.Provider value={value}>
       <Container>

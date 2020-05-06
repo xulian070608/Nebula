@@ -12,14 +12,14 @@ import PopperX from "./PopperControl";
 import HelperMode from "./helpers";
 import styles from "./styles";
 import { useFetchList } from "../useFetch";
+import { ProjectsURL } from "../Constant";
 
 function Viz(props) {
   const { useRef, useEffect, useState } = React;
   const mount = useRef(null);
-  const base_api = "http://100.94.29.214/api/v1/projects/";
   const floorID = props.floorID;
   const currentProjectID = props.currentProjectID;
-  const url = base_api + currentProjectID + "/floors/" + floorID + "/rooms/";
+  const url = ProjectsURL + currentProjectID + "/floors/" + floorID + "/rooms/";
   var isButtonOn = false;
   var isDrag = false;
   var mouse = new THREE.Vector2();
