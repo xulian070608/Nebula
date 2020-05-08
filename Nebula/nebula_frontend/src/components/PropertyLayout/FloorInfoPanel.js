@@ -29,7 +29,8 @@ function FloorInfoPanel(props) {
   );
 
   // fetch project level list
-  const floorListAPI = ProjectsURL + currentProjectID + "/floors/";
+  const floorListAPI =
+    ProjectsURL + currentProjectID + "/floors/?sort=geometric_level";
   const { data: floors, loaded: floorLoaded } = useFetchList(floorListAPI);
 
   return (

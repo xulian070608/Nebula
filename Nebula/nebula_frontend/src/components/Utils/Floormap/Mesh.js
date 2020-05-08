@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import TextGenerator from "./Text";
-// import SignGenerator from "./Sign";
+import SignGenerator from "./Sign";
 import { colorSchema } from "../Constant";
 
 function RoomGenerator(roomInfo) {
@@ -17,7 +17,7 @@ function RoomGenerator(roomInfo) {
     program_type,
     internal_room_count,
     has_av,
-    outline
+    outline,
     // level_revit_id
   } = roomInfo;
 
@@ -39,7 +39,7 @@ function RoomGenerator(roomInfo) {
       color: roomColor,
       side: THREE.BackSide,
       transparent: false,
-      shininess: 0
+      shininess: 0,
     });
     mesh = new THREE.Mesh(roomGeometry, roomMaterial);
 
@@ -62,16 +62,16 @@ function RoomGenerator(roomInfo) {
     let roomFrameEdges = new THREE.EdgesGeometry(roomGeometry, 1);
     let edgeMtl = new THREE.LineBasicMaterial({
       color: 0x000000,
-      linewidth: 1
+      linewidth: 1,
     });
     let roomFrameLines = new THREE.LineSegments(roomFrameEdges, edgeMtl);
     mesh.add(roomFrameLines);
 
     // avoid the overlap with planes
-    mesh.position.z = 0.01;
+    mesh.position.z = 1;
 
     // set a method for the object
-    mesh.callback = function() {
+    mesh.callback = function () {
       alert(room_name + " " + room_number);
     };
 
@@ -79,11 +79,21 @@ function RoomGenerator(roomInfo) {
   } else {
     let roomGeometry = planeShape(outline);
     let roomMaterial = new THREE.LineBasicMaterial({
-      color: colorSchema[program_type]
+      color: colorSchema[program_type],
     });
     mesh = new THREE.Mesh(roomGeometry, roomMaterial);
-    mesh.receiveShadow = true;
 
+    mesh.roomName = room_name;
+    mesh.roomNumber = room_number;
+    mesh.hasAV = has_av;
+    mesh.programType = program_type;
+
+    mesh.receiveShadow = true;
+    if (program_type === "WE") {
+      mesh.position.z = 0.5;
+    }
+    const roomSign = new SignGenerator(mesh);
+    mesh.add(roomSign);
     return mesh;
   }
 }
@@ -118,7 +128,7 @@ function createShape(outline) {
     geometryShape.holes = HolesArray;
   }
 
-  var extrudeSettings = { steps: 1, depth: 5, bevelEnabled: false };
+  var extrudeSettings = { steps: 1, depth: 1500, bevelEnabled: false };
   var geometry = new THREE.ExtrudeBufferGeometry(
     geometryShape,
     extrudeSettings

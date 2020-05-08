@@ -9,11 +9,11 @@ function Camera(params) {
     width / 2,
     height / 2,
     -height / 2,
-    -1000,
-    1000
+    -300000,
+    300000
   );
   camera.up.set(0, 0, 1);
-  camera.position.set(0, 0, 100);
+  camera.position.set(0, 0, 30000);
   camera.zoom = 1;
   camera.updateProjectionMatrix();
 
@@ -31,7 +31,7 @@ function calculateRegion(params) {
   let width, height;
   const aspectRatio = (groupRight - groupLeft) / (groupTop - groupBottom);
   const targetAspectRatio = targetWidth / targetHeight;
-  const offsetPixels = 60;
+  const offsetPixels = 18000;
   if (targetAspectRatio > aspectRatio) {
     height = groupTop - groupBottom + offsetPixels;
     width = height * (targetWidth / targetHeight);
