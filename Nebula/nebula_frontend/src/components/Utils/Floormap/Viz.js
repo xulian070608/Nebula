@@ -289,7 +289,7 @@ function Viz(props) {
     <div>
       <div className={classes.root} ref={mount}></div>
       <Button id="button" className={classes.button} variant="outlined">
-        Show
+        >10 desks
       </Button>
       {isTouched ? (
         <PopperX isTouched={isTouched} roomInfo={roomInfo}></PopperX>
