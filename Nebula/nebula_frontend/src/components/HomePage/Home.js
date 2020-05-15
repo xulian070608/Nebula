@@ -1,14 +1,20 @@
+// third party package import
 import React, { useState } from "react";
-import { Container, Row, Col } from "reactstrap";
-import ProjectLi from "./ProjectLi";
-import CreateMap from "./Mapbox";
-import Highlight from "./Highlight";
-import DropdownBtn from "../Utils/DropdownBtn";
-import { useFetchList } from "../Utils/useFetch";
-import { ProjectsURL } from "../Utils/Constant";
-
 import { Redirect } from "react-router-dom";
 import { useOktaAuth } from "@okta/okta-react";
+
+// local component import
+import CreateMap from "./Mapbox";
+import ProjectLi from "./ProjectLi";
+// import Highlight from "./Highlight";
+import HighLights from "./HighLight2";
+import { useFetchList } from "../Utils/useFetch";
+import DropdownBtn from "../Utils/DropdownBtn";
+import { ProjectsURL } from "../Utils/Constant";
+
+// material-ui component import
+// import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
 
 function Home() {
   let [
@@ -43,33 +49,13 @@ function Home() {
   const { authState } = useOktaAuth();
 
   return authState.isAuthenticated ? (
-    <Container>
-      {/* <Row>
-        <Link to="/protected">Protected</Link>
-      </Row> */}
-      <Row>
-        <Col xs="8">
-          <Row>
-            <Col>
-              <Highlight icon="/icon/icon_reminder.svg" />
-            </Col>
-            <Col>
-              <Highlight icon="/icon/icon_fix.svg" />
-            </Col>
-            <Col>
-              <Highlight icon="/icon/icon_notes.svg" />
-            </Col>
-            <Col>
-              <Highlight icon="/icon/icon_inbox.svg" />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs="8">
+    <div>
+      <HighLights />
+      <Grid container spacing={2} justify="center">
+        <Grid item lg={6}>
           <CreateMap coordinates={coordinates} />
-        </Col>
-        <Col xs="4">
+        </Grid>
+        <Grid item lg={3}>
           <div className="n-card-home">
             <div className="n-card-header">
               <h4 className="n-card-header-title">Buildings</h4>
@@ -81,9 +67,9 @@ function Home() {
             </div>
             {/* <button onClick={updateMapState}>Test Jump Function</button> */}
           </div>
-        </Col>
-      </Row>
-    </Container>
+        </Grid>
+      </Grid>
+    </div>
   ) : (
     <Redirect to={{ pathname: "/login" }} />
   );

@@ -72,7 +72,7 @@ function RoomGenerator(roomInfo) {
 
     // set a method for the object
     mesh.callback = function () {
-      alert(room_name + " " + room_number);
+      alert("hello three");
     };
 
     return mesh;

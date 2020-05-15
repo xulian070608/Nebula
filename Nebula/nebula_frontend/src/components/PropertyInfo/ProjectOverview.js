@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Container, Row, Col } from "reactstrap";
 import Card from "../Utils/Card";
 import ProjectInfoPanel from "./ProjectInfoPanel";
 import LogisticChart from "./DevelopmentInsights/LogisticChart";
@@ -10,14 +9,26 @@ import ServiceRecTable from "./ManagementInsights/ServiceRevTable";
 import ms_stats from "../../data/ms_stats";
 import { useFetchList } from "../Utils/useFetch";
 import { ProjectsURL } from "../Utils/Constant";
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { useOktaAuth } from "@okta/okta-react";
 import { Redirect } from "react-router-dom";
 
+const useStyle = makeStyles((theme) => ({
+  projectLeftPanel: {
+    padding: theme.spacing(4, 10),
+  },
+  projectRightPanel: {
+    padding: theme.spacing(4, 4),
+    // overflowY: "scroll",
+  },
+}));
+
 function ProjectOverview(props) {
   // const [projectID] = useState(props.projectID);
   let [isDevelopmentMode, setBusinessMode] = useState(true);
-
+  const classes = useStyle();
   const logisticData = {
     datasets: [
       {
@@ -68,90 +79,79 @@ function ProjectOverview(props) {
   }
 
   return authState.isAuthenticated ? (
-    <Container id="project-overview">
-      <Row>
-        <Col xs="4 content-offset" id="project-infopanel-left">
-          {loaded ? (
-            <ProjectInfoPanel
-              style={{ backgroundColor: "0xffd26a" }}
-              currentProject={projects.find(
-                (project) => project.id === props.projectID
-              )}
-              allProjects={projects}
-            />
-          ) : (
-            <h5>loading...</h5>
-          )}
-        </Col>
-        <Col xs="8 offset-4 content-offset" id="project-infopanel-right">
-          <button onClick={toggleBusinessMode}>
-            {isDevelopmentMode ? "Development" : "Management"}
-          </button>
+    <Grid container>
+      <Grid item lg={4} xs={6} className={classes.projectLeftPanel}>
+        {loaded ? (
+          <ProjectInfoPanel
+            style={{ backgroundColor: "0xffd26a" }}
+            currentProject={projects.find(
+              (project) => project.id === props.projectID
+            )}
+            allProjects={projects}
+          />
+        ) : (
+          <h5>loading...</h5>
+        )}
+      </Grid>
+      <Grid item lg={8} className={classes.projectRightPanel}>
+        <button onClick={toggleBusinessMode}>
+          {isDevelopmentMode ? "Development" : "Management"}
+        </button>
+        {isDevelopmentMode ? (
+          //Showing project developement related data:
+          <Grid container>
+            <Grid container className={classes.infoContainer} spacing={4}>
+              <Grid item xs={6}>
+                <Card title="CapEx" content={<PropertyCapEx />} />
+              </Grid>
+              <Grid item xs={6}>
+                <Card
+                  title="Logistics"
+                  content={<LogisticChart logisticData={logisticData} />}
+                />
+              </Grid>
+            </Grid>
 
-          {isDevelopmentMode ? (
-            //Showing project developement related data:
-            <div>
-              <div className="row">
-                <Col>
-                  <Card title="CapEx" content={<PropertyCapEx />} />
-                </Col>
-                <Col>
-                  <Card
-                    title="Logistics"
-                    content={<LogisticChart logisticData={logisticData} />}
-                  />
-                </Col>
-              </div>
-              <div className="row">
-                <Col>
-                  <Card
-                    title="Loose Furniture (by SKU)"
-                    content={<MSSKUChart />}
-                  />
-                </Col>
-              </div>
-              <div className="row">
-                <Col>
-                  <Card />
-                </Col>
-              </div>
-              <div className="row">
-                <Col>
-                  <Card />
-                </Col>
-              </div>
-              <div className="row">
-                <Col>
-                  <Card />
-                </Col>
-              </div>
-            </div>
-          ) : (
-            // Showing space management related data
-            <div>
-              <div className="row">
-                <Col>
-                  <Card
-                    title="Occupancy Metrics"
-                    content={<OccupancyTable />}
-                  />
-                </Col>
-              </div>
-              <div className="row">
-                <Col>
-                  <Card title="Events Insights" content={<ServiceRecTable />} />
-                </Col>
-              </div>
-              <div className="row">
-                <Col>
-                  <Card title="Revenue Insights" content={<OccupancyTable />} />
-                </Col>
-              </div>
-            </div>
-          )}
-        </Col>
-      </Row>
-    </Container>
+            <Grid container className={classes.infoContainer}>
+              <Grid item xs={12}>
+                <Card
+                  title="Loose Furniture (by SKU)"
+                  content={<MSSKUChart />}
+                />
+              </Grid>
+            </Grid>
+            <Grid container className={classes.infoContainer}>
+              <Grid item xs={12}>
+                <Card />
+              </Grid>
+            </Grid>
+            <Grid container className={classes.infoContainer}>
+              <Grid item xs={12}>
+                <Card />
+              </Grid>
+            </Grid>
+            <Grid container className={classes.infoContainer}>
+              <Grid item xs={12}>
+                <Card />
+              </Grid>
+            </Grid>
+          </Grid>
+        ) : (
+          // Showing space management related data
+          <Grid container>
+            <Grid item lg={12}>
+              <Card title="Occupancy Metrics" content={<OccupancyTable />} />
+            </Grid>
+            <Grid item lg={12}>
+              <Card title="Events Insights" content={<ServiceRecTable />} />
+            </Grid>
+            <Grid item lg={12}>
+              <Card title="Revenue Insights" content={<OccupancyTable />} />
+            </Grid>
+          </Grid>
+        )}
+      </Grid>
+    </Grid>
   ) : (
     <Redirect to={{ pathname: "/login" }} />
   );
