@@ -34,7 +34,7 @@ function RoomGenerator(roomInfo) {
         roomColor = colorSchema[program_type];
     }
 
-    let roomGeometry = createShape(outline);
+    let [roomGeometry, gravityCenter] = createShape(outline);
     var roomMaterial = new THREE.MeshPhongMaterial({
       color: roomColor,
       side: THREE.BackSide,
@@ -55,7 +55,7 @@ function RoomGenerator(roomInfo) {
     mesh.hasWindow = has_window;
 
     // add room number text on rooms
-    const roomText = new TextGenerator(mesh);
+    const roomText = new TextGenerator(mesh, gravityCenter);
     mesh.add(roomText);
 
     // add frame lines for the rooms
@@ -72,12 +72,12 @@ function RoomGenerator(roomInfo) {
 
     // set a method for the object
     mesh.callback = function () {
-      alert(room_name + " " + room_number);
+      alert("hello three");
     };
 
     return mesh;
   } else {
-    let roomGeometry = planeShape(outline);
+    let [roomGeometry, gravityCenter] = planeShape(outline);
     let roomMaterial = new THREE.LineBasicMaterial({
       color: colorSchema[program_type],
     });
@@ -89,10 +89,7 @@ function RoomGenerator(roomInfo) {
     mesh.programType = program_type;
 
     mesh.receiveShadow = true;
-    if (program_type === "WE") {
-      mesh.position.z = 0.5;
-    }
-    const roomSign = new SignGenerator(mesh);
+    const roomSign = new SignGenerator(mesh, gravityCenter);
     mesh.add(roomSign);
     return mesh;
   }
@@ -109,6 +106,8 @@ function createShape(outline) {
     let point = new THREE.Vector2(x, y);
     exteriorPointArray.push(point);
   }
+
+  var gravityCenter = new calculatePolygonGravityCeneter(roomExterior);
 
   var geometryShape = new THREE.Shape(exteriorPointArray);
 
@@ -134,7 +133,7 @@ function createShape(outline) {
     extrudeSettings
   );
 
-  return geometry;
+  return [geometry, gravityCenter];
 }
 
 function planeShape(outline) {
@@ -148,10 +147,53 @@ function planeShape(outline) {
     let point = new THREE.Vector2(x, y);
     exteriorPointArray.push(point);
   }
+
+  var gravityCenter = new calculatePolygonGravityCeneter(roomExterior);
+
   var geometryShape = new THREE.Shape(exteriorPointArray);
+
+  if (roomBoundary.length > 1) {
+    var roomHoles = roomBoundary.slice(1, roomBoundary.length);
+    var HolesArray = [];
+    for (let i = 0; i < roomHoles.length; i++) {
+      var HoleArray = [];
+      for (let j = 0; j < roomHoles[i].length; j++) {
+        let x = roomHoles[i][j][0];
+        let y = roomHoles[i][j][1];
+        let point = new THREE.Vector2(x, y);
+        HoleArray.push(point);
+      }
+      HolesArray.push(new THREE.Path(HoleArray));
+    }
+    geometryShape.holes = HolesArray;
+  }
   var geometry = new THREE.ShapeBufferGeometry(geometryShape);
 
-  return geometry;
+  return [geometry, gravityCenter];
+}
+
+function calculatePolygonGravityCeneter(exteriorBoundary) {
+  var area = 0.0;
+  var gravityX = 0.0;
+  var gravityY = 0.0;
+  for (let i = 0; i < exteriorBoundary.length; i++) {
+    let x = exteriorBoundary[i][0];
+    let y = exteriorBoundary[i][1];
+    let nextX = exteriorBoundary[(i + 1) % exteriorBoundary.length][0];
+    let nextY = exteriorBoundary[(i + 1) % exteriorBoundary.length][1];
+
+    let tempArea = (nextX * y - nextY * x) / 2.0;
+
+    area += tempArea;
+
+    gravityX += (tempArea * (x + nextX)) / 3;
+    gravityY += (tempArea * (y + nextY)) / 3;
+  }
+
+  gravityX = gravityX / area;
+  gravityY = gravityY / area;
+
+  return { gravityX: gravityX, gravityY: gravityY };
 }
 
 export default RoomGenerator;

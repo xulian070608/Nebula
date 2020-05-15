@@ -36,7 +36,7 @@ function FloorInfoPanel(props) {
   return (
     <div>
       {projectLoaded ? (
-        <p>{currentProject.attributes.project_name}</p>
+        <h2>{currentProject.attributes.project_name}</h2>
       ) : (
         <p>Loading</p>
       )}
