@@ -1,15 +1,27 @@
+//third party package import
 import React, { useState, useMemo } from "react";
-import { Container, Row, Col } from "reactstrap";
-import Viz from "../Utils/Floormap/Viz";
-
-import FloorInfoPanel from "./FloorInfoPanel";
-
 import { useOktaAuth } from "@okta/okta-react";
 import { Redirect } from "react-router-dom";
+
+// local components import
+import Viz from "../Utils/Floormap/Viz";
+import FloorInfoPanel from "./FloorInfoPanel";
+
+// material-ui components import
+// import { Container, Row, Col } from "reactstrap";
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  projectInfo: {
+    padding: theme.spacing(4, 6, 0),
+  },
+}));
 
 export const CurrentFloorStateContext = React.createContext(null);
 
 function ProjectLayout(props) {
+  const classes = useStyles();
   const currentProjectID = props.projectID;
 
   // use floor context
@@ -18,10 +30,13 @@ function ProjectLayout(props) {
     hasValue: false,
   });
 
-  const value = useMemo(() => ({ currentFloorState, setCurrentFloorState }), [
-    currentFloorState,
-    setCurrentFloorState,
-  ]);
+  const value = useMemo(
+    () => ({
+      currentFloorState,
+      setCurrentFloorState,
+    }),
+    [currentFloorState, setCurrentFloorState]
+  );
 
   const { authState } = useOktaAuth();
 
@@ -31,23 +46,21 @@ function ProjectLayout(props) {
 
   return authState.isAuthenticated ? (
     <CurrentFloorStateContext.Provider value={value}>
-      <Container>
-        <Row>
-          <Col xs="4 content-offset" id="project-infopanel-left">
-            <FloorInfoPanel projectID={currentProjectID} />
-          </Col>
-          <Col xs="8 offset-4 content-offset" id="project-infopanel-right">
-            {currentFloorState.hasValue ? (
-              <Viz
-                currentProjectID={currentProjectID}
-                floorID={currentFloorState.data.id}
-              />
-            ) : (
-              <p>loading</p>
-            )}
-          </Col>
-        </Row>
-      </Container>
+      <Grid container className={classes.container}>
+        <Grid item lg={4} className={classes.projectInfo}>
+          <FloorInfoPanel projectID={currentProjectID} />
+        </Grid>
+        <Grid item lg={8}>
+          {currentFloorState.hasValue ? (
+            <Viz
+              currentProjectID={currentProjectID}
+              floorID={currentFloorState.data.id}
+            />
+          ) : (
+            <p>loading</p>
+          )}
+        </Grid>
+      </Grid>
     </CurrentFloorStateContext.Provider>
   ) : (
     <Redirect to={{ pathname: "/login" }} />

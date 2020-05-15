@@ -25,3 +25,5 @@ export const localAPI = {
 const ServerRoot = "https://api.c3plus.top/nebula/v1/";
 
 export const ProjectsURL = ServerRoot + "projects/";
+
+export const furnitureRoot = "https://api.c3plus.top/ffe/v1/furniture/";

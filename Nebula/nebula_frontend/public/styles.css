@@ -11,11 +11,6 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 
-body {
-  background: #eeeeee;
-  padding: 0 16px;
-}
-
 a,
 a:hover {
   text-decoration: none !important;
@@ -70,8 +65,10 @@ footer p {
 }
 
 .logo-img {
-  max-width: 100%;
-  height: auto;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  float: left;
 }
 
 .icon {

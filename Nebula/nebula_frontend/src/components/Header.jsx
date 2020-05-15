@@ -14,12 +14,8 @@ import UserProfile from "./HomePage/UserProfile";
 import SearchBar from "./HomePage/SearchBar";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   header: {
     backgroundColor: "#393e46",
-    marginBottom: "16px",
     zIndex: "50",
   },
   iconNav: {
@@ -50,42 +46,40 @@ function Header() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar className={classes.header} position="absolute">
-        <Toolbar>
-          <NavLink
-            className={classes.iconNav}
-            to="/"
-            activeStyle={{ textDecoration: "none" }}
-          >
-            <img
-              className="logo-img"
-              src="/img/nebula_01_white_text.svg"
-              alt="project quickview"
-              width="110"
-            />
-          </NavLink>
-          <Box className={classes.box}>
-            <Breadcrumbs className={classes.breadCrumbs}>
-              <Link color="inherit" href="/" className={classes.link}>
-                <HomeIcon className={classes.icon} />
-                Home
-              </Link>
-              <Link color="inherit" href="#" className={classes.link}>
-                <WhatshotIcon className={classes.icon} />
-                Buisness
-              </Link>
-            </Breadcrumbs>
-          </Box>
-          <Box>
-            <SearchBar />
-          </Box>
-          <Box>
-            <UserProfile />
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <AppBar className={classes.header} position="sticky">
+      <Toolbar>
+        <NavLink
+          className={classes.iconNav}
+          to="/"
+          activeStyle={{ textDecoration: "none" }}
+        >
+          <img
+            className="logo-img"
+            src="/img/nebula_01_white_text.svg"
+            alt="project quickview"
+            width="110"
+          />
+        </NavLink>
+        <Box className={classes.box}>
+          <Breadcrumbs className={classes.breadCrumbs}>
+            <Link color="inherit" href="/" className={classes.link}>
+              <HomeIcon className={classes.icon} />
+              Home
+            </Link>
+            <Link color="inherit" href="#" className={classes.link}>
+              <WhatshotIcon className={classes.icon} />
+              Buisness
+            </Link>
+          </Breadcrumbs>
+        </Box>
+        <Box>
+          <SearchBar />
+        </Box>
+        <Box>
+          <UserProfile />
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 }
 

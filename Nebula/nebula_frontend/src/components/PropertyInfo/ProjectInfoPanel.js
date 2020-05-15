@@ -26,6 +26,13 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
+  projectImage: {
+    maxWidth: "100%",
+    maxHeight: "100%",
+    borderRadius: "0.25rem",
+    position: "relative",
+    padding: "25px 0px",
+  },
 }));
 
 function ProjectInfoPanel(props) {
@@ -83,7 +90,7 @@ function ProjectInfoPanel(props) {
       <Col>
         <h2>{currentProject.attributes.project_name}</h2>
         <img
-          className="project-img"
+          className={classes.projectImage}
           src="/img/img_001.jpg"
           alt="project quickview"
         />

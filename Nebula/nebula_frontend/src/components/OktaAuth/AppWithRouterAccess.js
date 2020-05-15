@@ -27,7 +27,6 @@ const AppWithRouterAccess = () => {
   return (
     <Security authService={authService}>
       <Header header="Nebula" />
-      <div className="content-offset" />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/protected" component={Protected} />

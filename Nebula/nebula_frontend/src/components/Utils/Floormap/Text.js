@@ -1,16 +1,18 @@
 import TextTexture from "three.texttexture";
 import * as THREE from "three";
 
-function TextGenerator(mesh) {
+function TextGenerator(mesh, gravityCenter) {
   // Option 1: use three.texttexture to show text
   // these option only worked on 19.0.0 version
   // DO NOT UPDATE TO THE LATEST VERISON
 
   // calculate the location of this text
-  mesh.geometry.computeBoundingBox();
-  const bb3 = mesh.geometry.boundingBox;
-  const centroidX = (bb3.max.x + bb3.min.x) / 2;
-  const centroidY = (bb3.max.y + bb3.min.y) / 2;
+  // mesh.geometry.computeBoundingBox();
+  // const bb3 = mesh.geometry.boundingBox;
+  // const centroidX = (bb3.max.x + bb3.min.x) / 2;
+  // const centroidY = (bb3.max.y + bb3.min.y) / 2;
+  const centroidX = gravityCenter.gravityX;
+  const centroidY = gravityCenter.gravityY;
   let text = mesh.roomNumber;
 
   // text texture settings
@@ -43,7 +45,6 @@ function TextGenerator(mesh) {
   sprite.scale.setX(w / h).multiplyScalar(scalar);
 
   sprite.position.set(centroidX, centroidY, 600);
-
   // // Option 2: create canvas directly
   // // using canvas to draw text
   // let canvas = document.createElement("canvas");
