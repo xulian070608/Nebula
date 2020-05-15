@@ -59,7 +59,6 @@ export default function SimplePopover() {
     } else {
       authService.getUser().then((info) => {
         setUserInfo(info);
-        console.log(info);
       });
     }
   }, [authState, authService]); // Update if authState changes
@@ -74,7 +73,6 @@ export default function SimplePopover() {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
-  console.log(userInfo);
 
   return userInfo ? (
     <div>

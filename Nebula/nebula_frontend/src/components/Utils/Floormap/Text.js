@@ -20,16 +20,16 @@ function TextGenerator(mesh) {
     fontFamily: "Arial, Helvetica, sans-serif",
     align: "center",
     fontWeight: "bold", // normal, bold, bolder, lighter
-    fontStyle: "normal" // normal, italic, oblique,
+    fontStyle: "normal", // normal, italic, oblique,
   });
   let material = new THREE.SpriteMaterial({
     color: "rgb(0,0,0)",
-    map: texture
+    map: texture,
   });
   let sprite = new THREE.Sprite(material);
 
   // deal with text with multiple lines
-  let scalar = 3;
+  let scalar = 900;
   const breaklines = text.split("\n").length;
   if (breaklines > 1) {
     scalar = breaklines * (scalar - 0.26);
@@ -42,7 +42,7 @@ function TextGenerator(mesh) {
   sprite.scale.set(1, 1, 1);
   sprite.scale.setX(w / h).multiplyScalar(scalar);
 
-  sprite.position.set(centroidX, centroidY, 2);
+  sprite.position.set(centroidX, centroidY, 600);
 
   // // Option 2: create canvas directly
   // // using canvas to draw text

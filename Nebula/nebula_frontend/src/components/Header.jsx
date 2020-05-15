@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Box from "@material-ui/core/Box";
@@ -9,73 +9,40 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@material-ui/core/Link";
 import HomeIcon from "@material-ui/icons/Home";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
-import InputBase from "@material-ui/core/InputBase";
-import SearchIcon from "@material-ui/icons/Search";
 
 import UserProfile from "./HomePage/UserProfile";
+import SearchBar from "./HomePage/SearchBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   header: {
-    backgroundColor: "#6e6e6e",
+    backgroundColor: "#393e46",
     marginBottom: "16px",
     zIndex: "50",
   },
   iconNav: {
-    marginRight: theme.spacing(4),
+    marginRight: theme.spacing(8),
   },
   box: {
     flexGrow: 1,
   },
   link: {
     display: "flex",
+    color: "#eeeeee",
+    "&:hover": {
+      color: "#00adb5",
+    },
   },
   icon: {
     marginRight: theme.spacing(0.5),
     width: 20,
     height: 20,
+    color: "#eeeeee",
   },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    marginRight: "16px",
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(1),
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    color: "inherit",
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
+  breadCrumbs: {
+    color: "#eeeeee",
   },
 }));
 
@@ -99,7 +66,7 @@ function Header() {
             />
           </NavLink>
           <Box className={classes.box}>
-            <Breadcrumbs aria-label="breadcrumb">
+            <Breadcrumbs className={classes.breadCrumbs}>
               <Link color="inherit" href="/" className={classes.link}>
                 <HomeIcon className={classes.icon} />
                 Home
@@ -111,21 +78,11 @@ function Header() {
             </Breadcrumbs>
           </Box>
           <Box>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ "aria-label": "search" }}
-              />
-            </div>
+            <SearchBar />
           </Box>
-          <UserProfile />
+          <Box>
+            <UserProfile />
+          </Box>
         </Toolbar>
       </AppBar>
     </div>

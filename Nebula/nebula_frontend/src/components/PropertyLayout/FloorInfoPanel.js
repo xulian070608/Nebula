@@ -7,6 +7,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
 import { CurrentFloorStateContext } from "./PropertyLayout";
+import { ProjectsURL } from "../Utils/Constant";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -22,15 +23,14 @@ function FloorInfoPanel(props) {
   const currentProjectID = props.projectID;
 
   // fetch project info data
-  const projectInfoAPI =
-    "http://100.94.29.214/api/v1/projects/" + currentProjectID;
+  const projectInfoAPI = ProjectsURL + currentProjectID;
   const { data: currentProject, loaded: projectLoaded } = useFetch(
     projectInfoAPI
   );
 
   // fetch project level list
   const floorListAPI =
-    "http://100.94.29.214/api/v1/projects/" + currentProjectID + "/floors/";
+    ProjectsURL + currentProjectID + "/floors/?sort=geometric_level";
   const { data: floors, loaded: floorLoaded } = useFetchList(floorListAPI);
 
   return (

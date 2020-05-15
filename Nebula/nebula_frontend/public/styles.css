@@ -4,24 +4,21 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none !important;
+}
 html {
   font-family: "Montserrat", sans-serif;
 }
 
 body {
-  background: #eee;
+  background: #eeeeee;
   padding: 0 16px;
 }
 
 a,
 a:hover {
   text-decoration: none !important;
-}
-
-header h1 {
-  color: #fff;
-  font-family: "McLaren", cursive;
-  font-weight: 200;
 }
 
 footer {
@@ -214,7 +211,7 @@ form textarea {
   width: 100%;
   border: none;
   padding: 4px;
-  outline: none;
+  outline: none !important;
   font-size: 1.2em;
   font-family: inherit;
   resize: none;
@@ -231,7 +228,7 @@ form button {
   height: 36px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  outline: none;
+  outline: none !important;
 }
 .column-50 {
   float: left;
@@ -287,7 +284,7 @@ form button {
   -ms-user-select: none;
   width: 100%;
   text-align: left;
-  outline: none;
+  outline: none !important;
   cursor: pointer;
 }
 
