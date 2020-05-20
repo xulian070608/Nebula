@@ -10,7 +10,7 @@ function SignGenerator(mesh, gravityCenter) {
   const centroidY = gravityCenter.gravityY;
 
   var img_path;
-  switch (mesh.roomName) {
+  switch (mesh.userData.roomName) {
     case "MEN WC":
       img_path = "https://api.c3plus.top/media/images/origin/wc_m2x.png";
       break;

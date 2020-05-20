@@ -13,7 +13,12 @@ import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    width: "100%",
+    height: 650,
+  },
   projectInfo: {
+    height: "100%",
     padding: theme.spacing(4, 6, 0),
   },
 }));

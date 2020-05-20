@@ -2,12 +2,14 @@
 import * as THREE from "three";
 import React from "react";
 import Button from "@material-ui/core/Button";
+import Drawer from "@material-ui/core/Drawer";
 
 import EnvironmentLight from "./lights";
 import RoomGenerator from "./Mesh";
 import Camera, { calculateRegion } from "./Camera";
 import CameraControl from "./CameraControl";
 import PopperX from "./PopperControl";
+import RoomInfoModal from "./RoomInfoModal";
 
 import HelperMode from "./helpers";
 import styles from "./styles";
@@ -32,6 +34,8 @@ function Viz(props) {
     deskCount: Number,
     physicalDeskCount: Number,
   });
+  const [open, setOpen] = useState(false);
+  const [roomID, setRoomID] = useState(null);
 
   const { data: rooms, loaded } = useFetchList(url);
 
@@ -58,12 +62,19 @@ function Viz(props) {
 
     // create meshes based on returned data
     let meshArray = [];
-    rooms.forEach((res) => meshArray.push(new RoomGenerator(res.attributes)));
+    rooms.forEach((res) =>
+      meshArray.push(
+        new RoomGenerator({ id: res.id, attributes: res.attributes })
+      )
+    );
 
     // seperate meshes into several groups
     meshArray.forEach((mesh) => {
-      if (mesh.programType) {
-        if (mesh.programType === "WORK" || mesh.programType === "MEET") {
+      if (mesh.userData.programType) {
+        if (
+          mesh.userData.programType === "WORK" ||
+          mesh.userData.programType === "MEET"
+        ) {
           secondaryWork.add(mesh);
         } else {
           secondaryExtra.add(mesh);
@@ -135,31 +146,31 @@ function Viz(props) {
     const onButtonClick = (event) => {
       event.preventDefault();
       isButtonOn = !isButtonOn;
-      const rooms = scene.getObjectByName("secondary_work");
-      if (rooms) {
-        var roomObjects = rooms.children;
+      const secondaryWorkMeshes = scene.getObjectByName("secondary_work");
+      if (secondaryWorkMeshes) {
+        var meshes = secondaryWorkMeshes.children;
       }
       if (isButtonOn) {
-        roomObjects.forEach((room) => {
-          let programType = room.programType;
+        meshes.forEach((mesh) => {
+          let programType = mesh.userData.programType;
           if (programType === "WORK") {
-            let deskCount = room.deskCount;
-            if (deskCount > 10) {
-              room.material.color.setHex(0xfc03f0);
+            let deskcount = mesh.userData.deskcount;
+            if (deskcount > 10) {
+              mesh.material.color.setHex(0xfc03f0);
             } else {
-              room.material.color.setHex(0x646464);
+              mesh.material.color.setHex(0x646464);
             }
           }
         });
       } else {
-        roomObjects.forEach((room) => {
-          let programType = room.programType;
+        meshes.forEach((mesh) => {
+          let programType = mesh.userData.programType;
           if (programType === "WORK") {
-            let hasWindow = room.hasWindow;
+            let hasWindow = mesh.userData.hasWindow;
             if (hasWindow) {
-              room.material.color.setHex(0xe4f3f7);
+              mesh.material.color.setHex(0xe4f3f7);
             } else {
-              room.material.color.setHex(0xabdde7);
+              mesh.material.color.setHex(0xabdde7);
             }
           }
         });
@@ -206,10 +217,10 @@ function Viz(props) {
           // store reference to closest object as current intersection object
           INTERSECTED = intersects[0].object;
           setRoomInfo({
-            roomName: INTERSECTED.roomName,
-            roomNumber: INTERSECTED.roomNumber,
-            deskCount: INTERSECTED.deskCount,
-            physicalDeskCount: INTERSECTED.physicalDeskCount,
+            roomName: INTERSECTED.userData.roomName,
+            roomNumber: INTERSECTED.userData.roomNumber,
+            deskcount: INTERSECTED.userData.deskcount,
+            physicalDeskcount: INTERSECTED.userData.physicalDeskcount,
           });
           setIsTouched(true);
           // store color of closest object (for later restoration)
@@ -246,7 +257,10 @@ function Viz(props) {
       if (!isDrag) {
         clearTimeout(timmerHandle);
         if (intersects.length > 0) {
-          intersects[0].object.callback();
+          setRoomID(intersects[0].object.userData.roomID);
+          setOpen(true);
+          // intersects[0].object.callback();
+          // console.log(intersects[0].object);
         }
       } else {
         isDrag = false;
@@ -282,18 +296,37 @@ function Viz(props) {
         mesh.material.dispose();
       });
     };
-  }, [loaded]);
+  }, [loaded, rooms]);
 
   const classes = styles();
   return (
-    <div>
-      <div className={classes.root} ref={mount}></div>
+    <div className={classes.root}>
+      <div className={classes.viz} ref={mount}></div>
       <Button id="button" className={classes.button} variant="outlined">
         >10 desks
       </Button>
       {isTouched ? (
         <PopperX isTouched={isTouched} roomInfo={roomInfo}></PopperX>
       ) : null}
+      <React.Fragment key="left">
+        {roomID ? (
+          <Drawer
+            className={classes.drawer}
+            anchor="left"
+            open={open}
+            onClose={() => {
+              setOpen(false);
+              setRoomID(null);
+            }}
+          >
+            <RoomInfoModal
+              currentProjectID={currentProjectID}
+              floorID={floorID}
+              roomID={roomID}
+            />
+          </Drawer>
+        ) : null}
+      </React.Fragment>
     </div>
   );
 }

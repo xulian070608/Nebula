@@ -4,6 +4,7 @@ import SignGenerator from "./Sign";
 import { colorSchema } from "../Constant";
 
 function RoomGenerator(roomInfo) {
+  const { id, attributes } = roomInfo;
   const {
     // level_id,
     // room_revit_id,
@@ -19,7 +20,7 @@ function RoomGenerator(roomInfo) {
     has_av,
     outline,
     // level_revit_id
-  } = roomInfo;
+  } = attributes;
 
   var mesh;
 
@@ -44,15 +45,18 @@ function RoomGenerator(roomInfo) {
     mesh = new THREE.Mesh(roomGeometry, roomMaterial);
 
     // set an attribute for the object
-    mesh.roomName = room_name;
-    mesh.roomNumber = room_number;
-    mesh.area = area;
-    mesh.deskCount = deskcount;
-    mesh.physicalDeskCount = physical_deskcount;
-    mesh.internalRoomCount = internal_room_count;
-    mesh.hasAV = has_av;
-    mesh.programType = program_type;
-    mesh.hasWindow = has_window;
+    mesh.userData = {
+      roomID: id,
+      roomName: room_name,
+      roomNumber: room_number,
+      area: area,
+      deskcount: deskcount,
+      physicalDeskcount: physical_deskcount,
+      internalRoomCount: internal_room_count,
+      hasAV: has_av,
+      programType: program_type,
+      hasWindow: has_window,
+    };
 
     // add room number text on rooms
     const roomText = new TextGenerator(mesh, gravityCenter);
@@ -83,10 +87,12 @@ function RoomGenerator(roomInfo) {
     });
     mesh = new THREE.Mesh(roomGeometry, roomMaterial);
 
-    mesh.roomName = room_name;
-    mesh.roomNumber = room_number;
-    mesh.hasAV = has_av;
-    mesh.programType = program_type;
+    mesh.userData = {
+      roomName: room_name,
+      roomNumber: room_number,
+      hasAV: has_av,
+      programType: program_type,
+    };
 
     mesh.receiveShadow = true;
     const roomSign = new SignGenerator(mesh, gravityCenter);

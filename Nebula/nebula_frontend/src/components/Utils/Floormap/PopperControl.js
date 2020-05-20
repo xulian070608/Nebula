@@ -6,22 +6,22 @@ import Card from "@material-ui/core/Card";
 // import CardContent from "@material-ui/core/CardContent";
 import React, { useState } from "react";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   card: {
-    minWidth: 250
+    minWidth: 250,
     // backgroundColor: "teal"
   },
   info: {
     fontSize: 16,
     paddingLeft: theme.spacing(2),
-    color: 0x424242
-  }
+    color: 0x424242,
+  },
 }));
 
 function PopperX(props) {
   const classes = useStyles();
   const isTouched = props.isTouched;
-  const { roomName, roomNumber, deskCount, physicalDeskCount } = props.roomInfo;
+  const { roomName, roomNumber, deskcount, physicalDeskcount } = props.roomInfo;
   //   const roomName = props.roomName;
   const [pointX, setPointX] = useState(window.innerWidth / 3);
   const [pointY, setPointY] = useState(window.innerHeight / 10);
@@ -36,9 +36,9 @@ function PopperX(props) {
         top: pointY,
         bottom: pointY,
         right: pointX,
-        left: pointX
+        left: pointX,
       };
-    }
+    },
   };
 
   const handleResize = () => {
@@ -65,10 +65,10 @@ function PopperX(props) {
               Room Number: {roomNumber}
             </Typography>
             <Typography l="5" className={classes.info}>
-              Desk Count: {deskCount}
+              Desk Count: {deskcount}
             </Typography>
             <Typography l="5" className={classes.info}>
-              Physical Desk Count: {physicalDeskCount}
+              Physical Desk Count: {physicalDeskcount}
             </Typography>
           </Card>
         </Fade>

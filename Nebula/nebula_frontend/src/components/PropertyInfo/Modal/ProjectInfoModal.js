@@ -10,13 +10,12 @@ import { CSVLink } from "react-csv";
 import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 2),
+    width: 450,
   },
 }));
 
@@ -103,8 +102,12 @@ export default function ProjectInfoModal(props) {
   ]);
 
   return (
-    <div>
-      {loading ? null : (
+    <div style={{ width: 450 }}>
+      {loading ? (
+        <CircularProgress
+          style={{ position: "absolute", top: "50%", left: "50%" }}
+        />
+      ) : (
         <div className={classes.paper}>
           {editMode ? (
             <Container maxWidth="md">
@@ -129,10 +132,10 @@ export default function ProjectInfoModal(props) {
                 </Grid>
               </Grid>
               <Grid container spacing={1} style={{ minHeight: "7vh" }}>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   Project Name:
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={6} align="right">
                   <Input
                     defaultValue={projectName}
                     inputProps={{ "aria-label": "description" }}
@@ -141,43 +144,45 @@ export default function ProjectInfoModal(props) {
                 </Grid>
               </Grid>
               <Grid container spacing={1} style={{ minHeight: "7vh" }}>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   Project Notes:
                 </Grid>
-                <Grid item xs={4} align="right">
-                  <Input
-                    placeholder="File Name"
-                    defaultValue={notes.fileName}
-                    inputProps={{ "aria-label": "description" }}
-                    onChange={(event) => {
-                      event.persist();
-                      setNotes((prevNote) => ({
-                        ...prevNote,
-                        fileName: event.target.value,
-                      }));
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={4} align="right">
-                  <Input
-                    placeholder="File Link"
-                    defaultValue={notes.fileLink}
-                    inputProps={{ "aria-label": "description" }}
-                    onChange={(event) => {
-                      event.persist();
-                      setNotes((prevNote) => ({
-                        ...prevNote,
-                        fileLink: event.target.value,
-                      }));
-                    }}
-                  />
+                <Grid item xs={6} container align="right">
+                  <Grid item xs={12}>
+                    <Input
+                      placeholder="File Name"
+                      defaultValue={notes.fileName}
+                      inputProps={{ "aria-label": "description" }}
+                      onChange={(event) => {
+                        event.persist();
+                        setNotes((prevNote) => ({
+                          ...prevNote,
+                          fileName: event.target.value,
+                        }));
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Input
+                      placeholder="File Link"
+                      defaultValue={notes.fileLink}
+                      inputProps={{ "aria-label": "description" }}
+                      onChange={(event) => {
+                        event.persist();
+                        setNotes((prevNote) => ({
+                          ...prevNote,
+                          fileLink: event.target.value,
+                        }));
+                      }}
+                    />
+                  </Grid>
                 </Grid>
               </Grid>
               <Grid container spacing={1} style={{ minHeight: "7vh" }}>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   Project Address Local:
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={6} align="right">
                   <Input
                     disabled
                     defaultValue={projectAddreeLocal}
@@ -186,10 +191,10 @@ export default function ProjectInfoModal(props) {
                 </Grid>
               </Grid>
               <Grid container spacing={1} style={{ minHeight: "7vh" }}>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   Project Address (en):
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={6} align="right">
                   <Input
                     disabled
                     defaultValue={projectAddressEn}
@@ -198,10 +203,10 @@ export default function ProjectInfoModal(props) {
                 </Grid>
               </Grid>
               <Grid container spacing={1} style={{ minHeight: "7vh" }}>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   USF Per Desk:
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={6} align="right">
                   <Input
                     disabled
                     defaultValue={usfPerDesk}
@@ -210,10 +215,10 @@ export default function ProjectInfoModal(props) {
                 </Grid>
               </Grid>
               <Grid container spacing={1} style={{ minHeight: "7vh" }}>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   Average Office Desk Count:
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={6} align="right">
                   <Input
                     disabled
                     defaultValue={averageOfficeDeskcount}
@@ -245,18 +250,18 @@ export default function ProjectInfoModal(props) {
                 </Grid>
               </Grid>
               <Grid container spacing={1} style={{ minHeight: "7vh" }}>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   Project Name:
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={6} align="right">
                   {projectName}
                 </Grid>
               </Grid>
               <Grid container spacing={1} style={{ minHeight: "7vh" }}>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   Project Notes:
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={6} align="right">
                   <Button
                     href={notes.fileLink}
                     target="_blank"
@@ -268,34 +273,34 @@ export default function ProjectInfoModal(props) {
                 </Grid>
               </Grid>
               <Grid container spacing={1} style={{ minHeight: "7vh" }}>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   Project Address Local:
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={6} align="right">
                   {projectAddreeLocal}
                 </Grid>
               </Grid>
               <Grid container spacing={1} style={{ minHeight: "7vh" }}>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   Project Address (en):
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={6} align="right">
                   {projectAddressEn}
                 </Grid>
               </Grid>
               <Grid container spacing={1} style={{ minHeight: "7vh" }}>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   USF Per Desk:
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={6} align="right">
                   {usfPerDesk}
                 </Grid>
               </Grid>
               <Grid container spacing={1} style={{ minHeight: "7vh" }}>
-                <Grid item xs={4}>
+                <Grid item xs={6}>
                   Average Office Desk Count:
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={6} align="right">
                   {averageOfficeDeskcount}
                 </Grid>
               </Grid>
