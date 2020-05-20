@@ -1,4 +1,9 @@
+// third party package
 import React, { useState } from "react";
+import { useOktaAuth } from "@okta/okta-react";
+import { Redirect } from "react-router-dom";
+
+// local components
 import Card from "../Utils/Card";
 import ProjectInfoPanel from "./ProjectInfoPanel";
 import LogisticChart from "./DevelopmentInsights/LogisticChart";
@@ -9,19 +14,25 @@ import ServiceRecTable from "./ManagementInsights/ServiceRevTable";
 import ms_stats from "../../data/ms_stats";
 import { useFetchList } from "../Utils/useFetch";
 import { ProjectsURL } from "../Utils/Constant";
+
+// material ui
+import Button from "@material-ui/core/Button";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
-import { useOktaAuth } from "@okta/okta-react";
-import { Redirect } from "react-router-dom";
+import Paper from "@material-ui/core/Paper";
 
 const useStyle = makeStyles((theme) => ({
+  // root: {
+  //   display: "flex",
+  //   height: "100%",
+  // },
   projectLeftPanel: {
-    padding: theme.spacing(4, 10),
+    // position: "absolute",
+    padding: theme.spacing(4, 6, 4, 12),
   },
   projectRightPanel: {
-    padding: theme.spacing(4, 4),
-    // overflowY: "scroll",
+    padding: theme.spacing(4, 12, 4, 6),
+    overflowY: "auto",
   },
 }));
 
@@ -79,77 +90,94 @@ function ProjectOverview(props) {
   }
 
   return authState.isAuthenticated ? (
-    <Grid container>
-      <Grid item lg={4} xs={6} className={classes.projectLeftPanel}>
-        {loaded ? (
-          <ProjectInfoPanel
-            style={{ backgroundColor: "0xffd26a" }}
-            currentProject={projects.find(
-              (project) => project.id === props.projectID
-            )}
-            allProjects={projects}
-          />
-        ) : (
-          <h5>loading...</h5>
-        )}
+    <Grid container className={classes.root} spacing={1}>
+      <Grid item lg={4} xs={12}>
+        <Paper elevation={0} className={classes.projectLeftPanel}>
+          {loaded ? (
+            <ProjectInfoPanel
+              style={{ backgroundColor: "0xffd26a" }}
+              currentProject={projects.find(
+                (project) => project.id === props.projectID
+              )}
+              allProjects={projects}
+            />
+          ) : (
+            <h5>loading...</h5>
+          )}
+        </Paper>
       </Grid>
-      <Grid item lg={8} className={classes.projectRightPanel}>
-        <button onClick={toggleBusinessMode}>
-          {isDevelopmentMode ? "Development" : "Management"}
-        </button>
-        {isDevelopmentMode ? (
-          //Showing project developement related data:
+      <Grid item lg={8}>
+        <Paper elevation={0} className={classes.projectRightPanel}>
           <Grid container>
-            <Grid container className={classes.infoContainer} spacing={4}>
-              <Grid item xs={6}>
-                <Card title="CapEx" content={<PropertyCapEx />} />
-              </Grid>
-              <Grid item xs={6}>
-                <Card
-                  title="Logistics"
-                  content={<LogisticChart logisticData={logisticData} />}
-                />
-              </Grid>
-            </Grid>
+            <Grid item>
+              <Button variant="outlined" onClick={toggleBusinessMode}>
+                {isDevelopmentMode ? "Development" : "Management"}
+              </Button>
+              {isDevelopmentMode ? (
+                //Showing project developement related data:
+                <Grid container>
+                  <Grid container className={classes.infoContainer} spacing={4}>
+                    <Grid item lg={6} md={6} xs={12}>
+                      <Card title="CapEx" content={<PropertyCapEx />} />
+                    </Grid>
+                    <Grid item lg={6} md={6} xs={12}>
+                      <Card
+                        title="Logistics"
+                        content={<LogisticChart logisticData={logisticData} />}
+                      />
+                    </Grid>
+                  </Grid>
 
-            <Grid container className={classes.infoContainer}>
-              <Grid item xs={12}>
-                <Card
-                  title="Loose Furniture (by SKU)"
-                  content={<MSSKUChart />}
-                />
-              </Grid>
-            </Grid>
-            <Grid container className={classes.infoContainer}>
-              <Grid item xs={12}>
-                <Card />
-              </Grid>
-            </Grid>
-            <Grid container className={classes.infoContainer}>
-              <Grid item xs={12}>
-                <Card />
-              </Grid>
-            </Grid>
-            <Grid container className={classes.infoContainer}>
-              <Grid item xs={12}>
-                <Card />
-              </Grid>
+                  <Grid container className={classes.infoContainer}>
+                    <Grid item xs={12}>
+                      <Card
+                        title="Loose Furniture (by SKU)"
+                        content={<MSSKUChart />}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container className={classes.infoContainer}>
+                    <Grid item xs={12}>
+                      <Card />
+                    </Grid>
+                  </Grid>
+                  <Grid container className={classes.infoContainer}>
+                    <Grid item xs={12}>
+                      <Card />
+                    </Grid>
+                  </Grid>
+                  <Grid container className={classes.infoContainer}>
+                    <Grid item xs={12}>
+                      <Card />
+                    </Grid>
+                  </Grid>
+                </Grid>
+              ) : (
+                // Showing space management related data
+                <Grid container>
+                  <Grid item lg={12}>
+                    <Card
+                      title="Occupancy Metrics"
+                      content={<OccupancyTable />}
+                    />
+                  </Grid>
+                  <Grid item lg={12}>
+                    <Card
+                      title="Events Insights"
+                      content={<ServiceRecTable />}
+                    />
+                  </Grid>
+                  <Grid item lg={12}>
+                    <Card
+                      title="Revenue Insights"
+                      content={<OccupancyTable />}
+                    />
+                  </Grid>
+                </Grid>
+              )}
             </Grid>
           </Grid>
-        ) : (
-          // Showing space management related data
-          <Grid container>
-            <Grid item lg={12}>
-              <Card title="Occupancy Metrics" content={<OccupancyTable />} />
-            </Grid>
-            <Grid item lg={12}>
-              <Card title="Events Insights" content={<ServiceRecTable />} />
-            </Grid>
-            <Grid item lg={12}>
-              <Card title="Revenue Insights" content={<OccupancyTable />} />
-            </Grid>
-          </Grid>
-        )}
+        </Paper>
       </Grid>
     </Grid>
   ) : (

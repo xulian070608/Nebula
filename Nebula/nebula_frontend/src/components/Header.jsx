@@ -1,6 +1,12 @@
+// third party packages
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+// local componenets
+import UserProfile from "./Utils/UserProfile";
+import SearchBar from "./Utils/SearchBar";
+
+// material ui
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -10,11 +16,9 @@ import Link from "@material-ui/core/Link";
 import HomeIcon from "@material-ui/icons/Home";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
 
-import UserProfile from "./HomePage/UserProfile";
-import SearchBar from "./HomePage/SearchBar";
-
 const useStyles = makeStyles((theme) => ({
   header: {
+    height: "100%",
     backgroundColor: "#393e46",
     zIndex: "50",
   },

@@ -5,12 +5,8 @@ import { useOktaAuth } from "@okta/okta-react";
 
 // local component import
 import CreateMap from "./Mapbox";
-import ProjectLi from "./ProjectLi";
-// import Highlight from "./Highlight";
-import HighLights from "./HighLight2";
-import { useFetchList } from "../Utils/useFetch";
-import DropdownBtn from "../Utils/DropdownBtn";
-import { ProjectsURL } from "../Utils/Constant";
+import HighLights from "./HighLight";
+import Projects from "./Projects";
 
 // material-ui component import
 // import { makeStyles } from "@material-ui/core/styles";
@@ -26,18 +22,6 @@ function Home() {
     zoom: 12,
   });
 
-  const { data: projects, loaded } = useFetchList(ProjectsURL);
-
-  function CreateProjectLi(wwProjects) {
-    return (
-      <ProjectLi
-        key={wwProjects.id}
-        projectID={wwProjects.id}
-        projectName={wwProjects.attributes.project_name}
-      />
-    );
-  }
-
   // function updateMapState(){
   //     setCoordinates({
   //         lng: 114.0559,
@@ -47,6 +31,8 @@ function Home() {
   // }
 
   const { authState } = useOktaAuth();
+  // const { authService } = useOktaAuth()
+  // console.log(authService.getUser());
 
   return authState.isAuthenticated ? (
     <div>
@@ -56,17 +42,7 @@ function Home() {
           <CreateMap coordinates={coordinates} />
         </Grid>
         <Grid item lg={3}>
-          <div className="n-card-home">
-            <div className="n-card-header">
-              <h4 className="n-card-header-title">Buildings</h4>
-              <DropdownBtn />
-            </div>
-            <hr className="n-card-hr" />
-            <div className="n-card-body overflow-auto">
-              <ul>{loaded ? projects.map(CreateProjectLi) : "loading..."}</ul>
-            </div>
-            {/* <button onClick={updateMapState}>Test Jump Function</button> */}
-          </div>
+          <Projects />
         </Grid>
       </Grid>
     </div>

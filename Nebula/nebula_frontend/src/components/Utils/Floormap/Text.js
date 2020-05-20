@@ -13,7 +13,7 @@ function TextGenerator(mesh, gravityCenter) {
   // const centroidY = (bb3.max.y + bb3.min.y) / 2;
   const centroidX = gravityCenter.gravityX;
   const centroidY = gravityCenter.gravityY;
-  let text = mesh.roomNumber;
+  let text = mesh.userData.roomNumber;
 
   // text texture settings
   let texture = new TextTexture({
