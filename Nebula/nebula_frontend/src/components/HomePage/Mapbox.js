@@ -1,75 +1,68 @@
-import React, { Component } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import mapboxgl from "mapbox-gl";
-import GeoJSONTest from "../../data/GeoJSONTest";
+import { useFetchList } from "../Utils/useFetch";
+import { ProjectsURL } from "../Utils/Constant";
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoibXlub3ZtYnIiLCJhIjoiY2o4ZGN2cnZtMG44cTJ6bjh6amdndWF6bSJ9.oiPuyesbcs_SIuCgOVF_Bg";
+export default function MapboxGLMap(props) {
+  const [map, setMap] = useState(null);
+  const mapContainer = useRef(null);
+  const accessToken =
+    "pk.eyJ1IjoibXlub3ZtYnIiLCJhIjoiY2o4ZGN2cnZtMG44cTJ6bjh6amdndWF6bSJ9.oiPuyesbcs_SIuCgOVF_Bg";
+  const initCoordinate = {
+    lng: 103.8343,
+    lat: 36.0611,
+    zoom: 3,
+  };
+  const coordinates = props.coordinates;
 
-class CreateMap extends Component {
-  componentDidMount() {
-    const { lng, lat, zoom } = this.props.coordinates;
+  const { data: projects } = useFetchList(ProjectsURL);
+  var projectLocations = [];
+  projects.forEach((project) => {
+    const projectLocation = {
+      lng: project.attributes.longitude,
+      lat: project.attributes.latitude,
+    };
+    projectLocations.push(projectLocation);
+  });
 
-    const map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [lng, lat],
-      zoom: zoom,
-    });
-
-    // since we remove state and instead using props to drive map,
-    // no need to record map's coordinates here.
-
-    // map.on('move', () => {
-    //     this.setState({
-    //     lng: map.getCenter().lng.toFixed(4),
-    //     lat: map.getCenter().lat.toFixed(4),
-    //     zoom: map.getZoom().toFixed(2)
-    //     });
-    //     });
-
-    GeoJSONTest.features.forEach((marker) => {
-      // create a HTML element for each feature
-      var el = document.createElement("div");
-      el.className = "marker";
-
-      // make a marker for each feature and add to the map
-      new mapboxgl.Marker(el)
-        .setLngLat(marker.geometry.coordinates)
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML(
-              "<h3>" +
-                marker.properties.title +
-                "</h3><p>" +
-                marker.properties.description +
-                "</p>"
-            )
-        )
-        .addTo(map);
-    });
-  }
-
-  //re-render map upon receiving new props.coordinates; might not be an effecient way, but works.
-  componentDidUpdate(prevProps) {
-    const { lng, lat, zoom } = this.props.coordinates;
-
-    if (this.props.coordinates !== prevProps.coordinates) {
-      new mapboxgl.Map({
-        container: this.mapContainer,
-        style: "mapbox://styles/mapbox/streets-v11",
-        center: [lng, lat],
-        zoom: zoom,
+  useEffect(() => {
+    mapboxgl.accessToken = accessToken;
+    const initializeMap = ({ setMap, mapContainer }) => {
+      const map = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
+        center: [initCoordinate.lng, initCoordinate.lat],
+        zoom: initCoordinate.zoom,
       });
+
+      map.on("load", () => {
+        setMap(map);
+        map.resize();
+      });
+
+      projectLocations.forEach((location) => {
+        // eslint-disable-next-line no-unused-vars
+        const marker = new mapboxgl.Marker()
+          .setLngLat([location.lng, location.lat])
+          .addTo(map);
+      });
+    };
+
+    if (!map) initializeMap({ setMap, mapContainer });
+  }, [map, initCoordinate, projectLocations]);
+
+  useEffect(() => {
+    if (map && coordinates) {
+      map.jumpTo({ center: [coordinates.lng, coordinates.lat], zoom: 12 });
     }
-  }
+  }, [map, coordinates]);
 
-  render() {
-    return (
-      <div className="n-card-home">
-        <div ref={(el) => (this.mapContainer = el)} className="map-container" />
-      </div>
-    );
-  }
+  return (
+    <div className="n-card-home">
+      <div
+        ref={(el) => (mapContainer.current = el)}
+        className="map-container"
+      />
+    </div>
+  );
 }
-
-export default CreateMap;

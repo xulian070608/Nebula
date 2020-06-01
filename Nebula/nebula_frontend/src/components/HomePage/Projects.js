@@ -34,25 +34,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Projects() {
+function CreateProjectLi(props) {
+  // let { setCoordinates } = useContext(CoordinatesContext);
+  const setCoordinates = props.setCoordinates;
+  const project = props.project;
+  return (
+    <ListItem
+      button
+      key={project.id}
+      component={Link}
+      to={`/${project.id}/summary`}
+      onMouseEnter={() =>
+        setCoordinates({
+          lng: project.attributes.longitude,
+          lat: project.attributes.latitude,
+          zoom: 12,
+        })
+      }
+    >
+      {project.attributes.project_name}
+    </ListItem>
+  );
+}
+
+export default function Projects(props) {
   const classes = useStyles();
   const { data: projects, loaded } = useFetchList(ProjectsURL);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-
-  function createProjectLi(project) {
-    return (
-      <ListItem button component={Link} to={`/${project.id}/summary`}>
-        {project.attributes.project_name}
-      </ListItem>
-    );
-  }
+  const setCoordinates = props.setCoordinates;
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = (event) => {
+  const handleClose = () => {
     setAnchorEl(null);
   };
 
@@ -92,7 +108,13 @@ export default function Projects() {
       <CardContent className={classes.content}>
         {loaded ? (
           <List component="nav" aria-label="secondary mailbox folders">
-            {projects.map(createProjectLi)}
+            {projects.map((project) => (
+              <CreateProjectLi
+                key={project.id}
+                project={project}
+                setCoordinates={setCoordinates}
+              />
+            ))}
           </List>
         ) : (
           <div>loading</div>

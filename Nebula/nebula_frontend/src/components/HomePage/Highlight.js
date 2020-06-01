@@ -31,8 +31,8 @@ export default function HighLights() {
 
   return (
     <Grid container className={classes.root} justify="center" spacing={2}>
-      <Grid container lg={9}>
-        <Grid container lg={8} justify="space-between">
+      <Grid item container lg={9}>
+        <Grid item container lg={8} justify="space-between">
           <Button
             variant="outlined"
             color="default"
