@@ -13,14 +13,7 @@ import Projects from "./Projects";
 import { Grid } from "@material-ui/core";
 
 function Home() {
-  let [
-    coordinates,
-    // , setCoordinates
-  ] = useState({
-    lng: 121.4835,
-    lat: 31.2291,
-    zoom: 12,
-  });
+  const [coordinates, setCoordinates] = useState(null);
 
   // function updateMapState(){
   //     setCoordinates({
@@ -33,6 +26,7 @@ function Home() {
   const { authState } = useOktaAuth();
   // const { authService } = useOktaAuth()
   // console.log(authService.getUser());
+  // console.log(authState.idToken);
 
   return authState.isAuthenticated ? (
     <div>
@@ -42,7 +36,7 @@ function Home() {
           <CreateMap coordinates={coordinates} />
         </Grid>
         <Grid item lg={3}>
-          <Projects />
+          <Projects setCoordinates={setCoordinates} />
         </Grid>
       </Grid>
     </div>
