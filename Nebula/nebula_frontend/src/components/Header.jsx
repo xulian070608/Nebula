@@ -50,7 +50,7 @@ function Header() {
   const classes = useStyles();
 
   return (
-    <AppBar className={classes.header} position="sticky">
+    <AppBar className={classes.header} position="static">
       <Toolbar>
         <NavLink
           className={classes.iconNav}
