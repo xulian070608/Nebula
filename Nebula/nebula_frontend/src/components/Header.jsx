@@ -18,7 +18,7 @@ import WhatshotIcon from "@material-ui/icons/Whatshot";
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    height: "100%",
+    height: "65px",
     backgroundColor: "#393e46",
     zIndex: "50",
   },

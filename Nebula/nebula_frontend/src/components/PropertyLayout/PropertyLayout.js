@@ -12,6 +12,8 @@ import FloorInfoPanel from "./FloorInfoPanel";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+const windowHeight = window.innerHeight - 65;
+
 const useStyles = makeStyles((theme) => ({
   container: {
     width: "100%",
@@ -20,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   projectInfo: {
     height: "100%",
     padding: theme.spacing(4, 6, 0),
+  },
+  renderer: {
+    height: windowHeight,
   },
 }));
 
@@ -55,7 +60,7 @@ function ProjectLayout(props) {
         <Grid item lg={4} className={classes.projectInfo}>
           <FloorInfoPanel projectID={currentProjectID} />
         </Grid>
-        <Grid item lg={8}>
+        <Grid item lg={8} className={classes.renderer}>
           {currentFloorState.hasValue ? (
             <Viz
               currentProjectID={currentProjectID}

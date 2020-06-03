@@ -21,6 +21,8 @@ import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 
+const windowHeight = window.innerHeight - 70;
+
 const useStyle = makeStyles((theme) => ({
   // root: {
   //   display: "flex",
@@ -31,6 +33,7 @@ const useStyle = makeStyles((theme) => ({
     padding: theme.spacing(4, 6, 4, 12),
   },
   projectRightPanel: {
+    height: windowHeight,
     padding: theme.spacing(4, 12, 4, 6),
     overflowY: "auto",
   },
