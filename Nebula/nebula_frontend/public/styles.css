@@ -30,6 +30,25 @@ footer p {
   color: #f5ba13;
 }
 
+.custom-tooltip {
+  background-color: rgba(255,255,255,0.7);
+  border: 1px solid #888;
+  border-radius: 5px;
+}
+
+.tooltip-occ {
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #8884d8
+}
+
+.tooltip-churn {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #82ca9d
+}
+
 .custom-link {
   text-decoration: none;
 }
@@ -119,63 +138,6 @@ footer p {
   height: 400px;
   box-shadow: 0 2px 5px #ccc;
   text-align: left;
-}
-
-.n-card-header {
-  padding: 0px 15px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 5px;
-}
-
-.n-card-header-title {
-  margin: 0rem;
-  padding: 0rem;
-  display: flex;
-  align-content: flex-start;
-  align-items: center;
-}
-
-.n-card-header-btn {
-  margin: 0rem;
-  padding: 0rem;
-  display: flex;
-  margin-left: auto;
-}
-
-.n-card-hr {
-  margin: 0.25rem 0rem;
-  border: 0;
-  border-top: 1px solid #e9ecef;
-}
-
-.n-card-body {
-  padding: 0px 15px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.highlight {
-  border-radius: 0.25rem;
-  position: relative;
-  margin: 15px 0px;
-  background-color: #fff;
-  height: 50px;
-  box-shadow: 0 2px 5px #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  text-align: left;
-}
-
-.highlight-number {
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-  color: #6e6e6e;
-  font-size: 20px;
-  position: inherit;
-  float: right;
-  margin: 10px 15px;
 }
 
 .marker {
@@ -393,3 +355,27 @@ form button {
   transform: translate(0, 0) scale(1);
   pointer-events: auto;
 }
+
+/* custom scroll bar */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: #e4e4e4;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+1

@@ -21,10 +21,13 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-csv": "^2.0.3",
+    "react-dnd": "^11.1.3",
+    "react-dnd-html5-backend": "^11.1.3",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
     "reactstrap": "^8.2.0",
+    "recharts": "^1.8.5",
     "three": "^0.112.1",
     "three.interaction": "^0.2.2",
     "three.texttexture": "^19.0.0"

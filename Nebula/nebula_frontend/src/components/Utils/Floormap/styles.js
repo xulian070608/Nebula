@@ -20,8 +20,10 @@ const styles = makeStyles((theme) => ({
     marginLeft: 100,
     marginTop: theme.spacing(0),
   },
-  drawer: {
-    width: 200,
+  modal: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 

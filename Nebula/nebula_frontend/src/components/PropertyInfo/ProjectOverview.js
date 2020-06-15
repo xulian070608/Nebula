@@ -14,6 +14,7 @@ import ServiceRecTable from "./ManagementInsights/ServiceRevTable";
 import ms_stats from "../../data/ms_stats";
 import { useFetchList } from "../Utils/useFetch";
 import { ProjectsURL } from "../Utils/Constant";
+import OccupancyChart from "./ManagementInsights/OccupancyChart";
 
 // material ui
 import Button from "@material-ui/core/Button";
@@ -128,6 +129,7 @@ function ProjectOverview(props) {
                         title="Logistics"
                         content={<LogisticChart logisticData={logisticData} />}
                       />
+                      {/* <LogisticChart logisticData={logisticData} /> */}
                     </Grid>
                   </Grid>
 
@@ -161,19 +163,29 @@ function ProjectOverview(props) {
                   <Grid item lg={12}>
                     <Card
                       title="Occupancy Metrics"
+                      content={<OccupancyChart />}
+                      cardSize="big"
+                    />
+                  </Grid>
+                  <Grid item lg={12}>
+                    <Card
+                      title="Occupancy Metrics"
                       content={<OccupancyTable />}
+                      cardSize="big"
                     />
                   </Grid>
                   <Grid item lg={12}>
                     <Card
                       title="Events Insights"
                       content={<ServiceRecTable />}
+                      cardSize="big"
                     />
                   </Grid>
                   <Grid item lg={12}>
                     <Card
                       title="Revenue Insights"
                       content={<OccupancyTable />}
+                      cardSize="big"
                     />
                   </Grid>
                 </Grid>

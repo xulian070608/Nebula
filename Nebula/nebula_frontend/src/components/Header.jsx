@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
   header: {
     height: "65px",
     backgroundColor: "#393e46",
-    zIndex: "50",
   },
   iconNav: {
     marginRight: theme.spacing(8),

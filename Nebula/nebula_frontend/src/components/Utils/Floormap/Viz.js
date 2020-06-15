@@ -2,7 +2,7 @@
 import * as THREE from "three";
 import React from "react";
 import Button from "@material-ui/core/Button";
-import Drawer from "@material-ui/core/Drawer";
+import Modal from "@material-ui/core/Modal";
 
 import EnvironmentLight from "./lights";
 import RoomGenerator from "./Mesh";
@@ -308,25 +308,23 @@ function Viz(props) {
       {isTouched ? (
         <PopperX isTouched={isTouched} roomInfo={roomInfo}></PopperX>
       ) : null}
-      <React.Fragment key="left">
-        {roomID ? (
-          <Drawer
-            className={classes.drawer}
-            anchor="left"
-            open={open}
-            onClose={() => {
-              setOpen(false);
-              setRoomID(null);
-            }}
-          >
-            <RoomInfoModal
-              currentProjectID={currentProjectID}
-              floorID={floorID}
-              roomID={roomID}
-            />
-          </Drawer>
-        ) : null}
-      </React.Fragment>
+      {roomID ? (
+        <Modal
+          className={classes.modal}
+          anchor="left"
+          open={open}
+          onClose={() => {
+            setOpen(false);
+            setRoomID(null);
+          }}
+        >
+          <RoomInfoModal
+            currentProjectID={currentProjectID}
+            floorID={floorID}
+            roomID={roomID}
+          />
+        </Modal>
+      ) : null}
     </div>
   );
 }

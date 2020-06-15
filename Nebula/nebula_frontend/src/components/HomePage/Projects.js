@@ -26,10 +26,12 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0),
   },
   header: {
+    height: 50,
     padding: theme.spacing(2, 2, 1),
   },
   content: {
-    padding: theme.spacing(0, 0, 2),
+    height: 350,
+    padding: theme.spacing(0),
     overflowY: "auto",
   },
 }));
