@@ -15,7 +15,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: theme.palette.background.paper,
-    width: 450,
+    width: 600,
   },
 }));
 

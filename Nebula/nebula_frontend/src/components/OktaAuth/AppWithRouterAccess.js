@@ -5,7 +5,7 @@ import Home from "../HomePage/Home";
 import { Login } from "./Login";
 import Protected from "./Protected";
 import Header from "../Header";
-import ProjectOverview from "../PropertyInfo/ProjectOverview";
+import ProjectOverview from "../PropertyInfo/ProjectOverview2";
 import PropertyLayout from "../PropertyLayout/PropertyLayout";
 import Room from "../PropertyLayout/Room";
 

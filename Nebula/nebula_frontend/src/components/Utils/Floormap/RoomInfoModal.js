@@ -19,7 +19,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    width: 450,
+    width: 600,
     backgroundColor: theme.palette.background.paper,
   },
 }));

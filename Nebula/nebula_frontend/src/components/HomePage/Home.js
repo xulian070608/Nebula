@@ -27,15 +27,16 @@ function Home() {
   // const { authService } = useOktaAuth()
   // console.log(authService.getUser());
   // console.log(authState.idToken);
+  // console.log(authState.accessToken);
 
   return authState.isAuthenticated ? (
     <div>
       <HighLights />
-      <Grid container spacing={2} justify="center">
-        <Grid item lg={6}>
+      <Grid container justify="center" spacing={2}>
+        <Grid item xs={6}>
           <CreateMap coordinates={coordinates} />
         </Grid>
-        <Grid item lg={3}>
+        <Grid item xs={3}>
           <Projects setCoordinates={setCoordinates} />
         </Grid>
       </Grid>

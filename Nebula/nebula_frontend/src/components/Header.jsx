@@ -18,9 +18,8 @@ import WhatshotIcon from "@material-ui/icons/Whatshot";
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    height: "100%",
+    height: "65px",
     backgroundColor: "#393e46",
-    zIndex: "50",
   },
   iconNav: {
     marginRight: theme.spacing(8),
@@ -50,7 +49,7 @@ function Header() {
   const classes = useStyles();
 
   return (
-    <AppBar className={classes.header} position="sticky">
+    <AppBar className={classes.header} position="static">
       <Toolbar>
         <NavLink
           className={classes.iconNav}

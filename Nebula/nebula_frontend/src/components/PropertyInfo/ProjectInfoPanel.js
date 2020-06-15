@@ -12,7 +12,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { NativeSelect } from "@material-ui/core";
-import Drawer from "@material-ui/core/Drawer";
+import Modal from "@material-ui/core/Modal";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -136,23 +136,20 @@ function ProjectInfoPanel(props) {
       </Box>
       <ProjectInfoSummary
         //buildingName={currentProject.BuildingName}
-        buildingAddress={currentProject.attributes.project_address_en}
-        buildingTerritory={currentProject.attributes.project_market}
+        buildingAddress={currentProject.attributes.address_en}
+        buildingTerritory={currentProject.attributes.market}
         // buildingUUID={currentProject.id}
         // buildingUSF={currentProject.BuildingUSF}
         // buildingDeskCount={currentProject.BuildingDeskCount}
         // buildingRoomCount={currentProject.BuildingRoomCount}
       />
-      <React.Fragment key="left">
-        <Drawer
-          className={classes.drawer}
-          anchor="left"
-          open={open}
-          onClose={() => setOpen(false)}
-        >
-          <ProjectInfoModal projectID={currentProject.id} />
-        </Drawer>
-      </React.Fragment>
+      <Modal
+        className={classes.modal}
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <ProjectInfoModal projectID={currentProject.id} />
+      </Modal>
       {/* <div>
         <Modal
           className={classes.modal}

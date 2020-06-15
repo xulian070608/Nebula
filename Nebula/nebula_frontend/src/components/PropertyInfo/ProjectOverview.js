@@ -14,12 +14,15 @@ import ServiceRecTable from "./ManagementInsights/ServiceRevTable";
 import ms_stats from "../../data/ms_stats";
 import { useFetchList } from "../Utils/useFetch";
 import { ProjectsURL } from "../Utils/Constant";
+import OccupancyChart from "./ManagementInsights/OccupancyChart";
 
 // material ui
 import Button from "@material-ui/core/Button";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+
+const windowHeight = window.innerHeight - 70;
 
 const useStyle = makeStyles((theme) => ({
   // root: {
@@ -31,6 +34,7 @@ const useStyle = makeStyles((theme) => ({
     padding: theme.spacing(4, 6, 4, 12),
   },
   projectRightPanel: {
+    height: windowHeight,
     padding: theme.spacing(4, 12, 4, 6),
     overflowY: "auto",
   },
@@ -125,6 +129,7 @@ function ProjectOverview(props) {
                         title="Logistics"
                         content={<LogisticChart logisticData={logisticData} />}
                       />
+                      {/* <LogisticChart logisticData={logisticData} /> */}
                     </Grid>
                   </Grid>
 
@@ -158,19 +163,29 @@ function ProjectOverview(props) {
                   <Grid item lg={12}>
                     <Card
                       title="Occupancy Metrics"
+                      content={<OccupancyChart />}
+                      cardSize="big"
+                    />
+                  </Grid>
+                  <Grid item lg={12}>
+                    <Card
+                      title="Occupancy Metrics"
                       content={<OccupancyTable />}
+                      cardSize="big"
                     />
                   </Grid>
                   <Grid item lg={12}>
                     <Card
                       title="Events Insights"
                       content={<ServiceRecTable />}
+                      cardSize="big"
                     />
                   </Grid>
                   <Grid item lg={12}>
                     <Card
                       title="Revenue Insights"
                       content={<OccupancyTable />}
+                      cardSize="big"
                     />
                   </Grid>
                 </Grid>

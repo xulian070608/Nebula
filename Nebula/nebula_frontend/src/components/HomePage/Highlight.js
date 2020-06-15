@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: 170,
     height: 50,
-    margin: theme.spacing(6, 1, 2),
+    margin: theme.spacing(6, 0, 2),
     justifyContent: "space-between",
     fontSize: 20,
     fontWeight: "bold",
@@ -30,9 +30,9 @@ export default function HighLights() {
   const classes = useStyles();
 
   return (
-    <Grid container className={classes.root} justify="center" spacing={2}>
-      <Grid item container lg={9}>
-        <Grid item container lg={8} justify="space-between">
+    <Grid container className={classes.root} justify="center">
+      <Grid item container xs={9} justify="space-between">
+        <Grid item xs={2}>
           <Button
             variant="outlined"
             color="default"
@@ -42,6 +42,8 @@ export default function HighLights() {
           >
             123
           </Button>
+        </Grid>
+        <Grid item xs={2}>
           <Button
             variant="outlined"
             color="default"
@@ -51,6 +53,8 @@ export default function HighLights() {
           >
             123
           </Button>
+        </Grid>
+        <Grid item xs={2}>
           <Button
             variant="outlined"
             color="default"
@@ -60,6 +64,8 @@ export default function HighLights() {
           >
             123
           </Button>
+        </Grid>
+        <Grid item xs={2}>
           <Button
             variant="outlined"
             color="default"
