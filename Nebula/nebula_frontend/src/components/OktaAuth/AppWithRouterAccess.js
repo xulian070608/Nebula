@@ -1,13 +1,15 @@
 import React from "react";
 import { Route, useHistory, Switch } from "react-router-dom";
 import { Security, LoginCallback, AuthService } from "@okta/okta-react";
-import Home from "../HomePage/Home";
+
+// local components
+import Home from "../../pages/Home";
 import { Login } from "./Login";
 import Protected from "./Protected";
-import Header from "../Header";
-import ProjectOverview from "../PropertyInfo/ProjectOverview2";
-import PropertyLayout from "../PropertyLayout/PropertyLayout";
-import Room from "../PropertyLayout/Room";
+import { Header } from "../Header/";
+import ProjectOverview from "../../pages/ProjectOverview/";
+import PropertyLayout from "../../pages/FloorLayout/";
+import Room from "../../pages/FloorLayout/Room";
 
 const AppWithRouterAccess = () => {
   const history = useHistory();
