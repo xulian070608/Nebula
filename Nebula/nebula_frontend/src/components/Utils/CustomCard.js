@@ -24,18 +24,21 @@ const ItemTypes = {
   CARD: "card",
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme, props) => ({
   root: {
     width: "100%",
-    height: (props) => (props.cardSize === "small" ? 300 : 350),
+    height: (props) => (props.cardSize === "small" ? 300 : 370),
     margin: theme.spacing(3, 0),
   },
   header: {
     height: 50,
     padding: theme.spacing(2, 2, 1),
   },
+  headerIcon: {
+    padding: "8px",
+  },
   content: {
-    height: (props) => (props.cardSize === "small" ? 250 : 300),
+    height: (props) => (props.cardSize === "small" ? 250 : 320),
     display: "flex",
     justifyContent: "center",
     padding: theme.spacing(2),
@@ -118,10 +121,18 @@ function CustomCard(props) {
       <CardHeader
         action={
           <>
-            <IconButton ref={ref} aria-label="settings">
+            <IconButton
+              ref={ref}
+              aria-label="settings"
+              className={classes.headerIcon}
+            >
               <ControlCameraIcon />
             </IconButton>
-            <IconButton aria-label="more" onClick={handleMenu}>
+            <IconButton
+              aria-label="more"
+              onClick={handleMenu}
+              className={classes.headerIcon}
+            >
               <MoreVertIcon />
             </IconButton>
             <Menu
