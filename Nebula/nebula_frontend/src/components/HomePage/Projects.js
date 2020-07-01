@@ -29,8 +29,11 @@ const useStyles = makeStyles((theme) => ({
     height: 50,
     padding: theme.spacing(2, 2, 1),
   },
+  headerIcon: {
+    padding: "8px",
+  },
   content: {
-    height: 350,
+    height: 360,
     padding: theme.spacing(0),
     overflowY: "auto",
   },
@@ -79,20 +82,24 @@ export default function Projects(props) {
       <CardHeader
         action={
           <>
-            <IconButton aria-label="more" onClick={handleMenu}>
+            <IconButton
+              aria-label="more"
+              onClick={handleMenu}
+              className={classes.headerIcon}
+            >
               <MoreVertIcon />
             </IconButton>
             <Menu
               id="menu-appbar"
               anchorEl={anchorEl}
+              getContentAnchorEl={null} //without this anchor position is not correct
               anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: "bottom",
+                horizontal: "center",
               }}
-              keepMounted
               transformOrigin={{
                 vertical: "top",
-                horizontal: "right",
+                horizontal: "center",
               }}
               open={open}
               onClose={handleClose}

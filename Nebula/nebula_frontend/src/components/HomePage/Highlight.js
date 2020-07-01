@@ -12,11 +12,12 @@ import EmailIcon from "@material-ui/icons/Email";
 // material-ui css setting
 const useStyles = makeStyles((theme) => ({
   root: {
+    display: "flex",
     flexGrow: 1,
   },
   button: {
     display: "flex",
-    width: 170,
+    width: "100%",
     height: 50,
     margin: theme.spacing(6, 0, 2),
     justifyContent: "space-between",
@@ -30,52 +31,55 @@ export default function HighLights() {
   const classes = useStyles();
 
   return (
-    <Grid container className={classes.root} justify="center">
-      <Grid item container xs={9} justify="space-between">
-        <Grid item xs={2}>
-          <Button
-            variant="outlined"
-            color="default"
-            size="large"
-            className={classes.button}
-            startIcon={<AccessAlarmIcon style={{ fontSize: 30 }} />}
-          >
-            123
-          </Button>
-        </Grid>
-        <Grid item xs={2}>
-          <Button
-            variant="outlined"
-            color="default"
-            size="large"
-            className={classes.button}
-            startIcon={<BuildIcon style={{ fontSize: 30 }} />}
-          >
-            123
-          </Button>
-        </Grid>
-        <Grid item xs={2}>
-          <Button
-            variant="outlined"
-            color="default"
-            size="large"
-            className={classes.button}
-            startIcon={<AnnouncementIcon style={{ fontSize: 30 }} />}
-          >
-            123
-          </Button>
-        </Grid>
-        <Grid item xs={2}>
-          <Button
-            variant="outlined"
-            color="default"
-            size="large"
-            className={classes.button}
-            startIcon={<EmailIcon style={{ fontSize: 30 }} />}
-          >
-            123
-          </Button>
-        </Grid>
+    <Grid
+      container
+      className={classes.root}
+      justify="space-between"
+      spacing={8}
+    >
+      <Grid item xs={3}>
+        <Button
+          variant="outlined"
+          color="default"
+          size="large"
+          className={classes.button}
+          startIcon={<AccessAlarmIcon style={{ fontSize: 30 }} />}
+        >
+          123
+        </Button>
+      </Grid>
+      <Grid item xs={3}>
+        <Button
+          variant="outlined"
+          color="default"
+          size="large"
+          className={classes.button}
+          startIcon={<BuildIcon style={{ fontSize: 30 }} />}
+        >
+          123
+        </Button>
+      </Grid>
+      <Grid item xs={3}>
+        <Button
+          variant="outlined"
+          color="default"
+          size="large"
+          className={classes.button}
+          startIcon={<AnnouncementIcon style={{ fontSize: 30 }} />}
+        >
+          123
+        </Button>
+      </Grid>
+      <Grid item xs={3}>
+        <Button
+          variant="outlined"
+          color="default"
+          size="large"
+          className={classes.button}
+          startIcon={<EmailIcon style={{ fontSize: 30 }} />}
+        >
+          123
+        </Button>
       </Grid>
     </Grid>
   );

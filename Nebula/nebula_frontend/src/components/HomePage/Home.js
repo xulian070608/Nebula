@@ -5,7 +5,7 @@ import { useOktaAuth } from "@okta/okta-react";
 
 // local component import
 import CreateMap from "./Mapbox";
-import HighLights from "./HighLight";
+import HighLights from "./Highlight";
 import Projects from "./Projects";
 
 // material-ui component import
@@ -31,7 +31,12 @@ function Home() {
 
   return authState.isAuthenticated ? (
     <div>
-      <HighLights />
+      <Grid container justify="center" spacing={2}>
+        <Grid item xs={6}>
+          <HighLights />
+        </Grid>
+        <Grid item xs={3} />
+      </Grid>
       <Grid container justify="center" spacing={2}>
         <Grid item xs={6}>
           <CreateMap coordinates={coordinates} />

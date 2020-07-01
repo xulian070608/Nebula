@@ -6,7 +6,6 @@ import { useDrop } from "react-dnd";
 import { initialData } from "../../data/initialData";
 
 // material ui components
-import Card from "../Utils/Card";
 import CustomCard from "../Utils/CustomCard";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";

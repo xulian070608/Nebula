@@ -6,7 +6,7 @@ export const initialData = {
       id: "card-3",
       title: "Loose Furniture (by SKU)",
       width: 12,
-      size: "small",
+      size: "big",
     },
     "card-4": { id: "card-4", title: "Occupancy", width: 12, size: "small" },
     "card-5": {

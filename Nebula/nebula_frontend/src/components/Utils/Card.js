@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     height: 50,
     padding: theme.spacing(2, 2, 1),
   },
+  headerIcon: {
+    padding: "8px",
+  },
   content: {
     height: (props) => (props.cardSize === "small" ? 250 : 300),
     display: "flex",
@@ -49,7 +52,11 @@ function StyledCard(props) {
       <CardHeader
         action={
           <>
-            <IconButton aria-label="more" onClick={handleMenu}>
+            <IconButton
+              aria-label="more"
+              onClick={handleMenu}
+              className={classes.headerIcon}
+            >
               <MoreVertIcon />
             </IconButton>
             <Menu
