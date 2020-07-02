@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProjectInfoModal(props) {
+export const RoomInfoModal = React.forwardRef((props, ref) => {
   const classes = useStyles();
 
   const currentProjectID = props.currentProjectID;
@@ -99,7 +99,7 @@ export default function ProjectInfoModal(props) {
   };
 
   return loaded ? (
-    <div className={classes.paper}>
+    <div className={classes.paper} ref={ref} tabIndex={-1}>
       {editMode ? (
         <Container maxWidth="md">
           <Grid
@@ -334,10 +334,10 @@ export default function ProjectInfoModal(props) {
       )}
     </div>
   ) : (
-    <div style={{ width: 450 }}>
+    <div style={{ width: 450 }} ref={ref} tabIndex={-1}>
       <CircularProgress
         style={{ position: "absolute", top: "50%", left: "50%" }}
       />
     </div>
   );
-}
+});

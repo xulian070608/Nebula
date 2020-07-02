@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from "react";
 // local components
 import { useFetch, useFetchList } from "../../utils/useFetch";
 import Card from "../../utils/Card";
-import { CurrentFloorStateContext } from ".";
+import { CurrentFloorStateContext } from "../../utils/ContextManager";
 import { ProjectsURL } from "../../utils/Constant";
 
 // material ui components
@@ -91,6 +91,22 @@ function FloorDropDown(props) {
             // value={currentFloor.id}
             value={currentFloorState.data.id}
             onChange={onChange}
+            MenuProps={{
+              getContentAnchorEl: null,
+              anchorOrigin: {
+                vertical: "bottom",
+                horizontal: "center",
+              },
+              transformOrigin: {
+                vertical: "top",
+                horizontal: "center",
+              },
+              PaperProps: {
+                style: {
+                  maxHeight: 200,
+                },
+              },
+            }}
           >
             {props.floors.map(createFloorOption)}
           </Select>

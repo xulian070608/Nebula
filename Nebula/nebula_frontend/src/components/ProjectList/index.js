@@ -48,7 +48,8 @@ function CreateProjectLi(props) {
       button
       key={project.id}
       component={Link}
-      to={`/${project.id}/summary`}
+      // to={`/summary/${project.id}`}
+      to={"/project/" + project.id}
       onMouseEnter={() =>
         setCoordinates({
           lng: project.attributes.longitude,

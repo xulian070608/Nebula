@@ -132,7 +132,7 @@ function SearchBar() {
                 key={`project-${project.id}`}
                 onClick={() => {
                   setOpen(false);
-                  history.push(`/${project.id}/summary`);
+                  history.push(`/project/${project.id}`);
                   window.location.reload();
                 }}
               >

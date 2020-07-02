@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProjectInfoModal(props) {
+export const ProjectInfoModal = React.forwardRef((props, ref) => {
   const classes = useStyles();
   const projectID = props.projectID;
   const url = "https://api.c3plus.top/nebula/v1/projects/" + projectID + "/";
@@ -320,4 +320,4 @@ export default function ProjectInfoModal(props) {
       )}
     </div>
   );
-}
+});

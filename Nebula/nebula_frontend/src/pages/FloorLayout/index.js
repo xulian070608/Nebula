@@ -1,11 +1,12 @@
 //third party package import
 import React, { useState, useMemo } from "react";
 import { useOktaAuth } from "@okta/okta-react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 
 // local components import
 import Viz from "../../components/Floormap/Viz";
 import FloorInfoPanel from "./FloorInfoPanel";
+import { CurrentFloorStateContext } from "../../utils/ContextManager";
 
 // material-ui components import
 // import { Container, Row, Col } from "reactstrap";
@@ -28,11 +29,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const CurrentFloorStateContext = React.createContext(null);
+// export const CurrentFloorStateContext = React.createContext(null);
 
-function ProjectLayout(props) {
+export function FloorLayout(props) {
   const classes = useStyles();
-  const currentProjectID = props.projectID;
+  const { projectID } = useParams();
 
   // use floor context
   const [currentFloorState, setCurrentFloorState] = useState({
@@ -58,12 +59,12 @@ function ProjectLayout(props) {
     <CurrentFloorStateContext.Provider value={value}>
       <Grid container className={classes.container}>
         <Grid item lg={4} className={classes.projectInfo}>
-          <FloorInfoPanel projectID={currentProjectID} />
+          <FloorInfoPanel projectID={projectID} />
         </Grid>
         <Grid item lg={8} className={classes.renderer}>
           {currentFloorState.hasValue ? (
             <Viz
-              currentProjectID={currentProjectID}
+              currentProjectID={projectID}
               floorID={currentFloorState.data.id}
             />
           ) : (
@@ -76,5 +77,3 @@ function ProjectLayout(props) {
     <Redirect to={{ pathname: "/login" }} />
   );
 }
-
-export default ProjectLayout;

@@ -4,15 +4,16 @@ import { Link, withRouter, useHistory } from "react-router-dom";
 
 // local components
 import ProjectInfoSummary from "./ProjectInfoSummary";
-import ProjectInfoModal from "../../components/Modals/ProjectInfoModal";
+import { ProjectInfoModal } from "../../components/Modals/ProjectInfoModal";
 
 // material ui
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import { NativeSelect } from "@material-ui/core";
+import Select from "@material-ui/core/Select";
 import Modal from "@material-ui/core/Modal";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -75,20 +76,36 @@ function ProjectInfoPanel(props) {
     function onChange(e) {
       updateProject(e.target.value, allProjects);
       setSelectProjectID(e.target.value);
-      history.push(`/${e.target.value}/summary`);
+      history.push("/project/" + e.target.value);
       // console.log(history)
     }
     return (
       <FormControl className={classes.formControl}>
         {/* <InputLabel htmlFor="current-floor-label">Current Project</InputLabel> */}
-        <NativeSelect
+        <Select
           className={classes.select}
           defaultValue={selectProjectID}
-          id="current-floor"
+          id="current-project"
           onChange={onChange}
+          MenuProps={{
+            getContentAnchorEl: null,
+            anchorOrigin: {
+              vertical: "bottom",
+              horizontal: "center",
+            },
+            transformOrigin: {
+              vertical: "top",
+              horizontal: "center",
+            },
+            PaperProps: {
+              style: {
+                maxHeight: 200,
+              },
+            },
+          }}
         >
           {allProjects.map(createOption)}
-        </NativeSelect>
+        </Select>
       </FormControl>
     );
   };
@@ -97,9 +114,9 @@ function ProjectInfoPanel(props) {
 
   function createOption(project) {
     return (
-      <option key={project.id} value={project.id}>
+      <MenuItem key={project.id} value={project.id}>
         {project.attributes.project_name}
-      </option>
+      </MenuItem>
     );
   }
 
@@ -122,7 +139,7 @@ function ProjectInfoPanel(props) {
           className={classes.projectPlan}
           variant="outlined"
           component={Link}
-          to={`/${currentProject.id}/planview`}
+          to={"/planview/" + currentProject.id}
         >
           Project Plan
         </Button>
@@ -150,17 +167,6 @@ function ProjectInfoPanel(props) {
       >
         <ProjectInfoModal projectID={currentProject.id} />
       </Modal>
-      {/* <div>
-        <Modal
-          className={classes.modal}
-          open={open}
-          onClose={() => setOpen(false)}
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-        >
-          <ProjectInfoModal projectID={currentProject.id} />
-        </Modal>
-      </div> */}
     </div>
   );
 }

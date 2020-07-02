@@ -1,56 +1,94 @@
+// third party packages
 import React, { useState } from "react";
 
-import Grid from "@material-ui/core/Grid";
+// local components
 import CapExModal from "../Modals/CapExModal";
-import Button from "@material-ui/core/Button";
+
+// material ui components
+import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Fade from "@material-ui/core/Fade";
+import Backdrop from "@material-ui/core/Backdrop";
+import MonetizationOnOutlinedIcon from "@material-ui/icons/MonetizationOnOutlined";
+import Typography from "@material-ui/core/Typography";
+import InfoIcon from "@material-ui/icons/Info";
+import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
-  button: {},
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }));
 
 function PropertyCapEx(props) {
   const classes = useStyles();
-  let [modalState, setModalState] = useState(false);
-  const toggleModalState = () => {
-    setModalState(!modalState);
-  };
 
+  const [open, setOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setOpen(true);
+  };
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+      <Typography variant="body1">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget
+        justo nec enim luctus tincidunt. In porttitor tellus dui, eget.
+      </Typography>
+      <Grid
+        item
+        container
+        xs={6}
+        justify="center"
+        style={{ alignItems: "center" }}
+      >
+        <MonetizationOnOutlinedIcon
+          color="primary"
+          style={{ fontSize: "100px" }}
+        />
       </Grid>
-      <Grid item container xs={12}>
-        <Grid item xs={6}>
-          <h3> XX $/SQF </h3>
-        </Grid>
-        <Grid item xs={6}>
-          <ul>
-            <li>item 01</li>
-            <li>item 02</li>
-            <li>item 03</li>
-            <li>item 04</li>
-          </ul>
-          <Button
-            className={classes.button}
-            variant="outlined"
-            size="small"
-            onClick={toggleModalState}
-          >
-            View Details
-          </Button>
-          {/* {console.log(modalState)} */}
-          {modalState ? (
-            <CapExModal
-              showModal={modalState}
-              toggleModalState={toggleModalState}
-            />
-          ) : null}
-        </Grid>
+      <Grid
+        item
+        container
+        xs={4}
+        justify="center"
+        style={{ alignItems: "center" }}
+      >
+        <Typography variant="h4" color="secondary">
+          195 M
+        </Typography>
+      </Grid>
+      <Grid
+        item
+        container
+        xs={2}
+        justify="flex-end"
+        style={{ alignItems: "flex-end" }}
+      >
+        <IconButton
+          className={classes.button}
+          variant="outlined"
+          size="small"
+          onClick={handleModalOpen}
+        >
+          <InfoIcon />
+        </IconButton>
+        <Modal
+          className={classes.modal}
+          open={open}
+          onClose={() => setOpen(false)}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <CapExModal />
+          </Fade>
+        </Modal>
       </Grid>
     </Grid>
   );

@@ -7,20 +7,13 @@ import { useOktaAuth } from "@okta/okta-react";
 import { MapBox } from "../../components/MapBox/";
 import { HighLights } from "../../components/HighLights/";
 import { ProjectList } from "../../components/ProjectList";
+import { Footer } from "../../components/Footer/";
+
 // material-ui component import
-// import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 
-function Home() {
+export function Home() {
   const [coordinates, setCoordinates] = useState(null);
-
-  // function updateMapState(){
-  //     setCoordinates({
-  //         lng: 114.0559,
-  //         lat: 22.5458,
-  //         zoom: 11
-  //         })
-  // }
 
   const { authState } = useOktaAuth();
   // const { authService } = useOktaAuth()
@@ -44,10 +37,15 @@ function Home() {
           <ProjectList setCoordinates={setCoordinates} />
         </Grid>
       </Grid>
+      <Grid
+        container
+        justify="center"
+        style={{ position: "absolute", bottom: "10px" }}
+      >
+        <Footer />
+      </Grid>
     </div>
   ) : (
     <Redirect to={{ pathname: "/login" }} />
   );
 }
-
-export default Home;
