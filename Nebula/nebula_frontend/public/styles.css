@@ -8,7 +8,7 @@
   outline: none !important;
 }
 html {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
   overflow-x: hidden;
 }
@@ -31,7 +31,7 @@ footer p {
 }
 
 .custom-tooltip {
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255, 255, 255, 0.7);
   border: 1px solid #888;
   border-radius: 5px;
 }
@@ -40,13 +40,13 @@ footer p {
   padding-top: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  color: #8884d8
+  color: #8884d8;
 }
 
 .tooltip-churn {
   padding-left: 10px;
   padding-right: 10px;
-  color: #82ca9d
+  color: #82ca9d;
 }
 
 .custom-link {
@@ -141,7 +141,7 @@ footer p {
 }
 
 .marker {
-  background-image: url("./img/mapbox-icon.png");
+  background-image: url('./img/mapbox-icon.png');
   background-size: cover;
   width: 50px;
   height: 50px;
@@ -155,7 +155,7 @@ footer p {
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 form {
@@ -207,7 +207,7 @@ form button {
 }
 /* Clear floats after the columns */
 .row:after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
@@ -378,4 +378,3 @@ form button {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-1

@@ -1,6 +1,14 @@
+// third party packages
 import React from "react";
 import ReactDOM from "react-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import App from "./components/App";
+import { BrowserRouter as Router } from "react-router-dom";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+// local components
+import AppWithRouterAccess from "./okta-auth/AppWithRouterAccess";
+
+ReactDOM.render(
+  <Router>
+    <AppWithRouterAccess />
+  </Router>,
+  document.getElementById("root")
+);

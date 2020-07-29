@@ -9,7 +9,7 @@ import RoomGenerator from "./Mesh";
 import Camera, { calculateRegion } from "./Camera";
 import CameraControl from "./CameraControl";
 import PopperX from "./PopperControl";
-import RoomInfoModal from "./RoomInfoModal";
+import { RoomInfoModal } from "./RoomInfoModal";
 
 import HelperMode from "./helpers";
 import styles from "./styles";

@@ -1,22 +1,20 @@
 // third party package
-import React from "react";
-import { useOktaAuth } from "@okta/okta-react";
-import { Redirect } from "react-router-dom";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import React from 'react';
+import { useOktaAuth } from '@okta/okta-react';
+import { Redirect, useParams } from 'react-router-dom';
 
 // local components
-import ProjectInfoPanel from "./ProjectInfoPanel";
-import ProjectInsights from "./ProjectInsights";
+import ProjectInfoPanel from './ProjectInfoPanel';
+import ProjectInsights from './ProjectInsights';
 
-import { useFetchList } from "../../utils/useFetch";
-import { ProjectsURL } from "../../utils/Constant";
+import { useFetchList } from '../../utils/useFetch';
+import { ProjectsURL } from '../../utils/Constant';
 
 // material ui
 
-import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
+import { Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 
 const useStyle = makeStyles((theme) => ({
   projectLeftPanel: {
@@ -25,8 +23,9 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-function ProjectOverview(props) {
+export function ProjectOverview(props) {
   // const [projectID] = useState(props.projectID);
+  const { projectID } = useParams();
 
   const classes = useStyle();
 
@@ -44,9 +43,9 @@ function ProjectOverview(props) {
         <Paper elevation={0} className={classes.projectLeftPanel}>
           {loaded ? (
             <ProjectInfoPanel
-              style={{ backgroundColor: "0xffd26a" }}
+              style={{ backgroundColor: '0xffd26a' }}
               currentProject={projects.find(
-                (project) => project.id === props.projectID
+                (project) => project.id === projectID
               )}
               allProjects={projects}
             />
@@ -56,14 +55,10 @@ function ProjectOverview(props) {
         </Paper>
       </Grid>
       <Grid item lg={8}>
-        <DndProvider backend={HTML5Backend}>
-          <ProjectInsights />
-        </DndProvider>
+        <ProjectInsights />
       </Grid>
     </Grid>
   ) : (
-    <Redirect to={{ pathname: "/login" }} />
+    <Redirect to={{ pathname: '/login' }} />
   );
 }
-
-export default ProjectOverview;
