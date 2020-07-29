@@ -1,11 +1,11 @@
 // third party packages
-import React from "react";
+import React from 'react';
 
 // material ui components
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import { makeStyles } from "@material-ui/core/styles";
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -24,7 +24,7 @@ function CapExModal() {
   const classes = useStyles();
   return (
     <Paper className={classes.paper}>
-      <Typography variant="h4" className={classes.title}>
+      <Typography variant="h5" className={classes.title}>
         CapEx
       </Typography>
       <Divider />

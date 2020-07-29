@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import React, { useState } from 'react';
+import { Doughnut } from 'react-chartjs-2';
 
-import { logisticData } from "../../data/logisticData";
+import { logisticData } from '../../data/logisticData';
 
 // material ui components
-import LogisticModal from "../Modals/LogisticModal2";
+import LogisticModal from '../Modals/LogisticModal';
 
 function LogisticChart(props) {
   let [modalState, setModalState] = useState(false);

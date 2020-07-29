@@ -1,22 +1,20 @@
 // third party package
-import React from "react";
-import { useOktaAuth } from "@okta/okta-react";
-import { Redirect, useParams } from "react-router-dom";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import React from 'react';
+import { useOktaAuth } from '@okta/okta-react';
+import { Redirect, useParams } from 'react-router-dom';
 
 // local components
-import ProjectInfoPanel from "./ProjectInfoPanel";
-import ProjectInsights from "./ProjectInsights";
+import ProjectInfoPanel from './ProjectInfoPanel';
+import ProjectInsights from './ProjectInsights';
 
-import { useFetchList } from "../../utils/useFetch";
-import { ProjectsURL } from "../../utils/Constant";
+import { useFetchList } from '../../utils/useFetch';
+import { ProjectsURL } from '../../utils/Constant';
 
 // material ui
 
-import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
+import { Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 
 const useStyle = makeStyles((theme) => ({
   projectLeftPanel: {
@@ -45,7 +43,7 @@ export function ProjectOverview(props) {
         <Paper elevation={0} className={classes.projectLeftPanel}>
           {loaded ? (
             <ProjectInfoPanel
-              style={{ backgroundColor: "0xffd26a" }}
+              style={{ backgroundColor: '0xffd26a' }}
               currentProject={projects.find(
                 (project) => project.id === projectID
               )}
@@ -57,12 +55,10 @@ export function ProjectOverview(props) {
         </Paper>
       </Grid>
       <Grid item lg={8}>
-        <DndProvider backend={HTML5Backend}>
-          <ProjectInsights />
-        </DndProvider>
+        <ProjectInsights />
       </Grid>
     </Grid>
   ) : (
-    <Redirect to={{ pathname: "/login" }} />
+    <Redirect to={{ pathname: '/login' }} />
   );
 }

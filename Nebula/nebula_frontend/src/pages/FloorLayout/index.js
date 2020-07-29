@@ -1,27 +1,26 @@
 //third party package import
-import React, { useState, useMemo } from "react";
-import { useOktaAuth } from "@okta/okta-react";
-import { Redirect, useParams } from "react-router-dom";
+import React, { useState, useMemo } from 'react';
+import { useOktaAuth } from '@okta/okta-react';
+import { Redirect, useParams } from 'react-router-dom';
 
 // local components import
-import Viz from "../../components/Floormap/Viz";
-import FloorInfoPanel from "./FloorInfoPanel";
-import { CurrentFloorStateContext } from "../../utils/ContextManager";
+import Viz from '../../components/Floormap/Viz';
+import FloorInfoPanel from './FloorInfoPanel';
+import { CurrentFloorStateContext } from '../../utils/ContextManager';
 
 // material-ui components import
-// import { Container, Row, Col } from "reactstrap";
-import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 const windowHeight = window.innerHeight - 65;
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    width: "100%",
+    width: '100%',
     height: 650,
   },
   projectInfo: {
-    height: "100%",
+    height: '100%',
     padding: theme.spacing(4, 6, 0),
   },
   renderer: {
@@ -74,6 +73,6 @@ export function FloorLayout(props) {
       </Grid>
     </CurrentFloorStateContext.Provider>
   ) : (
-    <Redirect to={{ pathname: "/login" }} />
+    <Redirect to={{ pathname: '/login' }} />
   );
 }
