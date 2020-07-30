@@ -1,44 +1,45 @@
 // third party packages
-import React, { useState } from "react";
-import { Link, withRouter, useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, withRouter, useHistory } from 'react-router-dom';
 
 // local components
-import ProjectInfoSummary from "./ProjectInfoSummary";
-import { ProjectInfoModal } from "../../components/Modals/ProjectInfoModal";
+import ProjectInfoSummary from './ProjectInfoSummary';
+import { ProjectInfoModal } from '../../components/Modals/ProjectInfoModal';
+import BuildingImagePlaceholder from '../../img/img_001.jpg';
 
 // material ui
-import { makeStyles } from "@material-ui/core/styles";
-import FormControl from "@material-ui/core/FormControl";
-import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
-import Select from "@material-ui/core/Select";
-import Modal from "@material-ui/core/Modal";
-import MenuItem from "@material-ui/core/MenuItem";
+import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import Select from '@material-ui/core/Select';
+import Modal from '@material-ui/core/Modal';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(2, 0),
     width: 400,
     height: 30,
-    maxWidth: "100%",
-    maxHeight: "100%",
+    maxWidth: '100%',
+    maxHeight: '100%',
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   projectImage: {
     width: 400,
     height: 300,
-    maxWidth: "100%",
-    maxHeight: "100%",
-    borderRadius: "0.25rem",
-    position: "relative",
-    padding: "25px 0px",
+    maxWidth: '100%',
+    maxHeight: '100%',
+    borderRadius: '0.25rem',
+    position: 'relative',
+    padding: '25px 0px',
   },
   projectPlan: {
     margin: theme.spacing(1, 2, 2, 0),
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2, 0, 0),
   },
   select: {
-    fontSize: "20px",
+    fontSize: '20px',
   },
 }));
 
@@ -76,7 +77,7 @@ function ProjectInfoPanel(props) {
     function onChange(e) {
       updateProject(e.target.value, allProjects);
       setSelectProjectID(e.target.value);
-      history.push("/project/" + e.target.value);
+      history.push('/project/' + e.target.value);
       // console.log(history)
     }
     return (
@@ -90,12 +91,12 @@ function ProjectInfoPanel(props) {
           MenuProps={{
             getContentAnchorEl: null,
             anchorOrigin: {
-              vertical: "bottom",
-              horizontal: "center",
+              vertical: 'bottom',
+              horizontal: 'center',
             },
             transformOrigin: {
-              vertical: "top",
-              horizontal: "center",
+              vertical: 'top',
+              horizontal: 'center',
             },
             PaperProps: {
               style: {
@@ -130,7 +131,7 @@ function ProjectInfoPanel(props) {
         src={
           currentProject.attributes.image[0]
             ? currentProject.attributes.image[0].image
-            : "/img/img_001.jpg"
+            : BuildingImagePlaceholder
         }
         alt="project quickview"
       />
@@ -139,7 +140,7 @@ function ProjectInfoPanel(props) {
           className={classes.projectPlan}
           variant="outlined"
           component={Link}
-          to={"/planview/" + currentProject.id}
+          to={'/planview/' + currentProject.id}
         >
           Project Plan
         </Button>
