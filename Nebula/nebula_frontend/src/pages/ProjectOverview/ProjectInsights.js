@@ -9,7 +9,7 @@ import CustomCard from '../../utils/CustomCard';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
 
 const windowHeight = window.innerHeight - 70;
 
@@ -47,7 +47,7 @@ export default function ProjectInsights() {
   const toggleBusinessMode = () => setIsDevelopmentMode(!isDevelopmentMode);
 
   return (
-    <Paper elevation={0} className={classes.projectRightPanel}>
+    <Container elevation={0} className={classes.projectRightPanel}>
       <Button variant="outlined" onClick={toggleBusinessMode}>
         {isDevelopmentMode ? 'Development' : 'Management'}
       </Button>
@@ -76,6 +76,6 @@ export default function ProjectInsights() {
           ))}
         </Grid>
       )}
-    </Paper>
+    </Container>
   );
 }

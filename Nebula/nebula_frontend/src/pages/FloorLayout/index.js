@@ -1,10 +1,10 @@
 //third party package import
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, Suspense, lazy } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import { Redirect, useParams } from 'react-router-dom';
 
 // local components import
-import Viz from '../../components/Floormap/Viz';
+// import Viz from '../../components/Floormap/Viz';
 import FloorInfoPanel from './FloorInfoPanel';
 import { CurrentFloorStateContext } from '../../utils/ContextManager';
 
@@ -13,6 +13,8 @@ import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const windowHeight = window.innerHeight - 65;
+
+const Viz = lazy(() => import('../../components/Floormap/Viz'));
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -62,10 +64,12 @@ export function FloorLayout(props) {
         </Grid>
         <Grid item lg={8} className={classes.renderer}>
           {currentFloorState.hasValue ? (
-            <Viz
-              currentProjectID={projectID}
-              floorID={currentFloorState.data.id}
-            />
+            <Suspense fallback={<div>loading</div>}>
+              <Viz
+                currentProjectID={projectID}
+                floorID={currentFloorState.data.id}
+              />
+            </Suspense>
           ) : (
             <p>loading</p>
           )}
