@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Area,
   Line,
@@ -10,27 +10,27 @@ import {
   Legend,
   ResponsiveContainer,
   ComposedChart,
-} from "recharts";
-import Modal from "@material-ui/core/Modal";
-import ExampleModal from "./ExampleModal";
-import { makeStyles } from "@material-ui/core/styles";
+} from 'recharts';
+import Modal from '@material-ui/core/Modal';
+import ExampleModal from '../Modals/ExampleModal';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 }));
 
 const data = [
-  { name: "19-10", uv: 4000, occ: 45, churn: 1.3, unit: "%" },
-  { name: "19-11", uv: 3000, occ: 42, churn: 1.1, unit: "%" },
-  { name: "19-12", uv: 2000, occ: 67, churn: 2, unit: "%" },
-  { name: "20-01", uv: 2780, occ: 82, churn: 0.7, unit: "%" },
-  { name: "20-02", uv: 1890, occ: 83, churn: 1.5, unit: "%" },
-  { name: "20-03", uv: 2390, occ: 72, churn: 2.3, unit: "%" },
-  { name: "20-04", uv: 3490, occ: 78, churn: 0.3, unit: "%" },
+  { name: '19-10', uv: 4000, occ: 45, churn: 1.3, unit: '%' },
+  { name: '19-11', uv: 3000, occ: 42, churn: 1.1, unit: '%' },
+  { name: '19-12', uv: 2000, occ: 67, churn: 2, unit: '%' },
+  { name: '20-01', uv: 2780, occ: 82, churn: 0.7, unit: '%' },
+  { name: '20-02', uv: 1890, occ: 83, churn: 1.5, unit: '%' },
+  { name: '20-03', uv: 2390, occ: 72, churn: 2.3, unit: '%' },
+  { name: '20-04', uv: 3490, occ: 78, churn: 0.3, unit: '%' },
 ];
 
 function CustomTooltip(props) {
@@ -68,7 +68,7 @@ export default function OccupancyChart() {
           </defs>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
-          <YAxis label={{ value: "%", position: "insideLeft" }} />
+          <YAxis label={{ value: '%', position: 'insideLeft' }} />
           <Tooltip content={<CustomTooltip />} />
           <Legend />
           <ReferenceLine x="20-02" stroke="red" label="Max OCC Rate" />

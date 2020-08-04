@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+// js libraries
+import React, { useState } from 'react';
 
 // material ui components
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import { makeStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import Divider from "@material-ui/core/Divider";
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
-    height: (props) => (props.cardSize === "small" ? 300 : 350),
+    width: '100%',
+    height: (props) => (props.cardSize === 'small' ? 300 : 350),
     margin: theme.spacing(3, 0),
   },
   header: {
@@ -21,14 +22,14 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 2, 1),
   },
   headerIcon: {
-    padding: "8px",
+    padding: '8px',
   },
   content: {
-    height: (props) => (props.cardSize === "small" ? 250 : 300),
-    display: "flex",
-    justifyContent: "center",
+    height: (props) => (props.cardSize === 'small' ? 250 : 300),
+    display: 'flex',
+    justifyContent: 'center',
     padding: theme.spacing(2),
-    overflowY: "auto",
+    overflowY: 'auto',
   },
 }));
 
@@ -64,12 +65,12 @@ function StyledCard(props) {
               anchorEl={anchorEl}
               getContentAnchorEl={null} //without this anchor position is not correct
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "center",
+                vertical: 'bottom',
+                horizontal: 'center',
               }}
               transformOrigin={{
-                vertical: "top",
-                horizontal: "center",
+                vertical: 'top',
+                horizontal: 'center',
               }}
               open={open}
               onClose={handleClose}
@@ -80,7 +81,7 @@ function StyledCard(props) {
           </>
         }
         title={title}
-        titleTypographyProps={{ variant: "h5" }}
+        titleTypographyProps={{ variant: 'h5' }}
         className={classes.header}
       />
       <Divider />
@@ -92,7 +93,7 @@ function StyledCard(props) {
 export default StyledCard;
 
 StyledCard.defaultProps = {
-  title: "Name",
-  content: "this is a card placeholder",
-  cardSize: "small",
+  title: 'Name',
+  content: 'this is a card placeholder',
+  cardSize: 'small',
 };
