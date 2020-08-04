@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { useOktaAuth } from "@okta/okta-react";
+// third party packages
+import React, { useState, useEffect } from 'react';
+import { useOktaAuth } from '@okta/okta-react';
 
-import { makeStyles } from "@material-ui/core/styles";
-import Popover from "@material-ui/core/Popover";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import { deepOrange } from "@material-ui/core/colors";
-import Divider from "@material-ui/core/Divider";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+// local components
+
+// material ui components
+import { makeStyles } from '@material-ui/core/styles';
+import Popover from '@material-ui/core/Popover';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import { deepOrange } from '@material-ui/core/colors';
+import Divider from '@material-ui/core/Divider';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles((theme) => ({
   avatarSmall: {
@@ -22,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   avatarBig: {
     color: theme.palette.getContrastText(deepOrange[500]),
     backgroundColor: deepOrange[500],
-    margin: "auto",
+    margin: 'auto',
     marginTop: theme.spacing(2),
     width: theme.spacing(7),
     height: theme.spacing(7),
@@ -40,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 2, 2),
   },
   list: {
-    width: "100%",
+    width: '100%',
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
@@ -72,7 +76,7 @@ export default function SimplePopover() {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? 'simple-popover' : undefined;
 
   return userInfo ? (
     <div>
@@ -94,12 +98,12 @@ export default function SimplePopover() {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
+          vertical: 'bottom',
+          horizontal: 'center',
         }}
         transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
+          vertical: 'top',
+          horizontal: 'center',
         }}
       >
         <Avatar className={classes.avatarBig}>
@@ -121,7 +125,7 @@ export default function SimplePopover() {
           aria-label="mailbox folders"
         >
           <Divider />
-          <ListItem button onClick={() => console.log("clicked")}>
+          <ListItem button onClick={() => console.log('clicked')}>
             <ListItemText primary="Profile" />
           </ListItem>
           <Divider />

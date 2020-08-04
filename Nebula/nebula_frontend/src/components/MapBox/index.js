@@ -1,19 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
-import mapboxgl from "mapbox-gl";
-import { useFetchList } from "../../utils/useFetch";
-import { ProjectsURL } from "../../utils/Constant";
+import React, { useEffect, useRef } from 'react';
+import mapboxgl from 'mapbox-gl';
+import { useFetchList } from '../../utils/useFetch';
+import { ProjectsURL } from '../../utils/Constant';
 
-export function MapBox(props) {
-  const [map, setMap] = useState(null);
-  const mapContainer = useRef(null);
-  const accessToken =
-    "pk.eyJ1IjoibXlub3ZtYnIiLCJhIjoiY2o4ZGN2cnZtMG44cTJ6bjh6amdndWF6bSJ9.oiPuyesbcs_SIuCgOVF_Bg";
-  const initCoordinate = {
-    lng: 103.8343,
-    lat: 36.0611,
-    zoom: 3,
-  };
+export default function MapBox(props) {
+  const mapContainrRef = useRef(null);
   const coordinates = props.coordinates;
+  const accessToken =
+    'pk.eyJ1IjoiYmFuZ3l1YW4iLCJhIjoiY2tkOXBocXBrMGxseTJzcGRkdGw4OHM5cyJ9.57jlzEsYdxhZ8wWpHOzz2Q';
 
   const { data: projects } = useFetchList(ProjectsURL);
   var projectLocations = [];
@@ -25,44 +19,36 @@ export function MapBox(props) {
     projectLocations.push(projectLocation);
   });
 
+  // initialize map when component mounts
   useEffect(() => {
     mapboxgl.accessToken = accessToken;
-    const initializeMap = ({ setMap, mapContainer }) => {
-      const map = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
-        center: [initCoordinate.lng, initCoordinate.lat],
-        zoom: initCoordinate.zoom,
-      });
+    const map = new mapboxgl.Map({
+      container: mapContainrRef.current,
+      // See style options here: https://docs.mapbox.com/api/maps/#styles
+      style: 'mapbox://styles/mapbox/light-v10',
+      // initiate center
+      center: [103.8343, 36.0611],
+      zoom: 3,
+    });
 
-      map.on("load", () => {
-        setMap(map);
-        map.resize();
-      });
+    // add navigation control (the +/- zoom buttons)
+    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
-      projectLocations.forEach((location) => {
-        // eslint-disable-next-line no-unused-vars
-        const marker = new mapboxgl.Marker()
-          .setLngLat([location.lng, location.lat])
-          .addTo(map);
-      });
-    };
+    projectLocations.forEach((location) =>
+      new mapboxgl.Marker().setLngLat([location.lng, location.lat]).addTo(map)
+    );
 
-    if (!map) initializeMap({ setMap, mapContainer });
-  }, [map, initCoordinate, projectLocations]);
-
-  useEffect(() => {
-    if (map && coordinates) {
+    if (coordinates) {
       map.jumpTo({ center: [coordinates.lng, coordinates.lat], zoom: 12 });
     }
-  }, [map, coordinates]);
+
+    // clean up on unmount
+    return () => map.remove();
+  }, [projectLocations, coordinates]);
 
   return (
     <div className="n-card-home">
-      <div
-        ref={(el) => (mapContainer.current = el)}
-        className="map-container"
-      />
+      <div className="map-container" ref={mapContainrRef} />
     </div>
   );
 }

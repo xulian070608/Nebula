@@ -1,16 +1,16 @@
 // third party package import
-import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
-import { useOktaAuth } from "@okta/okta-react";
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { useOktaAuth } from '@okta/okta-react';
 
 // local component import
-import { MapBox } from "../../components/MapBox/";
-import { HighLights } from "../../components/HighLights/";
-import { ProjectList } from "../../components/ProjectList";
-import { Footer } from "../../components/Footer/";
+import MapBox from '../../components/MapBox/';
+import { HighLights } from '../../components/HighLights/';
+import { ProjectList } from '../../components/ProjectList';
+import { Footer } from '../../components/Footer/';
 
 // material-ui component import
-import { Grid } from "@material-ui/core";
+import { Grid } from '@material-ui/core';
 
 export function Home() {
   const [coordinates, setCoordinates] = useState(null);
@@ -40,12 +40,12 @@ export function Home() {
       <Grid
         container
         justify="center"
-        style={{ position: "absolute", bottom: "10px" }}
+        style={{ position: 'absolute', bottom: '10px' }}
       >
         <Footer />
       </Grid>
     </div>
   ) : (
-    <Redirect to={{ pathname: "/login" }} />
+    <Redirect to={{ pathname: '/login' }} />
   );
 }
