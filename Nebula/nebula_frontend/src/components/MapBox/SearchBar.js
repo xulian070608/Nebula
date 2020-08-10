@@ -1,6 +1,6 @@
 // third party packages
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 // local components
 import { useFetchList } from '../../utils/useFetch';
@@ -9,7 +9,7 @@ import { ProjectsURL } from '../../utils/Constant';
 // material ui components
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -18,19 +18,21 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles((theme) => ({
   search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    position: 'absolute',
+    left: 10,
+    top: 10,
+    zIndex: 650,
+    borderRadius: 8,
+    boxShadow: theme.shadows[2],
+    backgroundColor: theme.palette.common.white,
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: theme.palette.grey[100],
     },
-    marginLeft: 0,
-    marginRight: '16px',
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
+    width: 'auto',
+    // [theme.breakpoints.up('sm')]: {
+    //   marginLeft: theme.spacing(1),
+    //   width: 'auto',
+    // },
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -51,45 +53,36 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: '12ch',
+      width: 100,
       '&:focus': {
-        width: '20ch',
+        width: 200,
       },
     },
   },
   list: {
-    width: '100%',
-    minWidth: 240,
+    width: 250,
     position: 'relative',
+    top: 5,
     overflow: 'auto',
     maxHeight: 300,
-    zIndex: '100',
-    backgroundColor: '#393e46',
-    boxShadow: '5px #000000',
-  },
-  listSection: {
-    backgroundColor: 'inherit',
-  },
-  ul: {
-    backgroundColor: 'inherit',
-    padding: 0,
-  },
-  itemText: {
-    color: '#fff',
+    backgroundColor: theme.palette.common.white,
+    boxShadow: theme.shadows[2],
+    borderRadius: 8,
   },
   popper: {
     zIndex: 800,
   },
 }));
 
-function SearchBar() {
+function SearchBar(props) {
   const classes = useStyles();
+  const { setCoordinate } = props;
   const [matchedNames, setMatchedNames] = React.useState([]);
   const [inputValue, setInputValue] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(Boolean);
 
-  let history = useHistory();
+  // let history = useHistory();
   const id = open ? 'simple-popper' : undefined;
   const { data: projects, loaded } = useFetchList(ProjectsURL);
 
@@ -145,14 +138,16 @@ function SearchBar() {
                 key={`project-${project.id}`}
                 onClick={() => {
                   setOpen(false);
-                  history.push(`/project/${project.id}`);
-                  window.location.reload();
+                  setCoordinate({
+                    lng: project.attributes.longitude,
+                    lat: project.attributes.latitude,
+                    zoom: 12,
+                  });
                 }}
               >
-                <ListItemText
-                  className={classes.itemText}
-                  primary={project.attributes.project_name}
-                />
+                <ListItemText style={{ fontSize: '1rem' }}>
+                  {project.attributes.project_name}
+                </ListItemText>
               </ListItem>
             ))}
           </List>
@@ -163,3 +158,10 @@ function SearchBar() {
 }
 
 export default SearchBar;
+
+// list onCLick to project view
+// onClick={() => {
+//   setOpen(false);
+//   history.push(`/project/${project.id}`);
+//   window.location.reload();
+// }}

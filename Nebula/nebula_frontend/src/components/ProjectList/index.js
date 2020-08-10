@@ -1,23 +1,23 @@
 // third party packages import
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // local component import
-import { useFetchList } from "../../utils/useFetch";
-import { ProjectsURL } from "../../utils/Constant";
+import { useFetchList } from '../../utils/useFetch';
+import { ProjectsURL } from '../../utils/Constant';
 
 // material ui import
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardContent from "@material-ui/core/CardContent";
-import IconButton from "@material-ui/core/IconButton";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import Divider from "@material-ui/core/Divider";
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,12 +30,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 2, 1),
   },
   headerIcon: {
-    padding: "8px",
+    padding: '8px',
   },
   content: {
     height: 360,
     padding: theme.spacing(0),
-    overflowY: "auto",
+    overflowY: 'auto',
   },
 }));
 
@@ -49,7 +49,7 @@ function CreateProjectLi(props) {
       key={project.id}
       component={Link}
       // to={`/summary/${project.id}`}
-      to={"/project/" + project.id}
+      to={'/project/' + project.id}
       onMouseEnter={() =>
         setCoordinates({
           lng: project.attributes.longitude,
@@ -80,7 +80,7 @@ export function ProjectList(props) {
 
   return (
     <Card className={classes.root}>
-      <CardHeader
+      {/* <CardHeader
         action={
           <>
             <IconButton
@@ -129,7 +129,8 @@ export function ProjectList(props) {
         ) : (
           <div>loading</div>
         )}
-      </CardContent>
+      </CardContent> */}
+      Overview
     </Card>
   );
 }

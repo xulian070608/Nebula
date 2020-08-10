@@ -4,27 +4,20 @@ import { NavLink } from 'react-router-dom';
 
 // local componenets
 import UserProfile from './UserProfile';
-import SearchBar from './SearchBar';
 
 // material ui
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
-import HomeIcon from '@material-ui/icons/Home';
-import WhatshotIcon from '@material-ui/icons/Whatshot';
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    height: '65px',
+    flex: '0 1 65px',
     backgroundColor: '#393e46',
   },
   iconNav: {
     marginRight: theme.spacing(8),
-  },
-  box: {
     flexGrow: 1,
   },
   link: {
@@ -63,21 +56,6 @@ export function Header() {
             width="110"
           />
         </NavLink>
-        <Box className={classes.box}>
-          <Breadcrumbs className={classes.breadCrumbs}>
-            <Link color="inherit" href="/" className={classes.link}>
-              <HomeIcon className={classes.icon} />
-              Home
-            </Link>
-            <Link color="inherit" href="#" className={classes.link}>
-              <WhatshotIcon className={classes.icon} />
-              Buisness
-            </Link>
-          </Breadcrumbs>
-        </Box>
-        <Box>
-          <SearchBar />
-        </Box>
         <Box>
           <UserProfile />
         </Box>
