@@ -10,7 +10,6 @@ import Popover from '@material-ui/core/Popover';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import { deepOrange } from '@material-ui/core/colors';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -18,14 +17,15 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles((theme) => ({
   avatarSmall: {
-    color: theme.palette.getContrastText(deepOrange[500]),
-    backgroundColor: deepOrange[500],
+    // color: theme.palette.getContrastText(deepOrange[500]),
+    color: theme.palette.common.white,
+    backgroundColor: theme.palette.primary.main,
     width: theme.spacing(5),
     height: theme.spacing(5),
   },
   avatarBig: {
-    color: theme.palette.getContrastText(deepOrange[500]),
-    backgroundColor: deepOrange[500],
+    color: theme.palette.common.white,
+    backgroundColor: theme.palette.primary.main,
     margin: 'auto',
     marginTop: theme.spacing(2),
     width: theme.spacing(7),

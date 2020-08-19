@@ -12,12 +12,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
-  header: {
-    flex: '0 1 65px',
-    backgroundColor: '#393e46',
-  },
   iconNav: {
     marginRight: theme.spacing(8),
+  },
+  box: {
     flexGrow: 1,
   },
   link: {
@@ -42,7 +40,7 @@ export function Header() {
   const classes = useStyles();
 
   return (
-    <AppBar className={classes.header} position="static">
+    <AppBar color="default" position="static">
       <Toolbar>
         <NavLink
           className={classes.iconNav}

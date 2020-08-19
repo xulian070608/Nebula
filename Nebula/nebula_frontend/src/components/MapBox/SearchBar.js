@@ -91,7 +91,9 @@ function SearchBar(props) {
     if (inputValue) {
       projects.forEach((project) => {
         if (
-          project.attributes.project_name.toLowerCase().includes(inputValue)
+          project.attributes.project_name
+            .toLowerCase()
+            .includes(inputValue.toLowerCase())
         ) {
           matchedArray.push(project);
         }

@@ -1,18 +1,24 @@
-import React from "react";
+import React from 'react';
 
-import BuildingImagePlaceholder from "../../img/img_001.jpg";
+import BuildingImagePlaceholder from '../../img/building_img_placeholder.jpg';
 
 // import Material UI components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
+
+// const BuildingImagePlaceholder =
+//   'http://cdn.bxia.com.cn/image/building_img_placeholder.jpg';
 
 const useStyles = makeStyles(() => ({
   projectImage: {
-    width: 200,
+    width: 'inherit',
     height: 150,
-    maxWidth: "100%",
-    maxHeight: "100%",
-    borderRadius: "0.25rem",
-    position: "relative",
+    maxWidth: '100%',
+    maxHeight: '100%',
+    borderRadius: '0.25rem',
+    position: 'relative',
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
 }));
 

@@ -5,7 +5,7 @@ import { Link, withRouter, useHistory } from 'react-router-dom';
 // local components
 import ProjectInfoSummary from './ProjectInfoSummary';
 import { ProjectInfoModal } from '../../components/Modals/ProjectInfoModal';
-import BuildingImagePlaceholder from '../../img/img_001.jpg';
+import BuildingImagePlaceholder from '../../img/building_img_placeholder.jpg';
 
 // material ui
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,6 +15,9 @@ import Box from '@material-ui/core/Box';
 import Select from '@material-ui/core/Select';
 import Modal from '@material-ui/core/Modal';
 import MenuItem from '@material-ui/core/MenuItem';
+
+// const BuildingImagePlaceholder =
+//   'http://cdn.bxia.com.cn/image/building_img_placeholder.jpg';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
