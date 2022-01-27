@@ -22,7 +22,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "recharts": "^1.8.5",
-    "three": "^0.112.1",
+    "three": "^0.137.0",
     "three.interaction": "^0.2.2",
     "three.texttexture": "^19.0.0"
   },
